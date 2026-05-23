@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MarketGrow.ai · AI dat werkt voor dienstverleners. Binnen 7 dagen.</title>
-  <meta name="description" content="MarketGrow plaatst Marko, een AI-gespreksgids, op je bestaande site. Hij kwalificeert bezoekers 24/7 en zet alleen de juiste mensen in je agenda. Live in 7 werkdagen.">
+  <meta name="description" content="MarketGrow plaatst Noor, een AI-gespreksgids, op je bestaande site. Hij kwalificeert bezoekers 24/7 en zet alleen de juiste mensen in je agenda. Live in 7 werkdagen.">
   <meta name="theme-color" content="#FBF9F4">
-  <meta property="og:title" content="MarketGrow.ai · in gesprek met Marko">
-  <meta property="og:description" content="Geen tour of pitch. Een gesprek. Vertel wat je doet, en Marko laat zien wat MarketGrow voor je dienstverlening kan doen.">
+  <meta property="og:title" content="MarketGrow.ai · in gesprek met Noor">
+  <meta property="og:description" content="Geen tour of pitch. Een gesprek. Vertel wat je doet, en Noor laat zien wat MarketGrow voor je dienstverlening kan doen.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="nl_NL">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -183,11 +183,20 @@
     .group:hover .hover-arrow { transform: translateX(4px); }
     .hover-arrow { transition: transform 0.2s; }
   </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233F4A2E'/%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' font-family='Georgia,serif' font-size='22' fill='%23FBF9F4'%3EM%3C/text%3E%3C/svg%3E">
+  <script>
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "gratis-intake", {origin:"https://cal.com"});
+Cal.ns["gratis-intake"]("ui", {"theme":"light","styles":{"branding":{"brandColor":"#3F4A2E"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
 </head>
 <body>
   <div id="root"></div>
   <script type="text/babel" data-presets="env,react">
-// V3 Marko — inline rich cards used within the conversation
+// V3 Noor — inline rich cards used within the conversation
+// (Cal.com inline embed + Lead form added)
+
+const { useEffect: useE, useRef: useR, useState: useS } = React;
 
 const Icon = ({ name, className = 'w-4 h-4' }) => {
   const p = {
@@ -202,6 +211,9 @@ const Icon = ({ name, className = 'w-4 h-4' }) => {
     'shield': <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>,
     'clock': <><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></>,
     'cal': <><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></>,
+    'mail': <><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></>,
+    'phone': <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>,
+    'check-circle': <><circle cx="12" cy="12" r="10"/><polyline points="9 12 12 15 16 10"/></>,
   };
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -356,42 +368,162 @@ const PatroonCard = () => (
   </div>
 );
 
-const IntakeCard = () => (
-  <div className="card-ink card p-8 fade-up relative">
-    <div className="relative">
-      <div className="flex items-center gap-3 mb-5">
-        <div className="w-10 h-10 rounded-full bg-lime flex items-center justify-center text-ink">
+// === Embedded Cal.com inline booking ===
+const IntakeCard = () => {
+  const ref = useR(null);
+  const [ready, setReady] = useS(false);
+  useE(() => {
+    let cancelled = false;
+    const tryInit = (attempts = 0) => {
+      if (cancelled) return;
+      const Cal = window.Cal;
+      const ns = Cal && Cal.ns && Cal.ns['gratis-intake'];
+      if (ns && ref.current) {
+        ref.current.innerHTML = '';
+        ns('inline', {
+          elementOrSelector: ref.current,
+          config: { layout: 'month_view', theme: 'light' },
+          calLink: 'julian-goote-c4pgqu/gratis-intake',
+        });
+        setReady(true);
+        return;
+      }
+      if (attempts < 40) setTimeout(() => tryInit(attempts + 1), 150);
+    };
+    tryInit();
+    return () => { cancelled = true; };
+  }, []);
+  return (
+    <div className="card p-6 fade-up">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-10 h-10 rounded-full bg-olive text-paper flex items-center justify-center">
           <Icon name="cal" className="w-5 h-5" />
         </div>
         <div>
-          <div className="tag text-lime">/ ready when you are</div>
-          <div className="serif text-[18px]">Plan een gesprek van 20 minuten</div>
+          <div className="tag text-mute">/ ready when you are</div>
+          <div className="serif text-[20px]">Kies een tijd in mijn agenda</div>
         </div>
       </div>
-      <p className="text-[14.5px] text-paper/75 leading-relaxed mb-6 max-w-md">
-        Geen pitch, geen druk. Vertel wat je doet en wat haperend werkt. Wij vertellen eerlijk of MarketGrow past en wat het kost.
+      <p className="text-[14px] text-mute leading-relaxed mb-4 max-w-md">
+        Twintig minuten, online via Google Meet. Geen pitch, geen druk. Aan het einde weet je of MarketGrow past en wat het zou kosten.
       </p>
-      <div className="grid sm:grid-cols-3 gap-2 mb-5">
-        {[
-          ['Di 28 mei', '14:00'],
-          ['Wo 29 mei', '10:30'],
-          ['Wo 29 mei', '15:00'],
-          ['Do 30 mei', '09:00'],
-          ['Vr 31 mei', '11:30'],
-          ['Vr 31 mei', '14:30'],
-        ].map(([d, t], i) => (
-          <a key={i} href={window.CAL_COM_URL || '#'} target="_blank" rel="noopener" className="bg-white/[0.06] hover:bg-lime hover:text-ink border border-white/15 p-3 text-center transition group">
-            <div className="tag text-paper/60 group-hover:text-ink/70" style={{fontSize: 10}}>{d}</div>
-            <div className="serif text-[20px] mt-0.5">{t}</div>
-          </a>
-        ))}
+      <div className="relative border border-line bg-paper2/40" style={{minHeight: 620}}>
+        {!ready && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 z-10">
+            <div className="flex gap-1.5">
+              <span className="typing-dot w-2 h-2 rounded-full bg-soft"></span>
+              <span className="typing-dot w-2 h-2 rounded-full bg-soft"></span>
+              <span className="typing-dot w-2 h-2 rounded-full bg-soft"></span>
+            </div>
+            <div className="tag text-soft">agenda wordt geladen</div>
+          </div>
+        )}
+        <div ref={ref} style={{minHeight: 620, width: '100%'}}></div>
       </div>
-      <a href={window.CAL_COM_URL || '#'} target="_blank" rel="noopener" className="group inline-flex items-center gap-2 text-lime text-[13.5px] hover:underline">
-        Zie alle beschikbare tijden in mijn agenda <span className="hover-arrow">→</span>
-      </a>
+      <div className="mt-3 text-[12.5px] text-mute flex flex-wrap items-center gap-x-5 gap-y-1">
+        <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-olive rounded-full"></span> Gratis en vrijblijvend</span>
+        <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-olive rounded-full"></span> Online via Google Meet</span>
+        <span className="inline-flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-olive rounded-full"></span> Reactie binnen 1 werkdag</span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
+
+// === Lead form: email + phone, generates mailto with conversation context ===
+const LeadFormCard = ({ profession, seenTopics, transcript }) => {
+  const [email, setEmail] = useS('');
+  const [phone, setPhone] = useS('');
+  const [sent, setSent] = useS(false);
+  const [touched, setTouched] = useS(false);
+
+  const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const buildMailto = () => {
+    const subject = `MarketGrow info aanvraag${profession ? ' (' + profession + ')' : ''}`;
+    const lines = [
+      'Hoi Julian,',
+      '',
+      'Ik heb het gesprek met Noor op de site doorlopen en wil graag meer info.',
+      '',
+      'Mijn gegevens:',
+      'Email: ' + email,
+      phone ? 'Telefoon: ' + phone : '',
+      profession ? 'Beroep: ' + profession : '',
+      '',
+      'Onderwerpen die we hebben besproken:',
+      ...(seenTopics || []).map(t => '- ' + t),
+      '',
+      'Stuur me graag een mail terug met info die past bij mijn situatie.',
+      '',
+      'Met vriendelijke groet,',
+    ].filter(l => l !== undefined);
+    return 'mailto:hello@marketgrow.ai?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTouched(true);
+    if (!validEmail) return;
+    window.location.href = buildMailto();
+    setSent(true);
+  };
+
+  return (
+    <div className="card p-6 fade-up">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-10 h-10 rounded-full bg-olive text-paper flex items-center justify-center">
+          <Icon name="mail" className="w-5 h-5" />
+        </div>
+        <div>
+          <div className="tag text-mute">/ stuur me info</div>
+          <div className="serif text-[20px]">Mail in plaats van bellen</div>
+        </div>
+      </div>
+      <p className="text-[14px] text-mute leading-relaxed mb-5 max-w-md">
+        Vul hieronder je gegevens in. Julian mailt je binnen 1 werkdag persoonlijk met info afgestemd op jouw situatie. Je gespreks-context gaat automatisch mee.
+      </p>
+      {sent ? (
+        <div className="flex items-start gap-3 bg-paper2/70 border border-line p-4">
+          <Icon name="check-circle" className="w-5 h-5 text-olive flex-shrink-0 mt-0.5" />
+          <div>
+            <div className="serif text-[18px] leading-tight">Bijna klaar.</div>
+            <div className="text-[13.5px] text-mute mt-1 leading-relaxed">Je mail-app is geopend met de info klaargezet. Klik <em>verzenden</em> daar om de mail naar Julian te sturen.</div>
+            <button onClick={() => setSent(false)} className="mt-3 tag text-soft hover:text-ink underline">opnieuw invullen</button>
+          </div>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <label className="block">
+            <span className="tag text-soft block mb-1.5">E-mail (verplicht)</span>
+            <input
+              type="email" required value={email} onChange={e => setEmail(e.target.value)}
+              placeholder="je@bedrijf.nl"
+              className="w-full bg-white border border-line px-4 py-3 text-[15px] focus:border-ink focus:outline-none transition-colors"
+            />
+            {touched && !validEmail && <span className="text-[12px] text-[#B23A3A] mt-1 inline-block">Geef een geldig e-mailadres op.</span>}
+          </label>
+          <label className="block">
+            <span className="tag text-soft block mb-1.5">Telefoon (optioneel)</span>
+            <input
+              type="tel" value={phone} onChange={e => setPhone(e.target.value)}
+              placeholder="06 12 34 56 78"
+              className="w-full bg-white border border-line px-4 py-3 text-[15px] focus:border-ink focus:outline-none transition-colors"
+            />
+          </label>
+          <button type="submit"
+            disabled={!validEmail}
+            className="w-full bg-ink text-paper py-3.5 text-[14px] font-medium hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group">
+            <Icon name="mail" className="w-4 h-4" />
+            Mail klaarzetten <span className="hover-arrow">→</span>
+          </button>
+          <div className="text-[12px] text-soft leading-relaxed text-center">
+            We bewaren je gegevens alleen om persoonlijk te reageren. Geen nieuwsbrief, geen lijst.
+          </div>
+        </form>
+      )}
+    </div>
+  );
+};
 
 const FaqCard = ({ items }) => (
   <div className="card fade-up">
@@ -407,11 +539,11 @@ const FaqCard = ({ items }) => (
   </div>
 );
 
-Object.assign(window, { Icon, ModulesCard, PricingCard, ProcessCard, PatroonCard, IntakeCard, FaqCard });
+Object.assign(window, { Icon, ModulesCard, PricingCard, ProcessCard, PatroonCard, IntakeCard, LeadFormCard, FaqCard });
 
   </script>
   <script type="text/babel" data-presets="env,react">
-// V3 Marko — the conversation IS the landing.
+// V3 Noor — the conversation IS the landing.
 const { useState, useEffect, useRef, useCallback } = React;
 
 const CAL_COM_URL = 'https://cal.com/julian-goote-c4pgqu/gratis-intake';
@@ -432,7 +564,7 @@ const TOPICS = {
     label: 'Wat krijg ik precies?',
     chipLabel: 'Welke modules zijn er?',
     text: ({first}) => first
-      ? "Er zijn vier bouwblokken. Marko zelf is er één van. Je begint met wat je nu nodig hebt en schakelt later modules bij vanuit je dashboard."
+      ? "Er zijn vier bouwblokken. Ik ben er één van. Je begint met wat je nu nodig hebt en schakelt later modules bij vanuit je dashboard."
       : "Hier nog eens de modules op een rij, voor de zekerheid.",
     Card: () => <ModulesCard />,
   },
@@ -476,7 +608,7 @@ const TOPICS = {
   intake: {
     label: 'Plan een intake',
     chipLabel: 'Plan een intake →',
-    text: () => "Mooi. Geen pitch, geen druk. Hieronder vind je tijden van deze week. Twintig minuten, online via Google Meet. Aan het einde weet je of MarketGrow past en wat het zou kosten voor jouw bedrijf.",
+    text: () => "Goed. Kies hieronder direct een tijd uit mijn agenda. Twintig minuten, online. Geen pitch, geen druk.",
     Card: () => <IntakeCard />,
     final: true,
   },
@@ -484,8 +616,12 @@ const TOPICS = {
 
 const TOPIC_ORDER = ['modules', 'process', 'pricing', 'patroon', 'faq', 'intake'];
 
+const TOPIC_LABELS = {
+  modules: 'modules', process: 'proces', pricing: 'prijzen', patroon: 'patroon', faq: 'faq', intake: 'intake',
+};
+
 // === sub-components ===
-const Brand = ({ light }) => (
+const Brand = () => (
   <a href="#" className="flex items-center gap-2.5">
     <div className="w-7 h-7 bg-olive text-paper flex items-center justify-center rounded-full">
       <span className="serif text-[16px] leading-none">M</span>
@@ -505,12 +641,33 @@ const ProgressRail = ({ seen }) => (
   </div>
 );
 
-const TopBar = ({ seen }) => (
+const TopRibbon = () => {
+  const messages = [
+    '● Live in 7 werkdagen, niet 7 weken',
+    '✶ Vroege klant-aanbieding: 20% korting op setup t/m 30 juni 2026',
+    '● 30 dagen geld terug, eerste maand vol restitueerbaar',
+    '✶ Tokens tot 500 gesprekken/mnd inclusief, geen verborgen kosten',
+  ];
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setIdx(i => (i + 1) % messages.length), 4200);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <div className="bg-olive text-paper relative overflow-hidden" style={{minHeight: 34}}>
+      <div className="max-w-[1320px] mx-auto px-6 py-2 flex items-center justify-center mono text-[11.5px]" style={{letterSpacing: '0.06em'}}>
+        <span key={idx} className="fade-up text-paper/95">{messages[idx]}</span>
+      </div>
+    </div>
+  );
+};
+
+const TopBar = ({ seen, onPlanIntake }) => (
   <div className="topbar">
     <div className="max-w-[1100px] mx-auto px-6 py-4 flex items-center justify-between gap-6">
       <Brand />
       <div className="hidden md:flex flex-col items-center gap-1.5">
-        <div className="tag text-soft">in gesprek met marko</div>
+        <div className="tag text-soft">in gesprek met noor</div>
         <ProgressRail seen={seen} />
       </div>
       <div className="flex items-center gap-3">
@@ -519,7 +676,7 @@ const TopBar = ({ seen }) => (
             <span className="absolute inset-0 bg-lime rounded-full pulse-ring-w"></span>
             <span className="relative inline-block w-1.5 h-1.5 bg-lime rounded-full"></span>
           </span>
-          Marko online
+          Noor online
         </span>
         <a href="klassiek.html" className="text-[12px] mono text-mute hover:text-ink underline-offset-2 hover:underline">
           liever scrollen ↗
@@ -531,7 +688,7 @@ const TopBar = ({ seen }) => (
 
 const TypingBubble = () => (
   <div className="flex items-end gap-3 fade-up">
-    <div className="mark"><span>M</span></div>
+    <div className="mark"><span>N</span></div>
     <div className="bubble bubble-tight flex gap-1.5 items-center" style={{padding: '14px 18px'}}>
       <span className="typing-dot w-2 h-2 rounded-full bg-soft"></span>
       <span className="typing-dot w-2 h-2 rounded-full bg-soft"></span>
@@ -547,29 +704,42 @@ const App = () => {
   const [typing, setTyping] = useState(false);
   const [seen, setSeen] = useState(new Set());
   const [profession, setProfession] = useState(null);
-  const [started, setStarted] = useState(false);
   const scrollAnchor = useRef(null);
 
-  // initial Marko message
+  // initial Noor message
   useEffect(() => {
     setTurns([{
-      role: 'marko',
+      role: 'noor',
       hero: true,
-      text: 'Hoi, ik ben Marko, de AI-gids van MarketGrow. Geen tour of pitch hier, gewoon een gesprek. Vertel even, wat doe je voor werk?',
+      text: 'Hoi, ik ben Noor, de AI-gids van MarketGrow. Geen tour of pitch hier, gewoon een gesprek. Vertel even, wat doe je voor werk?',
     }]);
     setChips(PROFESSIONS.map(p => ({ label: p.label, action: () => pickProfession(p) })));
   }, []);
 
+  // Smooth auto-scroll: keep chip row + sticky CTA both comfortably in view.
   useEffect(() => {
-    if (scrollAnchor.current) scrollAnchor.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
-  }, [turns, typing, chips]);
+    const id = requestAnimationFrame(() => {
+      const anchor = scrollAnchor.current;
+      if (!anchor) return;
+      const rect = anchor.getBoundingClientRect();
+      const stickyH = 130; // sticky-cta + ribbon padding
+      const desiredBottom = window.innerHeight - stickyH - 16;
+      const delta = rect.bottom - desiredBottom;
+      if (delta > 4) {
+        window.scrollTo({ top: window.scrollY + delta, behavior: 'smooth' });
+      } else if (delta < -200 && turns.length > 1) {
+        window.scrollTo({ top: window.scrollY + delta + 80, behavior: 'smooth' });
+      }
+    });
+    return () => cancelAnimationFrame(id);
+  }, [turns.length, typing, chips.length]);
 
-  const sayMarko = (text, Card, nextChips, opts = {}) => {
+  const sayNoor = (text, Card, nextChips, opts = {}) => {
     setChips([]);
     setTyping(true);
     setTimeout(() => {
       setTyping(false);
-      setTurns(t => [...t, { role: 'marko', text, Card, ...opts }]);
+      setTurns(t => [...t, { role: 'noor', text, Card, ...opts }]);
       if (nextChips) setChips(nextChips);
     }, opts.delay || 1100);
   };
@@ -581,23 +751,22 @@ const App = () => {
 
   const pickProfession = (p) => {
     setProfession(p);
-    setStarted(true);
     sayUser(p.label);
     const msg = `Mooi. Bij ${p.context} zijn ${p.insight}. Daar werkt MarketGrow goed. Korte versie: ik leef op je site, antwoord 24/7, kwalificeer mensen en zet alleen de juiste in je agenda. Geen migratie, geen tools die je zelf beheert. Wat wil je eerst weten?`;
-    sayMarko(msg, null, makeTopicChips([]));
+    sayNoor(msg, null, makeTopicChips(new Set()));
   };
 
   const makeTopicChips = (seenSet) => {
     const seenArr = Array.from(seenSet);
-    const remaining = TOPIC_ORDER.filter(k => !seenSet.has || !seenArr.includes(k));
-    // Pick up to 4 chips, intake always last/primary, prioritise process+modules+pricing first
+    const remaining = TOPIC_ORDER.filter(k => !seenArr.includes(k));
     const ordered = ['modules', 'process', 'pricing', 'patroon', 'faq', 'intake'].filter(k => remaining.includes(k));
     const picks = ordered.slice(0, 3).concat('intake').filter((k, i, a) => a.indexOf(k) === i);
-    return picks.map(k => {
-      const t = TOPICS[k];
-      const style = k === 'intake' ? 'lime' : (seenSet.size >= 2 && k !== 'intake' ? '' : 'primary');
-      return { label: t.chipLabel, primary: k === 'intake', secondary: k !== 'intake', action: () => gotoTopic(k) };
-    });
+    return picks.map(k => ({
+      label: TOPICS[k].chipLabel,
+      primary: k === 'intake',
+      secondary: k !== 'intake',
+      action: () => gotoTopic(k),
+    }));
   };
 
   const gotoTopic = (key) => {
@@ -606,15 +775,30 @@ const App = () => {
     const wasSeen = seen.has(key);
     const newSeen = new Set([...seen, key]);
     setSeen(newSeen);
-    sayMarko(t.text({ first: !wasSeen }), t.Card, t.final ? makeEndChips() : makeTopicChips(newSeen), { delay: 1300 });
+    sayNoor(t.text({ first: !wasSeen }), t.Card, t.final ? makeEndChips() : makeTopicChips(newSeen), { delay: 1300 });
+  };
+
+  const showLeadForm = () => {
+    sayUser('Stuur me een mail met info.');
+    const seenLabels = Array.from(seen).map(k => TOPIC_LABELS[k]);
+    const LeadCard = () => <LeadFormCard profession={profession?.label} seenTopics={seenLabels} />;
+    sayNoor(
+      'Helder. Vul hieronder je gegevens in, dan zorg ik dat Julian je morgen mailt met info afgestemd op jouw situatie. Je gespreks-context gaat automatisch mee, je hoeft niets toe te lichten.',
+      LeadCard,
+      [
+        { label: 'Of plan toch een intake', primary: true, action: () => gotoTopic('intake') },
+        { label: 'Ik heb nog een vraag', secondary: true, action: () => gotoTopic('faq') },
+      ],
+      { delay: 1100 }
+    );
   };
 
   const makeEndChips = () => ([
-    { label: 'Stuur me ipv. een mail met info', secondary: true, action: () => { sayUser('Stuur me een mail.'); sayMarko('Helder. Hieronder vind je nog even alle relevante info gebundeld. Of mail Julian direct op hello@marketgrow.ai. Tot snel.', null, []); } },
+    { label: 'Liever mailen dan bellen', secondary: true, action: showLeadForm },
     { label: 'Ik heb nog een vraag', secondary: true, action: () => gotoTopic('faq') },
   ]);
 
-  // Marko's first hero turn renders differently
+  // Noor's first hero turn renders differently
   const renderTurn = (turn, i) => {
     if (turn.role === 'user') {
       return (
@@ -627,9 +811,9 @@ const App = () => {
       return (
         <div key={i} className="fade-up">
           <div className="flex items-center gap-4 mb-7">
-            <div className="mark mark-lg"><span>M</span></div>
+            <div className="mark mark-lg"><span>N</span></div>
             <div>
-              <div className="tag text-mute mb-1">marko · ai-gids</div>
+              <div className="tag text-mute mb-1">noor · ai-gids</div>
               <div className="flex items-center gap-2 text-[13px] text-mute">
                 <span className="relative inline-block w-1.5 h-1.5">
                   <span className="absolute inset-0 bg-lime rounded-full pulse-ring-w"></span>
@@ -640,7 +824,7 @@ const App = () => {
             </div>
           </div>
           <h1 className="display text-[clamp(36px,6vw,68px)] leading-[1.02] mb-6" style={{textWrap: 'pretty'}}>
-            Hoi, ik ben <em className="italic text-olive">Marko.</em><br/>
+            Hoi, ik ben <em className="italic text-olive">Noor.</em><br/>
             Geen tour of pitch hier, gewoon een gesprek.
           </h1>
           <p className="serif text-[24px] text-mute leading-snug mb-8 max-w-[640px]" style={{textWrap: 'pretty'}}>
@@ -649,10 +833,9 @@ const App = () => {
         </div>
       );
     }
-    // Regular Marko message
     return (
       <div key={i} className="flex items-start gap-3 fade-up">
-        <div className="mark mt-1"><span>M</span></div>
+        <div className="mark mt-1"><span>N</span></div>
         <div className="flex-1 space-y-4 min-w-0">
           <div className="bubble">
             <p className="text-[16px] leading-relaxed" style={{textWrap: 'pretty'}}>{turn.text}</p>
@@ -665,6 +848,7 @@ const App = () => {
 
   return (
     <div className="stage">
+      <TopRibbon />
       <TopBar seen={seen} />
       <main className="relative z-10 max-w-[760px] mx-auto px-6 pt-8 pb-24">
         <div className="space-y-6">
@@ -672,7 +856,6 @@ const App = () => {
           {typing && <TypingBubble />}
         </div>
 
-        {/* chip row */}
         {chips.length > 0 && !typing && (
           <div className="mt-7 fade-up">
             <div className="text-[12.5px] text-soft mb-2.5 ml-1 tag">/ kies een antwoord</div>
@@ -689,20 +872,19 @@ const App = () => {
 
         <div ref={scrollAnchor} className="h-1"></div>
 
-        {/* sticky bottom shelf: always-available intake CTA + restart */}
         <div className="sticky-cta mt-12">
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
             <div className="flex items-center gap-3">
-              <div className="mark" style={{width: 28, height: 28, fontSize: 16}}><span>M</span></div>
+              <div className="mark" style={{width: 28, height: 28, fontSize: 16}}><span>N</span></div>
               <div>
                 <div className="text-[13px] font-medium leading-tight">Liever direct boeken?</div>
                 <div className="text-[12px] text-mute leading-tight">20 minuten, online, vrijblijvend</div>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <a href={CAL_COM_URL} target="_blank" rel="noopener" className="chip chip-lime">
+              <button onClick={() => gotoTopic('intake')} className="chip chip-lime">
                 Plan intake <span className="chip-arrow">→</span>
-              </a>
+              </button>
               <a href="klassiek.html" className="chip" style={{padding: '8px 12px', fontSize: 12.5}}>
                 Of klassiek scrollen
               </a>
@@ -711,7 +893,6 @@ const App = () => {
         </div>
       </main>
 
-      {/* tiny footer */}
       <footer className="relative z-10 max-w-[1100px] mx-auto px-6 pb-8 pt-2">
         <div className="flex flex-wrap justify-between items-center gap-3 text-[11.5px] mono text-soft">
           <div>© 2026 marketgrow.ai · Breda</div>
@@ -729,5 +910,6 @@ const App = () => {
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 
   </script>
+
 </body>
 </html>

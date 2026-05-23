@@ -158,11 +158,17 @@
       border: 1px solid var(--line);
     }
   </style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%233F4A2E'/%3E%3Ctext x='50%25' y='60%25' text-anchor='middle' font-family='Georgia,serif' font-size='22' fill='%23FBF9F4'%3EM%3C/text%3E%3C/svg%3E">
+  <script>
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "gratis-intake", {origin:"https://cal.com"});
+Cal.ns["gratis-intake"]("ui", {"theme":"dark","cssVarsPerTheme":{"dark":{"cal-brand":"#C8FF4D"}},"styles":{"branding":{"brandColor":"#C8FF4D"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
 </head>
 <body>
   <div id="root"></div>
   <script type="text/babel" data-presets="env,react">
-// Marko chat demo (scripted, no API). Used in V1 Aurora.
+// Noor chat demo (scripted, no API). Used in V1 Aurora.
 const { useState, useEffect, useRef } = React;
 
 const CAL_COM_URL = 'https://cal.com/julian-goote-c4pgqu/gratis-intake';
@@ -190,7 +196,7 @@ const Icon = ({ name, className = 'w-4 h-4' }) => {
   );
 };
 
-// Scripted conversation that mimics the real Marko intake flow.
+// Scripted conversation that mimics the real Noor intake flow.
 const SCRIPT = [
   { role: 'user', content: 'Ik ben jurist, gespecialiseerd in arbeidsrecht.' },
   { role: 'assistant', content: 'Mooi. Werk je vooral met particulieren of zakelijke klanten?', delay: 1100 },
@@ -203,7 +209,7 @@ const SCRIPT = [
 const ChatDemo = ({ tone = 'light' }) => {
   const dark = tone === 'dark';
   const [msgs, setMsgs] = useState([
-    { role: 'assistant', content: 'Hoi, ik ben Marko, de AI-gids van MarketGrow. Wat doe je voor werk?' },
+    { role: 'assistant', content: 'Hoi, ik ben Noor, de AI-gids van MarketGrow. Wat doe je voor werk?' },
   ]);
   const [step, setStep] = useState(0);
   const [typing, setTyping] = useState(false);
@@ -254,7 +260,7 @@ const ChatDemo = ({ tone = 'light' }) => {
   }, [step]);
 
   const reset = () => {
-    setMsgs([{ role: 'assistant', content: 'Hoi, ik ben Marko, de AI-gids van MarketGrow. Wat doe je voor werk?' }]);
+    setMsgs([{ role: 'assistant', content: 'Hoi, ik ben Noor, de AI-gids van MarketGrow. Wat doe je voor werk?' }]);
     setStep(0); setTyping(false); setShowCal(false); setDraft('');
   };
 
@@ -270,11 +276,11 @@ const ChatDemo = ({ tone = 'light' }) => {
       <div className={`${header} px-5 py-3.5 flex items-center justify-between`}>
         <div className="flex items-center gap-3">
           <div className="relative">
-            <div className="w-8 h-8 bg-olive text-paper flex items-center justify-center text-xs font-medium serif text-base">M</div>
+            <div className="w-8 h-8 bg-olive text-paper flex items-center justify-center text-xs font-medium serif text-base">N</div>
             <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-lime rounded-full border-2 border-paper-2"></div>
           </div>
           <div>
-            <div className="text-sm font-medium leading-tight">Marko</div>
+            <div className="text-sm font-medium leading-tight">Noor</div>
             <div className="text-[11px] mute mono leading-tight">ai gids · jouw site</div>
           </div>
         </div>
@@ -289,7 +295,7 @@ const ChatDemo = ({ tone = 'light' }) => {
         {msgs.map((m, i) => (
           <div key={i} className={`flex gap-2.5 ${m.role === 'user' ? 'flex-row-reverse' : ''} float-up`}>
             {m.role === 'assistant' && (
-              <div className="w-6 h-6 bg-olive text-paper flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5 serif">M</div>
+              <div className="w-6 h-6 bg-olive text-paper flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5 serif">N</div>
             )}
             <div className={`max-w-[82%] px-3.5 py-2.5 text-[14px] leading-relaxed whitespace-pre-wrap ${m.role === 'assistant' ? bubbleA : bubbleU}`}>
               {m.content}
@@ -298,7 +304,7 @@ const ChatDemo = ({ tone = 'light' }) => {
         ))}
         {typing && (
           <div className="flex gap-2.5 float-up">
-            <div className="w-6 h-6 bg-olive text-paper flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5 serif">M</div>
+            <div className="w-6 h-6 bg-olive text-paper flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5 serif">N</div>
             <div className={`${bubbleA} px-4 py-3 flex gap-1 items-center`}>
               <span className="typing-dot w-1.5 h-1.5 rounded-full" style={{background: dark ? '#9aa' : '#6A6D70'}}></span>
               <span className="typing-dot w-1.5 h-1.5 rounded-full" style={{background: dark ? '#9aa' : '#6A6D70'}}></span>
@@ -324,7 +330,7 @@ const ChatDemo = ({ tone = 'light' }) => {
         <div className={`flex-1 ${inputBg} border px-3 py-2 text-[13px] flex items-center`}>
           <span>{draft || (step >= SCRIPT.length ? '' : '')}</span>
           {(draft || step < SCRIPT.length) && <span className="cursor ml-0.5 w-[7px] h-[14px] inline-block" style={{background: dark ? '#C8FF4D' : '#0E1112'}}></span>}
-          {!draft && step >= SCRIPT.length && <span className="mute text-[13px]">Marko is klaar. Druk RESTART.</span>}
+          {!draft && step >= SCRIPT.length && <span className="mute text-[13px]">Noor is klaar. Druk RESTART.</span>}
         </div>
         <button className={`${dark ? 'bg-lime text-ink' : 'bg-ink text-paper'} px-4 hover:brightness-95 flex items-center`}>
           <Icon name="send" className="w-4 h-4" />
@@ -338,7 +344,28 @@ Object.assign(window, { Icon, ChatDemo });
 
   </script>
   <script type="text/babel" data-presets="env,react">
-// V1 Aurora — all sections (Nav, Hero, Marquee, Probleem, Bouwblokken, Hoe, Patroon, Pricing, FAQ, CTA, Footer)
+// V1 Aurora — Nav (+ ribbon), Hero, Profession grid (was marquee), Probleem, Bouwblokken
+
+const NavRibbon = () => {
+  const messages = [
+    '● Live in 7 werkdagen, niet 7 weken',
+    '✶ Vroege klant-aanbieding: 20% korting op setup t/m 30 juni 2026',
+    '● 30 dagen geld terug, eerste maand vol restitueerbaar',
+    '✶ Tokens tot 500 gesprekken/mnd inclusief, geen verborgen kosten',
+  ];
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setIdx(i => (i + 1) % messages.length), 4200);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <div style={{background: 'var(--olive)', color: 'var(--paper)', minHeight: 34}} className="relative overflow-hidden">
+      <div className="max-w-[1320px] mx-auto px-8 py-2 flex items-center justify-center mono text-[11.5px]" style={{letterSpacing: '0.06em'}}>
+        <span key={idx} className="float-up" style={{color: 'rgba(246,244,238,0.95)'}}>{messages[idx]}</span>
+      </div>
+    </div>
+  );
+};
 
 const Nav = () => (
   <nav className="sticky top-0 z-40 backdrop-blur" style={{background: 'rgba(246,244,238,0.82)', borderBottom: '1px solid var(--line)'}}>
@@ -355,9 +382,9 @@ const Nav = () => (
       </div>
       <div className="flex items-center gap-3">
         <a href="index.html" className="hidden md:inline-flex items-center gap-1.5 mono text-[12px] mute hover:ink transition">
-          <span className="w-1.5 h-1.5 bg-olive rounded-full"></span> of in gesprek met Marko
+          <span className="w-1.5 h-1.5 bg-olive rounded-full"></span> of in gesprek met Noor
         </a>
-        <a href={window.CAL_COM_URL || '#intake'} target="_blank" rel="noopener" className="group bg-ink text-paper text-[13px] px-4 py-2.5 inline-flex items-center gap-2 hover:brightness-110 transition">
+        <a href="#intake" className="group bg-ink text-paper text-[13px] px-4 py-2.5 inline-flex items-center gap-2 hover:brightness-110 transition">
           Plan intake <span className="hover-arrow">→</span>
         </a>
       </div>
@@ -390,7 +417,6 @@ const Hero = () => (
     <div className="absolute inset-0 grid-bg opacity-60 pointer-events-none"></div>
     <div className="relative max-w-[1320px] mx-auto px-8 pt-16 pb-24">
       <div className="grid lg:grid-cols-12 gap-10 items-center">
-        {/* left text */}
         <div className="lg:col-span-5 float-up">
           <LiveTicker />
           <h1 className="display text-[80px] leading-[0.92] mt-7 mb-7" style={{letterSpacing: '-0.03em'}}>
@@ -399,7 +425,7 @@ const Hero = () => (
             <span className="block mute">Niet andersom.</span>
           </h1>
           <p className="text-[17px] leading-relaxed text-ink/80 max-w-md mb-8">
-            MarketGrow plaatst Marko, een AI-gespreksgids, op je bestaande site. Marko kwalificeert bezoekers 24/7 en zet alleen de juiste mensen in je agenda. Geen migratie, geen losse tools.
+            MarketGrow plaatst Noor, een AI-gespreksgids, op je bestaande site. Noor kwalificeert bezoekers 24/7 en zet alleen de juiste mensen in je agenda. Geen migratie, geen losse tools.
           </p>
           <div className="flex flex-wrap items-center gap-3 mb-8">
             <a href="#intake" className="group bg-ink text-paper text-[14px] px-6 py-3.5 inline-flex items-center gap-2.5 hover:brightness-110 transition">
@@ -416,47 +442,79 @@ const Hero = () => (
           </div>
         </div>
 
-        {/* chat front and center */}
-        <div className="lg:col-span-7 flex justify-center relative float-up" style={{animationDelay: '0.15s'}}>
-          {/* floating annotations */}
-          <div className="hidden lg:block absolute -left-2 top-14 chip" style={{transform: 'rotate(-3deg)'}}>
-            <span className="lime">▲</span> 24/7 online
-          </div>
-          <div className="hidden lg:block absolute right-2 top-32 chip" style={{transform: 'rotate(2deg)'}}>
-            <span className="olive">●</span> jouw merk, jouw toon
-          </div>
-          <div className="hidden lg:block absolute -left-6 bottom-16 chip" style={{transform: 'rotate(-2deg)'}}>
-            <span className="olive">↳</span> agenda gekoppeld
-          </div>
-          <div className="hidden lg:block absolute right-0 bottom-8 chip" style={{transform: 'rotate(3deg)'}}>
-            500 gesprekken/mnd
-          </div>
+        <div className="lg:col-span-7 flex justify-center float-up" style={{animationDelay: '0.15s'}}>
           <ChatDemo tone="light" />
         </div>
+      </div>
+
+      {/* Feature highlight strip below chat - replaces floating annotations */}
+      <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-px bg-line border border-line" style={{background: 'var(--line)'}}>
+        {[
+          { v: '24/7', l: 'online beschikbaar', s: 'Noor slaapt nooit' },
+          { v: 'JOUW', l: 'merk en stem', s: 'Eigen kleuren, fonts en toon' },
+          { v: '500', l: 'gesprekken per maand', s: 'Inclusief in maandfee' },
+          { v: '1 LINK', l: 'agenda koppeling', s: 'Cal.com, Google, Outlook' },
+        ].map((s, i) => (
+          <div key={i} className="bg-paper p-5">
+            <div className="serif text-[28px] olive leading-none mb-1">{s.v}</div>
+            <div className="text-[13px] font-medium">{s.l}</div>
+            <div className="text-[12px] mute mt-0.5">{s.s}</div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 );
 
-const Marquee = () => {
-  const items = ['Juristen', 'Advocaten', 'Mediators', 'Accountants', 'Hypotheekadviseurs', 'Fysiotherapeuten', 'Coaches', 'Financieel planners', 'Architecten', 'Bedrijfsadviseurs'];
+// === Profession hover grid (was Marquee) ===
+const ProfessionGrid = () => {
+  const items = [
+    { n: 'Juristen', why: 'Bezoekers vaak in acute, emotionele situaties. Noor vangt urgentie-signalen, kwalificeert vooraf, en zet alleen serieuze zaken in je agenda.' },
+    { n: 'Advocaten', why: 'Idem juristen, met focus op procedurele kwalificatie. Geen advies, wel triage: spoed of geen spoed, binnen scope of niet.' },
+    { n: 'Mediators', why: 'Tweezijdige tonality, niet pushen maar uitnodigen. Noor stelt vragen zonder partij te kiezen, en plant intakes alleen als beide kanten meebewegen.' },
+    { n: 'Accountants', why: 'Mkb-ondernemers zoeken fiscale duidelijkheid bij een verandering. Noor checkt of de vraag past en plant alleen waardevolle gesprekken in.' },
+    { n: 'Hypotheekadviseurs', why: 'Bezoekers vergelijken constant. Noor verlaagt de drempel met snelle eerste oriëntatie en zet vergelijkers om in afspraken.' },
+    { n: 'Fysiotherapeuten', why: 'Eerste klacht-check en agenda-koppeling. Noor vraagt door zonder medisch advies te geven, en zorgt dat de juiste behandelaar gekoppeld wordt.' },
+    { n: 'Coaches', why: 'Vertrouwen voor de intake. Noor maakt de eerste stap voelbaar en menselijk, geen vragenlijstje maar een echt gesprekje.' },
+    { n: 'Financieel planners', why: 'Levensgebeurtenissen drijven aanvragen (huis, scheiding, pensioen). Noor herkent het moment en plant een gesprek dat past bij de fase.' },
+    { n: 'Architecten', why: 'Project-omvang, budget, locatie. Noor kwalificeert vooraf zodat jij gericht offreert in plaats van eindeloos eerste gesprekken voert.' },
+    { n: 'Bedrijfsadviseurs', why: 'Concrete vraag of oriëntatie? Noor scheidt de twee en stuurt alleen de juiste leads door naar jouw agenda.' },
+  ];
   return (
-    <div className="border-y border-line py-7 bg-paper-2 relative noise">
-      <div className="max-w-[1320px] mx-auto px-8 mb-4 flex items-center justify-between text-[12px]">
-        <span className="tag mute">Gebouwd voor service-mkb</span>
-        <span className="tag mute">v1.0 · 2026</span>
-      </div>
-      <div className="marquee">
-        <div className="marquee-track">
-          {[...items, ...items].map((s, i) => (
-            <span key={i} className="serif text-[42px] whitespace-nowrap inline-flex items-center gap-12 mute">
-              <em>{s}</em>
-              <span className="text-[18px]" style={{color: 'var(--lime-2)'}}>✦</span>
-            </span>
+    <section className="border-y border-line py-16 bg-paper-2 relative noise" id="voor-wie">
+      <div className="relative z-10 max-w-[1320px] mx-auto px-8">
+        <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
+          <div>
+            <div className="label-caps mute tag mb-3">/ Voor wie</div>
+            <h2 className="display text-[48px] leading-[0.95]">
+              Gebouwd voor <em className="italic olive">service-mkb.</em>
+            </h2>
+          </div>
+          <p className="text-[14.5px] mute max-w-md leading-relaxed">
+            Hover (of tik) op een beroep om te zien hoe Noor zich specifiek aanpast. Werkt bij elke dienstverlener met intake-gesprekken als hoofdmotor.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-px bg-line border border-line">
+          {items.map((p, i) => (
+            <div key={p.n} className="group bg-paper p-6 relative cursor-default overflow-hidden transition-colors hover:bg-paper-2">
+              <div className="flex items-start justify-between mb-2">
+                <div className="serif text-[26px] italic leading-tight pr-2">{p.n}</div>
+                <span className="text-soft text-[14px] mt-1.5 group-hover:opacity-0 transition-opacity">↘</span>
+              </div>
+              <div
+                className="text-[13.5px] mute leading-snug overflow-hidden transition-all duration-300 ease-out"
+                style={{maxHeight: 0}}
+                ref={(el) => { if (el) el.dataset.h = el.scrollHeight + 'px'; }}
+              >
+                {p.why}
+              </div>
+              <div className="hidden group-hover:block text-[13.5px] mute leading-snug">{p.why}</div>
+            </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
@@ -565,7 +623,7 @@ const Bouwblokken = () => {
   );
 };
 
-Object.assign(window, { Nav, Hero, Marquee, Probleem, Bouwblokken });
+Object.assign(window, { NavRibbon, Nav, Hero, ProfessionGrid, Probleem, Bouwblokken });
 
   </script>
   <script type="text/babel" data-presets="env,react">
@@ -618,7 +676,7 @@ const HoeHetWerkt = () => {
           {[
             { v: '7', l: 'werkdagen', s: 'tot live' },
             { v: '€0', l: 'verborgen kosten', s: 'tokens, hosting, monitoring, alles inbegrepen' },
-            { v: '24/7', l: 'online', s: 'Marko slaapt nooit' },
+            { v: '24/7', l: 'online', s: 'Noor slaapt nooit' },
             { v: '30d', l: 'geld terug', s: 'eerste maand onderhoud restitueerbaar' },
           ].map((c, i) => (
             <div key={i} className="bg-paper p-7">
@@ -791,30 +849,69 @@ const Faq = () => {
   );
 };
 
-const IntakeCTA = () => (
-  <section id="intake" className="py-32 bg-ink text-paper relative overflow-hidden noise">
-    <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full opacity-40 pointer-events-none" style={{background: 'radial-gradient(circle, rgba(200,255,77,0.55), transparent 65%)', filter: 'blur(80px)'}}></div>
-    <div className="absolute inset-0 grid-bg opacity-[0.07]"></div>
-    <div className="relative max-w-[1100px] mx-auto px-8 text-center">
-      <div className="tag lime mb-6">/ Klaar om te beginnen</div>
-      <h2 className="display text-[88px] leading-[0.95] mb-8">
-        Een gesprek van <em className="italic lime">20 minuten.</em><br />
-        Geen druk, geen pitch.
-      </h2>
-      <p className="text-[17px] text-paper/70 max-w-2xl mx-auto leading-relaxed mb-10">
-        Vertel wat je doet en waar je tegenaan loopt. Wij vertellen eerlijk of MarketGrow past, wat het zou kosten voor jouw bedrijf, en wanneer het live zou kunnen.
-      </p>
-      <a href={window.CAL_COM_URL || '#'} target="_blank" rel="noopener" className="group inline-flex items-center gap-3 bg-lime text-ink px-9 py-5 text-[16px] font-medium hover:brightness-95 transition">
-        Kies een tijd in mijn agenda <span className="hover-arrow">→</span>
-      </a>
-      <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[13px] text-paper/60">
-        <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 bg-lime rounded-full"></span> Gratis en vrijblijvend</span>
-        <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 bg-lime rounded-full"></span> Online via Google Meet</span>
-        <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 bg-lime rounded-full"></span> Reactie binnen 1 werkdag</span>
+const IntakeCTA = () => {
+  const ref = useRef(null);
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    const tryInit = (a = 0) => {
+      if (cancelled) return;
+      const Cal = window.Cal;
+      const ns = Cal && Cal.ns && Cal.ns['gratis-intake'];
+      if (ns && ref.current) {
+        ref.current.innerHTML = '';
+        ns('inline', {
+          elementOrSelector: ref.current,
+          config: { layout: 'month_view', theme: 'dark' },
+          calLink: 'julian-goote-c4pgqu/gratis-intake',
+        });
+        setReady(true);
+        return;
+      }
+      if (a < 40) setTimeout(() => tryInit(a + 1), 150);
+    };
+    tryInit();
+    return () => { cancelled = true; };
+  }, []);
+  return (
+    <section id="intake" className="py-28 bg-ink text-paper relative overflow-hidden noise">
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full opacity-40 pointer-events-none" style={{background: 'radial-gradient(circle, rgba(200,255,77,0.55), transparent 65%)', filter: 'blur(80px)'}}></div>
+      <div className="absolute inset-0 grid-bg opacity-[0.07]"></div>
+      <div className="relative max-w-[1100px] mx-auto px-8">
+        <div className="text-center mb-12">
+          <div className="tag lime mb-6">/ Klaar om te beginnen</div>
+          <h2 className="display text-[64px] lg:text-[76px] leading-[0.95] mb-6">
+            Een gesprek van <em className="italic lime">20 minuten.</em><br />
+            Geen druk, geen pitch.
+          </h2>
+          <p className="text-[16px] text-paper/70 leading-relaxed max-w-2xl mx-auto">
+            Kies hieronder direct een tijd uit mijn agenda. Online via Google Meet.
+          </p>
+        </div>
+
+        <div className="relative border border-white/15 bg-white p-2 sm:p-3" style={{minHeight: 660}}>
+          {!ready && (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 z-10 text-ink">
+              <div className="flex gap-1.5">
+                <span className="typing-dot w-2 h-2 rounded-full" style={{background: 'var(--mute)'}}></span>
+                <span className="typing-dot w-2 h-2 rounded-full" style={{background: 'var(--mute)'}}></span>
+                <span className="typing-dot w-2 h-2 rounded-full" style={{background: 'var(--mute)'}}></span>
+              </div>
+              <div className="tag mute">agenda wordt geladen</div>
+            </div>
+          )}
+          <div ref={ref} style={{minHeight: 640, width: '100%'}}></div>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-[13px] text-paper/70">
+          <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 bg-lime rounded-full"></span> Gratis en vrijblijvend</span>
+          <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 bg-lime rounded-full"></span> Online via Google Meet</span>
+          <span className="inline-flex items-center gap-2"><span className="w-1.5 h-1.5 bg-lime rounded-full"></span> Reactie binnen 1 werkdag</span>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const Footer = () => (
   <footer className="bg-paper border-t border-line py-14 relative noise">
@@ -867,9 +964,10 @@ const Footer = () => (
 
 const App = () => (
   <div className="min-h-screen" data-screen-label="V1 Aurora">
+    <NavRibbon />
     <Nav />
     <Hero />
-    <Marquee />
+    <ProfessionGrid />
     <Probleem />
     <Bouwblokken />
     <HoeHetWerkt />
@@ -884,5 +982,9 @@ const App = () => (
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 
   </script>
+
+
+
+
 </body>
 </html>
