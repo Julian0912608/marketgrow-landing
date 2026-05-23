@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketGrow.ai · AI dat werkt voor dienstverleners</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#F6F4EE',
+            'paper-2': '#EFEBE1',
+            ink: '#0E1112',
+            'ink-2': '#1A1E20',
+            mute: '#6A6D70',
+            lime: '#C8FF4D',
+            'lime-2': '#B6EA37',
+            olive: '#3F4A2E',
+            line: '#E1DCCF',
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --paper: #F6F4EE;
+      --paper-2: #EFEBE1;
+      --ink: #0E1112;
+      --ink-2: #1A1E20;
+      --mute: #6A6D70;
+      --line: #E1DCCF;
+      --lime: #C8FF4D;
+      --lime-2: #B6EA37;
+      --olive: #3F4A2E;
+      --halo: #D8F26B;
+    }
+    html, body { background: var(--paper); color: var(--ink); }
+    body {
+      font-family: 'Inter Tight', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "ss01", "cv11";
+    }
+    .serif { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.01em; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .ink { color: var(--ink); }
+    .mute { color: var(--mute); }
+    .lime { color: var(--lime); }
+    .olive { color: var(--olive); }
+    .bg-paper { background: var(--paper); }
+    .bg-paper-2 { background: var(--paper-2); }
+    .bg-ink { background: var(--ink); }
+    .bg-ink-2 { background: var(--ink-2); }
+    .bg-lime { background: var(--lime); }
+    .bg-olive { background: var(--olive); }
+    .border-line { border-color: var(--line); }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .display {
+      font-family: 'Instrument Serif', Georgia, serif;
+      letter-spacing: -0.025em;
+      line-height: 0.95;
+      font-weight: 400;
+    }
+    .grid-bg {
+      background-image:
+        linear-gradient(to right, rgba(14,17,18,0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(14,17,18,0.06) 1px, transparent 1px);
+      background-size: 56px 56px;
+    }
+    .aurora {
+      position: absolute; inset: 0; overflow: hidden; pointer-events: none;
+    }
+    .aurora::before, .aurora::after {
+      content: ''; position: absolute; border-radius: 50%;
+      filter: blur(80px); opacity: 0.55;
+    }
+    .aurora::before {
+      width: 720px; height: 720px;
+      background: radial-gradient(circle, var(--halo), transparent 65%);
+      top: -200px; right: -120px;
+    }
+    .aurora::after {
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, #A9D14C, transparent 65%);
+      bottom: -180px; left: -120px;
+    }
+    .noise::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+      opacity: 0.04; mix-blend-mode: multiply;
+    }
+    .noise { position: relative; }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.9); opacity: 0.6; }
+      100% { transform: scale(2.2); opacity: 0; }
+    }
+    .pulse-ring { animation: pulse-ring 2.4s ease-out infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .cursor { animation: blink 1s steps(2) infinite; }
+    @keyframes typing {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.3; }
+      30% { transform: translateY(-3px); opacity: 1; }
+    }
+    .typing-dot { animation: typing 1.4s infinite; }
+    .typing-dot:nth-child(2) { animation-delay: 0.18s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes float-up {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .float-up { animation: float-up 0.6s ease-out both; }
+    @keyframes scan {
+      from { background-position: 0 0; }
+      to { background-position: 0 12px; }
+    }
+    .scanline {
+      background-image: repeating-linear-gradient(
+        to bottom, transparent, transparent 11px, rgba(255,255,255,0.04) 12px
+      );
+    }
+    .marquee { mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); overflow: hidden; }
+    .marquee-track { display: flex; gap: 4rem; animation: scroll 38s linear infinite; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ring-lime:focus-visible { box-shadow: 0 0 0 3px rgba(200,255,77,0.5); outline: none; }
+    .hover-arrow { transition: transform 0.2s; }
+    .group:hover .hover-arrow { transform: translateX(4px); }
+    .ticker-num { font-variant-numeric: tabular-nums; }
+    .glow-lime { box-shadow: 0 30px 80px -30px rgba(200,255,77,0.5), 0 0 0 1px rgba(14,17,18,0.06); }
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 4px 10px; border-radius: 999px;
+      background: var(--paper-2); border: 1px solid var(--line);
+      font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    }
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    .accordion[open] .acc-plus { transform: rotate(45deg); }
+    .acc-plus { transition: transform 0.2s; }
+    a, button { outline: none; }
+    .placeholder-img {
+      background-image:
+        repeating-linear-gradient(135deg, rgba(14,17,18,0.06) 0 1px, transparent 1px 12px),
+        linear-gradient(180deg, var(--paper-2), var(--paper));
+      border: 1px solid var(--line);
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="v1/chat.jsx"></script>
+  <script type="text/babel" src="v1/sections.jsx"></script>
+  <script type="text/babel" src="v1/app.jsx"></script>
+</body>
+</html>
