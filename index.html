@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MarketGrow.ai — AI dat werkt voor dienstverleners. Binnen 7 dagen.</title>
+  <meta name="description" content="MarketGrow voegt slimme AI-features toe aan jouw bestaande website. Geen migratie, geen tools die je zelf beheert. Modulair, schaalbaar, ontzorgd.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    :root {
+      --mg-ink: #1A1D21;
+      --mg-ink-soft: #2A2E33;
+      --mg-cream: #F7F5F0;
+      --mg-cream-dark: #EFEBE2;
+      --mg-stone: #6B6F75;
+      --mg-stone-light: #A8ABB0;
+      --mg-lime: #D9F45A;
+      --mg-lime-dark: #B8D43A;
+      --mg-olive: #4A5840;
+      --mg-line: #E5E1D7;
+      --mg-line-dark: #353A41;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--mg-cream); color: var(--mg-ink); font-family: 'IBM Plex Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+    .font-serif { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; font-variation-settings: "SOFT" 30; }
+    .font-display { font-family: 'Fraunces', Georgia, serif; font-optical-sizing: auto; font-variation-settings: "opsz" 144, "SOFT" 50; }
+    .font-mono { font-family: 'IBM Plex Mono', monospace; }
+    .label-caps { font-family: 'IBM Plex Mono', monospace; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.72rem; font-weight: 500; }
+    .bg-ink { background: var(--mg-ink); }
+    .bg-ink-soft { background: var(--mg-ink-soft); }
+    .bg-cream { background: var(--mg-cream); }
+    .bg-cream-dark { background: var(--mg-cream-dark); }
+    .bg-lime { background: var(--mg-lime); }
+    .bg-lime-dark { background: var(--mg-lime-dark); }
+    .bg-olive { background: var(--mg-olive); }
+    .text-ink { color: var(--mg-ink); }
+    .text-cream { color: var(--mg-cream); }
+    .text-stone { color: var(--mg-stone); }
+    .text-stone-light { color: var(--mg-stone-light); }
+    .text-lime { color: var(--mg-lime); }
+    .text-olive { color: var(--mg-olive); }
+    .border-line { border-color: var(--mg-line); }
+    .border-line-dark { border-color: var(--mg-line-dark); }
+    .grain::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+      opacity: 0.07; mix-blend-mode: multiply;
+    }
+    .grain { position: relative; }
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fade-up 0.5s ease-out both; }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 0.4; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+    .pulse-dot { animation: pulse-dot 1.5s ease-in-out infinite; }
+    @keyframes typing {
+      0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(-3px); }
+    }
+    .typing-dot { animation: typing 1.4s infinite; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    .scrollbar-thin::-webkit-scrollbar { width: 4px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: var(--mg-line); }
+    .marquee { display: flex; overflow: hidden; gap: 3rem; mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent); }
+    .marquee-content { display: flex; gap: 3rem; animation: scroll 30s linear infinite; flex-shrink: 0; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+    .arrow-link { display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; }
+    .arrow-link:hover { gap: 0.7rem; }
+    a, button { outline: none; }
+    button:focus-visible, a:focus-visible { box-shadow: 0 0 0 3px rgba(217, 244, 90, 0.4); }
+    /* large display tightening */
+    .display-tight { letter-spacing: -0.025em; line-height: 0.95; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect, useRef } = React;
+
+    // === ICON HELPER ===
+    const Icon = ({ name, className = 'w-4 h-4' }) => {
+      const icons = {
+        'arrow-right': <><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></>,
+        'arrow-up-right': <><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></>,
+        'check': <polyline points="20 6 9 17 4 12"/>,
+        'plus': <><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></>,
+        'minus': <line x1="5" y1="12" x2="19" y2="12"/>,
+        'message-circle': <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>,
+        'pen-tool': <><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></>,
+        'send': <><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></>,
+        'file-text': <><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></>,
+        'sparkles': <path d="M12 3l1.9 5.7L19 10l-5.1 1.3L12 17l-1.9-5.7L5 10l5.1-1.3z"/>,
+        'star': <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>,
+        'zap': <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>,
+        'shield': <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>,
+        'clock': <><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></>,
+        'menu': <><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></>,
+        'x': <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>,
+      };
+      return (
+        <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+          {icons[name] || <circle cx="12" cy="12" r="10"/>}
+        </svg>
+      );
+    };
+
+    // === LOGO ===
+    const Logo = ({ light, size = 'text-xl' }) => (
+      <div className="flex items-baseline gap-0.5">
+        <span className={`font-serif ${size} font-medium tracking-tight ${light ? 'text-cream' : 'text-ink'}`}>MarketGrow</span>
+        <span className={`font-serif ${size} ${light ? 'text-lime' : 'text-olive'} font-medium`}>.ai</span>
+      </div>
+    );
+
+    // === NAV ===
+    const Nav = () => {
+      const [open, setOpen] = useState(false);
+      return (
+        <nav className="sticky top-0 z-40 bg-cream/85 backdrop-blur border-b border-line">
+          <div className="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+            <Logo />
+            <div className="hidden md:flex items-center gap-10 text-sm">
+              <a href="#hoe" className="text-stone hover:text-ink transition-colors">Hoe het werkt</a>
+              <a href="#bouwblokken" className="text-stone hover:text-ink transition-colors">Bouwblokken</a>
+              <a href="#pricing" className="text-stone hover:text-ink transition-colors">Prijzen</a>
+              <a href="#faq" className="text-stone hover:text-ink transition-colors">Veelgestelde vragen</a>
+            </div>
+            <a href="#intake" className="bg-ink text-cream px-5 py-2.5 text-sm flex items-center gap-2 hover:bg-ink-soft transition-colors">
+              Plan intake <Icon name="arrow-right" className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </nav>
+      );
+    };
+
+    // === LIVE CHAT DEMO ===
+    const ChatDemo = () => {
+      const [messages, setMessages] = useState([
+        { rol: 'ai', tekst: 'Hi 👋 Ik ben Marko, de AI-gids op MarketGrow. Wat doe je voor werk?' },
+      ]);
+      const [input, setInput] = useState('');
+      const [typing, setTyping] = useState(false);
+      const [stage, setStage] = useState(0);
+      const [showCal, setShowCal] = useState(false);
+      const scrollRef = useRef(null);
+
+      useEffect(() => {
+        if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }, [messages, typing]);
+
+      const aiReply = (userText) => {
+        const txt = userText.toLowerCase();
+        if (stage === 0) {
+          let response = '';
+          if (/jurist|advocaat|recht/.test(txt)) {
+            response = 'Goed dat je er bent. Veel juristen lopen tegen hetzelfde aan: de website krijgt bezoekers maar de kwaliteit van leads valt tegen. Herken je dat? En wat is op dit moment je grootste frustratie als je een nieuwe lead binnenkrijgt?';
+          } else if (/accountant|boekhoud|fiscaal/.test(txt)) {
+            response = 'Welkom. Voor accountants zien we vaak dat de website hoofdzakelijk dient als visitekaartje, terwijl er veel meer uit te halen valt qua kwalificatie van leads. Wat is voor jou op dit moment het grootste pijnpunt rond klantenwerving?';
+          } else if (/hypotheek|financieel/.test(txt)) {
+            response = 'Goed je te spreken. In hypotheekadvies zien we dat WhatsApp-bereik en snelle reactie het verschil maken tussen wel of geen klant. Hoe is dat bij jou geregeld nu?';
+          } else if (/coach|mediation|fysio|therapeut/.test(txt)) {
+            response = 'Welkom. In jouw vakgebied is het vaak een uitdaging om de juiste mensen aan te trekken, mensen die echt klikken met jouw aanpak. Hoe ervaar jij dat nu via je website?';
+          } else if (/adviseur|consultant/.test(txt)) {
+            response = 'Mooi. Veel adviseurs lopen tegen hetzelfde aan: de gesprekken die je voert zijn waardevol, maar je hebt te weinig tijd om constant te schrijven en te updaten. Klopt dat?';
+          } else {
+            response = 'Begrepen. MarketGrow werkt het beste voor dienstverleners die via intake-gesprekken hun klanten binnenhalen, denk aan juristen, accountants, hypotheekadviseurs, coaches en mediators. Past dat ongeveer bij wat jij doet? En zo ja: wat is op dit moment je grootste frustratie rond klantenwerving via je website?';
+          }
+          setTyping(true);
+          setTimeout(() => {
+            setTyping(false);
+            setMessages(m => [...m, { rol: 'ai', tekst: response }]);
+            setStage(1);
+          }, 1400);
+        } else if (stage === 1) {
+          const response = 'Helder. Wat MarketGrow doet is precies dat oplossen: een AI-gespreksgids op je site die 24/7 bezoekers helpt en gekwalificeerde leads in je agenda zet, een content-engine die voor jou blogs schrijft in jouw stem, en WhatsApp-meldingen zodat je geen lead meer mist. Modulair, dus je kiest wat je nodig hebt. Wil je 20 min met Julian (founder) bespreken hoe dit er bij jou uit zou zien?';
+          setTyping(true);
+          setTimeout(() => {
+            setTyping(false);
+            setMessages(m => [...m, { rol: 'ai', tekst: response }]);
+            setStage(2);
+          }, 1600);
+        } else {
+          if (/ja|graag|prima|oke|ok|zeker|inderdaad/.test(txt)) {
+            setTyping(true);
+            setTimeout(() => {
+              setTyping(false);
+              setMessages(m => [...m, { rol: 'ai', tekst: 'Top. Hier kun je direct een intake van 20 min inplannen. Geen verkooppraatje, gewoon kijken of het past.' }]);
+              setShowCal(true);
+            }, 1200);
+          } else {
+            setTyping(true);
+            setTimeout(() => {
+              setTyping(false);
+              setMessages(m => [...m, { rol: 'ai', tekst: 'Begrijp ik. Mocht je later toch willen sparren, dan kun je altijd terugkomen of een gratis intake plannen via de knop bovenin. Veel succes met je business.' }]);
+            }, 1200);
+          }
+        }
+      };
+
+      const handleSend = () => {
+        if (!input.trim()) return;
+        const userText = input.trim();
+        setMessages(m => [...m, { rol: 'user', tekst: userText }]);
+        setInput('');
+        setTimeout(() => aiReply(userText), 350);
+      };
+
+      return (
+        <div className="bg-cream border border-line shadow-[0_30px_60px_-25px_rgba(26,29,33,0.15)] flex flex-col h-[540px] max-w-md w-full">
+          <div className="px-5 py-3.5 border-b border-line bg-cream-dark flex items-center justify-between">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 bg-olive text-cream flex items-center justify-center text-xs font-medium">M</div>
+              <div>
+                <div className="text-sm font-medium">Marko</div>
+                <div className="text-xs text-stone flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-olive"></span> AI-gids · online
+                </div>
+              </div>
+            </div>
+            <div className="label-caps text-stone text-[10px]">Live demo</div>
+          </div>
+
+          <div ref={scrollRef} className="flex-1 overflow-y-auto p-5 space-y-3 scrollbar-thin">
+            {messages.map((msg, i) => (
+              <div key={i} className={`flex gap-2.5 ${msg.rol === 'user' ? 'flex-row-reverse' : ''} fade-up`}>
+                {msg.rol === 'ai' && <div className="w-6 h-6 bg-olive text-cream flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5">M</div>}
+                <div className={`max-w-[85%] px-3.5 py-2.5 text-sm leading-relaxed ${msg.rol === 'ai' ? 'bg-cream-dark text-ink' : 'bg-ink text-cream'}`}>
+                  {msg.tekst}
+                </div>
+              </div>
+            ))}
+            {typing && (
+              <div className="flex gap-2.5 fade-up">
+                <div className="w-6 h-6 bg-olive text-cream flex items-center justify-center text-[10px] flex-shrink-0 mt-0.5">M</div>
+                <div className="bg-cream-dark px-4 py-3 flex gap-1">
+                  <span className="typing-dot w-1.5 h-1.5 bg-stone rounded-full"></span>
+                  <span className="typing-dot w-1.5 h-1.5 bg-stone rounded-full"></span>
+                  <span className="typing-dot w-1.5 h-1.5 bg-stone rounded-full"></span>
+                </div>
+              </div>
+            )}
+            {showCal && (
+              <div className="fade-up bg-ink text-cream p-4 ml-8">
+                <div className="label-caps text-lime mb-2">Intake inplannen</div>
+                <div className="text-sm mb-3">20 minuten · gratis · met Julian</div>
+                <div className="grid grid-cols-3 gap-1.5 mb-3">
+                  {['Ma 26 mei · 14:00', 'Di 27 mei · 10:00', 'Wo 28 mei · 15:30'].map(slot => (
+                    <button key={slot} className="bg-ink-soft text-cream text-xs py-2 hover:bg-lime hover:text-ink transition-colors">{slot}</button>
+                  ))}
+                </div>
+                <div className="text-xs text-stone-light">Of <a href="#" className="text-lime underline">bekijk alle slots</a></div>
+              </div>
+            )}
+          </div>
+
+          <div className="border-t border-line p-3 flex gap-2 bg-cream">
+            <input value={input} onChange={e => setInput(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && handleSend()}
+              placeholder="Typ je antwoord..."
+              className="flex-1 bg-cream-dark border border-line px-3 py-2 text-sm focus:outline-none focus:border-ink" />
+            <button onClick={handleSend} className="bg-ink text-cream px-4 hover:bg-ink-soft">
+              <Icon name="send" className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      );
+    };
+
+    // === HERO ===
+    const Hero = () => (
+      <section className="relative grain overflow-hidden">
+        <div className="max-w-7xl mx-auto px-8 pt-20 pb-24 grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-7 fade-up">
+            <div className="label-caps text-stone mb-6">AI voor dienstverleners · sinds 2026</div>
+            <h1 className="font-display text-[clamp(3rem,7vw,6rem)] font-medium display-tight mb-8">
+              AI dat <em className="italic text-olive">werkt</em><br/>
+              voor dienst&shy;verleners.<br/>
+              <span className="text-stone">Binnen 7 dagen.</span>
+            </h1>
+            <p className="text-lg leading-relaxed max-w-xl mb-10 text-ink/85">
+              MarketGrow voegt slimme AI-features toe aan jouw bestaande website.
+              Geen migratie, geen tools die je zelf moet beheren. Modulair, schaalbaar,
+              en wij blijven het onderhouden.
+            </p>
+            <div className="flex flex-wrap items-center gap-4 mb-10">
+              <a href="#intake" className="bg-ink text-cream px-7 py-4 text-sm font-medium flex items-center gap-2.5 hover:bg-ink-soft transition-colors">
+                Plan een vrijblijvende intake <Icon name="arrow-right" className="w-4 h-4" />
+              </a>
+              <a href="#hoe" className="text-sm font-medium arrow-link border-b border-ink pb-1">
+                Hoe het werkt <Icon name="arrow-right" className="w-3.5 h-3.5" />
+              </a>
+            </div>
+            <div className="flex items-center gap-8 text-sm text-stone">
+              <div className="flex items-center gap-2">
+                <Icon name="check" className="w-4 h-4 text-olive" />
+                <span>Vanaf €1.950 setup</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="check" className="w-4 h-4 text-olive" />
+                <span>Live in 7 werkdagen</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="check" className="w-4 h-4 text-olive" />
+                <span>Eerste maand niet goed, geld terug</span>
+              </div>
+            </div>
+          </div>
+          <div className="lg:col-span-5 fade-up flex justify-center lg:justify-end" style={{animationDelay: '0.15s'}}>
+            <ChatDemo />
+          </div>
+        </div>
+      </section>
+    );
+
+    // === MARQUEE ===
+    const Marquee = () => {
+      const sectoren = ['Juristen & advocaten', 'Mediators', 'Accountants', 'Hypotheekadviseurs', 'Fysiotherapeuten', 'Bedrijfsadviseurs', 'Coaches', 'Financieel planners', 'Architecten'];
+      return (
+        <div className="border-y border-line py-6 bg-cream-dark">
+          <div className="max-w-7xl mx-auto px-8 mb-4">
+            <div className="label-caps text-stone">Gebouwd voor service-mkb</div>
+          </div>
+          <div className="marquee">
+            <div className="marquee-content font-serif text-3xl text-stone">
+              {sectoren.map((s, i) => <span key={i} className="whitespace-nowrap"><em>{s}</em><span className="text-lime-dark ml-12">✦</span></span>)}
+            </div>
+            <div className="marquee-content font-serif text-3xl text-stone">
+              {sectoren.map((s, i) => <span key={i} className="whitespace-nowrap"><em>{s}</em><span className="text-lime-dark ml-12">✦</span></span>)}
+            </div>
+          </div>
+        </div>
+      );
+    };
+
+    // === PROBLEEM ===
+    const Probleem = () => (
+      <section className="py-32">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid lg:grid-cols-12 gap-12 mb-20">
+            <div className="lg:col-span-5">
+              <div className="label-caps text-stone mb-4">Het probleem</div>
+              <h2 className="font-display text-5xl lg:text-6xl font-medium display-tight">
+                Drie dingen die <em className="italic text-olive">elke</em> dienstverlener herkent.
+              </h2>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7 flex items-end">
+              <p className="text-lg text-stone leading-relaxed">
+                Je hebt al een website. Je hebt al klanten. Maar er gaat te veel verloren tussen "iemand bezoekt mijn site" en "ik heb een waardevolle nieuwe klant".
+              </p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-px bg-line border border-line">
+            {[
+              {
+                nr: '01',
+                titel: 'Te veel bezoekers gaan weg zonder dat je het merkt',
+                tekst: 'Je website krijgt verkeer, maar de meeste mensen klikken weg zonder contact op te nemen. Hun vraag was niet helder genoeg. Of het was buiten kantoortijd. Of jij was er even niet.',
+              },
+              {
+                nr: '02',
+                titel: 'Je AI-ambities lopen vast op uitvoering',
+                tekst: 'Je leest dat anderen "iets met AI doen". Je voelt achterstand. Maar de stap van "ik wil AI" naar "ik heb het draaien" is voor een dienstverlener zonder tech-team bijna onneembaar.',
+              },
+              {
+                nr: '03',
+                titel: 'Een marketingbureau is te duur, losse tools te veel werk',
+                tekst: '€5K per maand voor een bureau is geen optie. ChatGPT zelf installeren, knowledge bases beheren, integraties bouwen, dat is ander werk dan waar je voor opgeleid bent.',
+              },
+            ].map(p => (
+              <div key={p.nr} className="bg-cream p-10">
+                <div className="font-serif text-6xl font-medium text-lime-dark mb-6">{p.nr}</div>
+                <h3 className="font-serif text-2xl font-medium mb-4 leading-snug">{p.titel}</h3>
+                <p className="text-stone leading-relaxed">{p.tekst}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    // === BOUWBLOKKEN ===
+    const Bouwblokken = () => (
+      <section id="bouwblokken" className="py-32 bg-ink text-cream relative grain">
+        <div className="max-w-7xl mx-auto px-8 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12 mb-20">
+            <div className="lg:col-span-5">
+              <div className="label-caps text-lime mb-4">Wat je krijgt</div>
+              <h2 className="font-display text-5xl lg:text-6xl font-medium display-tight">
+                <em className="italic">Vier bouwblokken.</em><br/>
+                Eén controlekamer.
+              </h2>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7 flex items-end">
+              <p className="text-lg text-stone-light leading-relaxed">
+                Kies wat je nodig hebt. Schakel zelf in en uit vanuit je dashboard. Combineer naar wens. Wij zorgen dat alles werkt, jij oogst de waarde.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-6">
+            {[
+              { icon: 'message-circle', naam: 'AI-Gespreksgids', setup: '€1.950', maand: '€75', omschr: 'Een chat op je website die 24/7 bezoekers helpt, hun situatie kwalificeert en gekwalificeerde leads in je agenda zet. Met jouw merk, jouw toon, jouw expertise.', features: ['500 gesprekken/mnd inclusief', 'Cal.com / Google Agenda', 'Klant-specifieke knowledge base'] },
+              { icon: 'pen-tool', naam: 'Content-Engine', setup: '€1.250', maand: '€95', omschr: 'Blogs, social posts en nieuwsbrieven, automatisch geschreven in jouw stem op basis van jouw expertise. Jij accepteert, past aan of weigert. Publicatie automatisch.', features: ['Tot 8 publicaties/maand', 'WordPress, Webflow, Zapier', 'SEO/GEO geoptimaliseerd'] },
+              { icon: 'send', naam: 'WhatsApp Notificaties', setup: '€1.000', maand: '€25', omschr: 'Directe WhatsApp-melding bij elke nieuwe lead met afspraak. Beantwoord vanuit WhatsApp of laat de AI documenten sturen ter voorbereiding.', features: ['Realtime push', '2-weg communicatie', 'AI-gestuurde document-templates'] },
+              { icon: 'file-text', naam: 'Document Automation', setup: '€950', maand: '€30', omschr: 'Intake-verslagen, offertes en concept-contracten, automatisch gevuld met informatie uit het gesprek. Bespaart 30-60 min administratie per nieuwe klant.', features: ['Word & PDF templates', 'Variabelen uit AI-gesprek', 'Mail-bezorging klaar'] },
+            ].map((b, i) => (
+              <div key={i} className="bg-ink-soft p-8 border border-line-dark hover:border-lime/40 transition-colors">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="w-14 h-14 bg-lime text-ink flex items-center justify-center">
+                    <Icon name={b.icon} className="w-6 h-6" />
+                  </div>
+                  <div className="text-right">
+                    <div className="font-mono text-xs text-stone-light">Setup</div>
+                    <div className="font-serif text-2xl">{b.setup}</div>
+                    <div className="font-mono text-xs text-stone-light mt-2">Per maand</div>
+                    <div className="font-serif text-xl text-lime">{b.maand}</div>
+                  </div>
+                </div>
+                <h3 className="font-serif text-3xl font-medium mb-3">{b.naam}</h3>
+                <p className="text-stone-light leading-relaxed mb-5">{b.omschr}</p>
+                <ul className="space-y-2">
+                  {b.features.map(f => (
+                    <li key={f} className="flex items-center gap-2.5 text-sm">
+                      <Icon name="check" className="w-4 h-4 text-lime flex-shrink-0" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 p-8 border border-line-dark bg-ink-soft flex flex-col lg:flex-row items-start lg:items-center gap-6 justify-between">
+            <div>
+              <div className="label-caps text-lime mb-2">Standaard inbegrepen bij elk pakket</div>
+              <h3 className="font-serif text-2xl">Klant-dashboard met feature-toggles</h3>
+              <p className="text-stone-light text-sm mt-2 max-w-xl">Schakel zelf bouwblokken in en uit, beheer je kennisbank, review content, en zie precies wat MarketGrow voor je doet. €35/maand voor hosting, monitoring en support.</p>
+            </div>
+            <a href="#intake" className="bg-lime text-ink px-6 py-3 text-sm font-medium flex items-center gap-2 hover:bg-lime-dark transition-colors flex-shrink-0">
+              Plan een intake <Icon name="arrow-right" className="w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+
+    // === HOE HET WERKT ===
+    const HoeHetWerkt = () => (
+      <section id="hoe" className="py-32">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid lg:grid-cols-12 gap-12 mb-20">
+            <div className="lg:col-span-5">
+              <div className="label-caps text-stone mb-4">Hoe het werkt</div>
+              <h2 className="font-display text-5xl lg:text-6xl font-medium display-tight">
+                Van eerste gesprek tot <em className="italic text-olive">live</em>:<br/>
+                <span className="text-stone">7 werkdagen.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7 flex items-end">
+              <p className="text-lg text-stone leading-relaxed">
+                Geen offertes die weken duren, geen onderhandelingen over scope. Een helder proces, vaste prijzen, en interne AI-agents die ons werk versnellen.
+              </p>
+            </div>
+          </div>
+
+          <div className="space-y-px bg-line">
+            {[
+              { dag: 'Dag 1', titel: 'Intake-gesprek (30 minuten)', tekst: 'We bespreken je bedrijf, doelgroep en welke bouwblokken passen. Geen pitch, geen druk. Aan het einde weet je of MarketGrow past en wat het kost.' },
+              { dag: 'Dag 2-3', titel: 'Onboarding & kennisbank-opbouw', tekst: 'Je vult een vragenlijst in. Onze AI-agents lezen je website, jouw bestaande content en bouwen een eerste versie van persona, system prompt en knowledge base. Jij reviewt.' },
+              { dag: 'Dag 4-5', titel: 'Brand-config & implementatie', tekst: 'Je AI-gespreksgids krijgt jouw kleuren, fonts, toon. We koppelen agenda en (optioneel) WhatsApp. Eén regel script op je website, klaar.' },
+              { dag: 'Dag 6', titel: 'Quality-check met 25 testgesprekken', tekst: 'Onze Quality-Check-Agent voert 25+ testgesprekken om hallucinaties, off-topic-antwoorden en conversie-lekkages te vinden. Wij fixen wat eruit komt.' },
+              { dag: 'Dag 7', titel: 'Live & jij hebt de regie', tekst: 'Je gespreksgids staat live, leads komen binnen, en jij ziet alles in je dashboard. Wij blijven onderhouden, jij doet wat je het beste kunt: dienstverlening.' },
+            ].map((step, i, arr) => (
+              <div key={i} className="bg-cream p-8 grid lg:grid-cols-12 gap-6 items-baseline group hover:bg-cream-dark transition-colors">
+                <div className="lg:col-span-2">
+                  <div className="font-mono text-xs text-stone label-caps">{step.dag}</div>
+                </div>
+                <div className="lg:col-span-1">
+                  <div className="font-serif text-4xl font-medium text-lime-dark">{String(i+1).padStart(2,'0')}</div>
+                </div>
+                <div className="lg:col-span-5">
+                  <h3 className="font-serif text-2xl font-medium leading-tight">{step.titel}</h3>
+                </div>
+                <div className="lg:col-span-4">
+                  <p className="text-stone text-sm leading-relaxed">{step.tekst}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    // === PATROON-BIBLIOTHEEK ===
+    const Patroon = () => (
+      <section className="py-32 bg-cream-dark grain">
+        <div className="max-w-7xl mx-auto px-8 relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-5">
+              <div className="label-caps text-stone mb-4">Wat MarketGrow uniek maakt</div>
+              <h2 className="font-display text-5xl lg:text-6xl font-medium display-tight mb-8">
+                Onze klanten bouwen samen aan een <em className="italic text-olive">lerend platform.</em>
+              </h2>
+              <p className="text-lg text-stone leading-relaxed mb-8">
+                Na elke go-live houden we een retrospectief. Wat werkte direct, wat moest worden bijgesteld, welke vragen kwamen we niet voorzien tegen? Die leerpunten loggen we in onze sector-bibliotheek.
+              </p>
+              <p className="text-lg text-stone leading-relaxed">
+                Het resultaat: na 5 juristen weten we niet alleen wat werkt, we weten <em className="font-serif italic">waarom</em>. Klant 6 in dezelfde sector profiteert direct van die kennis. Geen concurrent kan dat in een paar maanden inhalen.
+              </p>
+            </div>
+
+            <div className="lg:col-span-7 space-y-4">
+              <div className="bg-ink text-cream p-8">
+                <div className="label-caps text-lime mb-4">Patroon-bibliotheek · Juristen-sector</div>
+                <div className="font-serif text-3xl leading-snug font-medium mb-4">
+                  "Bij <span className="text-lime">urgentie-signaal</span> (deadline, ontvangen brief) converteert <span className="italic">78%</span> van bezoekers naar intake-afspraak."
+                </div>
+                <div className="text-sm text-stone-light">Gevonden in 5 retrospectieven · 87 gesprekken geanalyseerd</div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-cream p-6 border border-line">
+                  <div className="font-display text-6xl font-medium text-lime-dark mb-2">23</div>
+                  <div className="text-sm font-medium mb-1">Top-vragen gedocumenteerd</div>
+                  <div className="text-xs text-stone">Per sector, met conversiepercentages</div>
+                </div>
+                <div className="bg-cream p-6 border border-line">
+                  <div className="font-display text-6xl font-medium text-lime-dark mb-2">7</div>
+                  <div className="text-sm font-medium mb-1">Trigger-formuleringen getest</div>
+                  <div className="text-xs text-stone">A/B-getoetst over klanten</div>
+                </div>
+                <div className="bg-cream p-6 border border-line">
+                  <div className="font-display text-6xl font-medium text-lime-dark mb-2">42</div>
+                  <div className="text-sm font-medium mb-1">Content-onderwerpen</div>
+                  <div className="text-xs text-stone">Met bewezen zoekvolume per sector</div>
+                </div>
+                <div className="bg-cream p-6 border border-line">
+                  <div className="font-display text-6xl font-medium text-lime-dark mb-2">4</div>
+                  <div className="text-sm font-medium mb-1">Document-templates</div>
+                  <div className="text-xs text-stone">Sectorconventies gevangen</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    // === PRICING ===
+    const Pricing = () => (
+      <section id="pricing" className="py-32">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="text-center mb-20">
+            <div className="label-caps text-stone mb-4">Transparante prijzen</div>
+            <h2 className="font-display text-5xl lg:text-6xl font-medium display-tight max-w-3xl mx-auto">
+              Stel zelf je pakket samen.<br/>
+              <em className="italic text-olive">Geen verrassingen.</em>
+            </h2>
+            <p className="text-lg text-stone mt-6 max-w-2xl mx-auto">
+              Drie voorbeeld-pakketten, op basis van wat klanten doorgaans kiezen. Maar je kunt elk bouwblok los aanzetten, en later switchen vanuit je dashboard.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-6">
+            {[
+              {
+                naam: 'Instap',
+                sub: 'Voor wie wil beginnen met één feature',
+                setup: 1950, maand: 110,
+                features: ['Klant-dashboard (standaard)', 'AI-Gespreksgids', '500 gesprekken/mnd inclusief', 'Cal.com koppeling', 'E-mail support'],
+                hover: false,
+              },
+              {
+                naam: 'Groei',
+                sub: 'Onze meest gekozen combinatie',
+                setup: 3200, maand: 205,
+                features: ['Alles uit Instap', 'Content-Engine', '8 publicaties/mnd', 'WordPress / Webflow koppeling', 'Maandrapportage'],
+                hover: true,
+              },
+              {
+                naam: 'Compleet',
+                sub: 'De volledige ontzorging',
+                setup: 5150, maand: 260,
+                features: ['Alles uit Groei', 'WhatsApp Notificaties', 'Document Automation', '2-weg WhatsApp-chat', 'Prioriteit-support'],
+                hover: false,
+              },
+            ].map((p, i) => (
+              <div key={i} className={`border p-8 relative ${p.hover ? 'border-ink bg-ink text-cream' : 'border-line bg-cream'}`}>
+                {p.hover && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-lime text-ink px-3 py-1 label-caps text-[10px]">Meest gekozen</div>}
+                <div className={`label-caps mb-2 ${p.hover ? 'text-lime' : 'text-stone'}`}>{p.naam}</div>
+                <p className={`text-sm mb-6 ${p.hover ? 'text-stone-light' : 'text-stone'}`}>{p.sub}</p>
+                <div className="mb-6">
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-display text-5xl font-medium">€{p.setup}</span>
+                  </div>
+                  <div className={`text-sm ${p.hover ? 'text-stone-light' : 'text-stone'}`}>setup, eenmalig</div>
+                  <div className="flex items-baseline gap-1 mt-3">
+                    <span className="font-display text-3xl font-medium">€{p.maand}</span>
+                    <span className={`text-sm ${p.hover ? 'text-stone-light' : 'text-stone'}`}>per maand</span>
+                  </div>
+                </div>
+                <hr className={`border-0 h-px mb-6 ${p.hover ? 'bg-line-dark' : 'bg-line'}`} />
+                <ul className="space-y-3 mb-8">
+                  {p.features.map(f => (
+                    <li key={f} className="flex items-start gap-3 text-sm">
+                      <Icon name="check" className={`w-4 h-4 mt-0.5 flex-shrink-0 ${p.hover ? 'text-lime' : 'text-olive'}`} />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="#intake" className={`w-full block text-center py-3 text-sm font-medium transition-colors ${p.hover ? 'bg-lime text-ink hover:bg-lime-dark' : 'bg-ink text-cream hover:bg-ink-soft'}`}>
+                  Plan een intake
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 grid lg:grid-cols-3 gap-8">
+            {[
+              { icon: 'shield', t: 'Eerste maand geld terug', sub: 'Setup blijft, eerste maand onderhoud restitueerbaar bij niet-tevredenheid.' },
+              { icon: 'clock', t: 'Minimumtermijn 1 maand per feature', sub: 'Schakel zelf in en uit. Geen jaarcontracten op losse bouwblokken na het eerste jaar.' },
+              { icon: 'sparkles', t: 'Tokens transparant doorbelast', sub: 'Tot 500 gesprekken/mnd inclusief. Daarboven €0,10 per gesprek, met alert bij 80%.' },
+            ].map((g, i) => (
+              <div key={i} className="flex items-start gap-4">
+                <Icon name={g.icon} className="w-5 h-5 text-olive flex-shrink-0 mt-1" />
+                <div>
+                  <div className="text-sm font-medium mb-1">{g.t}</div>
+                  <div className="text-sm text-stone">{g.sub}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    // === TESTIMONIAL ===
+    const Testimonial = () => (
+      <section className="py-32 bg-cream-dark">
+        <div className="max-w-5xl mx-auto px-8 text-center">
+          <div className="label-caps text-stone mb-8">Wat onze pilots zeggen</div>
+          <blockquote className="font-display text-3xl lg:text-5xl font-medium leading-[1.15] display-tight mb-10">
+            <span className="text-lime-dark">"</span>
+            Wat ik niet had verwacht is hoeveel het mij <em className="italic text-olive">rust</em> gaf. Mijn website werkt nu voor mij in plaats van ik voor mijn website. Bezoekers krijgen direct een eerste richting, en de leads die in mijn agenda komen zijn beter voorbereid dan voorheen.
+            <span className="text-lime-dark">"</span>
+          </blockquote>
+          <div className="flex items-center justify-center gap-3">
+            <div className="w-10 h-10 bg-olive text-cream flex items-center justify-center text-sm font-medium">IR</div>
+            <div className="text-left">
+              <div className="text-sm font-medium">Iris Roovers</div>
+              <div className="text-xs text-stone">Juristenrij · pilot-klant sinds mei 2026</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    // === FAQ ===
+    const FaqItem = ({ q, a, isOpen, onClick }) => (
+      <div className="border-b border-line">
+        <button onClick={onClick} className="w-full flex items-start justify-between gap-6 py-6 text-left">
+          <h3 className="font-serif text-xl lg:text-2xl font-medium leading-snug">{q}</h3>
+          <div className="flex-shrink-0 mt-1">
+            <Icon name={isOpen ? 'minus' : 'plus'} className="w-5 h-5" />
+          </div>
+        </button>
+        {isOpen && (
+          <div className="pb-8 pr-12 text-stone leading-relaxed fade-up">{a}</div>
+        )}
+      </div>
+    );
+
+    const Faq = () => {
+      const [open, setOpen] = useState(0);
+      const items = [
+        { q: 'Moet ik mijn website verhuizen?', a: 'Nee. Je houdt je bestaande website en hostingpartij. Wij voegen via één regel script of een DNS-koppeling een laag toe. Werkt op WordPress, Webflow, Squarespace, custom HTML, alles.' },
+        { q: 'Wat als de AI iets verkeerd zegt?', a: 'Daar werken we hard tegen. Voor go-live voert onze Quality-Check-Agent 25+ testgesprekken om hallucinaties en off-topic-antwoorden te vinden. Daarna monitoren we elk klant-systeem doorlopend. Bij twijfelgevallen schakelt de AI altijd door naar een gratis intake met jou, in plaats van zelf juridische of medische antwoorden te geven.' },
+        { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 500 gesprekken per maand zit in je vaste maandfee. Daarboven betaal je €0,10 per gesprek, met een alert bij 80% van de drempel. Je hoeft zelf geen API-account aan te maken, geen keys te beheren, geen onverwachte rekeningen te krijgen.' },
+        { q: 'Wat gebeurt er als ik opzeg?', a: 'Je krijgt een export van alle data (gesprekken, content, leads). Je kunt het systeem zelf overnemen tegen kostprijs (€750 eenmalig), of wij doen een nette takedown binnen 4 weken. Niets wordt geblokkeerd.' },
+        { q: 'Hoe verschilt MarketGrow van een marketingbureau?', a: 'Een bureau bouwt en doet. Wij bouwen, automatiseren en blijven onderhouden, voor een fractie van de kosten. We zijn ook geen bouwer-van-websites, alleen van de AI-laag erop. Daardoor zijn we sneller en specialistischer.' },
+        { q: 'En als ik later wil opschalen of juist afschalen?', a: 'Schakel zelf bouwblokken in of uit vanuit je dashboard. Minimumtermijn is 1 maand per feature. Heractiveren van een eerder uitgeschakelde feature kost €95 voor configuratie, geen nieuwe setup.' },
+        { q: 'Werkt dit echt voor mijn type bedrijf?', a: 'MarketGrow werkt het beste voor dienstverleners die via intake-gesprekken hun klanten binnenhalen. Denk aan juristen, accountants, mediators, hypotheekadviseurs, fysiotherapeuten, coaches, financieel planners en bedrijfsadviseurs. Twijfel je? Plan een intake, dan kijken we samen of het past.' },
+      ];
+      return (
+        <section id="faq" className="py-32">
+          <div className="max-w-5xl mx-auto px-8">
+            <div className="mb-16">
+              <div className="label-caps text-stone mb-4">Veelgestelde vragen</div>
+              <h2 className="font-display text-5xl lg:text-6xl font-medium display-tight">
+                Wat klanten <em className="italic text-olive">vaak vragen.</em>
+              </h2>
+            </div>
+            <div>
+              {items.map((item, i) => (
+                <FaqItem key={i} q={item.q} a={item.a} isOpen={open === i} onClick={() => setOpen(open === i ? -1 : i)} />
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // === INTAKE CTA ===
+    const IntakeCTA = () => (
+      <section id="intake" className="py-32 bg-ink text-cream relative overflow-hidden grain">
+        <div className="max-w-5xl mx-auto px-8 relative z-10 text-center">
+          <div className="label-caps text-lime mb-6">Klaar om te beginnen?</div>
+          <h2 className="font-display text-5xl lg:text-7xl font-medium display-tight mb-8">
+            Een gesprek van <em className="italic text-lime">20 minuten</em>.<br/>
+            Geen druk, geen pitch.
+          </h2>
+          <p className="text-lg text-stone-light leading-relaxed max-w-2xl mx-auto mb-12">
+            Vertel wat je doet en waar je tegenaan loopt. Wij vertellen eerlijk of MarketGrow past, wat het zou kosten voor jouw bedrijf, en wanneer het live zou kunnen. Beslis daarna in alle rust.
+          </p>
+          <a href="#" className="inline-flex items-center gap-3 bg-lime text-ink px-8 py-5 text-base font-medium hover:bg-lime-dark transition-colors">
+            Plan je intake <Icon name="arrow-right" className="w-5 h-5" />
+          </a>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-8 text-sm text-stone-light">
+            <span>Gratis & vrijblijvend</span>
+            <span>•</span>
+            <span>Online via Google Meet</span>
+            <span>•</span>
+            <span>Reactie binnen 1 werkdag</span>
+          </div>
+        </div>
+      </section>
+    );
+
+    // === FOOTER ===
+    const Footer = () => (
+      <footer className="bg-cream border-t border-line py-16">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid lg:grid-cols-12 gap-8 mb-12">
+            <div className="lg:col-span-5">
+              <Logo size="text-2xl" />
+              <p className="text-stone mt-4 max-w-sm leading-relaxed">
+                AI dat werkt voor dienstverleners. Productized en onderhouden vanuit Nederland.
+              </p>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="label-caps text-stone mb-4">Platform</div>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#bouwblokken" className="hover:text-olive">Bouwblokken</a></li>
+                <li><a href="#hoe" className="hover:text-olive">Hoe het werkt</a></li>
+                <li><a href="#pricing" className="hover:text-olive">Prijzen</a></li>
+                <li><a href="#faq" className="hover:text-olive">FAQ</a></li>
+              </ul>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="label-caps text-stone mb-4">Voor</div>
+              <ul className="space-y-2 text-sm">
+                <li>Juristen</li>
+                <li>Accountants</li>
+                <li>Mediators</li>
+                <li>Hypotheekadviseurs</li>
+                <li>Coaches</li>
+              </ul>
+            </div>
+            <div className="lg:col-span-3">
+              <div className="label-caps text-stone mb-4">Contact</div>
+              <ul className="space-y-2 text-sm">
+                <li><a href="mailto:hello@marketgrow.ai" className="hover:text-olive">hello@marketgrow.ai</a></li>
+                <li className="text-stone">Breda, Nederland</li>
+                <li><a href="#intake" className="text-olive arrow-link">Plan een intake <Icon name="arrow-right" className="w-3 h-3" /></a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="pt-8 border-t border-line flex flex-col lg:flex-row justify-between gap-4 text-xs text-stone">
+            <div>© 2026 MarketGrow.ai · KvK in oprichting · Onder JG Holding BV</div>
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-ink">Algemene voorwaarden</a>
+              <a href="#" className="hover:text-ink">Privacy</a>
+              <a href="#" className="hover:text-ink">Verwerkers</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    );
+
+    // === APP ===
+    const App = () => (
+      <div className="min-h-screen">
+        <Nav />
+        <Hero />
+        <Marquee />
+        <Probleem />
+        <Bouwblokken />
+        <HoeHetWerkt />
+        <Patroon />
+        <Pricing />
+        <Testimonial />
+        <Faq />
+        <IntakeCTA />
+        <Footer />
+      </div>
+    );
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
