@@ -1,18 +1,19 @@
 # MarketGrow Landing
 
-Publieke landing voor MarketGrow. Productized AI-implementatie voor service-mkb.
+Publieke landing voor MarketGrow met live Claude AI-chat.
 
 ## Structuur
 
 ```
 .
-├── index.html       # de landing
-├── vercel.json      # Vercel config
+├── index.html       # de landing (statische HTML met React via CDN)
+├── api/
+│   └── chat.js     # Vercel serverless function → Claude API
+├── package.json    # Anthropic SDK dependency
+├── vercel.json     # Vercel config
 ├── .gitignore
 └── README.md
 ```
-
-Statische HTML, geen build proces. React, Tailwind en fonts via CDN.
 
 ## Deploy
 
@@ -21,43 +22,66 @@ Statische HTML, geen build proces. React, Tailwind en fonts via CDN.
 ```bash
 git init
 git add .
-git commit -m "Initial landing"
+git commit -m "Initial landing with Claude API"
 git branch -M main
 git remote add origin https://github.com/JOUW-USERNAME/marketgrow-landing.git
 git push -u origin main
 ```
-
-Of via GitHub web: nieuwe repo aanmaken, drag-and-drop alle bestanden.
 
 ### 2. Vercel deploy
 
 1. Ga naar [vercel.com/new](https://vercel.com/new)
 2. Import GitHub repo `marketgrow-landing`
 3. Framework Preset: **Other**
-4. Klik **Deploy**
+4. **BELANGRIJK:** voordat je op Deploy klikt, klik "Environment Variables" open en voeg toe:
+   - Name: `ANTHROPIC_API_KEY`
+   - Value: jouw Anthropic API key (begint met `sk-ant-`)
+   - Environments: alle drie aanvinken (Production, Preview, Development)
+5. Klik **Deploy**
 
-Binnen 30 seconden krijg je een URL zoals `marketgrow-landing-abc123.vercel.app`. Dit is je publieke landing-URL.
+Binnen 1-2 minuten staat de landing live (Vercel moet nu npm install draaien voor de Anthropic SDK, vandaar iets langer dan voorheen).
 
-### 3. Eigen domein (later)
+### 3. Cal.com URL aanpassen
 
-Voor nu gebruik je gewoon de Vercel-URL. `marketgrow.ai` host nog een andere applicatie, dus daar kan deze landing later naartoe als je daar klaar voor bent.
+In `index.html` staat op twee plaatsen `https://cal.com/julian-goote-c4pgqu/gratis-intake`. Vervang door je echte Cal.com URL. Zoek bovenaan het script:
 
-## Wat nog te doen voor productie
-
-- **Cal.com URL invullen**: zoek `href="#intake"` in `index.html` (komt ~5x voor) en vervang met je echte Cal.com URL
-- **Contact-email**: footer noemt `hello@marketgrow.ai (binnenkort)`. Vervang als je een echt email-adres hebt
-- **Echte testimonial**: huidige Iris-quote is mock. Vraag haar een echte zin als je die wilt gebruiken
-- **Analytics**: eventueel Plausible of Google Analytics toevoegen
-
-## Lokaal testen
-
-```bash
-# Met Python
-python3 -m http.server 8000
-
-# Of dubbel-klik index.html in Finder
+```js
+const CAL_COM_URL = 'https://cal.com/julian-goote-c4pgqu/gratis-intake';
 ```
 
-## Hoe te delen
+En de href's in de hero/intake-knoppen.
 
-Stuur prospects de Vercel-URL persoonlijk via mail, LinkedIn of WhatsApp. Geen SEO-zorgen voor nu, dit is gewoon je verkoop-asset.
+## Hoe de chat werkt
+
+1. Frontend (`index.html`) heeft een `ChatDemo` component die berichten POSTt naar `/api/chat`
+2. `/api/chat.js` draait server-side op Vercel, bevat de Claude API key (veilig, niet in browser)
+3. System prompt staat bovenin `chat.js` — Marko gedraagt zich daarnaar
+4. Wanneer Marko de marker `[INTAKE_READY]` in zijn antwoord opneemt, toont de frontend automatisch de Cal.com-knop
+
+## Anthropic API key krijgen
+
+1. Ga naar [console.anthropic.com](https://console.anthropic.com)
+2. Settings → API Keys → Create Key
+3. Kopieer de key (begint met `sk-ant-`)
+4. Zet hem in Vercel als environment variable
+
+## Kosten in de gaten houden
+
+Elk chat-gesprek kost gemiddeld €0,05-0,15 aan Claude API tokens. In Anthropic console kun je een hard monthly limit instellen (Settings → Limits). Aanrader: zet voor de eerste weken €50/maand als plafond.
+
+## Wat aanpassen voor productie
+
+- **Cal.com URL** vervangen (zie hierboven)
+- **System prompt verfijnen**: bewerk `api/chat.js` als je merkt dat Marko bepaalde dingen anders moet zeggen
+- **Rate limiting**: nu kan iedereen onbeperkt chatten. Voor productie zou je IP-based rate limiting willen toevoegen (Vercel KV of Upstash)
+- **Analytics**: Plausible of Google Analytics
+
+## Lokaal testen (optioneel)
+
+De chat werkt alleen na Vercel-deploy (vanwege server-side API). Voor lokale frontend-tests:
+
+```bash
+python3 -m http.server 8000
+```
+
+De chat-fetches naar `/api/chat` zullen lokaal falen, maar je kunt de rest van de landing wel zien.
