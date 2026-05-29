@@ -417,35 +417,29 @@ const LeadFormCard = ({ profession, seenTopics, transcript }) => {
   const [email, setEmail] = useS('');
   const [phone, setPhone] = useS('');
   const [sent, setSent] = useS(false);
+  const [sending, setSending] = useS(false);
   const [touched, setTouched] = useS(false);
+  const [error, setError] = useS(false);
   const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  const buildMailto = () => {
-    const subject = `MarketGrow info aanvraag${profession ? ' (' + profession + ')' : ''}`;
-    const lines = [
-      'Hoi Julian,',
-      '',
-      'Ik heb het gesprek met Noor op de site doorlopen en wil graag meer info.',
-      '',
-      'Mijn gegevens:',
-      'Email: ' + email,
-      phone ? 'Telefoon: ' + phone : '',
-      profession ? 'Beroep: ' + profession : '',
-      '',
-      'Onderwerpen die we hebben besproken:',
-      ...(seenTopics || []).map(t => '- ' + t),
-      '',
-      'Stuur me graag een mail terug met info die past bij mijn situatie.',
-      '',
-      'Met vriendelijke groet,',
-    ].filter(l => l !== undefined);
-    return 'mailto:hello@marketgrow.ai?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
-  };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setTouched(true);
-    if (!validEmail) return;
-    window.location.href = buildMailto();
-    setSent(true);
+    if (!validEmail || sending) return;
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, phone, profession, topics: seenTopics || [], transcript: transcript || '' }),
+      });
+      if (!res.ok) throw new Error('request failed');
+      setSent(true);
+    } catch (err) {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   };
   return (
     <div className="card p-6 fade-up">
@@ -465,9 +459,9 @@ const LeadFormCard = ({ profession, seenTopics, transcript }) => {
         <div className="flex items-start gap-3 bg-paper2/70 border border-line p-4">
           <Icon name="check-circle" className="w-5 h-5 text-olive flex-shrink-0 mt-0.5" />
           <div>
-            <div className="serif text-[18px] leading-tight">Bijna klaar.</div>
-            <div className="text-[13.5px] text-mute mt-1 leading-relaxed">Je mail-app is geopend met de info klaargezet. Klik <em>verzenden</em> daar om de mail naar Julian te sturen.</div>
-            <button onClick={() => setSent(false)} className="mt-3 tag text-soft hover:text-ink underline">opnieuw invullen</button>
+            <div className="serif text-[18px] leading-tight">Bedankt, je aanvraag is verstuurd.</div>
+            <div className="text-[13.5px] text-mute mt-1 leading-relaxed">Julian heeft je e-mailadres en het gesprek ontvangen en neemt binnen 1 werkdag persoonlijk contact met je op.</div>
+            <button onClick={() => { setSent(false); setEmail(''); setPhone(''); setTouched(false); }} className="mt-3 tag text-soft hover:text-ink underline">opnieuw invullen</button>
           </div>
         </div>
       ) : (
@@ -490,11 +484,12 @@ const LeadFormCard = ({ profession, seenTopics, transcript }) => {
             />
           </label>
           <button type="submit"
-            disabled={!validEmail}
+            disabled={!validEmail || sending}
             className="w-full bg-ink text-paper py-3.5 text-[14px] font-medium hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 group">
             <Icon name="mail" className="w-4 h-4" />
-            Mail klaarzetten <span className="hover-arrow">→</span>
+            {sending ? 'Versturen...' : 'Verstuur aanvraag'} <span className="hover-arrow">→</span>
           </button>
+          {error && <div className="text-[12.5px] text-[#B23A3A] leading-relaxed text-center">Versturen lukte even niet. Probeer het opnieuw, of mail ons direct op <a href="mailto:hello@marketgrow.ai" className="underline">hello@marketgrow.ai</a>.</div>}
           <div className="text-[12px] text-soft leading-relaxed text-center">
             We bewaren je gegevens alleen om persoonlijk te reageren. Geen nieuwsbrief, geen lijst.
           </div>
@@ -735,7 +730,8 @@ const App = () => {
   const showLeadForm = () => {
     sayUser('Stuur me een mail met info.');
     const seenLabels = Array.from(seen).map(k => TOPIC_LABELS[k]);
-    const LeadCard = () => <LeadFormCard profession={profession?.label} seenTopics={seenLabels} />;
+    const transcript = turns.filter(t => t.text).map(t => (t.role === 'user' ? 'Bezoeker: ' : 'Noor: ') + t.text).join('\n');
+    const LeadCard = () => <LeadFormCard profession={profession?.label} seenTopics={seenLabels} transcript={transcript} />;
     sayNoor(
       'Helder. Vul hieronder je gegevens in, dan zorg ik dat Julian je morgen mailt met info afgestemd op jouw situatie. Je gespreks-context gaat automatisch mee, je hoeft niets toe te lichten.',
       LeadCard,
