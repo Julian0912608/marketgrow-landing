@@ -661,6 +661,9 @@ const App = () => {
   const [typing, setTyping] = useState(false);
   const [seen, setSeen] = useState(new Set());
   const [profession, setProfession] = useState(null);
+  const [draft, setDraft] = useState('');
+  const [asking, setAsking] = useState(false);
+  const apiHistory = useRef([]);
   const scrollAnchor = useRef(null);
   // initial Noor message
   useEffect(() => {
@@ -687,7 +690,7 @@ const App = () => {
       }
     });
     return () => cancelAnimationFrame(id);
-  }, [turns.length, typing, chips.length]);
+  }, [turns.length, typing, chips.length, asking, profession]);
   const sayNoor = (text, Card, nextChips, opts = {}) => {
     setChips([]);
     setTyping(true);
@@ -746,6 +749,51 @@ const App = () => {
     { label: 'Liever mailen dan bellen', secondary: true, action: showLeadForm },
     { label: 'Ik heb nog een vraag', secondary: true, action: () => gotoTopic('faq') },
   ]);
+  // Vrije vraag: roept de echte AI aan (api/chat) en blijft strikt bij MarketGrow.
+  const askFree = async (raw) => {
+    const q = (raw || '').trim();
+    if (!q || asking) return;
+    setDraft('');
+    sayUser(q);
+    setChips([]);
+    setAsking(true);
+    setTyping(true);
+    // Bouw de berichten voor de API. Eerste keer geven we lichte context mee
+    // (beroep + reeds bekeken onderwerpen) zodat Noor weet met wie ze praat.
+    if (apiHistory.current.length === 0) {
+      const ctxBits = [];
+      if (profession?.label) ctxBits.push('De bezoeker werkt als: ' + profession.label + '.');
+      const seenLabels = Array.from(seen).map(k => TOPIC_LABELS[k]).filter(Boolean);
+      if (seenLabels.length) ctxBits.push('Al besproken in de chat: ' + seenLabels.join(', ') + '.');
+      const ctx = ctxBits.length ? '[context] ' + ctxBits.join(' ') + '\n\n' : '';
+      apiHistory.current.push({ role: 'user', content: ctx + q });
+    } else {
+      apiHistory.current.push({ role: 'user', content: q });
+    }
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: apiHistory.current.slice(-20) }),
+      });
+      const data = await res.json().catch(() => ({}));
+      const reply = (data && data.reply) ? data.reply : 'Sorry, er ging even iets mis. Probeer het zo nog eens, of plan een korte intake via de knop hieronder.';
+      apiHistory.current.push({ role: 'assistant', content: reply });
+      setTyping(false);
+      const endChips = data && data.intakeReady
+        ? [{ label: 'Plan een intake', primary: true, action: () => gotoTopic('intake') }, { label: 'Liever mailen dan bellen', secondary: true, action: showLeadForm }]
+        : makeTopicChips(seen);
+      setTurns(t => [...t, { role: 'noor', text: reply }]);
+      setChips(endChips);
+    } catch (err) {
+      apiHistory.current.pop();
+      setTyping(false);
+      setTurns(t => [...t, { role: 'noor', text: 'Sorry, ik kon je vraag even niet verwerken. Probeer het zo opnieuw, of plan een korte intake via de knop hieronder.' }]);
+      setChips(makeTopicChips(seen));
+    } finally {
+      setAsking(false);
+    }
+  };
   // Noor's first hero turn renders differently
   const renderTurn = (turn, i) => {
     if (turn.role === 'user') {
@@ -810,6 +858,31 @@ const App = () => {
                 </button>
               ))}
             </div>
+          </div>
+        )}
+        {profession && !typing && (
+          <div className="mt-5 fade-up">
+            <div className="text-[12.5px] text-soft mb-2.5 ml-1 tag">/ of stel je eigen vraag over marketgrow</div>
+            <div className="flex items-end gap-2">
+              <textarea
+                value={draft}
+                onChange={e => setDraft(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); askFree(draft); } }}
+                rows={1}
+                disabled={asking}
+                placeholder="Bijv. past dit ook bij een eenmanszaak?"
+                className="flex-1 resize-none bg-white border border-line px-4 py-3 text-[15px] leading-snug focus:border-ink focus:outline-none transition-colors disabled:opacity-60"
+                style={{ minHeight: 48, maxHeight: 140 }}
+              />
+              <button
+                onClick={() => askFree(draft)}
+                disabled={asking || !draft.trim()}
+                aria-label="Verstuur vraag"
+                className="flex-shrink-0 bg-ink text-paper h-12 px-4 flex items-center justify-center gap-2 text-[14px] font-medium hover:brightness-110 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                {asking ? 'Noor denkt...' : <>Vraag <span className="hover-arrow">→</span></>}
+              </button>
+            </div>
+            <div className="text-[11.5px] text-soft mt-2 ml-1 leading-relaxed">Noor beantwoordt alleen vragen over MarketGrow en of het bij je past.</div>
           </div>
         )}
         <div ref={scrollAnchor} className="h-1"></div>
