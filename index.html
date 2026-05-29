@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MarketGrow.ai · AI dat werkt voor dienstverleners. Binnen 7 dagen.</title>
-  <meta name="description" content="MarketGrow plaatst Noor, een AI-gespreksgids, op je bestaande site. Hij kwalificeert bezoekers 24/7 en zet alleen de juiste mensen in je agenda. Live in 7 werkdagen.">
+  <meta name="description" content="MarketGrow plaatst Noor, een AI-gespreksgids, op je bestaande site. Noor kwalificeert bezoekers 24/7 en zet alleen de juiste mensen in je agenda. Live in 7 werkdagen.">
   <meta name="theme-color" content="#FBF9F4">
   <meta property="og:title" content="MarketGrow.ai · in gesprek met Noor">
   <meta property="og:description" content="Geen tour of pitch. Een gesprek. Vertel wat je doet, en Noor laat zien wat MarketGrow voor je dienstverlening kan doen.">
@@ -168,16 +168,6 @@
       background: linear-gradient(to top, var(--paper) 60%, rgba(251,249,244,0));
       padding: 22px 0 26px;
     }
-    .pulse-ring-w { position: relative; }
-    .pulse-ring-w::after {
-      content: ''; position: absolute; inset: 0; border-radius: 50%;
-      background: var(--lime); opacity: 0.5;
-      animation: pulse-ring 2s ease-out infinite;
-    }
-    @keyframes pulse-ring {
-      0% { transform: scale(1); opacity: 0.5; }
-      100% { transform: scale(2.4); opacity: 0; }
-    }
     a, button { outline: none; }
     button:focus-visible, a:focus-visible { box-shadow: 0 0 0 3px rgba(200,255,77,0.5); }
     .group:hover .hover-arrow { transform: translateX(4px); }
@@ -196,9 +186,7 @@ Cal.ns["gratis-intake"]("ui", {"theme":"light","styles":{"branding":{"brandColor
   <script type="text/babel" data-presets="env,react">
 // V3 Noor — inline rich cards used within the conversation
 // (Cal.com inline embed + Lead form added)
-
 const { useEffect: useE, useRef: useR, useState: useS } = React;
-
 const Icon = ({ name, className = 'w-4 h-4' }) => {
   const p = {
     'arrow-right': <><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></>,
@@ -222,13 +210,12 @@ const Icon = ({ name, className = 'w-4 h-4' }) => {
     </svg>
   );
 };
-
 const ModulesCard = () => {
   const blocks = [
-    { i: 'msg', n: 'AI-Gespreksgids', setup: '€1.950', maand: '€75', d: 'Chat op je site die bezoekers kwalificeert en in je agenda zet. 24/7, met jouw merk.' },
-    { i: 'pen', n: 'Content-Engine', setup: '€1.250', maand: '€95', d: 'Blogs en posts in jouw stem, jij accepteert of wijzigt. SEO en GEO geoptimaliseerd.' },
-    { i: 'wa', n: 'WhatsApp Notificaties', setup: '€1.000', maand: '€25', d: 'Realtime push bij nieuwe leads. Twee-weg chat vanuit WhatsApp.' },
-    { i: 'doc', n: 'Document Automation', setup: '€950', maand: '€30', d: 'Intake-verslagen en offertes automatisch gevuld uit het gesprek.' },
+    { i: 'msg', n: 'AI-Gespreksgids', setup: '€1.000', maand: '€40', d: 'Chat op je site die bezoekers kwalificeert en in je agenda zet. 24/7, met jouw merk.' },
+    { i: 'pen', n: 'Content-Engine', setup: '€500', maand: '€65', d: 'Blogs en posts in jouw stem, jij accepteert of wijzigt. SEO en GEO geoptimaliseerd.' },
+    { i: 'wa', n: 'WhatsApp LeadAlert', setup: '€400', maand: '€20', d: 'Realtime push bij nieuwe leads. Twee-weg chat vanuit WhatsApp.' },
+    { i: 'doc', n: 'Document-Automatie', setup: '€1.150', maand: '€30', d: 'Intake-verslagen en offertes automatisch gevuld uit het gesprek.' },
   ];
   return (
     <div className="card p-7 fade-up">
@@ -262,17 +249,16 @@ const ModulesCard = () => {
       </div>
       <div className="mt-4 text-[12.5px] text-mute flex items-center gap-2">
         <Icon name="check" className="w-3.5 h-3.5 text-olive" />
-        Klant-dashboard staat standaard aan. €35/mnd voor hosting, monitoring en support.
+        Het dashboard zit inbegrepen bij elk actief bouwblok, zonder apart maandbedrag.
       </div>
     </div>
   );
 };
-
 const PricingCard = () => {
   const plans = [
-    { n: 'Instap', setup: 1950, maand: 110, hi: false, d: 'Eén feature, één doel.', f: ['AI-Gespreksgids', '500 gesprekken/mnd', 'Cal.com koppeling'] },
-    { n: 'Groei', setup: 3200, maand: 205, hi: true, d: 'Meest gekozen.', f: ['Alles uit Instap', 'Content-Engine', '8 publicaties/mnd'] },
-    { n: 'Compleet', setup: 5150, maand: 260, hi: false, d: 'Volledige ontzorging.', f: ['Alles uit Groei', 'WhatsApp Notificaties', 'Document Automation'] },
+    { n: 'Instap', setup: 1000, maand: 40, hi: false, d: 'De gespreksgids, om te beginnen.', f: ['AI-Gespreksgids', 'Klant-dashboard inbegrepen', 'Cal.com koppeling'] },
+    { n: 'Groei', setup: 1900, maand: 125, hi: true, d: 'Meest gekozen.', f: ['Alles uit Instap', 'Content-Engine', 'WhatsApp LeadAlert'] },
+    { n: 'Compleet', setup: 3050, maand: 155, hi: false, d: 'Volledige ontzorging.', f: ['Alles uit Groei', 'Document-Automatie', 'Intakes en offertes automatisch'] },
   ];
   return (
     <div className="fade-up">
@@ -299,14 +285,13 @@ const PricingCard = () => {
         ))}
       </div>
       <div className="mt-3 text-[12.5px] text-mute flex flex-wrap items-center gap-x-4 gap-y-1">
-        <span className="inline-flex items-center gap-1.5"><Icon name="shield" className="w-3.5 h-3.5 text-olive" /> 30 dagen geld terug</span>
+        <span className="inline-flex items-center gap-1.5"><Icon name="sparkle" className="w-3.5 h-3.5 text-olive" /> Team van twaalf, 2 founders en 10 AI-collega's</span>
         <span className="inline-flex items-center gap-1.5"><Icon name="clock" className="w-3.5 h-3.5 text-olive" /> 1 maand minimum, geen jaarcontract</span>
         <span className="inline-flex items-center gap-1.5"><Icon name="sparkle" className="w-3.5 h-3.5 text-olive" /> Tokens transparant doorbelast</span>
       </div>
     </div>
   );
 };
-
 const ProcessCard = () => {
   const steps = [
     { d: 'Dag 1', t: 'Intake (30 min)', s: 'We bespreken bedrijf, doelgroep, passende modules.' },
@@ -338,7 +323,7 @@ const ProcessCard = () => {
           { v: '7', l: 'werkdagen' },
           { v: '€0', l: 'verborgen kosten' },
           { v: '24/7', l: 'online' },
-          { v: '30d', l: 'geld terug' },
+          { v: '12', l: 'in je team' },
         ].map(c => (
           <div key={c.l} className="bg-white p-3 text-center">
             <div className="serif text-[28px] leading-none">{c.v}</div>
@@ -349,7 +334,6 @@ const ProcessCard = () => {
     </div>
   );
 };
-
 const PatroonCard = () => (
   <div className="card-ink card p-7 fade-up relative">
     <div className="relative">
@@ -368,7 +352,6 @@ const PatroonCard = () => (
     </div>
   </div>
 );
-
 // === Embedded Cal.com inline booking ===
 const IntakeCard = () => {
   const ref = useR(null);
@@ -429,16 +412,13 @@ const IntakeCard = () => {
     </div>
   );
 };
-
 // === Lead form: email + phone, generates mailto with conversation context ===
 const LeadFormCard = ({ profession, seenTopics, transcript }) => {
   const [email, setEmail] = useS('');
   const [phone, setPhone] = useS('');
   const [sent, setSent] = useS(false);
   const [touched, setTouched] = useS(false);
-
   const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
   const buildMailto = () => {
     const subject = `MarketGrow info aanvraag${profession ? ' (' + profession + ')' : ''}`;
     const lines = [
@@ -460,7 +440,6 @@ const LeadFormCard = ({ profession, seenTopics, transcript }) => {
     ].filter(l => l !== undefined);
     return 'mailto:hello@marketgrow.ai?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setTouched(true);
@@ -468,7 +447,6 @@ const LeadFormCard = ({ profession, seenTopics, transcript }) => {
     window.location.href = buildMailto();
     setSent(true);
   };
-
   return (
     <div className="card p-6 fade-up">
       <div className="flex items-center gap-3 mb-4">
@@ -525,7 +503,6 @@ const LeadFormCard = ({ profession, seenTopics, transcript }) => {
     </div>
   );
 };
-
 const FaqCard = ({ items }) => (
   <div className="card fade-up">
     {items.map((q, i) => (
@@ -539,27 +516,22 @@ const FaqCard = ({ items }) => (
     ))}
   </div>
 );
-
 Object.assign(window, { Icon, ModulesCard, PricingCard, ProcessCard, PatroonCard, IntakeCard, LeadFormCard, FaqCard });
-
   </script>
   <script type="text/babel" data-presets="env,react">
 // V3 Noor — the conversation IS the landing.
 const { useState, useEffect, useRef, useCallback } = React;
-
 const CAL_COM_URL = 'https://cal.com/julian-goote-c4pgqu/gratis-intake';
 window.CAL_COM_URL = CAL_COM_URL;
-
 // === conversation content ===
 const PROFESSIONS = [
-  { key: 'jurist', label: 'Jurist', context: 'arbeidsrecht- en familierecht-praktijken', insight: 'bezoekers vaak in een acute, emotionele situatie' },
-  { key: 'accountant', label: 'Accountant', context: 'mkb-accountantskantoren', insight: 'bezoekers zoeken vaak naar fiscale duidelijkheid bij een verandering' },
-  { key: 'mediator', label: 'Mediator', context: 'mediation-praktijken', insight: 'beide partijen moeten zich gehoord voelen, ook in een chat' },
-  { key: 'adviseur', label: 'Hypotheek- of financieel adviseur', context: 'adviseurs', insight: 'urgentie is hoog, vergelijking is constant' },
-  { key: 'coach', label: 'Coach of therapeut', context: 'praktijken', insight: 'mensen aarzelen, vertrouwen is alles' },
-  { key: 'anders', label: 'Iets anders', context: 'dienstverleners', insight: 'jij begeleidt klanten naar een beslissing, en de eerste indruk telt' },
+  { key: 'jurist', label: 'Jurist', insight: 'Bij arbeidsrecht- en familierecht-praktijken zit een bezoeker vaak in een acute, emotionele situatie.' },
+  { key: 'accountant', label: 'Accountant', insight: 'Bij mkb-accountantskantoren zoeken bezoekers vaak naar fiscale duidelijkheid op een moment van verandering.' },
+  { key: 'mediator', label: 'Mediator', insight: 'Bij mediation moeten beide partijen zich gehoord voelen, ook in een chat.' },
+  { key: 'adviseur', label: 'Hypotheek- of financieel adviseur', insight: 'Bij hypotheek- en financieel advies is de urgentie hoog en vergelijken mensen constant.' },
+  { key: 'coach', label: 'Coach of therapeut', insight: 'Bij coaching en therapie aarzelen mensen, en vertrouwen is alles.' },
+  { key: 'anders', label: 'Iets anders', insight: 'Als dienstverlener begeleid je klanten naar een beslissing, en de eerste indruk telt.' },
 ];
-
 const TOPICS = {
   modules: {
     label: 'Wat krijg ik precies?',
@@ -573,7 +545,7 @@ const TOPICS = {
     label: 'Hoe werkt het?',
     chipLabel: 'Hoe werkt het in 7 dagen?',
     text: ({first}) => first
-      ? "Korte versie: intake op maandag, live op dinsdag erop. We werken niet met offertes die weken duren of onderhandelingen over scope. Wel met AI-agents intern die ons werk versnellen."
+      ? "Korte versie: intake op maandag, live op dinsdag erop. Geen offertes die weken duren of onderhandelingen over scope. Dat kan omdat we een team van twaalf zijn: twee founders, Julian en Onno, plus tien AI-collega's die ons werk dag en nacht versnellen."
       : "Het 7-dagen proces, voor de duidelijkheid:",
     Card: () => <ProcessCard />,
   },
@@ -603,7 +575,7 @@ const TOPICS = {
       { q: 'Moet ik mijn website verhuizen?', a: 'Nee. Je houdt je site en hostingpartij. Wij voegen via één regel script of een DNS-koppeling een laag toe. Werkt op WordPress, Webflow, Squarespace, custom HTML.' },
       { q: 'Wat als de AI iets verkeerd zegt?', a: 'Voor go-live voert onze Quality-Check-Agent 25+ testgesprekken om hallucinaties op te sporen. Bij twijfelgevallen schakelt de AI altijd door naar een gratis intake met jou, in plaats van zelf juridische of medische antwoorden te geven.' },
       { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 500 gesprekken per maand zit in je vaste maandfee. Daarboven €0,10 per gesprek, met alert bij 80%. Geen API-account, geen keys.' },
-      { q: 'Wat gebeurt er als ik opzeg?', a: 'Je krijgt een export van alle data. Je kunt het systeem zelf overnemen tegen kostprijs (€750), of wij doen een nette takedown binnen 4 weken. Niets wordt geblokkeerd.' },
+      { q: 'Wat gebeurt er als ik opzeg?', a: 'Je krijgt een volledige export van je data: alle gesprekken, content en leads. Die zijn van jou en neem je mee. De code en het platform zelf blijven van MarketGrow. Daarna doen we een nette takedown binnen 4 weken. Niets wordt geblokkeerd.' },
     ]} />,
   },
   intake: {
@@ -614,13 +586,10 @@ const TOPICS = {
     final: true,
   },
 };
-
 const TOPIC_ORDER = ['modules', 'process', 'pricing', 'patroon', 'faq', 'intake'];
-
 const TOPIC_LABELS = {
   modules: 'modules', process: 'proces', pricing: 'prijzen', patroon: 'patroon', faq: 'faq', intake: 'intake',
 };
-
 // === sub-components ===
 const Brand = () => (
   <a href="#" className="flex items-center gap-2.5">
@@ -633,7 +602,6 @@ const Brand = () => (
     </div>
   </a>
 );
-
 const ProgressRail = ({ seen }) => (
   <div className="rail" aria-label={`Voortgang: ${seen.size} van ${TOPIC_ORDER.length} onderwerpen`}>
     {TOPIC_ORDER.map(k => (
@@ -641,12 +609,11 @@ const ProgressRail = ({ seen }) => (
     ))}
   </div>
 );
-
 const TopRibbon = () => {
   const messages = [
     '● Live in 7 werkdagen, niet 7 weken',
     '✶ Vroege klant-aanbieding: 20% korting op setup t/m 30 juni 2026',
-    '● 30 dagen geld terug, eerste maand vol restitueerbaar',
+    '● Team van twaalf: twee founders plus tien AI-collega’s',
     '✶ Tokens tot 500 gesprekken/mnd inclusief, geen verborgen kosten',
   ];
   const [idx, setIdx] = useState(0);
@@ -662,7 +629,6 @@ const TopRibbon = () => {
     </div>
   );
 };
-
 const TopBar = ({ seen, onPlanIntake }) => (
   <div className="topbar">
     <div className="max-w-[1100px] mx-auto px-6 py-4 flex items-center justify-between gap-6">
@@ -673,10 +639,7 @@ const TopBar = ({ seen, onPlanIntake }) => (
       </div>
       <div className="flex items-center gap-3">
         <span className="hidden sm:inline-flex chip" style={{padding: '5px 11px', fontSize: 11}}>
-          <span className="relative inline-block w-1.5 h-1.5">
-            <span className="absolute inset-0 bg-lime rounded-full pulse-ring-w"></span>
-            <span className="relative inline-block w-1.5 h-1.5 bg-lime rounded-full"></span>
-          </span>
+          <span className="inline-block w-1.5 h-1.5 bg-lime rounded-full"></span>
           Noor online
         </span>
         <a href="klassiek.html" className="text-[12px] mono text-mute hover:text-ink underline-offset-2 hover:underline">
@@ -686,7 +649,6 @@ const TopBar = ({ seen, onPlanIntake }) => (
     </div>
   </div>
 );
-
 const TypingBubble = () => (
   <div className="flex items-end gap-3 fade-up">
     <div className="mark"><span>N</span></div>
@@ -697,7 +659,6 @@ const TypingBubble = () => (
     </div>
   </div>
 );
-
 // === main app ===
 const App = () => {
   const [turns, setTurns] = useState([]);
@@ -706,7 +667,6 @@ const App = () => {
   const [seen, setSeen] = useState(new Set());
   const [profession, setProfession] = useState(null);
   const scrollAnchor = useRef(null);
-
   // initial Noor message
   useEffect(() => {
     setTurns([{
@@ -716,7 +676,6 @@ const App = () => {
     }]);
     setChips(PROFESSIONS.map(p => ({ label: p.label, action: () => pickProfession(p) })));
   }, []);
-
   // Smooth auto-scroll: keep chip row + sticky CTA both comfortably in view.
   useEffect(() => {
     const id = requestAnimationFrame(() => {
@@ -734,7 +693,6 @@ const App = () => {
     });
     return () => cancelAnimationFrame(id);
   }, [turns.length, typing, chips.length]);
-
   const sayNoor = (text, Card, nextChips, opts = {}) => {
     setChips([]);
     setTyping(true);
@@ -744,19 +702,16 @@ const App = () => {
       if (nextChips) setChips(nextChips);
     }, opts.delay || 1100);
   };
-
   const sayUser = (text) => {
     setTurns(t => [...t, { role: 'user', text }]);
     setChips([]);
   };
-
   const pickProfession = (p) => {
     setProfession(p);
     sayUser(p.label);
-    const msg = `Mooi. Bij ${p.context} zijn ${p.insight}. Daar werkt MarketGrow goed. Korte versie: ik leef op je site, antwoord 24/7, kwalificeer mensen en zet alleen de juiste in je agenda. Geen migratie, geen tools die je zelf beheert. Wat wil je eerst weten?`;
+    const msg = `Mooi. ${p.insight} Daar past MarketGrow goed. Kort gezegd: ik sta op je site, beantwoord vragen 24/7, kwalificeer bezoekers en zet alleen de juiste mensen in je agenda. Geen migratie, geen tools die je zelf hoeft te beheren. Wat wil je als eerste weten?`;
     sayNoor(msg, null, makeTopicChips(new Set()));
   };
-
   const makeTopicChips = (seenSet) => {
     const seenArr = Array.from(seenSet);
     const remaining = TOPIC_ORDER.filter(k => !seenArr.includes(k));
@@ -769,7 +724,6 @@ const App = () => {
       action: () => gotoTopic(k),
     }));
   };
-
   const gotoTopic = (key) => {
     const t = TOPICS[key];
     sayUser(t.label);
@@ -778,7 +732,6 @@ const App = () => {
     setSeen(newSeen);
     sayNoor(t.text({ first: !wasSeen }), t.Card, t.final ? makeEndChips() : makeTopicChips(newSeen), { delay: 1300 });
   };
-
   const showLeadForm = () => {
     sayUser('Stuur me een mail met info.');
     const seenLabels = Array.from(seen).map(k => TOPIC_LABELS[k]);
@@ -793,12 +746,10 @@ const App = () => {
       { delay: 1100 }
     );
   };
-
   const makeEndChips = () => ([
     { label: 'Liever mailen dan bellen', secondary: true, action: showLeadForm },
     { label: 'Ik heb nog een vraag', secondary: true, action: () => gotoTopic('faq') },
   ]);
-
   // Noor's first hero turn renders differently
   const renderTurn = (turn, i) => {
     if (turn.role === 'user') {
@@ -816,10 +767,7 @@ const App = () => {
             <div>
               <div className="tag text-mute mb-1">noor · ai-gids</div>
               <div className="flex items-center gap-2 text-[13px] text-mute">
-                <span className="relative inline-block w-1.5 h-1.5">
-                  <span className="absolute inset-0 bg-lime rounded-full pulse-ring-w"></span>
-                  <span className="relative inline-block w-1.5 h-1.5 bg-lime rounded-full"></span>
-                </span>
+                <span className="inline-block w-1.5 h-1.5 bg-lime rounded-full"></span>
                 online · spreekt Nederlands · is een demo van wat MarketGrow op jouw site doet
               </div>
             </div>
@@ -846,7 +794,6 @@ const App = () => {
       </div>
     );
   };
-
   return (
     <div className="stage">
       <TopRibbon />
@@ -856,7 +803,6 @@ const App = () => {
           {turns.map((t, i) => renderTurn(t, i))}
           {typing && <TypingBubble />}
         </div>
-
         {chips.length > 0 && !typing && (
           <div className="mt-7 fade-up">
             <div className="text-[12.5px] text-soft mb-2.5 ml-1 tag">/ kies een antwoord</div>
@@ -870,9 +816,7 @@ const App = () => {
             </div>
           </div>
         )}
-
         <div ref={scrollAnchor} className="h-1"></div>
-
         <div className="sticky-cta mt-12">
           <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line pt-4">
             <div className="flex items-center gap-3">
@@ -893,7 +837,6 @@ const App = () => {
           </div>
         </div>
       </main>
-
       <footer className="relative z-10 max-w-[1100px] mx-auto px-6 pb-8 pt-2">
         <div className="flex flex-wrap justify-between items-center gap-3 text-[11.5px] mono text-soft">
           <div>© 2026 marketgrow.ai · Breda</div>
@@ -907,10 +850,7 @@ const App = () => {
     </div>
   );
 };
-
 ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-
   </script>
-
 </body>
 </html>
