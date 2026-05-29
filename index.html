@@ -249,7 +249,7 @@ const ModulesCard = () => {
       </div>
       <div className="mt-4 text-[12.5px] text-mute flex items-center gap-2">
         <Icon name="check" className="w-3.5 h-3.5 text-olive" />
-        Het dashboard zit inbegrepen bij elk actief bouwblok, zonder apart maandbedrag.
+        Het dashboard zit inbegrepen bij elk actief bouwblok, zonder apart maandbedrag. Alle bedragen zijn exclusief BTW.
       </div>
     </div>
   );
@@ -270,7 +270,7 @@ const PricingCard = () => {
             <div className={`text-[12.5px] mb-4 ${p.hi ? 'text-paper/70' : 'text-mute'}`}>{p.d}</div>
             <div className="mb-4">
               <div className="serif text-[34px] leading-none">€{p.setup}</div>
-              <div className={`text-[11.5px] ${p.hi ? 'text-paper/60' : 'text-mute'}`}>setup, eenmalig</div>
+              <div className={`text-[11.5px] ${p.hi ? 'text-paper/60' : 'text-mute'}`}>setup, eenmalig · excl. BTW</div>
               <div className="serif text-[20px] leading-none mt-2">€{p.maand}<span className={`text-[11.5px] ml-1 ${p.hi ? 'text-paper/60' : 'text-mute'}`}>/mnd</span></div>
             </div>
             <ul className="space-y-1.5">
@@ -553,7 +553,7 @@ const TOPICS = {
     label: 'Wat kost het?',
     chipLabel: 'Wat kost het?',
     text: ({first}) => first
-      ? "Drie veelgekozen pakketten. Maar elk bouwblok kan los, en je switcht later vanuit je dashboard. Geen verborgen kosten. Tokens tot 500 gesprekken per maand zit erin."
+      ? "Drie veelgekozen pakketten. Maar elk bouwblok kan los, en je switcht later vanuit je dashboard. Geen verborgen kosten. Tokens tot 500 gesprekken per maand zit erin. Alle prijzen zijn exclusief BTW."
       : "De drie pakketten:",
     Card: () => <PricingCard />,
   },
@@ -574,7 +574,7 @@ const TOPICS = {
     Card: () => <FaqCard items={[
       { q: 'Moet ik mijn website verhuizen?', a: 'Nee. Je houdt je site en hostingpartij. Wij voegen via één regel script of een DNS-koppeling een laag toe. Werkt op WordPress, Webflow, Squarespace, custom HTML.' },
       { q: 'Wat als de AI iets verkeerd zegt?', a: 'Voor go-live voert onze Quality-Check-Agent 25+ testgesprekken om hallucinaties op te sporen. Bij twijfelgevallen schakelt de AI altijd door naar een gratis intake met jou, in plaats van zelf juridische of medische antwoorden te geven.' },
-      { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 500 gesprekken per maand zit in je vaste maandfee. Daarboven €0,10 per gesprek, met alert bij 80%. Geen API-account, geen keys.' },
+      { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 500 gesprekken per maand zit in je vaste maandfee. Daarboven €0,10 per gesprek (excl. BTW), met alert bij 80%. Geen API-account, geen keys.' },
       { q: 'Wat gebeurt er als ik opzeg?', a: 'Je krijgt een volledige export van je data: alle gesprekken, content en leads. Die zijn van jou en neem je mee. De code en het platform zelf blijven van MarketGrow. Daarna doen we een nette takedown binnen 4 weken. Niets wordt geblokkeerd.' },
     ]} />,
   },
