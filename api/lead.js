@@ -6,12 +6,11 @@
 // Benodigde environment variables (in Vercel > Project > Settings > Environment Variables):
 //   RESEND_API_KEY   verplicht. Gratis aan te maken op https://resend.com
 //   MAIL_TO          optioneel. Standaard hello@marketgrow.ai
-//   MAIL_FROM        optioneel. Standaard "MarketGrow Noor <onboarding@resend.dev>".
-//                    Voor productie: een afzender op je eigen geverifieerde domein,
-//                    bijv. "MarketGrow Noor <noor@marketgrow.ai>".
+//   MAIL_FROM        optioneel. Standaard "MarketGrow Noor <julian@marketgrow.ai>".
+//                    Moet een afzender op je geverifieerde domein zijn (marketgrow.ai).
 
 const MAIL_TO = process.env.MAIL_TO || 'hello@marketgrow.ai';
-const MAIL_FROM = process.env.MAIL_FROM || 'MarketGrow Noor <onboarding@resend.dev>';
+const MAIL_FROM = process.env.MAIL_FROM || 'MarketGrow Noor <julian@marketgrow.ai>';
 
 const clip = (v, max) => (typeof v === 'string' ? v.slice(0, max) : '');
 const esc = (s) => String(s)
