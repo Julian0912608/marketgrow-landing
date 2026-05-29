@@ -351,7 +351,7 @@ const NavRibbon = () => {
   const messages = [
     '● Live in 7 werkdagen, niet 7 weken',
     '✶ Vroege klant-aanbieding: 20% korting op setup t/m 30 juni 2026',
-    '● 30 dagen geld terug, eerste maand vol restitueerbaar',
+    '● Team van twaalf: twee founders plus tien AI-collega’s',
     '✶ Tokens tot 500 gesprekken/mnd inclusief, geen verborgen kosten',
   ];
   const [idx, setIdx] = useState(0);
@@ -439,7 +439,7 @@ const Hero = () => (
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] mute">
             <span className="inline-flex items-center gap-1.5"><Icon name="check" className="w-3.5 h-3.5 olive" /> Live in 7 werkdagen</span>
             <span className="inline-flex items-center gap-1.5"><Icon name="check" className="w-3.5 h-3.5 olive" /> Geen verborgen kosten</span>
-            <span className="inline-flex items-center gap-1.5"><Icon name="check" className="w-3.5 h-3.5 olive" /> Eerste maand niet goed, geld terug</span>
+            <span className="inline-flex items-center gap-1.5"><Icon name="check" className="w-3.5 h-3.5 olive" /> Team van twaalf, mens plus AI</span>
           </div>
         </div>
 
@@ -555,10 +555,10 @@ const Probleem = () => (
 
 const Bouwblokken = () => {
   const blocks = [
-    { i: 'msg', n: 'AI-Gespreksgids', setup: '€1.950', maand: '€75', om: 'Chat op je website die 24/7 bezoekers helpt, hun situatie kwalificeert en gekwalificeerde leads in je agenda zet. Met jouw merk, jouw toon, jouw expertise.', f: ['500 gesprekken per maand', 'Cal.com / Google Agenda', 'Klant-specifieke knowledge base'] },
-    { i: 'pen', n: 'Content-Engine', setup: '€1.250', maand: '€95', om: 'Blogs, social posts en nieuwsbrieven, automatisch geschreven in jouw stem op basis van jouw expertise. Jij accepteert, past aan of weigert. Publicatie automatisch.', f: ['Tot 8 publicaties per maand', 'WordPress, Webflow, Zapier', 'SEO en GEO geoptimaliseerd'] },
-    { i: 'send', n: 'WhatsApp Notificaties', setup: '€1.000', maand: '€25', om: 'Directe WhatsApp-melding bij elke nieuwe lead met afspraak. Beantwoord vanuit WhatsApp of laat de AI documenten sturen ter voorbereiding.', f: ['Realtime push', 'Twee-weg communicatie', 'AI-gestuurde document-templates'] },
-    { i: 'doc', n: 'Document Automation', setup: '€950', maand: '€30', om: 'Intake-verslagen, offertes en concept-contracten, automatisch gevuld met informatie uit het gesprek. Bespaart 30 tot 60 minuten administratie per nieuwe klant.', f: ['Word en PDF templates', 'Variabelen uit AI-gesprek', 'Mail-bezorging klaar'] },
+    { i: 'msg', n: 'AI-Gespreksgids', setup: '€1.000', maand: '€40', om: 'Chat op je website die 24/7 bezoekers helpt, hun situatie kwalificeert en gekwalificeerde leads in je agenda zet. Met jouw merk, jouw toon, jouw expertise.', f: ['500 gesprekken per maand', 'Cal.com / Google Agenda', 'Klant-specifieke knowledge base'] },
+    { i: 'pen', n: 'Content-Engine', setup: '€500', maand: '€65', om: 'Blogs, social posts en nieuwsbrieven, automatisch geschreven in jouw stem op basis van jouw expertise. Jij accepteert, past aan of weigert. Publicatie automatisch.', f: ['Publicaties uit knowledge-base', 'WordPress, Webflow, MailerLite', 'SEO en GEO geoptimaliseerd'] },
+    { i: 'send', n: 'WhatsApp LeadAlert', setup: '€400', maand: '€20', om: 'Directe WhatsApp-melding bij elke nieuwe lead met afspraak. Beantwoord vanuit WhatsApp of laat de AI documenten sturen ter voorbereiding.', f: ['Realtime push', 'Twee-weg communicatie', 'AI-gestuurde document-templates'] },
+    { i: 'doc', n: 'Document-Automatie', setup: '€1.150', maand: '€30', om: 'Intake-verslagen, offertes en concept-contracten, automatisch gevuld met informatie uit het gesprek. Bespaart 30 tot 60 minuten administratie per nieuwe klant.', f: ['Word en PDF templates', 'Variabelen uit AI-gesprek', 'Mail-bezorging klaar'] },
   ];
   return (
     <section id="bouwblokken" className="py-28 bg-ink text-paper relative overflow-hidden noise">
@@ -611,9 +611,9 @@ const Bouwblokken = () => {
 
         <div className="mt-10 p-7 border border-white/10 bg-white/[0.03] flex flex-col lg:flex-row items-start lg:items-center gap-6 justify-between">
           <div>
-            <div className="tag lime mb-2">/ Standaard bij elk pakket</div>
+            <div className="tag lime mb-2">/ Standaard bij elk bouwblok</div>
             <h3 className="serif text-[26px] leading-tight">Klant-dashboard met feature-toggles</h3>
-            <p className="text-paper/60 text-[14px] mt-2 max-w-xl leading-relaxed">Schakel zelf bouwblokken in en uit, beheer je kennisbank, review content, en zie precies wat MarketGrow voor je doet. €35 per maand voor hosting, monitoring en support.</p>
+            <p className="text-paper/60 text-[14px] mt-2 max-w-xl leading-relaxed">Schakel zelf bouwblokken in en uit, beheer je kennisbank, review content, en zie precies wat MarketGrow voor je doet. Het dashboard zit inbegrepen bij elk actief bouwblok, zonder apart maandbedrag.</p>
           </div>
           <a href="#intake" className="group bg-lime text-ink px-6 py-3.5 text-[14px] font-medium inline-flex items-center gap-2 hover:brightness-95 transition flex-shrink-0">
             Plan een intake <span className="hover-arrow">→</span>
@@ -650,7 +650,7 @@ const HoeHetWerkt = () => {
           </div>
           <div className="lg:col-span-5 lg:col-start-8 flex items-end">
             <p className="text-[16px] mute leading-relaxed">
-              Geen offertes die weken duren, geen onderhandelingen over scope. Helder proces, vaste prijzen, en AI-agents intern die ons werk versnellen.
+              Geen offertes die weken duren, geen onderhandelingen over scope. Helder proces, vaste prijzen, en een team van twaalf: twee founders plus tien AI-collega's die ons werk dag en nacht versnellen.
             </p>
           </div>
         </div>
@@ -676,9 +676,9 @@ const HoeHetWerkt = () => {
         <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-px bg-line border border-line">
           {[
             { v: '7', l: 'werkdagen', s: 'tot live' },
-            { v: '€0', l: 'verborgen kosten', s: 'tokens, hosting, monitoring, alles inbegrepen' },
+            { v: '€0', l: 'verborgen kosten', s: 'tokens en dashboard inbegrepen' },
             { v: '24/7', l: 'online', s: 'Noor slaapt nooit' },
-            { v: '30d', l: 'geld terug', s: 'eerste maand onderhoud restitueerbaar' },
+            { v: '1', l: 'regel script', s: 'op je bestaande site' },
           ].map((c, i) => (
             <div key={i} className="bg-paper p-7">
               <div className="serif text-[58px] leading-none ink mb-2 ticker-num">{c.v}</div>
@@ -743,12 +743,12 @@ const Patroon = () => (
 
 const Pricing = () => {
   const plans = [
-    { n: 'Instap', sub: 'Voor wie wil beginnen met één feature.', setup: 1950, maand: 110, hi: false,
-      f: ['Klant-dashboard standaard', 'AI-Gespreksgids', '500 gesprekken per maand', 'Cal.com koppeling', 'E-mail support'] },
-    { n: 'Groei', sub: 'Onze meest gekozen combinatie.', setup: 3200, maand: 205, hi: true,
-      f: ['Alles uit Instap', 'Content-Engine', '8 publicaties per maand', 'WordPress / Webflow koppeling', 'Maandrapportage'] },
-    { n: 'Compleet', sub: 'De volledige ontzorging.', setup: 5150, maand: 260, hi: false,
-      f: ['Alles uit Groei', 'WhatsApp Notificaties', 'Document Automation', 'Twee-weg WhatsApp-chat', 'Prioriteit-support'] },
+    { n: 'Instap', sub: 'Voor wie wil beginnen met de gespreksgids.', setup: 1000, maand: 40, hi: false,
+      f: ['Klant-dashboard inbegrepen', 'AI-Gespreksgids', '500 gesprekken per maand', 'Cal.com koppeling', 'E-mail support'] },
+    { n: 'Groei', sub: 'Onze meest gekozen combinatie.', setup: 1900, maand: 125, hi: true,
+      f: ['Alles uit Instap', 'Content-Engine', 'WhatsApp LeadAlert', 'Twee-weg WhatsApp-chat', 'Maandrapportage'] },
+    { n: 'Compleet', sub: 'De volledige ontzorging, alle vier de bouwblokken.', setup: 3050, maand: 155, hi: false,
+      f: ['Alles uit Groei', 'Document-Automatie', 'Intakes en offertes automatisch', 'Prioriteit-support'] },
   ];
   return (
     <section id="prijzen" className="py-28 relative noise">
@@ -798,7 +798,7 @@ const Pricing = () => {
 
         <div className="mt-12 grid lg:grid-cols-3 gap-8">
           {[
-            { i: 'shield', t: 'Eerste maand geld terug', s: 'Setup blijft, eerste maand onderhoud restitueerbaar bij niet-tevredenheid.' },
+            { i: 'shield', t: 'Een team van twaalf', s: 'Twee founders, Julian en Onno, plus tien AI-collega’s. Daarom live in zeven dagen, niet zeven weken.' },
             { i: 'clock', t: 'Minimumtermijn 1 maand per feature', s: 'Schakel zelf in en uit. Geen jaarcontracten op losse bouwblokken.' },
             { i: 'sparkle', t: 'Tokens transparant doorbelast', s: 'Tot 500 gesprekken per maand inclusief. Daarboven €0,10 per gesprek, met alert bij 80%.' },
           ].map((g, i) => (
@@ -822,8 +822,8 @@ const Faq = () => {
   const items = [
     { q: 'Moet ik mijn website verhuizen?', a: 'Nee. Je houdt je bestaande website en hostingpartij. Wij voegen via één regel script of een DNS-koppeling een laag toe. Werkt op WordPress, Webflow, Squarespace, custom HTML, alles.' },
     { q: 'Wat als de AI iets verkeerd zegt?', a: 'Voor go-live voert onze Quality-Check-Agent 25+ testgesprekken om hallucinaties en off-topic-antwoorden te vinden. Daarna monitoren we elk klant-systeem doorlopend. Bij twijfelgevallen schakelt de AI altijd door naar een gratis intake met jou, in plaats van zelf juridische of medische antwoorden te geven.' },
-    { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 500 gesprekken per maand zit in je vaste maandfee. Daarboven betaal je €0,10 per gesprek, met een alert bij 80%. Je hoeft zelf geen API-account aan te maken, geen keys te beheren, geen onverwachte rekeningen te krijgen.' },
-    { q: 'Wat gebeurt er als ik opzeg?', a: 'Je krijgt een export van alle data (gesprekken, content, leads). Je kunt het systeem zelf overnemen tegen kostprijs (€750 eenmalig), of wij doen een nette takedown binnen 4 weken. Niets wordt geblokkeerd.' },
+    { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 500 gesprekken per maand zit in je vaste maandfee. Daarboven €0,10 per gesprek, met een alert bij 80%. Je hoeft zelf geen API-account aan te maken, geen keys te beheren.' },
+    { q: 'Wat gebeurt er als ik opzeg?', a: 'Je krijgt een volledige export van je data: alle gesprekken, content en leads. Die zijn van jou en neem je mee. De code en het platform zelf blijven van MarketGrow. Daarna doen we een nette takedown binnen 4 weken. Niets wordt geblokkeerd.' },
     { q: 'Hoe verschilt MarketGrow van een marketingbureau?', a: 'Een bureau bouwt en doet. Wij bouwen, automatiseren en blijven onderhouden, voor een fractie van de kosten. We zijn ook geen bouwer-van-websites, alleen van de AI-laag erop. Daardoor zijn we sneller en specialistischer.' },
     { q: 'Werkt dit echt voor mijn type bedrijf?', a: 'MarketGrow werkt het beste voor dienstverleners die via intake-gesprekken hun klanten binnenhalen. Twijfel je? Plan een intake, dan kijken we samen of het past.' },
   ];
@@ -945,14 +945,14 @@ const Footer = () => (
         <div className="lg:col-span-3">
           <div className="tag mute mb-4">Contact</div>
           <ul className="space-y-2 text-[14px]">
-            <li className="mute">hello@marketgrow.ai (binnenkort)</li>
+            <li className="mute">hello@marketgrow.ai</li>
             <li className="mute">Breda, Nederland</li>
             <li><a href="#intake" className="olive inline-flex items-center gap-1.5 group">Plan een intake <span className="hover-arrow">→</span></a></li>
           </ul>
         </div>
       </div>
       <div className="pt-6 border-t border-line flex flex-col lg:flex-row justify-between gap-3 text-[12px] mute">
-        <div>© 2026 MarketGrow.ai · KvK in oprichting · Onder JG Holding BV</div>
+        <div>© 2026 MarketGrow.ai · KvK in oprichting</div>
         <div className="flex gap-6">
           <a href="#" className="hover:ink">Algemene voorwaarden</a>
           <a href="#" className="hover:ink">Privacy</a>
