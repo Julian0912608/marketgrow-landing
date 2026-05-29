@@ -613,7 +613,7 @@ const Bouwblokken = () => {
           <div>
             <div className="tag lime mb-2">/ Standaard bij elk bouwblok</div>
             <h3 className="serif text-[26px] leading-tight">Klant-dashboard met feature-toggles</h3>
-            <p className="text-paper/60 text-[14px] mt-2 max-w-xl leading-relaxed">Schakel zelf bouwblokken in en uit, beheer je kennisbank, review content, en zie precies wat MarketGrow voor je doet. Het dashboard zit inbegrepen bij elk actief bouwblok, zonder apart maandbedrag.</p>
+            <p className="text-paper/60 text-[14px] mt-2 max-w-xl leading-relaxed">Schakel zelf bouwblokken in en uit, beheer je kennisbank, review content, en zie precies wat MarketGrow voor je doet. Het dashboard zit inbegrepen bij elk actief bouwblok, zonder apart maandbedrag. Alle bedragen zijn exclusief BTW.</p>
           </div>
           <a href="#intake" className="group bg-lime text-ink px-6 py-3.5 text-[14px] font-medium inline-flex items-center gap-2 hover:brightness-95 transition flex-shrink-0">
             Plan een intake <span className="hover-arrow">→</span>
@@ -777,7 +777,7 @@ const Pricing = () => {
               <p className={`text-[14px] mb-6 ${p.hi ? 'text-paper/70' : 'mute'}`}>{p.sub}</p>
               <div className="mb-6">
                 <div className="serif text-[54px] leading-none ticker-num">€{p.setup}</div>
-                <div className={`text-[13px] ${p.hi ? 'text-paper/60' : 'mute'}`}>setup, eenmalig</div>
+                <div className={`text-[13px] ${p.hi ? 'text-paper/60' : 'mute'}`}>setup, eenmalig · excl. BTW</div>
                 <div className="serif text-[30px] leading-none mt-4 ticker-num">€{p.maand}<span className={`text-[13px] ml-1 ${p.hi ? 'text-paper/60' : 'mute'}`}>/mnd</span></div>
               </div>
               <div className={`h-px mb-6 ${p.hi ? 'bg-white/15' : 'bg-line'}`}></div>
@@ -800,7 +800,7 @@ const Pricing = () => {
           {[
             { i: 'shield', t: 'Een team van twaalf', s: 'Twee founders, Julian en Onno, plus tien AI-collega’s. Daarom live in zeven dagen, niet zeven weken.' },
             { i: 'clock', t: 'Minimumtermijn 1 maand per feature', s: 'Schakel zelf in en uit. Geen jaarcontracten op losse bouwblokken.' },
-            { i: 'sparkle', t: 'Tokens transparant doorbelast', s: 'Tot 500 gesprekken per maand inclusief. Daarboven €0,10 per gesprek, met alert bij 80%.' },
+            { i: 'sparkle', t: 'Tokens transparant doorbelast', s: 'Tot 500 gesprekken per maand inclusief. Daarboven €0,10 per gesprek (excl. BTW), met alert bij 80%.' },
           ].map((g, i) => (
             <div key={i} className="flex items-start gap-4">
               <div className="w-9 h-9 bg-paper-2 border border-line flex items-center justify-center flex-shrink-0">
@@ -822,7 +822,7 @@ const Faq = () => {
   const items = [
     { q: 'Moet ik mijn website verhuizen?', a: 'Nee. Je houdt je bestaande website en hostingpartij. Wij voegen via één regel script of een DNS-koppeling een laag toe. Werkt op WordPress, Webflow, Squarespace, custom HTML, alles.' },
     { q: 'Wat als de AI iets verkeerd zegt?', a: 'Voor go-live voert onze Quality-Check-Agent 25+ testgesprekken om hallucinaties en off-topic-antwoorden te vinden. Daarna monitoren we elk klant-systeem doorlopend. Bij twijfelgevallen schakelt de AI altijd door naar een gratis intake met jou, in plaats van zelf juridische of medische antwoorden te geven.' },
-    { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 500 gesprekken per maand zit in je vaste maandfee. Daarboven €0,10 per gesprek, met een alert bij 80%. Je hoeft zelf geen API-account aan te maken, geen keys te beheren.' },
+    { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 500 gesprekken per maand zit in je vaste maandfee. Daarboven €0,10 per gesprek (excl. BTW), met een alert bij 80%. Je hoeft zelf geen API-account aan te maken, geen keys te beheren.' },
     { q: 'Wat gebeurt er als ik opzeg?', a: 'Je krijgt een volledige export van je data: alle gesprekken, content en leads. Die zijn van jou en neem je mee. De code en het platform zelf blijven van MarketGrow. Daarna doen we een nette takedown binnen 4 weken. Niets wordt geblokkeerd.' },
     { q: 'Hoe verschilt MarketGrow van een marketingbureau?', a: 'Een bureau bouwt en doet. Wij bouwen, automatiseren en blijven onderhouden, voor een fractie van de kosten. We zijn ook geen bouwer-van-websites, alleen van de AI-laag erop. Daardoor zijn we sneller en specialistischer.' },
     { q: 'Werkt dit echt voor mijn type bedrijf?', a: 'MarketGrow werkt het beste voor dienstverleners die via intake-gesprekken hun klanten binnenhalen. Twijfel je? Plan een intake, dan kijken we samen of het past.' },
