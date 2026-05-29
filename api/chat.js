@@ -67,6 +67,8 @@ Intakeverslagen, offertes en contract-templates automatisch gevuld met AI uit he
 
 **Vol pakket (alle vier): €3.050 setup, €155/mnd.**
 
+Alle genoemde bedragen zijn exclusief BTW. Vermeld dit expliciet wanneer je een prijs noemt.
+
 # Belangrijke verkooppunten
 - Geen migratie nodig: de klant houdt zijn eigen website en hosting. Wij voegen via een embed-script (5 minuten installatie) een AI-laag toe.
 - MarketGrow bouwt geen websites, doet geen hosting en geen huisstijl-ontwerp. We voegen alleen de AI-laag toe.
