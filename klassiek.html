@@ -352,7 +352,7 @@ const NavRibbon = () => {
     '● Live in 7 werkdagen, niet 7 weken',
     '✶ Vroege klant-aanbieding: 20% korting op setup t/m 30 juni 2026',
     '● Team van twaalf: twee founders plus tien AI-collega’s',
-    '✶ Tokens tot 500 gesprekken/mnd inclusief, geen verborgen kosten',
+    '✶ Tot 175 gesprekken/mnd inclusief, geen verborgen kosten',
   ];
   const [idx, setIdx] = useState(0);
   useEffect(() => {
@@ -453,7 +453,7 @@ const Hero = () => (
         {[
           { v: '24/7', l: 'online beschikbaar', s: 'Noor slaapt nooit' },
           { v: 'JOUW', l: 'merk en stem', s: 'Eigen kleuren, fonts en toon' },
-          { v: '500', l: 'gesprekken per maand', s: 'Inclusief in maandfee' },
+          { v: '175', l: 'gesprekken per maand', s: 'Inclusief in maandfee' },
           { v: '1 LINK', l: 'agenda koppeling', s: 'Cal.com, Google, Outlook' },
         ].map((s, i) => (
           <div key={i} className="bg-paper p-5">
@@ -555,7 +555,7 @@ const Probleem = () => (
 
 const Bouwblokken = () => {
   const blocks = [
-    { i: 'msg', n: 'AI-Gespreksgids', setup: '€1.000', maand: '€40', om: 'Chat op je website die 24/7 bezoekers helpt, hun situatie kwalificeert en gekwalificeerde leads in je agenda zet. Met jouw merk, jouw toon, jouw expertise.', f: ['500 gesprekken per maand', 'Cal.com / Google Agenda', 'Klant-specifieke knowledge base'] },
+    { i: 'msg', n: 'AI-Gespreksgids', setup: '€1.000', maand: '€40', om: 'Chat op je website die 24/7 bezoekers helpt, hun situatie kwalificeert en gekwalificeerde leads in je agenda zet. Met jouw merk, jouw toon, jouw expertise.', f: ['175 gesprekken per maand', 'Cal.com / Google Agenda', 'Klant-specifieke knowledge base'] },
     { i: 'pen', n: 'Content-Engine', setup: '€500', maand: '€65', om: 'Blogs, social posts en nieuwsbrieven, automatisch geschreven in jouw stem op basis van jouw expertise. Jij accepteert, past aan of weigert. Publicatie automatisch.', f: ['Publicaties uit knowledge-base', 'WordPress, Webflow, MailerLite', 'SEO en GEO geoptimaliseerd'] },
     { i: 'send', n: 'WhatsApp LeadAlert', setup: '€400', maand: '€20', om: 'Directe WhatsApp-melding bij elke nieuwe lead met afspraak. Beantwoord vanuit WhatsApp of laat de AI documenten sturen ter voorbereiding.', f: ['Realtime push', 'Twee-weg communicatie', 'AI-gestuurde document-templates'] },
     { i: 'doc', n: 'Document-Automatie', setup: '€1.150', maand: '€30', om: 'Intake-verslagen, offertes en concept-contracten, automatisch gevuld met informatie uit het gesprek. Bespaart 30 tot 60 minuten administratie per nieuwe klant.', f: ['Word en PDF templates', 'Variabelen uit AI-gesprek', 'Mail-bezorging klaar'] },
@@ -744,7 +744,7 @@ const Patroon = () => (
 const Pricing = () => {
   const plans = [
     { n: 'Instap', sub: 'Voor wie wil beginnen met de gespreksgids.', setup: 1000, maand: 40, hi: false,
-      f: ['Klant-dashboard inbegrepen', 'AI-Gespreksgids', '500 gesprekken per maand', 'Cal.com koppeling', 'E-mail support'] },
+      f: ['Klant-dashboard inbegrepen', 'AI-Gespreksgids', '175 gesprekken per maand', 'Cal.com koppeling', 'E-mail support'] },
     { n: 'Groei', sub: 'Onze meest gekozen combinatie.', setup: 1900, maand: 125, hi: true,
       f: ['Alles uit Instap', 'Content-Engine', 'WhatsApp LeadAlert', 'Twee-weg WhatsApp-chat', 'Maandrapportage'] },
     { n: 'Compleet', sub: 'De volledige ontzorging, alle vier de bouwblokken.', setup: 3050, maand: 155, hi: false,
@@ -800,7 +800,7 @@ const Pricing = () => {
           {[
             { i: 'shield', t: 'Een team van twaalf', s: 'Twee founders, Julian en Onno, plus tien AI-collega’s. Daarom live in zeven dagen, niet zeven weken.' },
             { i: 'clock', t: 'Minimumtermijn 1 maand per feature', s: 'Schakel zelf in en uit. Geen jaarcontracten op losse bouwblokken.' },
-            { i: 'sparkle', t: 'Tokens transparant doorbelast', s: 'Tot 500 gesprekken per maand inclusief. Daarboven €0,10 per gesprek (excl. BTW), met alert bij 80%.' },
+            { i: 'sparkle', t: 'Tokens transparant doorbelast', s: 'Tot 175 gesprekken per maand inclusief. Daarboven een vaste toeslag van €10 per maand (excl. BTW). Bij 400 gesprekken pauzeert de chat voor nieuwe gesprekken.' },
           ].map((g, i) => (
             <div key={i} className="flex items-start gap-4">
               <div className="w-9 h-9 bg-paper-2 border border-line flex items-center justify-center flex-shrink-0">
@@ -822,7 +822,7 @@ const Faq = () => {
   const items = [
     { q: 'Moet ik mijn website verhuizen?', a: 'Nee. Je houdt je bestaande website en hostingpartij. Wij voegen via één regel script of een DNS-koppeling een laag toe. Werkt op WordPress, Webflow, Squarespace, custom HTML, alles.' },
     { q: 'Wat als de AI iets verkeerd zegt?', a: 'Voor go-live voert onze Quality-Check-Agent 25+ testgesprekken om hallucinaties en off-topic-antwoorden te vinden. Daarna monitoren we elk klant-systeem doorlopend. Bij twijfelgevallen schakelt de AI altijd door naar een gratis intake met jou, in plaats van zelf juridische of medische antwoorden te geven.' },
-    { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 500 gesprekken per maand zit in je vaste maandfee. Daarboven €0,10 per gesprek (excl. BTW), met een alert bij 80%. Je hoeft zelf geen API-account aan te maken, geen keys te beheren.' },
+    { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 175 gesprekken per maand zitten in je vaste maandfee. Daarboven een vaste toeslag van €10 per maand (excl. BTW). Bij 400 gesprekken pauzeert de chat voor nieuwe gesprekken; lopende gesprekken lopen door. Je hoeft zelf geen API-account aan te maken, geen keys te beheren.' },
     { q: 'Wat gebeurt er als ik opzeg?', a: 'Je krijgt een volledige export van je data: alle gesprekken, content en leads. Die zijn van jou en neem je mee. De code en het platform zelf blijven van MarketGrow. Daarna doen we een nette takedown binnen 4 weken. Niets wordt geblokkeerd.' },
     { q: 'Hoe verschilt MarketGrow van een marketingbureau?', a: 'Een bureau bouwt en doet. Wij bouwen, automatiseren en blijven onderhouden, voor een fractie van de kosten. We zijn ook geen bouwer-van-websites, alleen van de AI-laag erop. Daardoor zijn we sneller en specialistischer.' },
     { q: 'Werkt dit echt voor mijn type bedrijf?', a: 'MarketGrow werkt het beste voor dienstverleners die via intake-gesprekken hun klanten binnenhalen. Twijfel je? Plan een intake, dan kijken we samen of het past.' },
