@@ -548,7 +548,7 @@ const TOPICS = {
     label: 'Wat kost het?',
     chipLabel: 'Wat kost het?',
     text: ({first}) => first
-      ? "Drie veelgekozen pakketten. Maar elk bouwblok kan los, en je switcht later vanuit je dashboard. Geen verborgen kosten. Tokens tot 500 gesprekken per maand zit erin. Alle prijzen zijn exclusief BTW."
+      ? "Drie veelgekozen pakketten. Maar elk bouwblok kan los, en je switcht later vanuit je dashboard. Geen verborgen kosten. Tot 175 gesprekken per maand zitten erin. Alle prijzen zijn exclusief BTW."
       : "De drie pakketten:",
     Card: () => <PricingCard />,
   },
@@ -569,7 +569,7 @@ const TOPICS = {
     Card: () => <FaqCard items={[
       { q: 'Moet ik mijn website verhuizen?', a: 'Nee. Je houdt je site en hostingpartij. Wij voegen via één regel script of een DNS-koppeling een laag toe. Werkt op WordPress, Webflow, Squarespace, custom HTML.' },
       { q: 'Wat als de AI iets verkeerd zegt?', a: 'Voor go-live voert onze Quality-Check-Agent 25+ testgesprekken om hallucinaties op te sporen. Bij twijfelgevallen schakelt de AI altijd door naar een gratis intake met jou, in plaats van zelf juridische of medische antwoorden te geven.' },
-      { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 500 gesprekken per maand zit in je vaste maandfee. Daarboven €0,10 per gesprek (excl. BTW), met alert bij 80%. Geen API-account, geen keys.' },
+      { q: 'Wie betaalt de Claude API-kosten?', a: 'Wij. Tot 175 gesprekken per maand zitten in je vaste maandfee. Daarboven een vaste toeslag van €10 per maand (excl. BTW). Bij 400 gesprekken pauzeert de chat voor nieuwe gesprekken; lopende gesprekken lopen door. Geen API-account, geen keys.' },
       { q: 'Wat gebeurt er als ik opzeg?', a: 'Je krijgt een volledige export van je data: alle gesprekken, content en leads. Die zijn van jou en neem je mee. De code en het platform zelf blijven van MarketGrow. Daarna doen we een nette takedown binnen 4 weken. Niets wordt geblokkeerd.' },
     ]} />,
   },
@@ -609,7 +609,7 @@ const TopRibbon = () => {
     '● Live in 7 werkdagen, niet 7 weken',
     '✶ Vroege klant-aanbieding: 20% korting op setup t/m 30 juni 2026',
     '● Team van twaalf: twee founders plus tien AI-collega’s',
-    '✶ Tokens tot 500 gesprekken/mnd inclusief, geen verborgen kosten',
+    '✶ Tot 175 gesprekken/mnd inclusief, geen verborgen kosten',
   ];
   const [idx, setIdx] = useState(0);
   useEffect(() => {
