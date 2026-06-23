@@ -779,6 +779,26 @@ const App = () => {
       const data = await res.json().catch(() => ({}));
       const reply = (data && data.reply) ? data.reply : 'Sorry, er ging even iets mis. Probeer het zo nog eens, of plan een korte intake via de knop hieronder.';
       apiHistory.current.push({ role: 'assistant', content: reply });
+      // Noor-gesprek loggen naar het dashboard (alleen vrije vragen, route schrijft alleen naar de demo-tenant).
+      try {
+        window.__noorSession = window.__noorSession || ((window.crypto && window.crypto.randomUUID)
+          ? window.crypto.randomUUID()
+          : 'noor-' + Date.now() + '-' + Math.random().toString(36).slice(2));
+        const logCtx = [];
+        if (profession && profession.label) logCtx.push('Beroep: ' + profession.label);
+        const logSeen = Array.from(seen).map(function (k) { return TOPIC_LABELS[k]; }).filter(Boolean);
+        if (logSeen.length) logCtx.push('Besproken: ' + logSeen.join(', '));
+        fetch('https://app.marketgrow.ai/api/noor-log', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId: window.__noorSession,
+            vraag: q,
+            antwoord: reply,
+            context: logCtx.join(' | '),
+          }),
+        }).catch(function () {});
+      } catch (e) {}
       setTyping(false);
       const endChips = data && data.intakeReady
         ? [{ label: 'Plan een intake', primary: true, action: () => gotoTopic('intake') }, { label: 'Liever mailen dan bellen', secondary: true, action: showLeadForm }]
