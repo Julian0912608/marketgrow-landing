@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter+Tight:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="marketgrow-logo.png">
+<title>Mila · Mediators · MarketGrow.ai</title>
+<meta name="description" content="Mila, de MarketGrow-specialist voor mediators. Nodigt uit zonder partij te kiezen. Bij mediation is de eerste toon alles. Mila ontvangt beide kanten neutraal, peilt of mediation past en zet een kennismaking klaar, zonder ooit stelling te nemen.">
+<meta name="theme-color" content="#3F4A2E">
+<style>
+html, body { margin: 0; padding: 0; background: #F6F4EE; color: #0E1112; }
+body { font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","cv11"; }
+a { color: #3F4A2E; text-decoration: none; }
+a:hover { color: #0E1112; }
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .mg-faq-plus { transform: rotate(45deg); }
+.mg-arrow{display:inline-block;transition:transform .22s cubic-bezier(0.22,1,0.36,1)}
+a:hover .mg-arrow{transform:translateX(5px)}
+.mg-card-link{transition:transform .2s ease,box-shadow .25s ease,background .18s ease}
+.mg-card-link:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.32)}
+.mg-spec{transition:background .15s ease,transform .2s ease,box-shadow .25s ease}
+.mg-spec:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.3)}
+</style>
+<script>
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "kennismaking", {origin:"https://cal.com"});
+Cal.ns["kennismaking"]("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#3F4A2E"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3F4A2E"></rect>
+    <text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#C8E06A">M</text>
+  </svg>
+</template>
+
+<div style="min-height:100vh;background:#F6F4EE;color:#0E1112">
+
+  <div style="background:#3F4A2E;color:#F6F4EE;min-height:34px;display:flex;align-items:center;justify-content:center;padding:7px 24px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:rgba(246,244,238,0.95)">Klaar om te plaatsen · Mila voor mediators</span>
+  </div>
+
+  <nav data-screen-label="Navigatie" style="position:sticky;top:0;z-index:40;background:rgba(246,244,238,0.85);backdrop-filter:blur(10px);border-bottom:1px solid #E1DCCF">
+    <div style="max-width:1240px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;color:#0E1112">
+        <img src="marketgrow-logo.png" alt="MarketGrow.ai logo" width="30" height="30" style="width:30px;height:30px;display:block;border-radius:6px">
+        <span style="display:flex;align-items:baseline;gap:1px">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px">MarketGrow</span>
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#3F4A2E">.ai</span>
+        </span>
+      </a>
+      <div style="display:flex;align-items:center;gap:30px;font-size:13.5px">
+        <a href="platform.html" style="color:#6A6D70">Het platform</a>
+        <a href="sectoren.html" style="color:#0E1112;border-bottom:1px solid #3F4A2E;padding-bottom:2px">Sectoren</a>
+        <a href="bewijs.html" style="color:#6A6D70">Het bewijs</a>
+        <a href="prijzen.html" style="color:#6A6D70">Prijzen</a>
+        <a href="contact.html" style="color:#6A6D70">Contact</a>
+        <a href="#founding" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#3F4A2E;color:#F6F4EE;font-size:13px;padding:10px 18px;display:inline-flex;align-items:center;gap:8px;cursor:pointer" style-hover="background:#324023;color:#F6F4EE">Plan een kennismaking <span class="mg-arrow">→</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section data-screen-label="Mila · hero" style="position:relative;overflow:hidden;border-bottom:1px solid #E1DCCF">
+    <div style="position:absolute;top:-220px;right:-140px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.3), transparent 66%);filter:blur(90px);opacity:0.34;pointer-events:none"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:34px 32px 64px">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.04em;color:#6A6D70;margin-bottom:34px"><a href="sectoren.html" style="color:#6A6D70">Sectoren</a> <span style="color:#A09E94">/</span> <span style="color:#0E1112">Mila</span></div>
+      <div style="display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px;align-items:center">
+        <div>
+          <div style="margin-bottom:18px"><span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;color:#6A6D70">Klaar om geplaatst te worden</span></div>
+          <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.03em;line-height:0.94;font-size:96px;margin:0 0 8px">Mila</h1>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:30px;font-style:italic;color:#3F4A2E;line-height:1.1;margin-bottom:10px">Nodigt uit zonder partij te kiezen.</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;font-size:11px;color:#6A6D70;margin-bottom:26px">Mediators</div>
+          <p style="font-size:17px;line-height:1.62;color:rgba(14,17,18,0.82);max-width:480px;margin:0 0 30px">Bij mediation is de eerste toon alles. Mila ontvangt beide kanten neutraal, peilt of mediation past en zet een kennismaking klaar, zonder ooit stelling te nemen.</p>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+            <a href="#founding" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#3F4A2E;color:#F6F4EE;font-size:14px;padding:14px 24px;display:inline-flex;align-items:center;gap:10px;cursor:pointer" style-hover="background:#324023;color:#F6F4EE">Plan een kennismaking <span class="mg-arrow">→</span></a>
+            <a href="sectoren.html" style="color:#6A6D70;font-size:14px;padding:14px 12px" style-hover="color:#0E1112">Alle specialisten</a>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:center">
+          <div style="width:100%;max-width:420px;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E1DCCF;box-shadow:0 30px 80px -44px rgba(63,74,46,0.4)">
+            <div style="display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid #E1DCCF;background:#EFEBE1">
+              <div style="position:relative">
+                <div style="width:32px;height:32px;background:#3F4A2E;color:#F6F4EE;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',Georgia,serif;font-size:17px">M</div>
+                <div style="position:absolute;bottom:-2px;right:-2px;width:11px;height:11px;background:#D8D2C2;border-radius:50%;border:2px solid #EFEBE1"></div>
+              </div>
+              <div>
+                <div style="font-size:14px;font-weight:500;line-height:1.2">Mila</div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#6A6D70;line-height:1.4">Voorbeeldgesprek · demo</div>
+              </div>
+            </div>
+            <div style="padding:20px;display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;justify-content:flex-end"><div style="max-width:82%;background:#0E1112;color:#F6F4EE;padding:10px 14px;font-size:14px;line-height:1.55">Mijn ex en ik komen er niet uit over de kinderen.</div></div>
+              <div style="display:flex;gap:10px"><div style="width:24px;height:24px;background:#3F4A2E;color:#F6F4EE;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',Georgia,serif;font-size:12px;flex-shrink:0;margin-top:2px">M</div><div style="max-width:82%;background:#EFEBE1;color:#0E1112;padding:10px 14px;font-size:14px;line-height:1.55">Dat is zwaar, juist omdat het om de kinderen gaat. Mediation kan helpen om er samen uit te komen. Zijn jullie allebei bereid om aan tafel te gaan?</div></div>
+              <div style="display:flex;justify-content:flex-end"><div style="max-width:82%;background:#0E1112;color:#F6F4EE;padding:10px 14px;font-size:14px;line-height:1.55">Ik wel, van hem weet ik het niet.</div></div>
+              <div style="display:flex;gap:10px"><div style="width:24px;height:24px;background:#3F4A2E;color:#F6F4EE;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',Georgia,serif;font-size:12px;flex-shrink:0;margin-top:2px">M</div><div style="max-width:82%;background:#EFEBE1;color:#0E1112;padding:10px 14px;font-size:14px;line-height:1.55">Begrijpelijk. Ik zet vrijblijvend een kennismaking klaar. Je partner hoeft nu nog niets te beslissen.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- De scène -->
+  <section data-screen-label="De scène" style="padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ De scène</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:48px;margin:0">De eerste toon bepaalt of ze aan <em style="font-style:italic;color:#3F4A2E">tafel</em> komen.</h2>
+      </div>
+      <p style="font-size:17px;line-height:1.65;color:#6A6D70;margin:0">Wie een mediator zoekt, zit vaak klem. Eén verkeerd woord en de deur valt dicht. Mila blijft neutraal, erkent beide kanten en houdt de drempel laag.</p>
+    </div>
+  </section>
+
+  <!-- Wat de specialist doet -->
+  <section data-screen-label="Wat Mila doet" style="background:#EFEBE1;border-top:1px solid #E1DCCF;border-bottom:1px solid #E1DCCF;padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="margin-bottom:44px">
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Wat Mila voor je doet</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:44px;margin:0">Getraind op <em style="font-style:italic;color:#3F4A2E">jouw</em> soort klanten.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+        <div style="background:#F6F4EE;padding:34px 30px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#3F4A2E;margin-bottom:16px">01</div>
+          <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:24px;line-height:1.12;margin:0 0 10px">Kiest geen partij</h3>
+          <p style="font-size:14.5px;color:#6A6D70;line-height:1.6;margin:0">Mila erkent beide kanten en houdt de toon neutraal en veilig.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:34px 30px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#3F4A2E;margin-bottom:16px">02</div>
+          <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:24px;line-height:1.12;margin:0 0 10px">Peilt de bereidheid</h3>
+          <p style="font-size:14.5px;color:#6A6D70;line-height:1.6;margin:0">Is er ruimte om aan tafel te gaan? Mila voelt dat zorgvuldig af.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:34px 30px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#3F4A2E;margin-bottom:16px">03</div>
+          <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:24px;line-height:1.12;margin:0 0 10px">Houdt de drempel laag</h3>
+          <p style="font-size:14.5px;color:#6A6D70;line-height:1.6;margin:0">Een vrijblijvende kennismaking, zonder dat iemand zich al vastlegt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voorbeeld-intakevragen -->
+  <section data-screen-label="Intakevragen" style="padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ De vragen die Mila stelt</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:40px;margin:0 0 18px">De vragen die jij ook zou <em style="font-style:italic;color:#3F4A2E">stellen.</em></h2>
+        <p style="font-size:15.5px;line-height:1.65;color:#6A6D70;margin:0">Voorbeelden uit een intake. Op jouw site stemmen we ze af op je eigen aanpak en kennisbank.</p>
+      </div>
+      <ul style="list-style:none;margin:0;padding:0">
+          <li style="display:flex;gap:16px;align-items:flex-start;font-size:16.5px;line-height:1.5;color:#0E1112;padding:18px 0;border-bottom:1px solid #E1DCCF"><span style="width:7px;height:7px;background:#3F4A2E;flex-shrink:0;margin-top:8px"></span><span>Gaat het om relatie, zakelijk of familie?</span></li>
+          <li style="display:flex;gap:16px;align-items:flex-start;font-size:16.5px;line-height:1.5;color:#0E1112;padding:18px 0;border-bottom:1px solid #E1DCCF"><span style="width:7px;height:7px;background:#3F4A2E;flex-shrink:0;margin-top:8px"></span><span>Zijn beide partijen op de hoogte?</span></li>
+          <li style="display:flex;gap:16px;align-items:flex-start;font-size:16.5px;line-height:1.5;color:#0E1112;padding:18px 0;border-bottom:1px solid #E1DCCF"><span style="width:7px;height:7px;background:#3F4A2E;flex-shrink:0;margin-top:8px"></span><span>Loopt er al een procedure?</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Hoe het in het team past -->
+  <section data-screen-label="In het team" style="background:#3F4A2E;color:#F6F4EE;padding:96px 0;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:760px;height:520px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.22), transparent 66%);filter:blur(90px);opacity:0.5;pointer-events:none"></div>
+    <div style="position:relative;max-width:900px;margin:0 auto;padding:0 32px;text-align:center">
+      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#C8E06A;margin-bottom:24px">/ Mila staat niet alleen</div>
+      <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.04;font-size:42px;margin:0 0 22px">Mila is het gezicht. Daarachter werkt het hele <em style="font-style:italic;color:#C8E06A">team.</em></h2>
+      <p style="font-size:16.5px;line-height:1.7;color:rgba(246,244,238,0.76);max-width:620px;margin:0 auto 34px">De Content-Engine zorgt dat je gevonden wordt, de Document-Automatie zet je offertes klaar, en via WhatsApp houd jij de regie. Alles put uit één kennisbank: die van jou.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center">
+        <a href="platform.html" style="background:#C8E06A;color:#0E1112;font-size:14px;padding:13px 22px;display:inline-flex;align-items:center;gap:10px" style-hover="filter:brightness(0.95);color:#0E1112">Ontdek het platform <span class="mg-arrow">→</span></a>
+        <a href="sectoren.html" style="border:1px solid rgba(246,244,238,0.3);color:#F6F4EE;font-size:14px;padding:13px 22px;display:inline-flex;align-items:center;gap:10px" style-hover="border-color:#F6F4EE;color:#F6F4EE">Alle specialisten</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ · sector -->
+  <section id="faq" data-screen-label="FAQ · Mila" style="padding:96px 0">
+    <div style="max-width:920px;margin:0 auto;padding:0 32px">
+      <div style="margin-bottom:44px">
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Vragen over Mila</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:0.98;font-size:44px;margin:0">Wat Mila <em style="font-style:italic;color:#3F4A2E">wel en niet</em> doet.</h2>
+      </div>
+      <div>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Kiest Mila een partij?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Nooit. Mila blijft neutraal, erkent beide kanten en houdt de toon veilig.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Kan Mila met beide partijen praten?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Ja, altijd neutraal. Ze peilt de bereidheid en zet een vrijblijvende kennismaking klaar.</p>
+        </details>
+        <details>
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Geeft Mila juridisch advies?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Nee. Mila introduceert en plant; de inhoud blijft bij jou als mediator.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="founding" data-screen-label="CTA" style="padding:96px 0;scroll-margin-top:70px">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;border:1px solid #E1DCCF;background:#EFEBE1;padding:56px 48px">
+        <div style="max-width:640px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:16px">/ Kom in contact</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:40px;margin:0 0 12px">Zullen we Mila voor jou bouwen?</h2>
+          <p style="font-size:16px;line-height:1.65;color:#6A6D70;margin:0">Een kennismaking van een half uur. We laten je Mila zien en kijken of jouw kantoor past. Geen verplichtingen.</p>
+        </div>
+        <a href="https://cal.com/julian-goote-c4pgqu/intake-marketgrow.ai" target="_blank" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#3F4A2E;color:#F6F4EE;padding:16px 28px;font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:10px;cursor:pointer" style-hover="background:#324023;color:#F6F4EE">Plan een kennismaking <span class="mg-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer data-screen-label="Footer" style="border-top:1px solid #E1DCCF;padding:56px 0 40px;background:#F6F4EE">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,2fr) minmax(0,3fr);gap:40px;margin-bottom:40px">
+        <div>
+          <div style="display:flex;align-items:baseline;gap:1px;margin-bottom:12px">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px">MarketGrow</span>
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px;color:#3F4A2E">.ai</span>
+          </div>
+          <p style="color:#6A6D70;font-size:14.5px;line-height:1.6;max-width:320px;margin:0">Een afdeling met een gezicht.</p>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Contact</div>
+          <a href="mailto:hello@marketgrow.ai" style="font-size:14px;color:#0E1112" style-hover="color:#3F4A2E">hello@marketgrow.ai</a>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Menu</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
+            <a href="index.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Home</a>
+            <a href="platform.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Het platform</a>
+            <a href="sectoren.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Sectoren</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Founders</div>
+          <div style="font-size:14px;color:#6A6D70;line-height:1.7">Julian Goote · Onno Goote</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #E1DCCF;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;font-size:12px;color:#6A6D70">
+        <div>© 2026 MarketGrow.ai</div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px">Binnenhalen · Kwalificeren · Binden</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

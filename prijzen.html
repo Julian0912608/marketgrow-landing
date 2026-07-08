@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter+Tight:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="marketgrow-logo.png">
+<title>Prijzen · MarketGrow.ai</title>
+<meta name="description" content="Vaste, transparante tarieven per bouwblok. Je start met de AI-Gespreksgids en breidt uit zodra je groeit. De eerste tien kantoren krijgen een oprichterstarief dat blijft.">
+<meta name="theme-color" content="#3F4A2E">
+<style>
+html, body { margin: 0; padding: 0; background: #F6F4EE; color: #0E1112; }
+body { font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","cv11"; }
+a { color: #3F4A2E; text-decoration: none; }
+a:hover { color: #0E1112; }
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .mg-faq-plus { transform: rotate(45deg); }
+.mg-arrow{display:inline-block;transition:transform .22s cubic-bezier(0.22,1,0.36,1)}
+a:hover .mg-arrow{transform:translateX(5px)}
+.mg-card-link{transition:transform .2s ease,box-shadow .25s ease,background .18s ease}
+.mg-card-link:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.32)}
+.mg-spec{transition:background .15s ease,transform .2s ease,box-shadow .25s ease}
+.mg-spec:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.3)}
+</style>
+<script>
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "kennismaking", {origin:"https://cal.com"});
+Cal.ns["kennismaking"]("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#3F4A2E"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3F4A2E"></rect>
+    <text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#C8E06A">M</text>
+  </svg>
+</template>
+
+<div style="min-height:100vh;background:#F6F4EE;color:#0E1112">
+
+  <div style="background:#3F4A2E;color:#F6F4EE;min-height:34px;display:flex;align-items:center;justify-content:center;padding:7px 24px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:rgba(246,244,238,0.95)">Vaste tarieven · per maand opzegbaar · geen jaarcontract</span>
+  </div>
+
+  <nav data-screen-label="Navigatie" style="position:sticky;top:0;z-index:40;background:rgba(246,244,238,0.85);backdrop-filter:blur(10px);border-bottom:1px solid #E1DCCF">
+    <div style="max-width:1240px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;color:#0E1112">
+        <img src="marketgrow-logo.png" alt="MarketGrow.ai logo" width="30" height="30" style="width:30px;height:30px;display:block;border-radius:6px">
+        <span style="display:flex;align-items:baseline;gap:1px">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px">MarketGrow</span>
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#3F4A2E">.ai</span>
+        </span>
+      </a>
+      <div style="display:flex;align-items:center;gap:30px;font-size:13.5px">
+        <a href="platform.html" style="color:#6A6D70">Het platform</a>
+        <a href="sectoren.html" style="color:#6A6D70">Sectoren</a>
+        <a href="bewijs.html" style="color:#6A6D70">Het bewijs</a>
+        <a href="prijzen.html" style="color:#0E1112;border-bottom:1px solid #3F4A2E;padding-bottom:2px">Prijzen</a>
+        <a href="contact.html" style="color:#6A6D70">Contact</a>
+        <a href="#kennismaking" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#3F4A2E;color:#F6F4EE;font-size:13px;padding:10px 18px;display:inline-flex;align-items:center;gap:8px;cursor:pointer" style-hover="background:#324023;color:#F6F4EE">Plan een kennismaking <span class="mg-arrow">→</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section data-screen-label="Prijzen · hero" style="position:relative;overflow:hidden;border-bottom:1px solid #E1DCCF">
+    <div style="position:absolute;top:-220px;right:-140px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.32), transparent 66%);filter:blur(90px);opacity:0.36;pointer-events:none"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:72px 32px 60px">
+      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:22px">/ Prijzen</div>
+      <div style="display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end">
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.03em;line-height:0.96;font-size:60px;margin:0">Begin klein. <em style="font-style:italic;color:#3F4A2E">Groei mee.</em></h1>
+        <p style="font-size:16.5px;line-height:1.64;color:rgba(14,17,18,0.82);margin:0">Vaste, transparante tarieven per bouwblok. Je start met de AI-Gespreksgids en breidt uit zodra je groeit. De eerste tien kantoren krijgen een oprichterstarief dat blijft. Alle bedragen excl. btw.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prijskaarten -->
+  <section data-screen-label="Prijskaarten" style="padding:88px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+        <div style="background:#3F4A2E;color:#F6F4EE;padding:32px 30px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden">
+          <div style="position:absolute;top:-30px;right:-30px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.3), transparent 66%);filter:blur(18px);pointer-events:none"></div>
+          <div style="position:relative;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;font-weight:500;color:#0E1112;background:#C8E06A;padding:4px 9px;align-self:flex-start">Nu live</div>
+          <div style="position:relative;font-family:'Instrument Serif',Georgia,serif;font-size:27px;line-height:1.05">AI-Gespreksgids</div>
+          <p style="position:relative;font-size:13.5px;color:rgba(246,244,238,0.72);line-height:1.55;margin:0;flex:1">Iris vangt websitevragen op, kwalificeert en zet alleen de juiste intakes in je agenda.</p>
+          <div style="position:relative">
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1">€1.000</div>
+            <div style="font-size:12px;color:rgba(246,244,238,0.6)">setup, eenmalig · excl. btw</div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1;margin-top:10px;color:#C8E06A">€40<span style="font-size:12px;color:rgba(246,244,238,0.6)"> /mnd</span></div>
+          </div>
+        </div>
+        <div style="background:#F6F4EE;padding:32px 30px;display:flex;flex-direction:column;gap:12px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;font-weight:500;color:#6A6D70;border:1px solid #E1DCCF;padding:4px 9px;align-self:flex-start">Binnenhalen</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:27px;line-height:1.05">Content-Engine</div>
+          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:0;flex:1">Blogs en posts in jouw stem. Jij keurt goed met één klik.</p>
+          <div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1">€500</div>
+            <div style="font-size:12px;color:#6A6D70">setup, eenmalig · excl. btw</div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1;margin-top:10px;color:#3F4A2E">€65<span style="font-size:12px;color:#6A6D70"> /mnd</span></div>
+          </div>
+        </div>
+        <div style="background:#F6F4EE;padding:32px 30px;display:flex;flex-direction:column;gap:12px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;font-weight:500;color:#6A6D70;border:1px solid #E1DCCF;padding:4px 9px;align-self:flex-start">Binden</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:27px;line-height:1.05">WhatsApp-afstandsbediening</div>
+          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:0;flex:1">Een appje bij elke lead. Jij stuurt het team aan vanuit WhatsApp.</p>
+          <div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1">€400</div>
+            <div style="font-size:12px;color:#6A6D70">setup, eenmalig · excl. btw</div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1;margin-top:10px;color:#3F4A2E">€20<span style="font-size:12px;color:#6A6D70"> /mnd</span></div>
+          </div>
+        </div>
+        <div style="background:#F6F4EE;padding:32px 30px;display:flex;flex-direction:column;gap:12px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;font-weight:500;color:#6A6D70;border:1px solid #E1DCCF;padding:4px 9px;align-self:flex-start">Binden</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:27px;line-height:1.05">Document-Automatie</div>
+          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:0;flex:1">Intakeverslagen en offertes klaargezet uit je eigen documenten.</p>
+          <div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1">€1.150</div>
+            <div style="font-size:12px;color:#6A6D70">setup, eenmalig · excl. btw</div>
+            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1;margin-top:10px;color:#3F4A2E">€30<span style="font-size:12px;color:#6A6D70"> /mnd</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px 32px;font-size:13px;color:#6A6D70">
+        <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:6px;height:6px;background:#3F4A2E;flex-shrink:0"></span>Dashboard inbegrepen bij elk actief bouwblok</span>
+        <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:6px;height:6px;background:#3F4A2E;flex-shrink:0"></span>Per maand opzegbaar, geen jaarcontract</span>
+        <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:6px;height:6px;background:#3F4A2E;flex-shrink:0"></span>Oprichterstarief blijft, ook als je uitbreidt</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI-verbruik -->
+  <section data-screen-label="AI-verbruik" style="background:#EFEBE1;border-top:1px solid #E1DCCF;border-bottom:1px solid #E1DCCF;padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:center">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Wat kost het AI-gebruik?</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:40px;margin:0 0 18px">Transparant, en <em style="font-style:italic;color:#3F4A2E">nooit</em> een verrassing.</h2>
+        <p style="font-size:16px;line-height:1.7;color:#6A6D70;margin:0">Naast het maandbedrag betaal je voor het daadwerkelijke AI-gebruik van de gesprekken. Dat verbruik zit gebundeld, staat transparant in je dashboard en heeft een harde grens, zodat je nooit voor een onverwachte rekening staat.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+        <div style="background:#F6F4EE;padding:30px 26px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:38px;color:#3F4A2E;line-height:1;margin-bottom:12px">175</div>
+          <div style="font-size:14px;font-weight:500;margin-bottom:6px">gesprekken per maand</div>
+          <p style="font-size:13px;color:#6A6D70;line-height:1.55;margin:0">Inbegrepen bij de AI-Gespreksgids, ruim genoeg voor de meeste kantoren.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:30px 26px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:38px;color:#3F4A2E;line-height:1;margin-bottom:12px">+</div>
+          <div style="font-size:14px;font-weight:500;margin-bottom:6px">toeslag daarboven</div>
+          <p style="font-size:13px;color:#6A6D70;line-height:1.55;margin:0">Een kleine toeslag per gesprek boven de bundel. Je ziet het live meelopen in je dashboard.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:30px 26px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:38px;color:#3F4A2E;line-height:1;margin-bottom:12px">400</div>
+          <div style="font-size:14px;font-weight:500;margin-bottom:6px">harde grens</div>
+          <p style="font-size:13px;color:#6A6D70;line-height:1.55;margin:0">Boven de grens stopt het verbruik automatisch. Geen verrassingen achteraf.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" data-screen-label="FAQ · prijzen" style="padding:96px 0">
+    <div style="max-width:920px;margin:0 auto;padding:0 32px">
+      <div style="margin-bottom:44px">
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Vragen over de prijs</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:0.98;font-size:44px;margin:0">Helder over wat je <em style="font-style:italic;color:#3F4A2E">betaalt.</em></h2>
+      </div>
+      <div>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Zit ik ergens aan vast?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Nee. Alles is per maand opzegbaar, geen jaarcontract op losse bouwblokken. Je start met één bouwblok en breidt uit wanneer je eraan toe bent.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Wat is het oprichterstarief?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">De eerste tien kantoren krijgen een preferentieel tarief dat blijft, ook als je later uitbreidt of als we onze prijzen herzien. Geen pilot-korting die straks verdwijnt.</p>
+        </details>
+        <details>
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Zijn de bedragen inclusief btw?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Alle genoemde bedragen zijn exclusief btw. Dit zijn onze vroege-fase tarieven; we herzien ze pas zodra de klantwaarde bewezen is, maar het oprichterstarief blijft voor de eerste tien.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="kennismaking" data-screen-label="CTA" style="background:#EFEBE1;border-top:1px solid #E1DCCF;padding:96px 0;scroll-margin-top:70px">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="background:#3F4A2E;color:#F6F4EE;padding:64px 56px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-60px;right:-40px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.24), transparent 66%);filter:blur(30px);pointer-events:none"></div>
+        <div style="position:relative;max-width:640px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#C8E06A;margin-bottom:18px">/ Kom in contact</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:44px;margin:0 0 14px">Benieuwd wat het voor jou wordt?</h2>
+          <p style="font-size:16px;line-height:1.65;color:rgba(246,244,238,0.76);margin:0">In een kennismaking van een half uur rekenen we samen door wat past bij jouw kantoor. Geen verplichtingen.</p>
+        </div>
+        <a href="https://cal.com/julian-goote-c4pgqu/intake-marketgrow.ai" target="_blank" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="position:relative;background:#C8E06A;color:#0E1112;padding:16px 28px;font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:10px;cursor:pointer" style-hover="filter:brightness(0.95);color:#0E1112">Plan een kennismaking <span class="mg-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer data-screen-label="Footer" style="border-top:1px solid #E1DCCF;padding:56px 0 40px;background:#F6F4EE">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,2fr) minmax(0,3fr);gap:40px;margin-bottom:40px">
+        <div>
+          <div style="display:flex;align-items:baseline;gap:1px;margin-bottom:12px">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px">MarketGrow</span>
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px;color:#3F4A2E">.ai</span>
+          </div>
+          <p style="color:#6A6D70;font-size:14.5px;line-height:1.6;max-width:320px;margin:0">Een afdeling met een gezicht.</p>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Contact</div>
+          <a href="mailto:hello@marketgrow.ai" style="font-size:14px;color:#0E1112" style-hover="color:#3F4A2E">hello@marketgrow.ai</a>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Menu</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
+            <a href="platform.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Het platform</a>
+            <a href="sectoren.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Sectoren</a>
+            <a href="bewijs.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Het bewijs</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Founders</div>
+          <div style="font-size:14px;color:#6A6D70;line-height:1.7">Julian Goote · Onno Goote</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #E1DCCF;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;font-size:12px;color:#6A6D70">
+        <div>© 2026 MarketGrow.ai</div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px">Binnenhalen · Kwalificeren · Binden</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter+Tight:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="marketgrow-logo.png">
+<title>Het platform · MarketGrow.ai</title>
+<meta name="description" content="Vier bouwblokken die samen je klanten faciliteren: de AI-Gespreksgids, de Content-Engine, de WhatsApp-afstandsbediening en de Document-Automatie. Eén kennisbank eronder, jij houdt de regie.">
+<meta name="theme-color" content="#3F4A2E">
+<style>
+html, body { margin: 0; padding: 0; background: #F6F4EE; color: #0E1112; }
+body { font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","cv11"; }
+a { color: #3F4A2E; text-decoration: none; }
+a:hover { color: #0E1112; }
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .mg-faq-plus { transform: rotate(45deg); }
+.mg-arrow{display:inline-block;transition:transform .22s cubic-bezier(0.22,1,0.36,1)}
+a:hover .mg-arrow{transform:translateX(5px)}
+.mg-card-link{transition:transform .2s ease,box-shadow .25s ease,background .18s ease}
+.mg-card-link:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.32)}
+.mg-spec{transition:background .15s ease,transform .2s ease,box-shadow .25s ease}
+.mg-spec:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.3)}
+</style>
+<script>
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "kennismaking", {origin:"https://cal.com"});
+Cal.ns["kennismaking"]("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#3F4A2E"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3F4A2E"></rect>
+    <text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#C8E06A">M</text>
+  </svg>
+</template>
+
+<div style="min-height:100vh;background:#F6F4EE;color:#0E1112">
+
+  <div style="background:#3F4A2E;color:#F6F4EE;min-height:34px;display:flex;align-items:center;justify-content:center;padding:7px 24px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:rgba(246,244,238,0.95)">Vier bouwblokken · één platform · jij houdt de regie</span>
+  </div>
+
+  <nav data-screen-label="Navigatie" style="position:sticky;top:0;z-index:40;background:rgba(246,244,238,0.85);backdrop-filter:blur(10px);border-bottom:1px solid #E1DCCF">
+    <div style="max-width:1240px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;color:#0E1112">
+        <img src="marketgrow-logo.png" alt="MarketGrow.ai logo" width="30" height="30" style="width:30px;height:30px;display:block;border-radius:6px">
+        <span style="display:flex;align-items:baseline;gap:1px">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px">MarketGrow</span>
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#3F4A2E">.ai</span>
+        </span>
+      </a>
+      <div style="display:flex;align-items:center;gap:30px;font-size:13.5px">
+        <a href="platform.html" style="color:#0E1112;border-bottom:1px solid #3F4A2E;padding-bottom:2px">Het platform</a>
+        <a href="sectoren.html" style="color:#6A6D70">Sectoren</a>
+        <a href="bewijs.html" style="color:#6A6D70">Het bewijs</a>
+        <a href="prijzen.html" style="color:#6A6D70">Prijzen</a>
+        <a href="contact.html" style="color:#6A6D70">Contact</a>
+        <a href="#founding" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#3F4A2E;color:#F6F4EE;font-size:13px;padding:10px 18px;display:inline-flex;align-items:center;gap:8px;cursor:pointer" style-hover="background:#324023;color:#F6F4EE">Plan een kennismaking <span class="mg-arrow">→</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page hero -->
+  <section data-screen-label="Platform · hero" style="position:relative;overflow:hidden;border-bottom:1px solid #E1DCCF">
+    <div style="position:absolute;top:-220px;right:-140px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.34), transparent 66%);filter:blur(90px);opacity:0.38;pointer-events:none"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:72px 32px 64px">
+      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:22px">/ Het platform</div>
+      <div style="display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end">
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.03em;line-height:0.96;font-size:64px;margin:0">Geen chatbot. Een heel <em style="font-style:italic;color:#3F4A2E">team.</em></h1>
+        <div>
+          <p style="font-size:17px;line-height:1.62;color:rgba(14,17,18,0.82);margin:0 0 14px">Onder de motorkap draaien vier bouwblokken die samen je klanten faciliteren: gevonden worden, opgenomen worden, vastgehouden worden.</p>
+          <p style="font-size:14px;line-height:1.6;color:#6A6D70;margin:0">De meeste bezoekers zijn nog aan het kiezen. Elke vraag die meteen goed beantwoord wordt, brengt ze een stap dichter bij ja. Jij stuurt, het team voert uit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- De 4 bouwblokken -->
+  <section data-screen-label="De 4 bouwblokken" style="background-color:#F6F4EE;background-image:linear-gradient(rgba(14,17,18,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(14,17,18,0.04) 1px,transparent 1px);background-size:56px 56px;padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:44px">
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:40px;margin:0;max-width:620px">Vier bouwblokken, één platform.</h2>
+        <p style="font-size:15px;color:#6A6D70;line-height:1.6;max-width:380px;margin:0">Elk bouwblok neemt een stuk van het klanten-werk over. Zet aan wat je nodig hebt, breid later uit.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+        <div style="background:#F6F4EE;padding:40px 38px;display:flex;flex-direction:column;gap:16px">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3F4A2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:11px;color:#3F4A2E">Kwalificeren</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1.02">AI-Gespreksgids</div>
+          <p style="font-family:'Inter Tight',system-ui,sans-serif;font-size:15px;line-height:1.6;color:#6A6D70;margin:0;flex:1">Iris, onze AI-collega op je site, vangt je websitevragen op, herkent waar het over gaat en zet alleen de juiste intakes in je agenda. Geen ruis, alleen gesprekken die ertoe doen.</p>
+          <div style="margin-top:6px;padding-top:16px;border-top:1px solid #E1DCCF;font-size:13.5px;line-height:1.55;color:#0E1112"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6A6D70;text-transform:uppercase">Zo werkt het · </span>Spoed of geen spoed? Binnen scope of niet? Iris weet het en handelt ernaar.</div>
+        </div>
+
+        <div style="background:#F6F4EE;padding:40px 38px;display:flex;flex-direction:column;gap:16px">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3F4A2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:11px;color:#3F4A2E">Binnenhalen</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1.02">Content-Engine</div>
+          <p style="font-family:'Inter Tight',system-ui,sans-serif;font-size:15px;line-height:1.6;color:#6A6D70;margin:0;flex:1">Schrijft blogs en posts in jouw stem, zodat nieuwe mensen je überhaupt vinden. Jij keurt goed of wijzigt met één klik.</p>
+          <div style="margin-top:6px;padding-top:16px;border-top:1px solid #E1DCCF;font-size:13.5px;line-height:1.55;color:#0E1112"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6A6D70;text-transform:uppercase">Zo werkt het · </span>Uit je eigen kennisbank, dus het klinkt als jij, niet als een generieke tekst.</div>
+        </div>
+
+        <div style="background:#F6F4EE;padding:40px 38px;display:flex;flex-direction:column;gap:16px">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#3F4A2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:11px;color:#3F4A2E">Binden</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1.02">WhatsApp-afstandsbediening</div>
+          <p style="font-family:'Inter Tight',system-ui,sans-serif;font-size:15px;line-height:1.6;color:#6A6D70;margin:0;flex:1">Een appje bij elke lead. Typ terug wat er moet gebeuren en de AI voert het uit, op basis van je eigen documenten. Jij stuurt vanaf de zijlijn.</p>
+          <div style="margin-top:6px;padding-top:16px;border-top:1px solid #E1DCCF;font-size:13.5px;line-height:1.55;color:#0E1112"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:#6A6D70;text-transform:uppercase">Zo werkt het · </span>"Stuur haar het intakeformulier" is genoeg. Geen app om te leren.</div>
+        </div>
+
+        <div style="background:#3F4A2E;color:#F6F4EE;padding:40px 38px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden">
+          <div style="position:absolute;top:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.28), transparent 66%);filter:blur(20px);pointer-events:none"></div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#C8E06A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="position:relative"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>
+          <div style="position:relative;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:11px;color:#C8E06A">Binden</div>
+          <div style="position:relative;font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1.02">Document-Automatie</div>
+          <p style="position:relative;font-family:'Inter Tight',system-ui,sans-serif;font-size:15px;line-height:1.6;color:rgba(246,244,238,0.76);margin:0;flex:1">Zet intakeverslagen en offertes klaar uit je eigen standaarddocumenten, terwijl jij met een zaak bezig bent.</p>
+          <div style="position:relative;margin-top:6px;padding-top:16px;border-top:1px solid rgba(246,244,238,0.2);font-size:13.5px;line-height:1.55;color:rgba(246,244,238,0.9)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.12em;color:rgba(200,224,106,0.85);text-transform:uppercase">Zo werkt het · </span>Jouw sjablonen in, een concept-offerte uit. Jij checkt en verstuurt.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- De kennisbank -->
+  <section data-screen-label="De kennisbank" style="background:#EFEBE1;border-top:1px solid #E1DCCF;border-bottom:1px solid #E1DCCF;padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:center">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ De kennisbank · wat ons uniek maakt</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:0.98;font-size:44px;margin:0 0 22px">Antwoorden uit <em style="font-style:italic;color:#3F4A2E">jouw</em> kennis, niet van internet.</h2>
+        <p style="font-size:16px;line-height:1.7;color:#6A6D70;margin:0 0 16px">Onder alle bouwblokken ligt één kennisbank: jouw documenten, jouw aanpak, jouw toon. Elk teamlid put daaruit, dus de antwoorden zijn van jou en niet generiek.</p>
+        <p style="font-size:16px;line-height:1.7;color:#6A6D70;margin:0">Jij beheert de kennisbank zelf en beslist wat erin komt.</p>
+      </div>
+      <div style="background:#3F4A2E;color:#F6F4EE;padding:40px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-30px;right:-30px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.26), transparent 66%);filter:blur(22px);pointer-events:none"></div>
+        <div style="position:relative">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(246,244,238,0.14);border:1px solid rgba(246,244,238,0.14);margin-bottom:1px">
+            <div style="background:#3F4A2E;padding:18px 16px"><div style="font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:9.5px;color:rgba(200,224,106,0.85);margin-bottom:10px">BINNENHALEN</div><div style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;line-height:1.1">Content-Engine</div></div>
+            <div style="background:#3F4A2E;padding:18px 16px"><div style="font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:9.5px;color:rgba(200,224,106,0.85);margin-bottom:10px">KWALIFICEREN</div><div style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;line-height:1.1">Iris</div></div>
+            <div style="background:#3F4A2E;padding:18px 16px"><div style="font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:9.5px;color:rgba(200,224,106,0.85);margin-bottom:10px">BINDEN</div><div style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;line-height:1.1">WhatsApp</div></div>
+            <div style="background:#3F4A2E;padding:18px 16px"><div style="font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:9.5px;color:rgba(200,224,106,0.85);margin-bottom:10px">BINDEN</div><div style="font-family:'Instrument Serif',Georgia,serif;font-size:19px;line-height:1.1">Documenten</div></div>
+          </div>
+          <div style="display:flex;justify-content:center;color:rgba(200,224,106,0.7);font-size:20px;padding:10px 0">↑</div>
+          <div style="background:#324023;border:1px solid rgba(246,244,238,0.14);padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+            <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:11px;color:#C8E06A">De kennisbank · één bron</div>
+            <div style="font-size:14px;color:rgba(246,244,238,0.85)">Jouw documenten · jouw aanpak · jouw toon</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Elke nacht scherper -->
+  <section data-screen-label="Elke nacht scherper" style="padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:44px">
+        <div style="max-width:640px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ De avond-collega</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:44px;margin:0">Elke nacht een beetje <em style="font-style:italic;color:#3F4A2E">scherper.</em></h2>
+        </div>
+        <p style="font-size:15px;color:#6A6D70;line-height:1.6;max-width:380px;margin:0">Het systeem leert van de echte gesprekken en stelt verbeteringen voor. Een mens houdt de regie: niets verandert zonder jouw akkoord.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+        <div style="background:#F6F4EE;padding:32px 28px;display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:44px;color:#3F4A2E;line-height:1">01</div>
+          <div style="font-size:15px;font-weight:500">Luistert mee</div>
+          <p style="font-size:14px;color:#6A6D70;line-height:1.55;margin:0">Verzamelt geanonimiseerd de vragen die Iris die dag kreeg.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:32px 28px;display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:44px;color:#3F4A2E;line-height:1">02</div>
+          <div style="font-size:15px;font-weight:500">Zoekt de gaten</div>
+          <p style="font-size:14px;color:#6A6D70;line-height:1.55;margin:0">Kijkt waar een antwoord beter of vollediger had gekund.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:32px 28px;display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:44px;color:#3F4A2E;line-height:1">03</div>
+          <div style="font-size:15px;font-weight:500">Schrijft een voorstel</div>
+          <p style="font-size:14px;color:#6A6D70;line-height:1.55;margin:0">Stelt aanvullingen voor de kennisbank op. Niets gaat live.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:32px 28px;display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:44px;color:#3F4A2E;line-height:1">04</div>
+          <div style="font-size:15px;font-weight:500">Jij beslist 's ochtends</div>
+          <p style="font-size:14px;color:#6A6D70;line-height:1.55;margin:0">Jij kiest wat erin komt. Niets verandert zonder akkoord.</p>
+        </div>
+      </div>
+      <div style="margin-top:20px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;font-weight:500;color:#3F4A2E;border:1px solid #E1DCCF;background:#EFEBE1;padding:10px 14px;display:inline-block">Geanonimiseerd · GDPR-compliant · jouw gegevens blijven van jou</div>
+    </div>
+  </section>
+
+  <!-- In jouw regie -->
+  <section data-screen-label="In jouw regie" style="background:#EFEBE1;border-top:1px solid #E1DCCF;padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center;margin-bottom:48px">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ In jouw regie</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:44px;margin:0 0 22px">Jij bepaalt wat <em style="font-style:italic;color:#3F4A2E">aan staat.</em></h2>
+          <p style="font-size:16px;line-height:1.7;color:#6A6D70;margin:0 0 16px">Eén dashboard waar alles samenkomt. Zet een bouwblok aan zodra je eraan toe bent, en weer uit als het even niet hoeft.</p>
+          <p style="font-size:16px;line-height:1.7;color:#0E1112;margin:0">Opzegbaar per maand, geen migratie. Zet je een blok later weer aan, dan draait alles meteen weer, precies waar je gebleven was.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div style="display:flex;flex-direction:column;gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+            <sc-for list="{{ rows }}" as="row" hint-placeholder-count="4">
+              <div onClick="{{ row.onToggle }}" style="background:#F6F4EE;padding:22px 26px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none" style-hover="background:#EFEBE1">
+                <span style="font-family:'Instrument Serif',Georgia,serif;font-size:26px;color:{{ row.nameColor }};transition:color 0.35s">{{ row.name }}</span>
+                <span style="width:46px;height:26px;border-radius:13px;background:{{ row.trackColor }};transition:background 0.35s;position:relative;flex-shrink:0;display:block">
+                  <span style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#FFFFFF;transition:transform 0.35s cubic-bezier(0.22,1,0.36,1);transform:{{ row.knobTransform }};box-shadow:0 1px 3px rgba(14,17,18,0.25);display:block"></span>
+                </span>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:#6A6D70">Speelt automatisch af · klik om zelf te schakelen</div>
+        </div>
+      </div>
+
+      <div style="border:1px solid #E1DCCF;background:#FFFFFF">
+        <div style="display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid #E1DCCF;background:#EFEBE1">
+          <span style="width:11px;height:11px;border-radius:50%;background:#D8D2C2"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#D8D2C2"></span>
+          <span style="width:11px;height:11px;border-radius:50%;background:#D8D2C2"></span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;color:#6A6D70;margin-left:12px">app.marketgrow.ai/dashboard</span>
+        </div>
+        <div style="position:relative;width:100%">
+          <img src="dashboard-mockup.png" alt="Het MarketGrow-dashboard" style="width:100%;height:auto;display:block">
+        </div>
+      </div>
+      <div style="margin-top:12px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.12em;font-size:10px;color:#6A6D70">Het dashboard waar je alles bestuurt</div>
+    </div>
+  </section>
+
+  <!-- Live in 7 werkdagen -->
+  <section data-screen-label="Live in 7 werkdagen" style="padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:44px">
+        <div style="max-width:640px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Live in 7 werkdagen</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:44px;margin:0">Van gesprek tot live in <em style="font-style:italic;color:#3F4A2E">zeven werkdagen.</em></h2>
+        </div>
+        <p style="font-size:15px;color:#6A6D70;line-height:1.6;max-width:360px;margin:0">Wij doen het zware werk. Jouw inbreng blijft klein: één gesprek, je documenten, en een korte controle.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+        <div style="background:#F6F4EE;padding:30px 26px;display:flex;flex-direction:column;gap:16px">
+          <div style="font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:11px;color:#3F4A2E">DAG 1</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;line-height:1.05">Intake</div>
+          <p style="font-size:13.5px;line-height:1.5;color:#6A6D70;margin:0">Eén gesprek over je bedrijf, doelgroep en aanpak.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:30px 26px;display:flex;flex-direction:column;gap:16px">
+          <div style="font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:11px;color:#3F4A2E">DAG 2–3</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;line-height:1.05">Onboarding</div>
+          <p style="font-size:13.5px;line-height:1.5;color:#6A6D70;margin:0">We lezen je site en bouwen de kennisbank. Jij reviewt.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:30px 26px;display:flex;flex-direction:column;gap:16px">
+          <div style="font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:11px;color:#3F4A2E">DAG 4–5</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;line-height:1.05">Brand &amp; koppeling</div>
+          <p style="font-size:13.5px;line-height:1.5;color:#6A6D70;margin:0">Jouw kleuren en toon. Agenda en WhatsApp gekoppeld.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:30px 26px;display:flex;flex-direction:column;gap:16px">
+          <div style="font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:11px;color:#3F4A2E">DAG 6</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;line-height:1.05">Quality-check</div>
+          <p style="font-size:13.5px;line-height:1.5;color:#6A6D70;margin:0">25+ testgesprekken. Wij fixen wat eruit komt.</p>
+        </div>
+        <div style="background:#3F4A2E;color:#F6F4EE;padding:30px 26px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden">
+          <div style="position:absolute;top:-30px;right:-30px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.3), transparent 66%);filter:blur(18px);pointer-events:none"></div>
+          <div style="position:relative;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;font-size:11px;color:#C8E06A">DAG 7</div>
+          <div style="position:relative;font-family:'Instrument Serif',Georgia,serif;font-size:24px;line-height:1.05">Live</div>
+          <p style="position:relative;font-size:13.5px;line-height:1.5;color:rgba(246,244,238,0.76);margin:0">Eén scriptregel. De leads stromen binnen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" data-screen-label="FAQ" style="background:#EFEBE1;border-top:1px solid #E1DCCF;padding:96px 0;scroll-margin-top:70px">
+    <div style="max-width:920px;margin:0 auto;padding:0 32px">
+      <div style="margin-bottom:44px">
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Veelgestelde vragen</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:0.98;font-size:44px;margin:0">Vragen die <em style="font-style:italic;color:#3F4A2E">vaak</em> terugkomen.</h2>
+      </div>
+      <div>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Op welke websites werkt het?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Op je bestaande site, wat je ook gebruikt: WordPress, Webflow, Squarespace of custom HTML. Één scriptregel of een DNS-koppeling, geen migratie of redesign.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Wat als de AI iets verkeerd zegt?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Voor go-live voeren we 25+ testgesprekken om hallucinaties en off-topic-antwoorden te vinden. Bij twijfel schakelt de AI door naar een intake met jou, in plaats van zelf inhoudelijk advies te geven. Zo blijft ze binnen jouw scope.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Kan ik bouwblokken los aan- en uitzetten?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Ja. Alles is modulair. Je begint met de AI-Gespreksgids en schakelt de Content-Engine, WhatsApp-afstandsbediening en Document-Automatie bij vanuit je dashboard, wanneer je eraan toe bent. Uitzetten kan net zo makkelijk.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Zijn er verrassingen in het verbruik?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Nee. Het verbruik zit gecapt en staat transparant in je dashboard, tegen een vaste maandprijs per bouwblok. Je weet vooraf waar je aan toe bent.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Hoeveel werk is het voor mij?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Weinig. De onboarding is één gesprek, je documenten en een korte controle. Daarna beheer je zelf je content en je kennisbank, precies zoveel als je wilt.</p>
+        </details>
+        <details>
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Leert het systeem van mijn gesprekken?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Ja. Een avond-collega verzamelt 's nachts geanonimiseerd de vragen en stelt verbeteringen voor de kennisbank voor. Jij keurt goed; niets verandert zonder jouw akkoord.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="founding" data-screen-label="CTA" style="padding:96px 0;scroll-margin-top:70px">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="background:#3F4A2E;color:#F6F4EE;padding:64px 56px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-60px;right:-40px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.24), transparent 66%);filter:blur(30px);pointer-events:none"></div>
+        <div style="position:relative;max-width:640px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#C8E06A;margin-bottom:18px">/ Kom in contact</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:44px;margin:0 0 14px">Benieuwd hoe dit op jouw site draait?</h2>
+          <p style="font-size:16px;line-height:1.65;color:rgba(246,244,238,0.76);margin:0">Een kennismaking van een half uur. We laten je Iris live zien en kijken of jouw kantoor past. Geen verplichtingen.</p>
+        </div>
+        <a href="https://cal.com/julian-goote-c4pgqu/intake-marketgrow.ai" target="_blank" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="position:relative;background:#C8E06A;color:#0E1112;padding:16px 28px;font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:10px;cursor:pointer" style-hover="filter:brightness(0.95);color:#0E1112">Plan een kennismaking <span class="mg-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer data-screen-label="Footer" style="border-top:1px solid #E1DCCF;padding:56px 0 40px;background:#F6F4EE">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,2fr) minmax(0,3fr);gap:40px;margin-bottom:40px">
+        <div>
+          <div style="display:flex;align-items:baseline;gap:1px;margin-bottom:12px">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px">MarketGrow</span>
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px;color:#3F4A2E">.ai</span>
+          </div>
+          <p style="color:#6A6D70;font-size:14.5px;line-height:1.6;max-width:320px;margin:0">Een afdeling met een gezicht.</p>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Contact</div>
+          <a href="mailto:hello@marketgrow.ai" style="font-size:14px;color:#0E1112" style-hover="color:#3F4A2E">hello@marketgrow.ai</a>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Menu</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
+            <a href="index.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Home</a>
+            <a href="sectoren.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Sectoren</a>
+            <a href="bewijs.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Het bewijs</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Founders</div>
+          <div style="font-size:14px;color:#6A6D70;line-height:1.7">Julian Goote · Onno Goote</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #E1DCCF;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;font-size:12px;color:#6A6D70">
+        <div>© 2026 MarketGrow.ai</div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px">Binnenhalen · Kwalificeren · Binden</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  seq = [
+    { gespreksgids:true, content:false, whatsapp:false, document:false },
+    { gespreksgids:true, content:true, whatsapp:false, document:false },
+    { gespreksgids:true, content:true, whatsapp:true, document:false },
+    { gespreksgids:true, content:true, whatsapp:true, document:true },
+    { gespreksgids:true, content:false, whatsapp:true, document:false }
+  ];
+  state = { on: { gespreksgids:true, content:false, whatsapp:false, document:false }, step: 0, auto: true };
+  componentDidMount() { this.timer = setInterval(() => this.tick(), 1900); }
+  componentWillUnmount() { if (this.timer) clearInterval(this.timer); }
+  tick() {
+    if (!this.state.auto) return;
+    this.setState(s => { const step = (s.step + 1) % this.seq.length; return { step, on: { ...this.seq[step] } }; });
+  }
+  toggle(key) { this.setState(s => ({ auto: false, on: { ...s.on, [key]: !s.on[key] } })); }
+  renderVals() {
+    const defs = [ { key:"gespreksgids", name:"AI-Gespreksgids" }, { key:"content", name:"Content-Engine" }, { key:"whatsapp", name:"WhatsApp-afstandsbediening" }, { key:"document", name:"Document-Automatie" } ];
+    return { rows: defs.map(d => { const on = !!this.state.on[d.key]; return {
+      name: d.name, on, off: !on,
+      trackColor: on ? "#C8E06A" : "#C7C3B6",
+      knobTransform: on ? "translateX(20px)" : "translateX(0px)",
+      nameColor: on ? "#0E1112" : "#A09E94",
+      onToggle: () => this.toggle(d.key)
+    }; }) };
+  }
+}
+</script>
+</body>
+</html>

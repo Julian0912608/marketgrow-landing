@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter+Tight:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="marketgrow-logo.png">
+<title>MarketGrow.ai · Het lead-team voor de zakelijke dienstverlening</title>
+<meta name="description" content="MarketGrow zet een compleet lead-team op je eigen website. Het vangt elke vraag op, helpt je bezoeker verder en zet alleen de juiste intakes in je agenda. Live in 7 werkdagen, geen migratie.">
+<meta name="theme-color" content="#3F4A2E">
+<link rel="canonical" href="https://www.marketgrow.ai/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MarketGrow.ai">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:url" content="https://www.marketgrow.ai/">
+<meta property="og:title" content="MarketGrow.ai · Het lead-team voor de zakelijke dienstverlening">
+<meta property="og:description" content="Een lead-team dat jouw vak verstaat, op je eigen site. Live in 7 werkdagen, geen migratie.">
+<meta property="og:image" content="https://www.marketgrow.ai/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<style>
+html, body { margin: 0; padding: 0; background: #F6F4EE; color: #0E1112; }
+body { font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","cv11"; }
+a { color: #3F4A2E; text-decoration: none; }
+a:hover { color: #0E1112; }
+@keyframes mgFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes mgTyping { 0%, 60%, 100% { transform: translateY(0); opacity: 0.3; } 30% { transform: translateY(-3px); opacity: 1; } }
+@keyframes mgBlink { 50% { opacity: 0; } }
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .mg-faq-plus { transform: rotate(45deg); }
+.mg-arrow{display:inline-block;transition:transform .22s cubic-bezier(0.22,1,0.36,1)}
+a:hover .mg-arrow{transform:translateX(5px)}
+.mg-card-link{transition:transform .2s ease,box-shadow .25s ease,background .18s ease}
+.mg-card-link:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.32)}
+.mg-spec{transition:background .15s ease,transform .2s ease,box-shadow .25s ease}
+.mg-spec:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.3)}
+</style>
+<script>
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "kennismaking", {origin:"https://cal.com"});
+Cal.ns["kennismaking"]("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#3F4A2E"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3F4A2E"></rect>
+    <text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#C8E06A">M</text>
+  </svg>
+</template>
+
+<div style="min-height:100vh;background:#F6F4EE;color:#0E1112">
+
+  <div data-screen-label="Olijfbalk" style="background:#3F4A2E;color:#F6F4EE;min-height:34px;display:flex;align-items:center;justify-content:center;padding:7px 24px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:rgba(246,244,238,0.95);animation:mgFadeUp 0.5s ease-out both">{{ claim }}</span>
+  </div>
+
+  <nav data-screen-label="Navigatie" style="position:sticky;top:0;z-index:40;background:rgba(246,244,238,0.85);backdrop-filter:blur(10px);border-bottom:1px solid #E1DCCF">
+    <div style="max-width:1240px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;color:#0E1112">
+        <img src="marketgrow-logo.png" alt="MarketGrow.ai logo" width="30" height="30" style="width:30px;height:30px;display:block;border-radius:6px">
+        <span style="display:flex;align-items:baseline;gap:1px">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px">MarketGrow</span>
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#3F4A2E">.ai</span>
+        </span>
+      </a>
+      <div style="display:flex;align-items:center;gap:30px;font-size:13.5px">
+        <a href="platform.html" style="color:#6A6D70">Het platform</a>
+        <a href="sectoren.html" style="color:#6A6D70">Sectoren</a>
+        <a href="bewijs.html" style="color:#6A6D70">Het bewijs</a>
+        <a href="prijzen.html" style="color:#6A6D70">Prijzen</a>
+        <a href="contact.html" style="color:#6A6D70">Contact</a>
+        <a href="#founding" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#3F4A2E;color:#F6F4EE;font-size:13px;padding:10px 18px;display:inline-flex;align-items:center;gap:8px;cursor:pointer" style-hover="background:#324023;color:#F6F4EE">Plan een kennismaking <span class="mg-arrow">→</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero · Beat 01 · De spiegel -->
+  <section id="top" data-screen-label="Beat 01 · Hero" style="position:relative;overflow:hidden">
+    <div style="position:absolute;top:-220px;right:-140px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.4), transparent 66%);filter:blur(90px);opacity:0.42;pointer-events:none"></div>
+    <div style="position:absolute;inset:0;pointer-events:none;opacity:0.5;background-image:linear-gradient(to right, rgba(14,17,18,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(14,17,18,0.05) 1px, transparent 1px);background-size:56px 56px"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:64px 32px 56px">
+      <div style="display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center">
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:24px">/ Het lead-team voor de zakelijke dienstverlening</div>
+          <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.03em;line-height:0.98;font-size:66px;margin:0 0 26px">
+            <span style="display:block">Je beste lead kwam gisteravond</span>
+            <span style="display:block">om kwart voor elf. <em style="font-style:italic;color:#3F4A2E">Wie deed er open?</em></span>
+          </h1>
+          <p style="font-size:17px;line-height:1.62;color:rgba(14,17,18,0.82);max-width:490px;margin:0 0 18px">MarketGrow zet een compleet lead-team op je eigen website. Het vangt elke vraag op uit je eigen kennisbank, helpt je bezoeker meteen verder en zet alleen de juiste intakes in je agenda. Jij houdt de regie vanaf je telefoon, dag en nacht, zonder zelf online-expert te worden.</p>
+          <p style="font-size:14px;line-height:1.6;color:#6A6D70;max-width:490px;margin:0 0 30px">Want de meeste bezoekers zijn nog aan het kiezen. Wie ze goed verder helpt, wint de klant.</p>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px">
+            <a href="#founding" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#3F4A2E;color:#F6F4EE;font-size:14px;padding:14px 24px;display:inline-flex;align-items:center;gap:10px;cursor:pointer" style-hover="background:#324023;color:#F6F4EE">Plan een kennismaking <span class="mg-arrow">→</span></a>
+            <a href="#team" style="color:#6A6D70;font-size:14px;padding:14px 12px" style-hover="color:#0E1112">Ontmoet het team</a>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:center">
+          <div style="width:100%;max-width:440px;height:552px;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E1DCCF;box-shadow:0 30px 80px -40px rgba(63,74,46,0.4), 0 0 0 1px rgba(14,17,18,0.04)">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #E1DCCF;background:#EFEBE1">
+              <div style="display:flex;align-items:center;gap:12px">
+                <div style="position:relative">
+                  <div style="width:32px;height:32px;background:#3F4A2E;color:#F6F4EE;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',Georgia,serif;font-size:17px">N</div>
+                  <div style="position:absolute;bottom:-2px;right:-2px;width:11px;height:11px;background:#C8E06A;border-radius:50%;border:2px solid #EFEBE1"></div>
+                </div>
+                <div>
+                  <div style="font-size:14px;font-weight:500;line-height:1.2">Noor</div>
+                  <sc-if value="{{ liveMode }}" hint-placeholder-val="{{ false }}">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#3F4A2E;line-height:1.4">Live AI · denkt met je mee</div>
+                  </sc-if>
+                  <sc-if value="{{ demoMode }}" hint-placeholder-val="{{ true }}">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#6A6D70;line-height:1.4">Online · stel gerust je eigen vraag</div>
+                  </sc-if>
+                </div>
+              </div>
+              <button onClick="{{ resetChat }}" style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#6A6D70;background:none;border:none;cursor:pointer;padding:4px" style-hover="color:#0E1112">Opnieuw</button>
+            </div>
+            <div ref="{{ chatBodyRef }}" style="flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px">
+              <sc-for list="{{ msgs }}" as="m" hint-placeholder-count="1">
+                <sc-if value="{{ m.isNoor }}" hint-placeholder-val="{{ true }}">
+                  <div style="display:flex;gap:10px;animation:mgFadeUp 0.4s ease-out both">
+                    <div style="width:24px;height:24px;background:#3F4A2E;color:#F6F4EE;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',Georgia,serif;font-size:12px;flex-shrink:0;margin-top:2px">N</div>
+                    <div style="max-width:82%;background:#EFEBE1;color:#0E1112;padding:10px 14px;font-size:14px;line-height:1.55">{{ m.text }}</div>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ m.isUser }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex;justify-content:flex-end;animation:mgFadeUp 0.4s ease-out both">
+                    <div style="max-width:82%;background:#0E1112;color:#F6F4EE;padding:10px 14px;font-size:14px;line-height:1.55">{{ m.text }}</div>
+                  </div>
+                </sc-if>
+              </sc-for>
+              <sc-if value="{{ showIntake }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-left:34px;background:#3F4A2E;color:#F6F4EE;padding:16px 18px;display:flex;flex-direction:column;gap:12px;animation:mgFadeUp 0.4s ease-out both">
+                  <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;font-weight:500;color:#C8E06A">→ Klaar voor een kennismaking</div>
+                  <a href="{{ calUrl }}" target="_blank" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#F6F4EE;color:#0E1112;text-align:center;padding:11px 16px;font-size:14px;font-weight:500;display:block;cursor:pointer" style-hover="background:#FFFFFF;color:#0E1112">Plan een kennismaking →</a>
+                </div>
+              </sc-if>
+              <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:10px">
+                  <div style="width:24px;height:24px;background:#3F4A2E;color:#F6F4EE;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',Georgia,serif;font-size:12px;flex-shrink:0;margin-top:2px">N</div>
+                  <div style="background:#EFEBE1;padding:12px 16px;display:flex;gap:5px;align-items:center">
+                    <span style="width:6px;height:6px;border-radius:50%;background:#6A6D70;animation:mgTyping 1.4s infinite"></span>
+                    <span style="width:6px;height:6px;border-radius:50%;background:#6A6D70;animation:mgTyping 1.4s infinite;animation-delay:0.18s"></span>
+                    <span style="width:6px;height:6px;border-radius:50%;background:#6A6D70;animation:mgTyping 1.4s infinite;animation-delay:0.36s"></span>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+            <div style="border-top:1px solid #E1DCCF;padding:12px 16px 4px;display:flex;flex-wrap:wrap;gap:8px">
+              <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="3">
+                <button onClick="{{ chip.onPick }}" style="background:#FFFFFF;border:1px solid #E1DCCF;color:#0E1112;padding:9px 14px;font-size:13px;font-weight:500;font-family:'Inter Tight',system-ui,sans-serif;cursor:pointer;transition:border-color 0.15s" style-hover="border-color:#0E1112">{{ chip.label }}</button>
+              </sc-for>
+            </div>
+            <div style="padding:10px 16px 14px;display:flex;gap:8px;align-items:stretch">
+              <sc-if value="{{ liveMode }}" hint-placeholder-val="{{ false }}">
+                <input ref="{{ liveInputRef }}" type="text" value="{{ liveInput }}" onChange="{{ onLiveInput }}" onKeyDown="{{ onLiveKey }}" placeholder="Typ je vraag aan Noor…" style="flex:1;background:#EFEBE1;border:1px solid #E1DCCF;padding:10px 14px;font-size:13.5px;font-family:'Inter Tight',system-ui,sans-serif;color:#0E1112;outline:none">
+                <button onClick="{{ sendInput }}" style="background:#3F4A2E;color:#F6F4EE;border:none;padding:0 16px;display:flex;align-items:center;font-size:14px;cursor:pointer">→</button>
+              </sc-if>
+              <sc-if value="{{ demoMode }}" hint-placeholder-val="{{ true }}">
+                <div onClick="{{ startLive }}" title="Klik om Noor zelf een vraag te stellen" style="flex:1;background:#EFEBE1;border:1px solid #E1DCCF;padding:10px 14px;font-size:13.5px;display:flex;align-items:center;min-height:20px;cursor:text">
+                  <sc-if value="{{ hasDraft }}" hint-placeholder-val="{{ false }}">
+                    <span ref="{{ draftRef }}"></span>
+                    <span style="width:7px;height:14px;background:#0E1112;margin-left:2px;flex-shrink:0;animation:mgBlink 1s steps(2) infinite"></span>
+                  </sc-if>
+                  <sc-if value="{{ noDraft }}" hint-placeholder-val="{{ true }}">
+                    <span style="color:#6A6D70">{{ inputHint }}</span>
+                  </sc-if>
+                </div>
+                <div onClick="{{ startLive }}" style="background:#3F4A2E;color:#F6F4EE;padding:0 16px;display:flex;align-items:center;font-size:14px;cursor:pointer">→</div>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:52px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+        <div style="background:#F6F4EE;padding:20px 24px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1.1;margin-bottom:6px">24/7 bereikbaar</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#3F4A2E">Altijd open</div>
+        </div>
+        <div style="background:#F6F4EE;padding:20px 24px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1.1;margin-bottom:6px">Op je bestaande website</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#3F4A2E">Geen migratie</div>
+        </div>
+        <div style="background:#F6F4EE;padding:20px 24px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1.1;margin-bottom:6px">Live in 7 werkdagen</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#3F4A2E">Geen maatwerk</div>
+        </div>
+        <div style="background:#F6F4EE;padding:20px 24px">
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:23px;line-height:1.1;margin-bottom:6px">Jij houdt de regie</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#3F4A2E">Via je telefoon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beat 02 · De erkenning -->
+  <section data-screen-label="Beat 02 · De erkenning" style="border-top:1px solid #E1DCCF;background:#EFEBE1;padding:88px 0">
+    <div data-reveal="" style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Wat je niet ziet</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:0.98;font-size:52px;margin:0">Voor klanten binnenhalen heb je eigenlijk een <em style="font-style:italic;color:#3F4A2E">afdeling</em> nodig.</h2>
+      </div>
+      <div>
+        <ul style="list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:14px">
+          <li style="display:flex;gap:14px;align-items:flex-start;font-size:16.5px;line-height:1.5;color:#0E1112"><span style="width:7px;height:7px;background:#3F4A2E;flex-shrink:0;margin-top:9px"></span><span>Iemand die zorgt dat je gevonden wordt.</span></li>
+          <li style="display:flex;gap:14px;align-items:flex-start;font-size:16.5px;line-height:1.5;color:#0E1112"><span style="width:7px;height:7px;background:#3F4A2E;flex-shrink:0;margin-top:9px"></span><span>Iemand die opneemt als er 's avonds een vraag binnenkomt.</span></li>
+          <li style="display:flex;gap:14px;align-items:flex-start;font-size:16.5px;line-height:1.5;color:#0E1112"><span style="width:7px;height:7px;background:#3F4A2E;flex-shrink:0;margin-top:9px"></span><span>Iemand die de offerte klaarzet.</span></li>
+        </ul>
+        <p style="font-size:16.5px;line-height:1.6;color:#6A6D70;margin:0;border-top:1px solid #E1DCCF;padding-top:20px">Zo'n afdeling optuigen kan niet uit, en je eigen mensen wil je er niet voor van hun werk halen. <span style="color:#0E1112">Te klein om die afdeling te bouwen. Te belangrijk om te laten liggen.</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beat 03 · Het eerlijke waarom -->
+  <section data-screen-label="Beat 03 · Het eerlijke waarom" style="padding:104px 0 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:52px">
+        <div style="max-width:660px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Waarom het tot nu toe niet lukte</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:0.98;font-size:52px;margin:0">Een bureau is te duur. Losse tools voelen als een <em style="font-style:italic;color:#3F4A2E">tweede baan.</em></h2>
+        </div>
+        <p style="font-size:16px;color:#6A6D70;line-height:1.6;max-width:360px;margin:0">Je weet dat het beter kan. Alleen bleek elke route tot nu toe een compromis.</p>
+      </div>
+
+      <div data-stagger="" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+        <div style="background:#F6F4EE;padding:36px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#3F4A2E;margin-bottom:18px">01</div>
+          <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:27px;line-height:1.1;margin:0 0 12px">Een bureau?</h3>
+          <p style="color:#6A6D70;line-height:1.6;font-size:15px;margin:0">Duizenden euro's per maand, en alles begint met maatwerk vanaf nul. Voor de meeste kantoren simpelweg niet rendabel.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:36px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#3F4A2E;margin-bottom:18px">02</div>
+          <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:27px;line-height:1.1;margin:0 0 12px">Losse tools?</h3>
+          <p style="color:#6A6D70;line-height:1.6;font-size:15px;margin:0">ChatGPT, losse kennisbanken, integraties aan elkaar knopen. Je bouwt in feite een tweede baan op, in werk waar je niet voor bent opgeleid.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:36px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#3F4A2E;margin-bottom:18px">03</div>
+          <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:27px;line-height:1.1;margin:0 0 12px">Je eigen mensen?</h3>
+          <p style="color:#6A6D70;line-height:1.6;font-size:15px;margin:0">Die wil je niet van hun vak halen om de telefoon op te nemen of blogs te schrijven. Zij moeten declarabel blijven.</p>
+        </div>
+      </div>
+      <div style="border:1px solid #E1DCCF;border-top:none;background:#EFEBE1;padding:24px 36px;font-family:'Instrument Serif',Georgia,serif;font-size:23px;color:#0E1112">Dus bleef het liggen. Of deed je het zelf, na vijven.</div>
+    </div>
+  </section>
+
+  <!-- Beat 04 · De wending -->
+  <section data-screen-label="Beat 04 · De wending" style="padding:104px 0">
+  <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+    <div data-reveal="" style="background-color:#3F4A2E;background-image:linear-gradient(rgba(246,244,238,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(246,244,238,0.05) 1px,transparent 1px);background-size:64px 64px;color:#F6F4EE;padding:104px 32px;position:relative;overflow:hidden">
+      <div style="position:absolute;top:-220px;left:50%;transform:translateX(-50%);width:760px;height:760px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.32), transparent 66%);filter:blur(90px);opacity:0.5;pointer-events:none"></div>
+      <div style="position:relative;max-width:880px;margin:0 auto;text-align:center">
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#C8E06A;margin-bottom:26px">/ De wending</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:64px;margin:0 0 30px">Wat als je die afdeling <em style="font-style:italic;color:#C8E06A">gewoon</em> kon hebben?</h2>
+        <p style="font-size:17px;line-height:1.7;color:rgba(246,244,238,0.78);max-width:600px;margin:0 auto">Geen bureau-traject. Geen tweede baan. Niemand aannemen. Een lead-team dat al klaarstaat, je vak kent en binnen een week op je eigen site draait. Jij blijft de expert. Zij doen de rest.</p>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- Beat 05 · Het team -->
+  <section id="team" data-screen-label="Beat 05 · Het team" style="padding:8px 0 104px;scroll-margin-top:80px">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:20px">
+        <div style="max-width:640px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Maak kennis met je team</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:0.98;font-size:52px;margin:0">Eén afdeling. Vier collega's. <em style="font-style:italic;color:#3F4A2E">Jij</em> aan het roer.</h2>
+        </div>
+        <p style="font-size:16px;color:#6A6D70;line-height:1.6;max-width:400px;margin:0">Geen losse functies, maar een team met een gezicht. Vooraan staat Iris, een AI-collega die de digitale receptie op je site vervult. Daarachter werken collega's die je klant niet ziet maar wel voelt. En jij stuurt iedereen aan vanaf je telefoon.</p>
+      </div>
+
+      <div data-stagger="" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF;margin-top:36px">
+        <div style="background:#F6F4EE;padding:32px;display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#3F4A2E">Het gezicht · AI-receptie</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:33px;line-height:1">Iris</div>
+          <p style="color:#6A6D70;line-height:1.6;font-size:14.5px;margin:0">Iris is een AI-collega: je digitale receptie op de site. Ze neemt je intakes aan, dag en nacht, kent het verschil tussen jouw soort zaken en zet alleen de juiste mensen in je agenda.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:32px;display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#3F4A2E">Gevonden worden</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:33px;line-height:1">De content-collega</div>
+          <p style="color:#6A6D70;line-height:1.6;font-size:14.5px;margin:0">Schrijft je blogs en posts in jouw stem, zodat nieuwe mensen je überhaupt vinden. Jij keurt goed met één klik.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:32px;display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#3F4A2E">Vastgehouden worden</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:33px;line-height:1">De offerte-collega</div>
+          <p style="color:#6A6D70;line-height:1.6;font-size:14.5px;margin:0">Zet je intakeverslagen en offertes klaar uit je eigen documenten, terwijl jij met een zaak bezig bent.</p>
+        </div>
+        <div style="background:#3F4A2E;color:#F6F4EE;padding:32px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden">
+          <div style="position:absolute;top:-30px;right:-30px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.3), transparent 66%);filter:blur(20px);pointer-events:none"></div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#C8E06A">De manager</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:33px;line-height:1">Jij</div>
+          <p style="color:rgba(246,244,238,0.74);line-height:1.6;font-size:14.5px;margin:0;position:relative">Stuurt het hele team aan vanaf je telefoon. Jij houdt de regie, het team doet het werk.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:16px;align-items:stretch">
+        <div style="flex:1;min-width:280px;border-left:2px solid #C8E06A;padding:6px 0 6px 24px;display:flex;align-items:center">
+          <p style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.02em;font-size:34px;line-height:1.12;margin:0">Een afdeling erbij. <em style="font-style:italic;color:#3F4A2E">Geen mensen erbij.</em></p>
+        </div>
+        <a class="mg-card-link" href="sectoren.html" style="display:flex;flex-direction:column;justify-content:center;gap:6px;background:#EFEBE1;border:1px solid #E1DCCF;padding:22px 26px;min-width:230px;color:#0E1112" style-hover="background:#E7E2D6;color:#0E1112">
+          <span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;color:#3F4A2E">Elke sector een eigen specialist</span>
+          <span style="font-size:16px;display:flex;align-items:center;gap:8px">Bekijk de sectoren <span class="mg-arrow" style="color:#3F4A2E">→</span></span>
+        </a>
+        <a class="mg-card-link" href="platform.html" style="display:flex;flex-direction:column;justify-content:center;gap:6px;background:#EFEBE1;border:1px solid #E1DCCF;padding:22px 26px;min-width:230px;color:#0E1112" style-hover="background:#E7E2D6;color:#0E1112">
+          <span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;color:#3F4A2E">Vier bouwblokken, één platform</span>
+          <span style="font-size:16px;display:flex;align-items:center;gap:8px">Ontdek het platform <span class="mg-arrow" style="color:#3F4A2E">→</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Beat 06 · De geruststelling -->
+  <section data-screen-label="Beat 06 · De geruststelling" style="background:#EFEBE1;border-top:1px solid #E1DCCF;border-bottom:1px solid #E1DCCF;padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Zonder gedoe</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:44px;margin:0 0 22px">Je stuurt het team aan vanaf je <em style="font-style:italic;color:#3F4A2E">telefoon.</em></h2>
+        <p style="font-size:16.5px;line-height:1.65;color:#6A6D70;max-width:480px;margin:0 0 26px">Komt er een lead binnen, dan krijg je een appje met de samenvatting. Wil je dat ze het intakeformulier krijgt? Typ terug, en het is geregeld, op basis van je eigen documenten. Jij stuurt vanaf de zijlijn.</p>
+        <a href="platform.html" style="font-size:15px;display:inline-flex;align-items:center;gap:8px;color:#3F4A2E;border-bottom:1px solid #C8E06A;padding-bottom:2px" style-hover="color:#0E1112">Zo werkt het platform <span class="mg-arrow">→</span></a>
+      </div>
+      <div style="display:flex;justify-content:center">
+        <div data-reveal="" style="width:100%;max-width:400px;background:#FFFFFF;border:1px solid #E1DCCF;box-shadow:0 24px 60px -34px rgba(63,74,46,0.35);padding:24px;display:flex;flex-direction:column;gap:16px">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:9.5px;font-weight:500;color:#6A6D70;margin-bottom:6px">Systeem</div>
+            <div style="background:#EFEBE1;padding:12px 16px;font-size:14px;line-height:1.55;max-width:90%">Nieuwe lead: Sophie de Vries. Vraag over een arbeidsconflict. Intake voorgesteld, di 10:00.</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end">
+            <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:9.5px;font-weight:500;color:#6A6D70;margin-bottom:6px">Jij</div>
+            <div style="background:#3F4A2E;color:#F6F4EE;padding:12px 16px;font-size:14px;line-height:1.55;max-width:90%">Stuur haar alvast ons intakeformulier</div>
+          </div>
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:9.5px;font-weight:500;color:#6A6D70;margin-bottom:6px">Systeem</div>
+            <div style="background:#EFEBE1;padding:12px 16px;font-size:14px;line-height:1.55;max-width:90%">Verstuurd. Ik laat het weten zodra ze het invult.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filosofie · waarom dit werkt -->
+  <section data-screen-label="Filosofie" style="background-color:#F6F4EE;background-image:linear-gradient(rgba(14,17,18,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(14,17,18,0.04) 1px,transparent 1px);background-size:56px 56px;padding:100px 0">
+    <div data-reveal="" style="max-width:1000px;margin:0 auto;padding:0 32px;text-align:center">
+      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:26px">/ Waarom dit werkt</div>
+      <p style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.02em;line-height:1.1;font-size:44px;margin:0 auto 26px;max-width:840px">Je overtuigt niemand door harder te verkopen. Je wint door het kiezen <em style="font-style:italic;color:#3F4A2E">makkelijker te maken.</em></p>
+      <div style="width:40px;height:2px;background:#C8E06A;margin:0 auto 26px"></div>
+      <p style="font-size:16.5px;line-height:1.7;color:#6A6D70;margin:0 auto;max-width:680px">De meeste bezoekers zijn nog aan het kiezen, niet aan het kopen. Elke vraag die meteen een goed antwoord krijgt, haalt twijfel weg en brengt ze een stap dichter bij ja. Zo wordt goede service je sterkste verkoper.</p>
+    </div>
+  </section>
+
+  <!-- Beat 07 · Het bewijs -->
+  <section id="bewijs" data-screen-label="Beat 07 · Het bewijs" style="padding:104px 0;scroll-margin-top:70px">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div data-reveal="" style="background:#3F4A2E;color:#F6F4EE;padding:0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);position:relative;overflow:hidden">
+        <div style="padding:64px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;border-right:1px solid rgba(246,244,238,0.14)">
+          <div style="position:absolute;bottom:-70px;left:-50px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.24), transparent 66%);filter:blur(24px);pointer-events:none"></div>
+          <div style="position:relative">
+            <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#C8E06A;margin-bottom:22px">/ Het bewijs</div>
+            <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.02;font-size:46px;margin:0 0 22px">Iris draait al. Jij kunt de <em style="font-style:italic;color:#C8E06A">tweede</em> zijn.</h2>
+            <p style="font-size:16px;line-height:1.65;color:rgba(246,244,238,0.74);margin:0 0 28px">Iris, onze AI-collega aan de digitale receptie, neemt de intakes al aan bij een arbeidsrechtkantoor, dag en nacht. Nu openen we de deur voor de eerste tien kantoren die er vroeg bij zijn en een oprichterstarief krijgen dat blijft.</p>
+          </div>
+        </div>
+        <div style="padding:64px 56px;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:rgba(246,244,238,0.6);margin-bottom:22px">De rekensom</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.02em;line-height:1.04;font-size:52px;margin:0 0 26px">Eén gewonnen klant per maand betaalt het hele team <em style="font-style:italic;color:#C8E06A">terug.</em></div>
+          <p style="font-size:16px;line-height:1.7;color:rgba(246,244,238,0.74);max-width:560px;margin:0 0 28px">Een gemiste intake kost een jurist al snel duizenden euro's. Eén lead die je anders had laten lopen, en het team heeft zichzelf terugverdiend. Alles daarna is winst, en tijd die je terugkrijgt.</p>
+          <a href="bewijs.html" style="font-size:15px;display:inline-flex;align-items:center;gap:8px;color:#C8E06A;border-bottom:1px solid rgba(200,224,106,0.5);padding-bottom:2px;align-self:flex-start" style-hover="color:#F6F4EE">Lees het hele verhaal <span class="mg-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prijzen · teaser -->
+  <section data-screen-label="Prijzen · teaser" style="padding:0 0 96px">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <a class="mg-card-link" href="prijzen.html" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;border:1px solid #E1DCCF;background:#EFEBE1;padding:36px 40px;color:#0E1112" style-hover="background:#E7E2D6;color:#0E1112">
+        <div style="max-width:660px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:12px">/ Prijzen</div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:30px;line-height:1.12;margin-bottom:8px">Vaste tarieven per bouwblok. Je betaalt alleen het AI-gebruik dat je echt verbruikt.</div>
+          <p style="font-size:14.5px;color:#6A6D70;line-height:1.55;margin:0">Begin met één bouwblok, breid uit zodra je groeit. Transparant, per maand opzegbaar.</p>
+        </div>
+        <span style="font-size:15px;display:inline-flex;align-items:center;gap:8px;color:#3F4A2E;white-space:nowrap">Bekijk de prijzen <span class="mg-arrow">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Veelgestelde vragen · algemeen -->
+  <section id="faq" data-screen-label="FAQ · algemeen" style="background:#EFEBE1;border-top:1px solid #E1DCCF;padding:96px 0">
+    <div style="max-width:920px;margin:0 auto;padding:0 32px">
+      <div style="margin-bottom:44px">
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Veelgestelde vragen</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:0.98;font-size:44px;margin:0">De vragen die je nu <em style="font-style:italic;color:#3F4A2E">waarschijnlijk</em> hebt.</h2>
+      </div>
+      <div>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Voor wie is MarketGrow?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Voor de zakelijke dienstverlening: juristen, accountants, mediators, adviseurs, coaches, hypotheek- en pensioenadviseurs, fysio- en zorgpraktijken, architecten. Kortom: kantoren die klanten binnenhalen via een intakegesprek.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Is dit gewoon een chatbot?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Nee. Het is een compleet lead-team op je eigen site. Iris vangt vragen op en kwalificeert, collega's schrijven je content en zetten je offertes klaar, en jij stuurt alles aan vanaf je telefoon.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Moet ik mijn website vervangen?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Nee. Alles draait op je bestaande site. Eén regel code en je team staat live, geen migratie of redesign.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Hoe snel sta ik live?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Binnen zeven werkdagen. Wij doen het zware werk; jouw inbreng is één gesprek, je documenten en een korte controle.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Wat kost het?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Je begint klein, met één collega, tegen een vast en transparant tarief. De eerste tien kantoren krijgen een oprichterstarief dat blijft. De exacte bedragen bespreken we in de kennismaking.</p>
+        </details>
+        <details>
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Blijft mijn data van mij?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Ja. Geanonimiseerd, opgeslagen in de EU en GDPR-compliant. Je gegevens blijven van jou en je kunt ze altijd exporteren.</p>
+        </details>
+      </div>
+      <div style="margin-top:28px;font-size:14.5px;color:#6A6D70;line-height:1.6">Meer weten? Lees over <a href="platform.html" style="border-bottom:1px solid #C8E06A;padding-bottom:1px">het platform</a> of <a href="sectoren.html" style="border-bottom:1px solid #C8E06A;padding-bottom:1px">de specialist voor jouw sector</a>.</div>
+    </div>
+  </section>
+
+  <!-- Beat 08 · De close -->
+  <section id="founding" data-screen-label="Beat 08 · De close" style="background-color:#3F4A2E;background-image:linear-gradient(rgba(246,244,238,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(246,244,238,0.05) 1px,transparent 1px);background-size:64px 64px;color:#F6F4EE;padding:104px 0;scroll-margin-top:70px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-160px;left:50%;transform:translateX(-50%);width:820px;height:560px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.22), transparent 66%);filter:blur(90px);opacity:0.5;pointer-events:none"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#C8E06A;margin-bottom:22px">/ Kom verder</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.03em;line-height:1.0;font-size:52px;margin:0 0 24px">Vanavond opent er weer iemand je site. <em style="font-style:italic;color:#C8E06A">Wie doet er open?</em></h2>
+        <p style="font-size:17px;line-height:1.65;color:rgba(246,244,238,0.78);max-width:500px;margin:0 0 30px">Je hoeft vandaag niks te beslissen. Kijk gewoon of het bij je past: een half uur, met Iris live voor je neus. Geen verplichtingen, geen verkooppraat.</p>
+        <div style="display:flex;flex-direction:column;gap:13px">
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:8px;height:8px;background:#C8E06A;flex-shrink:0"></span><span style="font-size:15.5px;color:rgba(246,244,238,0.9)">Je eigen lead-team, met Iris als gezicht</span></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:8px;height:8px;background:#C8E06A;flex-shrink:0"></span><span style="font-size:15.5px;color:rgba(246,244,238,0.9)">Op je bestaande site, live in een week</span></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:8px;height:8px;background:#C8E06A;flex-shrink:0"></span><span style="font-size:15.5px;color:rgba(246,244,238,0.9)">Modulair uit te breiden in je eigen tempo</span></div>
+          <div style="display:flex;align-items:center;gap:14px"><span style="width:8px;height:8px;background:#C8E06A;flex-shrink:0"></span><span style="font-size:15.5px;color:rgba(246,244,238,0.9)">Oprichterstarief dat permanent blijft</span></div>
+        </div>
+      </div>
+      <div data-reveal="" style="background:#F6F4EE;color:#0E1112;padding:44px;display:flex;flex-direction:column;gap:18px;box-shadow:0 34px 80px -40px rgba(0,0,0,0.55)">
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#3F4A2E">De founding ronde</div>
+        <div style="font-family:'Instrument Serif',Georgia,serif;font-size:36px;line-height:1.04">De eerste tien. Eén tarief. Voor altijd.</div>
+        <p style="font-size:15.5px;line-height:1.6;margin:0;color:#6A6D70">Tien kantoren, een oprichterstarief dat blijft, ook als je doorgroeit. Geen pilot-korting die straks verdwijnt.</p>
+        <a href="{{ calUrl }}" target="_blank" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#3F4A2E;color:#F6F4EE;text-align:center;padding:16px 24px;font-size:15px;font-weight:500;display:block;cursor:pointer" style-hover="background:#324023;color:#F6F4EE">Plan een kennismaking →</a>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;font-weight:500;color:#6A6D70;text-align:center">Nog plekken beschikbaar · vol = vol</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer data-screen-label="Footer" style="border-top:1px solid #E1DCCF;padding:56px 0 40px;background:#F6F4EE">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,2fr) minmax(0,3fr);gap:40px;margin-bottom:40px">
+        <div>
+          <div style="display:flex;align-items:baseline;gap:1px;margin-bottom:12px">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px">MarketGrow</span>
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px;color:#3F4A2E">.ai</span>
+          </div>
+          <p style="color:#6A6D70;font-size:14.5px;line-height:1.6;max-width:320px;margin:0">Een afdeling met een gezicht.</p>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Contact</div>
+          <a href="mailto:hello@marketgrow.ai" style="font-size:14px;color:#0E1112" style-hover="color:#3F4A2E">hello@marketgrow.ai</a>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Menu</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
+            <a href="platform.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Het platform</a>
+            <a href="sectoren.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Sectoren</a>
+            <a href="bewijs.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Het bewijs</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Founders</div>
+          <div style="font-size:14px;color:#6A6D70;line-height:1.7">Julian Goote · Onno Goote</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #E1DCCF;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;font-size:12px;color:#6A6D70">
+        <div>© 2026 MarketGrow.ai</div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px">Binnenhalen · Kwalificeren · Binden</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1280, &quot;height&quot;: 3200 },
+  &quot;autoDemo&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Gedrag&quot; },
+  &quot;balkRoteert&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Gedrag&quot; },
+  &quot;calUrl&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;https://cal.com/julian-goote-c4pgqu/intake-marketgrow.ai&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Links&quot; }
+}">
+class Component extends DCLogic {
+  chatData = {
+    welcome: "Hoi, ik ben Noor. Ik ben het gezicht van MarketGrow, zoals Iris dat is voor een juristenkantoor. Vraag mij gerust iets.",
+    start: [
+      { label: "Wat doet MarketGrow?", target: "doet" },
+      { label: "Stel het team voor", target: "team" },
+      { label: "Wat kost het?", target: "kost" }
+    ],
+    answers: {
+      doet: {
+        text: "Ik vang je websitevragen op, dag en nacht, en boek alleen de juiste intakes in je agenda. Achter mij schrijven collega's je blogs en zetten ze je offertes klaar. Jij stuurt ons aan vanaf je telefoon.",
+        next: [
+          { label: "Stel het team voor", target: "team" },
+          { label: "Wat kost het?", target: "kost" }
+        ]
+      },
+      team: {
+        text: "Met plezier. Iris is het gezicht aan de balie, zoals ik dat hier ben. Een content-collega zorgt dat je gevonden wordt. Een offerte-collega zet je documenten klaar. En jij bent de manager. Scroll naar beneden, dan stel ik ze voor.",
+        next: [
+          { label: "Wat doe jij precies?", target: "doet" },
+          { label: "Wat kost het?", target: "kost" }
+        ]
+      },
+      kost: {
+        text: "Je begint klein, met \u00e9\u00e9n collega, tegen een vast en transparant tarief. De eerste tien kantoren krijgen een oprichterstarief dat blijft. Zal ik een kennismaking voor je inplannen?",
+        next: [
+          { label: "Ja, plan een kennismaking", target: "plan" },
+          { label: "Stel eerst het team voor", target: "team" }
+        ]
+      },
+      plan: {
+        text: "Top. Klik op 'Plan een kennismaking' onderaan, of mail ons op hello@marketgrow.ai. Dan laten we je Iris in actie zien.",
+        next: [
+          { label: "Wat doet MarketGrow?", target: "doet" },
+          { label: "Stel het team voor", target: "team" }
+        ]
+      }
+    }
+  };
+
+  claims = [
+    "Live binnen een week",
+    "Op je bestaande website",
+    "Jij houdt de regie",
+    "De eerste tien \u00b7 een oprichterstarief dat blijft"
+  ];
+
+  autoScript = ["doet", "team", "kost", "plan"];
+
+  noorSystem = [
+    "Je bent Noor, het AI-gezicht van MarketGrow.ai. Je praat als een warme, scherpe collega \u2014 kort, concreet, geen jargon, geen verkooppraat.",
+    "Regels voor je stijl: antwoord in het Nederlands, in 2 tot 4 korte zinnen. Gebruik nooit gedachtestreepjes; het scheidingsteken is de middot (\u00b7). Spreek de bezoeker aan met 'je' en maak het over hun bedrijf, niet over ons product. Verwijs naar jezelf met 'mij', niet met 'me'.",
+    "",
+    "Wat MarketGrow is: een lead-team dat op je eigen bestaande website draait, voor de zakelijke dienstverlening (juristen, advocaten, mediators, accountants, hypotheekadviseurs, fysiotherapeuten, coaches, financieel planners, architecten, bedrijfsadviseurs). Het is geen chatbot maar een hele afdeling met een gezicht.",
+    "Het team: Iris is het gezicht dat intakes aanneemt, dag en nacht, en alleen de juiste mensen in de agenda zet. Elke sector krijgt zijn eigen getrainde specialist (Iris is die voor juristen). Daarachter: een content-collega die blogs en posts in jouw stem schrijft zodat je gevonden wordt, en een offerte-collega die intakeverslagen en offertes klaarzet uit je eigen documenten. Jij bent de manager en stuurt het team aan vanaf je telefoon, ook via WhatsApp.",
+    "Hoe: live binnen 7 werkdagen, op je bestaande site via \u00e9\u00e9n scriptregel, geen migratie, geen API-keys, geen onderhoudslast. Modulair: begin met \u00e9\u00e9n collega en breid uit.",
+    "Kennisbank: alles put uit je eigen documenten, aanpak en toon, dus antwoorden zijn van jou en niet generiek. Een avond-collega stelt elke nacht verbeteringen voor; een mens keurt alles goed. Geanonimiseerd en GDPR-compliant.",
+    "Prijs/aanbod: we openen de founding ronde. De eerste tien kantoren krijgen een oprichterstarief dat blijft, ook na de founding ronde. Noem geen harde bedragen; verwijs voor tarieven naar de kennismaking.",
+    "Doel: help de bezoeker echt verder, en stuur waar passend naar een vrijblijvende kennismaking van een half uur (via de knop 'Plan een kennismaking' of hello@marketgrow.ai). Duw niet; nodig uit.",
+    "Als je iets niet zeker weet, zeg dat eerlijk en bied een kennismaking aan. Verzin geen features, cijfers of klantnamen."
+  ].join("\n");
+
+  state = {
+    msgs: [{ role: "noor", text: this.chatData.welcome }],
+    chips: this.chatData.start,
+    typing: false,
+    claimIdx: 0,
+    draft: "",
+    showDraft: false,
+    autoIdx: 0,
+    liveMode: false,
+    liveInput: "",
+    showIntake: false
+  };
+
+  componentDidMount() {
+    this.timers = [];
+    this.auto = true;
+    this.claimTimer = setInterval(() => {
+      if (this.props.balkRoteert === false) return;
+      this.setState(s => ({ claimIdx: (s.claimIdx + 1) % this.claims.length }));
+    }, 4200);
+    if (this.props.autoDemo !== false) this.wait(1800, () => this.autoStep());
+    this.wait(150, () => this.setupReveals());
+  }
+
+  setupReveals() {
+    const els = document.querySelectorAll("[data-reveal], [data-stagger]");
+    if (!els.length) return;
+    const revealEl = (el, stagger) => {
+      if (el.hasAttribute("data-stagger")) {
+        Array.from(el.children).forEach((k, i) => {
+          setTimeout(() => { k.style.opacity = "1"; k.style.transform = "none"; }, stagger ? i * 90 : 0);
+        });
+      } else {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      }
+    };
+    // Prep: hide below-fold elements and arm the transitions. Elements default to
+    // opacity:1 in markup, so if this JS never runs the content is still visible.
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      const visible = r.top < window.innerHeight * 0.9;
+      if (el.hasAttribute("data-stagger")) {
+        Array.from(el.children).forEach(k => {
+          k.style.transition = "opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1)";
+          if (!visible) { k.style.opacity = "0"; k.style.transform = "translateY(28px)"; }
+        });
+      } else if (!visible) {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(32px)";
+        el.style.transition = "opacity 0.75s ease, transform 0.75s cubic-bezier(0.22,1,0.36,1)";
+      }
+    });
+    // Foreground scroll animation via IntersectionObserver.
+    if ("IntersectionObserver" in window) {
+      this._io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          revealEl(e.target, true);
+          this._io.unobserve(e.target);
+        });
+      }, { threshold: 0.12 });
+      els.forEach(el => {
+        const r = el.getBoundingClientRect();
+        if (r.top < window.innerHeight * 0.9) return;
+        this._io.observe(el);
+      });
+    }
+    // Safety net: setTimeout fires even when rAF and IntersectionObserver are
+    // throttled (background tab, print/export, non-painting render), so content
+    // is NEVER permanently stuck at opacity:0.
+    this._revealSafety = setTimeout(() => {
+      els.forEach(el => revealEl(el, false));
+    }, 1200);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.claimTimer);
+    if (this.answerTimer) clearTimeout(this.answerTimer);
+    if (this.typeTimer) clearInterval(this.typeTimer);
+    (this.timers || []).forEach(clearTimeout);
+    if (this._revealSafety) clearTimeout(this._revealSafety);
+    if (this._io) this._io.disconnect();
+  }
+
+  wait(ms, fn) { const t = setTimeout(fn, ms); this.timers.push(t); return t; }
+
+  stopAuto() {
+    this.auto = false;
+    (this.timers || []).forEach(clearTimeout);
+    this.timers = [];
+    if (this.typeTimer) clearInterval(this.typeTimer);
+    if (this._draftEl) this._draftEl.textContent = "";
+    if (this.state.showDraft) this.setState({ showDraft: false });
+  }
+
+  autoStep() {
+    if (!this.auto || this.props.autoDemo === false) return;
+    const target = this.autoScript[this.state.autoIdx];
+    if (!target) return;
+    const chip = this.state.chips.find(c => c.target === target);
+    const full = chip ? chip.label : "";
+    if (!full) return;
+    this.setState({ showDraft: true }, () => {
+      let i = 0;
+      const write = () => { if (this._draftEl) this._draftEl.textContent = full.slice(0, i); };
+      write();
+      this.typeTimer = setInterval(() => {
+        if (!this.auto) { clearInterval(this.typeTimer); return; }
+        i += 1;
+        write();
+        if (i >= full.length) {
+          clearInterval(this.typeTimer);
+          this.wait(420, () => {
+            if (!this.auto) return;
+            this.setState(s => ({ showDraft: false, autoIdx: s.autoIdx + 1 }));
+            this.pick(chip, false);
+            this.wait(3900, () => this.autoStep());
+          });
+        }
+      }, 55);
+    });
+  }
+
+  scrollChat() { if (this._chatBody) this._chatBody.scrollTop = this._chatBody.scrollHeight; }
+
+  pick(chip, manual) {
+    if (manual) { this.stopAuto(); this.goLive(chip.label); return; }
+    if (this.state.typing) return;
+    const answer = this.chatData.answers[chip.target];
+    this.setState(
+      s => ({ msgs: [...s.msgs, { role: "user", text: chip.label }], chips: [], typing: true }),
+      () => this.scrollChat()
+    );
+    this.answerTimer = setTimeout(() => {
+      this.setState(
+        s => ({ msgs: [...s.msgs, { role: "noor", text: answer.text }], chips: answer.next, typing: false }),
+        () => this.scrollChat()
+      );
+    }, 1100);
+  }
+
+  goLive(text) {
+    if (this.state.typing) return;
+    this.setState(
+      s => ({ liveMode: true, msgs: [...s.msgs, { role: "user", text }], chips: [], typing: true, draft: "" }),
+      () => { this.scrollChat(); this.askNoor(); }
+    );
+  }
+
+  sendInput() {
+    const t = (this.state.liveInput || "").trim();
+    if (!t || this.state.typing) return;
+    this.setState(
+      s => ({ liveMode: true, msgs: [...s.msgs, { role: "user", text: t }], liveInput: "", chips: [], typing: true }),
+      () => { this.scrollChat(); this.askNoor(); }
+    );
+  }
+
+  pushNoor(text, intake) {
+    this.setState(
+      s => ({ msgs: [...s.msgs, { role: "noor", text }], typing: false, chips: this.chatData.start, showIntake: s.showIntake || !!intake }),
+      () => this.scrollChat()
+    );
+  }
+
+  async askNoor() {
+    const history = this.state.msgs.map(m => ({ role: m.role === "noor" ? "assistant" : "user", content: m.text }));
+    try {
+      const r = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history }) });
+      if (r.ok) { const data = await r.json(); if (data && data.reply) { this.pushNoor(data.reply.trim(), data.intakeReady); return; } }
+    } catch (e) {}
+    try {
+      if (window.claude && window.claude.complete) {
+        const reply = await window.claude.complete({ system: this.noorSystem, messages: history, max_tokens: 400 });
+        const text = (reply || "").trim();
+        if (text) { this.pushNoor(text); return; }
+      }
+    } catch (e) {}
+    this.pushNoor("Sorry, ik kan even niet antwoorden. Mail ons op hello@marketgrow.ai of plan een kennismaking, dan help ik je verder.");
+  }
+
+  renderVals() {
+    return {
+      claim: this.claims[this.state.claimIdx % this.claims.length],
+      msgs: this.state.msgs.map(m => ({ text: m.text, isNoor: m.role === "noor", isUser: m.role === "user" })),
+      chips: this.state.chips.map(c => ({ label: c.label, onPick: () => this.pick(c, true) })),
+      typing: this.state.typing,
+      draft: this.state.draft,
+      draftRef: el => { this._draftEl = el; },
+      hasDraft: this.state.showDraft,
+      noDraft: !this.state.showDraft,
+      inputHint: "Typ hier je eigen vraag aan Noor…",
+      liveMode: this.state.liveMode,
+      demoMode: !this.state.liveMode,
+      showIntake: this.state.showIntake,
+      liveInput: this.state.liveInput,
+      onLiveInput: e => this.setState({ liveInput: e.target.value }),
+      onLiveKey: e => { if (e.key === "Enter") this.sendInput(); },
+      sendInput: () => this.sendInput(),
+      liveInputRef: el => { this._liveInputEl = el; },
+      startLive: () => { this.stopAuto(); this.setState({ liveMode: true }, () => { if (this._liveInputEl) this._liveInputEl.focus(); }); },
+      chatBodyRef: el => { this._chatBody = el; },
+      resetChat: () => {
+        this.stopAuto();
+        this.setState({ msgs: [{ role: "noor", text: this.chatData.welcome }], chips: this.chatData.start, typing: false, draft: "", showDraft: false, autoIdx: 0, liveMode: false, liveInput: "", showIntake: false });
+        this.auto = true;
+        this.timers = [];
+        if (this.props.autoDemo !== false) this.wait(1400, () => this.autoStep());
+      },
+      calUrl: this.props.calUrl ?? "https://cal.com/julian-goote-c4pgqu/intake-marketgrow.ai"
+    };
+  }
+}
+</script>
+</body>
+</html>

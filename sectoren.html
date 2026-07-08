@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter+Tight:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="marketgrow-logo.png">
+<title>Sectoren · Een specialist voor elk vak · MarketGrow.ai</title>
+<meta name="description" content="Elke sector krijgt een eigen getrainde specialist: Iris voor juristen, Sven voor accountants, Mila voor mediators en meer. Getraind op jouw soort klanten en vragen.">
+<meta name="theme-color" content="#3F4A2E">
+<style>
+html, body { margin: 0; padding: 0; background: #F6F4EE; color: #0E1112; }
+body { font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","cv11"; }
+a { color: #3F4A2E; text-decoration: none; }
+a:hover { color: #0E1112; }
+.mg-spec:hover { background: #FFFFFF !important; }
+.mg-spec:hover .mg-arrow { transform: translateX(4px); }
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .mg-faq-plus { transform: rotate(45deg); }
+.mg-arrow{display:inline-block;transition:transform .22s cubic-bezier(0.22,1,0.36,1)}
+a:hover .mg-arrow{transform:translateX(5px)}
+.mg-card-link{transition:transform .2s ease,box-shadow .25s ease,background .18s ease}
+.mg-card-link:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.32)}
+.mg-spec{transition:background .15s ease,transform .2s ease,box-shadow .25s ease}
+.mg-spec:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.3)}
+</style>
+<script>
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "kennismaking", {origin:"https://cal.com"});
+Cal.ns["kennismaking"]("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#3F4A2E"}},"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#3F4A2E"></rect>
+    <text x="50" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="46" fill="#C8E06A">M</text>
+  </svg>
+</template>
+
+<div style="min-height:100vh;background:#F6F4EE;color:#0E1112">
+
+  <div style="background:#3F4A2E;color:#F6F4EE;min-height:34px;display:flex;align-items:center;justify-content:center;padding:7px 24px">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:rgba(246,244,238,0.95)">Elke sector zijn eigen getrainde specialist</span>
+  </div>
+
+  <nav data-screen-label="Navigatie" style="position:sticky;top:0;z-index:40;background:rgba(246,244,238,0.85);backdrop-filter:blur(10px);border-bottom:1px solid #E1DCCF">
+    <div style="max-width:1240px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <a href="index.html" style="display:flex;align-items:center;gap:10px;color:#0E1112">
+        <img src="marketgrow-logo.png" alt="MarketGrow.ai logo" width="30" height="30" style="width:30px;height:30px;display:block;border-radius:6px">
+        <span style="display:flex;align-items:baseline;gap:1px">
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px">MarketGrow</span>
+          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#3F4A2E">.ai</span>
+        </span>
+      </a>
+      <div style="display:flex;align-items:center;gap:30px;font-size:13.5px">
+        <a href="platform.html" style="color:#6A6D70">Het platform</a>
+        <a href="sectoren.html" style="color:#0E1112;border-bottom:1px solid #3F4A2E;padding-bottom:2px">Sectoren</a>
+        <a href="bewijs.html" style="color:#6A6D70">Het bewijs</a>
+        <a href="prijzen.html" style="color:#6A6D70">Prijzen</a>
+        <a href="contact.html" style="color:#6A6D70">Contact</a>
+        <a href="#founding" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#3F4A2E;color:#F6F4EE;font-size:13px;padding:10px 18px;display:inline-flex;align-items:center;gap:8px;cursor:pointer" style-hover="background:#324023;color:#F6F4EE">Plan een kennismaking <span class="mg-arrow">→</span></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section data-screen-label="Sectoren · hero" style="position:relative;overflow:hidden;border-bottom:1px solid #E1DCCF">
+    <div style="position:absolute;top:-220px;right:-140px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.32), transparent 66%);filter:blur(90px);opacity:0.36;pointer-events:none"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:72px 32px 60px">
+      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:22px">/ Een gezicht voor elk vak</div>
+      <div style="display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end">
+        <h1 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.03em;line-height:0.98;font-size:60px;margin:0">Iris voor juristen. Een eigen specialist voor <em style="font-style:italic;color:#3F4A2E">elk vak.</em></h1>
+        <p style="font-size:16.5px;line-height:1.64;color:rgba(14,17,18,0.82);margin:0"><strong style="font-weight:600">Geen generieke chatbot.</strong> Elke specialist is getraind op jouw soort klanten en stelt de vragen die jij zou stellen. Iris weet dat een echtscheiding iets anders is dan een arbeidsconflict. En ze staan allemaal klaar om geplaatst te worden.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Specialisten grid -->
+  <section data-screen-label="Specialisten" style="padding:88px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+
+        <a href="sector-juristen.html" class="mg-spec" style="background:#F6F4EE;padding:30px 28px;display:flex;flex-direction:column;gap:12px;min-height:210px;color:#0E1112;transition:background 0.15s">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;color:#3F4A2E;display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:#C8E06A;border:1px solid #3F4A2E"></span>Nu live</span>
+            <span class="mg-arrow" style="color:#3F4A2E;font-size:16px;transition:transform 0.2s">→</span>
+          </div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:40px;line-height:1">Iris</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;font-size:10px;color:#6A6D70">Juristen · advocaten</div>
+          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:auto 0 0">Herkent urgentie, kwalificeert vooraf en zet alleen de juiste zaken in je agenda.</p>
+        </a>
+
+        <a href="sector-accountants.html" class="mg-spec" style="background:#F6F4EE;padding:30px 28px;display:flex;flex-direction:column;gap:12px;min-height:210px;color:#0E1112;transition:background 0.15s">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;color:#3F4A2E">Klaar</span>
+            <span class="mg-arrow" style="color:#3F4A2E;font-size:16px;transition:transform 0.2s">→</span>
+          </div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:40px;line-height:1">Sven</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;font-size:10px;color:#6A6D70">Accountants · belastingadvies</div>
+          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:auto 0 0">Kent de fiscale momenten waarop mkb'ers bellen en scheidt een overstap van een aangiftevraag.</p>
+        </a>
+
+        <a href="sector-mediators.html" class="mg-spec" style="background:#F6F4EE;padding:30px 28px;display:flex;flex-direction:column;gap:12px;min-height:210px;color:#0E1112;transition:background 0.15s">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;color:#3F4A2E">Klaar</span>
+            <span class="mg-arrow" style="color:#3F4A2E;font-size:16px;transition:transform 0.2s">→</span>
+          </div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:40px;line-height:1">Mila</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;font-size:10px;color:#6A6D70">Mediators</div>
+          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:auto 0 0">Nodigt uit zonder partij te kiezen en peilt of mediation bij de situatie past.</p>
+        </a>
+
+        <a href="sector-bedrijfsadviseurs.html" class="mg-spec" style="background:#F6F4EE;padding:30px 28px;display:flex;flex-direction:column;gap:12px;min-height:210px;color:#0E1112;transition:background 0.15s">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;color:#3F4A2E">Klaar</span>
+            <span class="mg-arrow" style="color:#3F4A2E;font-size:16px;transition:transform 0.2s">→</span>
+          </div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:40px;line-height:1">Max</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;font-size:10px;color:#6A6D70">Bedrijfsadviseurs · coaches</div>
+          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:auto 0 0">Scheidt oriëntatie van een concrete hulpvraag en maakt de eerste stap voelbaar.</p>
+        </a>
+
+        <a href="sector-hypotheek.html" class="mg-spec" style="background:#F6F4EE;padding:30px 28px;display:flex;flex-direction:column;gap:12px;min-height:210px;color:#0E1112;transition:background 0.15s">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;color:#3F4A2E">Klaar</span>
+            <span class="mg-arrow" style="color:#3F4A2E;font-size:16px;transition:transform 0.2s">→</span>
+          </div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:40px;line-height:1">Luca</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;font-size:10px;color:#6A6D70">Hypotheek · pensioen</div>
+          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:auto 0 0">Herkent het moment, huis, scheiding of pensioen, en zet vergelijkers om in afspraken.</p>
+        </a>
+
+        <a href="sector-fysio.html" class="mg-spec" style="background:#F6F4EE;padding:30px 28px;display:flex;flex-direction:column;gap:12px;min-height:210px;color:#0E1112;transition:background 0.15s">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;color:#3F4A2E">Klaar</span>
+            <span class="mg-arrow" style="color:#3F4A2E;font-size:16px;transition:transform 0.2s">→</span>
+          </div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:40px;line-height:1">Nora</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;font-size:10px;color:#6A6D70">Fysio · mentale zorg</div>
+          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:auto 0 0">Doet een eerste klacht-check zonder medisch advies en verwijst netjes naar een intake.</p>
+        </a>
+
+        <a href="sector-architecten.html" class="mg-spec" style="background:#F6F4EE;padding:30px 28px;display:flex;flex-direction:column;gap:12px;min-height:210px;color:#0E1112;transition:background 0.15s">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <span style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;color:#3F4A2E">Klaar</span>
+            <span class="mg-arrow" style="color:#3F4A2E;font-size:16px;transition:transform 0.2s">→</span>
+          </div>
+          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:40px;line-height:1">Tess</div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;font-size:10px;color:#6A6D70">Architecten · interieur</div>
+          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:auto 0 0">Vraagt naar omvang, budget en locatie en filtert de serieuze aanvragen eruit.</p>
+        </a>
+
+        <div style="background:#3F4A2E;color:#F6F4EE;padding:30px 28px;display:flex;flex-direction:column;gap:12px;min-height:210px;position:relative;overflow:hidden">
+          <div style="position:absolute;top:-30px;right:-30px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.26), transparent 66%);filter:blur(18px);pointer-events:none"></div>
+          <div style="position:relative;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;color:#C8E06A">Ons eigen gezicht</div>
+          <div style="position:relative;font-family:'Instrument Serif',Georgia,serif;font-size:40px;line-height:1">Noor</div>
+          <div style="position:relative;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;font-size:10px;color:rgba(246,244,238,0.6)">MarketGrow zelf</div>
+          <p style="position:relative;font-size:13.5px;color:rgba(246,244,238,0.74);line-height:1.55;margin:auto 0 0">Zij staat op onze eigen site en laat je zien wat jouw bezoeker straks ervaart.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Hoe training werkt -->
+  <section data-screen-label="Getraind op jouw vak" style="background:#EFEBE1;border-top:1px solid #E1DCCF;border-bottom:1px solid #E1DCCF;padding:96px 0">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:24px;margin-bottom:44px">
+        <div style="max-width:640px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Het vak als wapen</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:44px;margin:0">Getraind op jouw soort klanten en <em style="font-style:italic;color:#3F4A2E">vragen.</em></h2>
+        </div>
+        <p style="font-size:15px;color:#6A6D70;line-height:1.6;max-width:380px;margin:0">Het verschil tussen een chatbot en een collega is dat een collega jouw wereld kent. Dat voel je meteen zodra je het op je eigen site test.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
+        <div style="background:#F6F4EE;padding:34px 30px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#3F4A2E;margin-bottom:16px">01</div>
+          <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:24px;line-height:1.1;margin:0 0 10px">Jouw kennisbank</h3>
+          <p style="font-size:14.5px;color:#6A6D70;line-height:1.6;margin:0">De specialist put uit jouw documenten, aanpak en toon. De antwoorden zijn van jou, niet van internet.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:34px 30px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#3F4A2E;margin-bottom:16px">02</div>
+          <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:24px;line-height:1.1;margin:0 0 10px">De juiste vragen</h3>
+          <p style="font-size:14.5px;color:#6A6D70;line-height:1.6;margin:0">Elke sector heeft eigen intake-vragen. De specialist stelt ze in de goede volgorde en herkent waar het echt om draait.</p>
+        </div>
+        <div style="background:#F6F4EE;padding:34px 30px">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#3F4A2E;margin-bottom:16px">03</div>
+          <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:24px;line-height:1.1;margin:0 0 10px">Binnen jouw grenzen</h3>
+          <p style="font-size:14.5px;color:#6A6D70;line-height:1.6;margin:0">Bij twijfel geeft de specialist geen inhoudelijk advies, maar schakelt door naar een intake met jou.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ · sectoren -->
+  <section id="faq" data-screen-label="FAQ · sectoren" style="padding:96px 0">
+    <div style="max-width:920px;margin:0 auto;padding:0 32px">
+      <div style="margin-bottom:44px">
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Vragen over de specialisten</div>
+        <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:0.98;font-size:44px;margin:0">Getraind op <em style="font-style:italic;color:#3F4A2E">jouw</em> vak?</h2>
+      </div>
+      <div>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Mijn sector staat er niet bij, kan het dan toch?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Waarschijnlijk wel. De specialisten zijn los van de sector opgebouwd; we trainen er een op jouw vak. <a href="https://cal.com/julian-goote-c4pgqu/intake-marketgrow.ai" target="_blank" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="color:#3F4A2E;border-bottom:1px solid #C8E06A">Plan een kennismaking</a>, dan kijken we samen of het past.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Hoe wordt de specialist getraind op mijn vak?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">De specialist wordt getraind op sector-gerelateerde documenten, en daarna verder geoptimaliseerd specifiek voor jouw bedrijf, met jouw eigen input, documenten en toon. Zo stelt hij de vragen die jij zou stellen, niet een generiek lijstje.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Praat de specialist echt als mijn kantoor?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Ja. Alles komt uit jouw kennisbank en jouw stem. Je bepaalt zelf wat erin komt en hoe de specialist klinkt.</p>
+        </details>
+        <details style="border-bottom:1px solid #E1DCCF">
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Zijn alle sectoren beschikbaar?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Ja. Alle specialisten staan klaar om geplaatst te worden. Iris voor juristen draait al live; de specialist voor jouw vak zetten we klaar zodra je instapt.</p>
+        </details>
+        <details>
+          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Geeft de specialist inhoudelijk advies?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
+          <p style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Nee. Bij twijfel of een inhoudelijke vraag schakelt de specialist door naar een intake met jou. Het vak blijft van jou; wij staan aan de voorkant.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="founding" data-screen-label="CTA" style="padding:96px 0;scroll-margin-top:70px">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="background:#3F4A2E;color:#F6F4EE;padding:64px 56px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;position:relative;overflow:hidden">
+        <div style="position:absolute;top:-60px;right:-40px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.24), transparent 66%);filter:blur(30px);pointer-events:none"></div>
+        <div style="position:relative;max-width:640px">
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#C8E06A;margin-bottom:18px">/ Kom in contact</div>
+          <h2 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:44px;margin:0 0 14px">Benieuwd naar de specialist voor jouw vak?</h2>
+          <p style="font-size:16px;line-height:1.65;color:rgba(246,244,238,0.76);margin:0">Plan een kennismaking van een half uur. We laten je zien hoe de specialist voor jouw vak werkt en kijken of het past. Geen verplichtingen.</p>
+        </div>
+        <a href="https://cal.com/julian-goote-c4pgqu/intake-marketgrow.ai" target="_blank" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="position:relative;background:#C8E06A;color:#0E1112;padding:16px 28px;font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:10px;cursor:pointer" style-hover="filter:brightness(0.95);color:#0E1112">Plan een kennismaking <span class="mg-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer data-screen-label="Footer" style="border-top:1px solid #E1DCCF;padding:56px 0 40px;background:#F6F4EE">
+    <div style="max-width:1240px;margin:0 auto;padding:0 32px">
+      <div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,2fr) minmax(0,3fr);gap:40px;margin-bottom:40px">
+        <div>
+          <div style="display:flex;align-items:baseline;gap:1px;margin-bottom:12px">
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px">MarketGrow</span>
+            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px;color:#3F4A2E">.ai</span>
+          </div>
+          <p style="color:#6A6D70;font-size:14.5px;line-height:1.6;max-width:320px;margin:0">Een afdeling met een gezicht.</p>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Contact</div>
+          <a href="mailto:hello@marketgrow.ai" style="font-size:14px;color:#0E1112" style-hover="color:#3F4A2E">hello@marketgrow.ai</a>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Menu</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
+            <a href="index.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Home</a>
+            <a href="platform.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Het platform</a>
+            <a href="bewijs.html" style="color:#6A6D70" style-hover="color:#3F4A2E">Het bewijs</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Founders</div>
+          <div style="font-size:14px;color:#6A6D70;line-height:1.7">Julian Goote · Onno Goote</div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #E1DCCF;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;font-size:12px;color:#6A6D70">
+        <div>© 2026 MarketGrow.ai</div>
+        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px">Binnenhalen · Kwalificeren · Binden</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>
