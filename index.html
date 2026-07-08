@@ -726,6 +726,8 @@ class Component extends DCLogic {
 
   async askNoor() {
     const history = this.state.msgs.map(m => ({ role: m.role === "noor" ? "assistant" : "user", content: m.text }));
+    while (history.length && history[0].role !== "user") history.shift();
+    if (!history.length) return;
     try {
       const r = await fetch("/api/chat", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: history }) });
       if (r.ok) { const data = await r.json(); if (data && data.reply) { this.pushNoor(data.reply.trim(), data.intakeReady); return; } }
