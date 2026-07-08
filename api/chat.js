@@ -123,11 +123,23 @@ export default async function handler(req, res) {
     // Beperk conversation-length tegen prompt-injection en kosten
     const recentMessages = messages.slice(-20);
 
+    // GUARD: de Anthropic API vereist dat het eerste bericht rol 'user' heeft.
+    // Na het afkappen op de laatste 20 kan de reeks weer met een 'assistant'-bericht
+    // beginnen; die strippen we hier weg zodat de API niet met een 400 faalt.
+    while (recentMessages.length && recentMessages[0].role !== 'user') {
+      recentMessages.shift();
+    }
+    if (!recentMessages.length) {
+      return res.status(400).json({ error: 'Geen geldig bericht ontvangen.' });
+    }
+
     const anthropic = new Anthropic({
       apiKey: process.env.ANTHROPIC_API_KEY,
     });
 
     const response = await anthropic.messages.create({
+      // LET OP: controleer dat deze modelnaam bestaat voor jouw account.
+      // Een niet-bestaande naam geeft een API-fout (500) en dus de terugval in de chat.
       model: 'claude-opus-4-7',
       max_tokens: 600,
       system: SYSTEM_PROMPT,
