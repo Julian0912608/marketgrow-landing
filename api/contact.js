@@ -1,4 +1,4 @@
-// Serverless endpoint voor het contactformulier — POST /api/contact
+// Serverless endpoint voor het contactformulier · POST /api/contact
 // Werkt op Vercel (Node runtime). Vereist de env-var RESEND_API_KEY.
 // Belangrijk: het afzenderdomein (marketgrow.ai) moet geverifieerd zijn in Resend,
 // anders weigert Resend de mail. Gebruik anders tijdelijk 'onboarding@resend.dev' als from.

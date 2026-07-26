@@ -8,7 +8,8 @@ Statische marketingsite plus één serverless functie voor het contactformulier.
 - `sector-*.html` — de specialist per sector (juristen, accountants, mediators, bedrijfsadviseurs, fysio, hypotheek, architecten)
 
 ## Belangrijke bestanden
-- `support.js` — runtime die de pagina's rendert. Moet altijd mee-gedeployed worden.
+- `styles.css` · responsieve laag over de inline opmaak heen. Gegenereerd, niet met de hand bijwerken.
+- `site.js` · navigatie, scroll-animaties, de Noor-chat, het contactformulier en de bouwblok-schakelaars.
 - `api/contact.js` — serverless functie die het contactformulier via Resend verstuurt.
 - `marketgrow-logo.png`, `dashboard-mockup.png`, `og-image.png` — afbeeldingen.
 
@@ -22,7 +23,7 @@ Statische marketingsite plus één serverless functie voor het contactformulier.
 
 ## Let op
 - Fonts (Google Fonts) en de kennismakingsplanner (Cal.com) laden via CDN, dus een internetverbinding is vereist.
-- De pagina's worden client-side gerenderd door `support.js`; houd dat bestand naast de HTML.
+- De pagina's zijn gewone statische HTML. Er is geen build-stap en geen runtime nodig.
 
 ## Sitemap zichtbaar maken voor Google
 De sitemap staat op `sitemap.xml` (na deploy: https://www.marketgrow.ai/sitemap.xml) en `robots.txt` verwijst er al naar, dus Google vindt 'm automatisch bij het crawlen.

@@ -1,0 +1,518 @@
+/* site.js · MarketGrow.ai
+ * Vervangt de ontwerp-runtime (support.js) door gewone JavaScript.
+ * Alles is optioneel: valt dit bestand weg, dan blijft de pagina leesbaar.
+ */
+(function () {
+  "use strict";
+
+  var $ = function (sel, root) { return (root || document).querySelector(sel); };
+  var $$ = function (sel, root) {
+    return Array.prototype.slice.call((root || document).querySelectorAll(sel));
+  };
+
+  /* ------------------------------------------------------ navigatie */
+
+  function navigatie() {
+    var nav = $(".mg-nav");
+    var knop = $(".mg-nav-knop", nav || document);
+    if (!nav || !knop) return;
+    var zetOpen = function (open) {
+      nav.setAttribute("data-open", open ? "true" : "false");
+      knop.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    zetOpen(false);
+    knop.addEventListener("click", function () {
+      zetOpen(nav.getAttribute("data-open") !== "true");
+    });
+    $$(".mg-nav-menu a", nav).forEach(function (a) {
+      a.addEventListener("click", function () { zetOpen(false); });
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 760) zetOpen(false);
+    });
+  }
+
+  /* ------------------------------------- verschijnen bij scrollen */
+
+  function reveals() {
+    var els = $$("[data-reveal], [data-stagger]");
+    if (!els.length) return;
+
+    var toon = function (el, gespreid) {
+      if (el.hasAttribute("data-stagger")) {
+        Array.prototype.slice.call(el.children).forEach(function (kind, i) {
+          setTimeout(function () {
+            kind.style.opacity = "1";
+            kind.style.transform = "none";
+          }, gespreid ? i * 90 : 0);
+        });
+      } else {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      }
+    };
+
+    // Elementen staan in de HTML op opacity 1. Pas hier zetten we ze uit,
+    // zodat de inhoud zichtbaar blijft als dit script nooit draait.
+    els.forEach(function (el) {
+      var zichtbaar = el.getBoundingClientRect().top < window.innerHeight * 0.9;
+      if (el.hasAttribute("data-stagger")) {
+        Array.prototype.slice.call(el.children).forEach(function (kind) {
+          kind.style.transition = "opacity 0.7s ease, transform 0.7s cubic-bezier(0.22,1,0.36,1)";
+          if (!zichtbaar) { kind.style.opacity = "0"; kind.style.transform = "translateY(28px)"; }
+        });
+      } else if (!zichtbaar) {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(32px)";
+        el.style.transition = "opacity 0.75s ease, transform 0.75s cubic-bezier(0.22,1,0.36,1)";
+      }
+    });
+
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          toon(e.target, true);
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.9) return;
+        io.observe(el);
+      });
+    }
+
+    // Vangnet: ook als de waarnemer nooit afgaat blijft niets onzichtbaar.
+    setTimeout(function () { els.forEach(function (el) { toon(el, false); }); }, 1400);
+  }
+
+  /* ------------------------------------------------ roterende balk */
+
+  function olijfbalk() {
+    var el = document.getElementById("mg-claim");
+    if (!el) return;
+    var claims = [
+      "Live binnen een week",
+      "Op je bestaande website",
+      "Jij houdt de regie",
+      "De eerste tien \u00b7 een oprichterstarief dat blijft"
+    ];
+    var i = 0;
+    setInterval(function () {
+      i = (i + 1) % claims.length;
+      el.textContent = claims[i];
+      el.style.animation = "none";
+      void el.offsetWidth;
+      el.style.animation = "mgFadeUp 0.5s ease-out both";
+    }, 4200);
+  }
+
+  /* ----------------------------------------------------- Noor-chat */
+
+  var chatData = {
+    welcome: "Hoi, ik ben Noor. Ik ben het gezicht van MarketGrow, zoals Iris dat is voor een juristenkantoor. Vraag mij gerust iets.",
+    start: [
+      { label: "Wat doet MarketGrow?", target: "doet" },
+      { label: "Stel het team voor", target: "team" },
+      { label: "Wat kost het?", target: "kost" }
+    ],
+    answers: {
+      doet: {
+        text: "Ik vang je websitevragen op, dag en nacht, en boek alleen de juiste intakes in je agenda. Achter mij schrijven collega's je blogs en zetten ze je offertes klaar. Jij stuurt ons aan vanaf je telefoon.",
+        next: [
+          { label: "Stel het team voor", target: "team" },
+          { label: "Wat kost het?", target: "kost" }
+        ]
+      },
+      team: {
+        text: "Met plezier. Iris is het gezicht aan de balie, zoals ik dat hier ben. Een content-collega zorgt dat je gevonden wordt. Een offerte-collega zet je documenten klaar. En jij bent de manager. Scroll naar beneden, dan stel ik ze voor.",
+        next: [
+          { label: "Wat doe jij precies?", target: "doet" },
+          { label: "Wat kost het?", target: "kost" }
+        ]
+      },
+      kost: {
+        text: "Je begint klein, met \u00e9\u00e9n collega, tegen een vast en transparant tarief. De eerste tien kantoren krijgen een oprichterstarief dat blijft. Zal ik een kennismaking voor je inplannen?",
+        next: [
+          { label: "Ja, plan een kennismaking", target: "plan" },
+          { label: "Stel eerst het team voor", target: "team" }
+        ]
+      },
+      plan: {
+        text: "Top. Klik op 'Plan een kennismaking' onderaan, of mail ons op hello@marketgrow.ai. Dan laten we je Iris in actie zien.",
+        next: [
+          { label: "Wat doet MarketGrow?", target: "doet" },
+          { label: "Stel het team voor", target: "team" }
+        ]
+      }
+    }
+  };
+
+  function chat() {
+    var venster = document.getElementById("mg-chat-body");
+    if (!venster) return;
+
+    var lijst = document.getElementById("mg-msgs");
+    var typen = document.getElementById("mg-typing");
+    var intake = document.getElementById("mg-intake");
+    var chips = document.getElementById("mg-chips");
+    var demoRij = document.getElementById("mg-demo-row");
+    var liveRij = document.getElementById("mg-live-row");
+    var invoer = document.getElementById("mg-live-input");
+    var concept = document.getElementById("mg-draft");
+    var caret = document.getElementById("mg-caret");
+    var hint = document.getElementById("mg-hint");
+    var statusLive = document.getElementById("mg-status-live");
+    var statusDemo = document.getElementById("mg-status-demo");
+
+    var script = ["doet", "team", "kost", "plan"];
+    var auto = true;
+    var stapIdx = 0;
+    var bezig = false;
+    var live = false;
+    var timers = [];
+    var typeTimer = null;
+    var geschiedenis = [];
+
+    function wacht(ms, fn) { var t = setTimeout(fn, ms); timers.push(t); return t; }
+    function scrol() { venster.scrollTop = venster.scrollHeight; }
+
+    function bubbel(tekst, vanNoor) {
+      var rij = document.createElement("div");
+      rij.style.cssText = vanNoor
+        ? "display:flex;gap:10px;animation:mgFadeUp 0.4s ease-out both"
+        : "display:flex;justify-content:flex-end;animation:mgFadeUp 0.4s ease-out both";
+      if (vanNoor) {
+        var avatar = document.createElement("div");
+        avatar.style.cssText = "width:24px;height:24px;background:#3F4A2E;color:#F6F4EE;display:flex;align-items:center;justify-content:center;font-family:'Instrument Serif',Georgia,serif;font-size:12px;flex-shrink:0;margin-top:2px";
+        avatar.textContent = "N";
+        rij.appendChild(avatar);
+      }
+      var ballon = document.createElement("div");
+      ballon.style.cssText = vanNoor
+        ? "max-width:82%;background:#EFEBE1;color:#0E1112;padding:10px 14px;font-size:14px;line-height:1.55"
+        : "max-width:82%;background:#0E1112;color:#F6F4EE;padding:10px 14px;font-size:14px;line-height:1.55";
+      ballon.textContent = tekst;
+      rij.appendChild(ballon);
+      lijst.appendChild(rij);
+      geschiedenis.push({ role: vanNoor ? "assistant" : "user", content: tekst });
+      scrol();
+    }
+
+    function zetTypen(aan) {
+      bezig = aan;
+      typen.style.display = aan ? "flex" : "none";
+      if (aan) scrol();
+    }
+
+    function toonChips(lijstje) {
+      chips.innerHTML = "";
+      lijstje.forEach(function (c) {
+        var knop = document.createElement("button");
+        knop.type = "button";
+        knop.className = "mg-hv-4 mg-chip";
+        knop.setAttribute("data-target", c.target);
+        knop.style.cssText = "background:#FFFFFF;border:1px solid #E1DCCF;color:#0E1112;padding:9px 14px;font-size:13px;font-weight:500;font-family:'Inter Tight',system-ui,sans-serif;cursor:pointer;transition:border-color 0.15s";
+        knop.textContent = c.label;
+        chips.appendChild(knop);
+      });
+    }
+
+    function stopAuto() {
+      auto = false;
+      timers.forEach(clearTimeout);
+      timers = [];
+      if (typeTimer) clearInterval(typeTimer);
+      concept.textContent = "";
+      caret.style.display = "none";
+      hint.style.display = "";
+    }
+
+    function zetLive(aan) {
+      live = aan;
+      liveRij.style.display = aan ? "flex" : "none";
+      demoRij.style.display = aan ? "none" : "flex";
+      statusLive.style.display = aan ? "" : "none";
+      statusDemo.style.display = aan ? "none" : "";
+    }
+
+    function demoAntwoord(chip) {
+      if (bezig) return;
+      var antwoord = chatData.answers[chip.target];
+      bubbel(chip.label, false);
+      toonChips([]);
+      zetTypen(true);
+      wacht(1100, function () {
+        zetTypen(false);
+        bubbel(antwoord.text, true);
+        toonChips(antwoord.next);
+      });
+    }
+
+    function autoStap() {
+      if (!auto) return;
+      var doelwit = script[stapIdx];
+      if (!doelwit) return;
+      var chip = null;
+      $$(".mg-chip", chips).forEach(function (k) {
+        if (k.getAttribute("data-target") === doelwit) {
+          chip = { label: k.textContent, target: doelwit };
+        }
+      });
+      if (!chip) return;
+      hint.style.display = "none";
+      caret.style.display = "block";
+      var i = 0;
+      concept.textContent = "";
+      typeTimer = setInterval(function () {
+        if (!auto) { clearInterval(typeTimer); return; }
+        i += 1;
+        concept.textContent = chip.label.slice(0, i);
+        if (i >= chip.label.length) {
+          clearInterval(typeTimer);
+          wacht(420, function () {
+            if (!auto) return;
+            concept.textContent = "";
+            caret.style.display = "none";
+            hint.style.display = "";
+            stapIdx += 1;
+            demoAntwoord(chip);
+            wacht(3900, autoStap);
+          });
+        }
+      }, 55);
+    }
+
+    function duwNoor(tekst, intakeKlaar) {
+      zetTypen(false);
+      bubbel(tekst, true);
+      toonChips(chatData.start);
+      if (intakeKlaar) {
+        intake.style.display = "flex";
+        scrol();
+      }
+    }
+
+    function vraagNoor() {
+      var berichten = geschiedenis.slice();
+      while (berichten.length && berichten[0].role !== "user") berichten.shift();
+      if (!berichten.length) { zetTypen(false); return; }
+      fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ messages: berichten })
+      }).then(function (r) {
+        if (!r.ok) throw new Error("status " + r.status);
+        return r.json();
+      }).then(function (data) {
+        if (data && data.reply) duwNoor(String(data.reply).trim(), data.intakeReady);
+        else throw new Error("leeg antwoord");
+      }).catch(function () {
+        duwNoor("Sorry, ik kan even niet antwoorden. Mail ons op hello@marketgrow.ai of plan een kennismaking, dan help ik je verder.");
+      });
+    }
+
+    function stuur(tekst) {
+      if (bezig || !tekst) return;
+      stopAuto();
+      zetLive(true);
+      bubbel(tekst, false);
+      toonChips([]);
+      zetTypen(true);
+      vraagNoor();
+    }
+
+    // Startsituatie
+    bubbel(chatData.welcome, true);
+    toonChips(chatData.start);
+    zetLive(false);
+
+    chips.addEventListener("click", function (e) {
+      var knop = e.target.closest(".mg-chip");
+      if (!knop) return;
+      stuur(knop.textContent.trim());
+    });
+
+    $$(".mg-start-live").forEach(function (el) {
+      el.addEventListener("click", function () {
+        stopAuto();
+        zetLive(true);
+        if (invoer) invoer.focus();
+      });
+    });
+
+    if (invoer) {
+      invoer.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter") return;
+        e.preventDefault();
+        var t = invoer.value.trim();
+        invoer.value = "";
+        stuur(t);
+      });
+    }
+    var stuurKnop = document.getElementById("mg-send");
+    if (stuurKnop) {
+      stuurKnop.addEventListener("click", function () {
+        var t = invoer.value.trim();
+        invoer.value = "";
+        stuur(t);
+      });
+    }
+
+    var opnieuw = document.getElementById("mg-reset");
+    if (opnieuw) {
+      opnieuw.addEventListener("click", function () {
+        stopAuto();
+        lijst.innerHTML = "";
+        geschiedenis = [];
+        intake.style.display = "none";
+        zetTypen(false);
+        zetLive(false);
+        bubbel(chatData.welcome, true);
+        toonChips(chatData.start);
+        stapIdx = 0;
+        auto = true;
+        wacht(1400, autoStap);
+      });
+    }
+
+    wacht(1800, autoStap);
+  }
+
+  /* ------------------------------------------------ contactformulier */
+
+  function formulier() {
+    var knop = document.getElementById("mg-verstuur");
+    if (!knop) return;
+    var velden = {
+      naam: document.getElementById("mg-naam"),
+      email: document.getElementById("mg-email"),
+      bedrijf: document.getElementById("mg-bedrijf"),
+      bericht: document.getElementById("mg-bericht")
+    };
+    var fout = document.getElementById("mg-fout");
+    var blok = document.getElementById("mg-form");
+    var bedankt = document.getElementById("mg-bedankt");
+
+    function toonFout(tekst) {
+      fout.textContent = tekst;
+      fout.style.display = tekst ? "block" : "none";
+    }
+
+    knop.addEventListener("click", function () {
+      var data = {};
+      var leeg = false;
+      Object.keys(velden).forEach(function (k) {
+        data[k] = (velden[k].value || "").trim();
+        if (!data[k]) leeg = true;
+      });
+      if (leeg) { toonFout("Vul alle velden in \u00b7 ze zijn allemaal verplicht."); return; }
+      if (!/.+@.+\..+/.test(data.email)) { toonFout("Vul een geldig e-mailadres in."); return; }
+      toonFout("");
+      knop.disabled = true;
+      knop.textContent = "Versturen\u2026";
+
+      var klaar = function () {
+        var naam = document.getElementById("mg-bedankt-naam");
+        var mail = document.getElementById("mg-bedankt-mail");
+        if (naam) naam.textContent = "Bedankt " + data.naam.split(/\s+/)[0];
+        if (mail) mail.textContent = data.email;
+        blok.style.display = "none";
+        bedankt.style.display = "";
+      };
+
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        if (r.ok) { klaar(); return null; }
+        return r.json().catch(function () { return null; });
+      }).then(function (d) {
+        if (!blok.style.display) {
+          toonFout(d && d.error
+            ? d.error
+            : "Versturen mislukt. Probeer het opnieuw of mail ons direct op hello@marketgrow.ai.");
+          knop.disabled = false;
+          knop.innerHTML = 'Verstuur bericht <span class="mg-arrow">\u2192</span>';
+        }
+      }).catch(function () {
+        klaar();
+      });
+    });
+
+    var nieuw = document.getElementById("mg-nieuw");
+    if (nieuw) {
+      nieuw.addEventListener("click", function () {
+        Object.keys(velden).forEach(function (k) { velden[k].value = ""; });
+        toonFout("");
+        knop.disabled = false;
+        knop.innerHTML = 'Verstuur bericht <span class="mg-arrow">\u2192</span>';
+        bedankt.style.display = "none";
+        blok.style.display = "";
+      });
+    }
+  }
+
+  /* -------------------------------------------- bouwblok-schakelaars */
+
+  function bouwblokken() {
+    var rijen = $$(".mg-blok");
+    if (!rijen.length) return;
+    var reeks = [
+      { gespreksgids: true, content: false, whatsapp: false, document: false },
+      { gespreksgids: true, content: true, whatsapp: false, document: false },
+      { gespreksgids: true, content: true, whatsapp: true, document: false },
+      { gespreksgids: true, content: true, whatsapp: true, document: true },
+      { gespreksgids: true, content: false, whatsapp: true, document: false }
+    ];
+    var stand = { gespreksgids: true, content: false, whatsapp: false, document: false };
+    var stap = 0;
+    var auto = true;
+
+    function teken() {
+      rijen.forEach(function (rij) {
+        var aan = !!stand[rij.getAttribute("data-sleutel")];
+        $(".mg-blok-naam", rij).style.color = aan ? "#0E1112" : "#A09E94";
+        $(".mg-blok-baan", rij).style.background = aan ? "#C8E06A" : "#C7C3B6";
+        $(".mg-blok-knop", rij).style.transform = aan ? "translateX(20px)" : "translateX(0px)";
+      });
+    }
+
+    rijen.forEach(function (rij) {
+      rij.addEventListener("click", function () {
+        auto = false;
+        var sleutel = rij.getAttribute("data-sleutel");
+        stand[sleutel] = !stand[sleutel];
+        teken();
+      });
+    });
+
+    setInterval(function () {
+      if (!auto) return;
+      stap = (stap + 1) % reeks.length;
+      stand = { gespreksgids: reeks[stap].gespreksgids, content: reeks[stap].content,
+                whatsapp: reeks[stap].whatsapp, document: reeks[stap].document };
+      teken();
+    }, 1900);
+
+    teken();
+  }
+
+  /* --------------------------------------------------------- starten */
+
+  function start() {
+    navigatie();
+    reveals();
+    olijfbalk();
+    chat();
+    formulier();
+    bouwblokken();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", start);
+  } else {
+    start();
+  }
+})();
