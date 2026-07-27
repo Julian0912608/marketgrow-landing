@@ -1,3 +1,4 @@
+import { herkomstOk, zetHerkomstHeaders, teSnel, TE_DRUK, NIET_TOEGESTAAN } from './_bescherming.js';
 // api/lead.js
 // Vercel serverless function. Ontvangt een aanmelding uit de Noor-chat op de site
 // en stuurt een mail naar MarketGrow met het e-mailadres van de bezoeker, het
@@ -17,12 +18,18 @@ const esc = (s) => String(s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  zetHerkomstHeaders(req, res);
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+  // Ook dit endpoint verstuurt mail, dus dezelfde twee zeven als bij contact.
+  if (!herkomstOk(req)) {
+    return res.status(NIET_TOEGESTAAN.status).json(NIET_TOEGESTAAN.body);
+  }
+  if (teSnel(req, { max: 8, vensterMs: 10 * 60 * 1000 })) {
+    return res.status(TE_DRUK.status).json(TE_DRUK.body);
+  }
 
   if (!process.env.RESEND_API_KEY) {
     console.error('RESEND_API_KEY ontbreekt');

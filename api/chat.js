@@ -1,3 +1,4 @@
+import { herkomstOk, zetHerkomstHeaders, teSnel, knip, TE_DRUK, NIET_TOEGESTAAN } from './_bescherming.js';
 import Anthropic from '@anthropic-ai/sdk';
 
 const SYSTEM_PROMPT = `Je bent Noor, de AI-gids op de website van MarketGrow.ai. MarketGrow is een Nederlands platform dat een AI-laag (gespreksgids, content-engine, WhatsApp-meldingen, document-automatisering) toevoegt aan de bestaande websites van dienstverleners in het mkb. MarketGrow heeft twee oprichters, Julian Goote en Onno Goote, en is gevestigd in Breda.
@@ -96,13 +97,18 @@ Als een bezoeker iets vraagt dat hier los van staat (algemene kennis, het weer, 
 Houd antwoorden compact, meestal 2 tot 4 zinnen. Stel één vraag per beurt. Laat de bezoeker praten.`;
 
 export default async function handler(req, res) {
-  // CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  zetHerkomstHeaders(req, res);
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
+  }
+
+  // Alleen vanaf onze eigen site. Dit endpoint kost geld per aanroep.
+  if (!herkomstOk(req)) {
+    return res.status(NIET_TOEGESTAAN.status).json(NIET_TOEGESTAAN.body);
+  }
+  if (teSnel(req, { max: 12, vensterMs: 5 * 60 * 1000 })) {
+    return res.status(TE_DRUK.status).json(TE_DRUK.body);
   }
 
   if (req.method !== 'POST') {
@@ -120,8 +126,13 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Messages array required' });
     }
 
-    // Beperk conversation-length tegen prompt-injection en kosten
-    const recentMessages = messages.slice(-20);
+    // Beperk conversation-length tegen prompt-injection en kosten. Naast het
+    // aantal berichten kappen we ook de lengte per bericht af: zonder die grens
+    // bepaalt de beller hoeveel tokens een enkel verzoek kost.
+    const recentMessages = messages.slice(-20).map((m) => ({
+      role: m && m.role === 'assistant' ? 'assistant' : 'user',
+      content: knip(typeof m?.content === 'string' ? m.content : '', 2000),
+    }));
 
     // GUARD: de Anthropic API vereist dat het eerste bericht rol 'user' heeft.
     // Na het afkappen op de laatste 20 kan de reeks weer met een 'assistant'-bericht

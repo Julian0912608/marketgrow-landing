@@ -1,3 +1,4 @@
+import { herkomstOk, zetHerkomstHeaders, teSnel, knip, TE_DRUK, NIET_TOEGESTAAN } from './_bescherming.js';
 // Serverless endpoint voor het contactformulier · POST /api/contact
 // Werkt op Vercel (Node runtime). Vereist de env-var RESEND_API_KEY.
 // Belangrijk: het afzenderdomein (marketgrow.ai) moet geverifieerd zijn in Resend,
@@ -14,18 +15,30 @@ const esc = (s) =>
     .replace(/>/g, '&gt;');
 
 export default async function handler(req, res) {
+  zetHerkomstHeaders(req, res);
+
+  if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  // Dit endpoint verstuurt mail via jouw Resend-account. Zonder rem kan iemand
+  // daarmee je eigen postvak volgooien.
+  if (!herkomstOk(req)) {
+    return res.status(NIET_TOEGESTAAN.status).json(NIET_TOEGESTAAN.body);
+  }
+  if (teSnel(req, { max: 5, vensterMs: 10 * 60 * 1000 })) {
+    return res.status(TE_DRUK.status).json(TE_DRUK.body);
+  }
+
   try {
     const body =
       req.body && typeof req.body === 'object' ? req.body : JSON.parse(req.body || '{}');
-    const naam = (body.naam || '').toString().trim();
-    const email = (body.email || '').toString().trim();
-    const bedrijf = (body.bedrijf || '').toString().trim();
-    const bericht = (body.bericht || '').toString().trim();
+    const naam = knip((body.naam || '').toString().trim(), 120);
+    const email = knip((body.email || '').toString().trim(), 200);
+    const bedrijf = knip((body.bedrijf || '').toString().trim(), 160);
+    const bericht = knip((body.bericht || '').toString().trim(), 5000);
 
     if (!naam || !email || !bedrijf || !bericht) {
       return res.status(400).json({ error: 'Alle velden zijn verplicht.' });
