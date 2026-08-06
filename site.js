@@ -534,22 +534,25 @@
     //
     // Bewust GEEN focus op de invoer bij het naderen. Focus stelen bij hover kaapt het
     // toetsenbord van iemand die alleen langs scrolt. Dat gebeurt pas bij een echte klik.
-    var onthuld = false;
+    // De vlag geldt ALLEEN voor de sticker, niet voor de rest.
+    //
+    // Hier zat een fout. De vlag dekte de hele functie, dus na de eerste onthulling sloeg
+    // hij ook het omzetten naar de echte invoerregel over. Druk je daarna op Opnieuw, dan
+    // zet die het paneel terug in demostand en kon je nergens meer typen: de klik kwam
+    // wel binnen, maar zette de invoerregel niet meer aan. De sticker mag een keer
+    // weggaan; de invoerregel moet elke keer aan kunnen.
+    var stickerWeg = false;
     function onthul(metFocus) {
       var sticker = document.getElementById("mg-sticker");
       var band = document.getElementById("mg-sticker-band");
-      if (band && !onthuld) {
+      if (band && !stickerWeg) {
+        stickerWeg = true;
         // Weg langs de schuine as, dus diagonaal de hoek uit. Als een wikkel die eraf
         // getrokken wordt in plaats van een venster dat verdwijnt.
         band.style.transform = "rotate(45deg) translate(0, -130px)";
         band.style.opacity = "0";
         setTimeout(function () { if (sticker && sticker.parentNode) sticker.parentNode.removeChild(sticker); }, 700);
       }
-      if (onthuld) {
-        if (metFocus && invoer) invoer.focus();
-        return;
-      }
-      onthuld = true;
       stopAuto();
       zetLive(true);
       if (metFocus && invoer) invoer.focus();
@@ -560,6 +563,14 @@
     var paneel = document.getElementById("mg-paneel");
     if (paneel) {
       paneel.addEventListener("mouseenter", function () { onthul(false); });
+    }
+
+    // Wie hierheen komt via "Probeer het zelf" op een sectorpagina heeft die keuze al
+    // gemaakt. Dan hoeft hij niet eerst een wikkel weg te halen: het paneel staat meteen
+    // klaar met de cursor in het veld. De browser scrolt zelf naar het anker, want dat
+    // is een echt id; zonder JavaScript beland je dus nog steeds op het goede punt.
+    if (window.location && window.location.hash === "#mg-paneel") {
+      wacht(300, function () { onthul(true); });
     }
 
     // De boekingsmelding buiten dit paneel mag de bevestiging hier tonen.
@@ -617,12 +628,18 @@
         if (leadBlok) { leadBlok.remove(); leadBlok = null; }
         intake.style.display = "none";
         zetTypen(false);
-        zetLive(false);
+        // Blijft live staan, en de demo komt niet terug.
+        //
+        // Hij zette het paneel eerst terug in demostand en startte het script opnieuw.
+        // Maar op Opnieuw drukt alleen iemand die al met Noor heeft gepraat, en die
+        // terugsturen naar een reclamefilmpje is de verkeerde kant op. Opnieuw betekent
+        // hier een schoon gesprek, geen herhaling van de introductie.
+        zetLive(true);
         bubbel(chatData.welcome, true);
         toonChips(chatData.start);
         stapIdx = 0;
-        auto = true;
-        wacht(1400, autoStap);
+        auto = false;
+        if (invoer) invoer.focus();
       });
     }
 
