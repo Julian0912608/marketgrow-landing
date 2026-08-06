@@ -524,6 +524,44 @@
       vraagNoor();
     }
 
+    // De sticker eraf halen, de demo stilzetten en de echte invoerregel tonen.
+    //
+    // WAAROM DIT AAN DE MUIS HANGT EN NIET AAN EEN KLIK. Het paneel typt zichzelf, en
+    // beweging leest als afspelen en niet als invoer. Een bezoeker kijkt ernaar zoals hij
+    // naar een filmpje kijkt en probeert niet mee te doen. Door de beweging te stoppen op
+    // het moment dat hij er met de muis naartoe gaat, verandert het venster van "ik speel
+    // af" naar "ik wacht op jou", precies wanneer hij kijkt.
+    //
+    // Bewust GEEN focus op de invoer bij het naderen. Focus stelen bij hover kaapt het
+    // toetsenbord van iemand die alleen langs scrolt. Dat gebeurt pas bij een echte klik.
+    var onthuld = false;
+    function onthul(metFocus) {
+      var sticker = document.getElementById("mg-sticker");
+      var band = document.getElementById("mg-sticker-band");
+      if (band && !onthuld) {
+        // Weg langs de schuine as, dus diagonaal de hoek uit. Als een wikkel die eraf
+        // getrokken wordt in plaats van een venster dat verdwijnt.
+        band.style.transform = "rotate(45deg) translate(0, -130px)";
+        band.style.opacity = "0";
+        setTimeout(function () { if (sticker && sticker.parentNode) sticker.parentNode.removeChild(sticker); }, 700);
+      }
+      if (onthuld) {
+        if (metFocus && invoer) invoer.focus();
+        return;
+      }
+      onthuld = true;
+      stopAuto();
+      zetLive(true);
+      if (metFocus && invoer) invoer.focus();
+    }
+
+    // Naderen met de muis is genoeg. Een telefoon kent geen hover, dus daar doet de tik
+    // op de invoerregel of op een chip hetzelfde werk; die twee lopen ook door onthul.
+    var paneel = document.getElementById("mg-paneel");
+    if (paneel) {
+      paneel.addEventListener("mouseenter", function () { onthul(false); });
+    }
+
     // De boekingsmelding buiten dit paneel mag de bevestiging hier tonen.
     bevestigInChat = function (tekst) {
       intake.style.display = "none";
@@ -539,15 +577,12 @@
     chips.addEventListener("click", function (e) {
       var knop = e.target.closest(".mg-chip");
       if (!knop) return;
+      onthul(false);
       stuur(knop.textContent.trim());
     });
 
     $$(".mg-start-live").forEach(function (el) {
-      el.addEventListener("click", function () {
-        stopAuto();
-        zetLive(true);
-        if (invoer) invoer.focus();
-      });
+      el.addEventListener("click", function () { onthul(true); });
     });
 
     if (invoer) {

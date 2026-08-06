@@ -100,7 +100,15 @@ Cal.ns["kennismaking"]("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-b
         </div>
 
         <div style="display:flex;justify-content:center">
-          <div class="mg-h-auto" style="width:100%;max-width:440px;height:552px;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E1DCCF;box-shadow:0 30px 80px -40px rgba(63,74,46,0.4), 0 0 0 1px rgba(14,17,18,0.04)">
+          <div id="mg-paneel" class="mg-h-auto" style="position:relative;width:100%;max-width:440px;height:552px;display:flex;flex-direction:column;background:#FFFFFF;border:1px solid #E1DCCF;box-shadow:0 30px 80px -40px rgba(63,74,46,0.4), 0 0 0 1px rgba(14,17,18,0.04)">
+            <!-- De sticker. Het paneel typt zichzelf, en beweging leest als afspelen en niet
+                 als invoer. Deze band ligt schuin over de hoek en gaat eraf zodra je in de
+                 buurt komt: op dat moment stopt de demo en verschijnt de echte invoerregel.
+                 Geen muisgebeurtenissen op de sticker zelf, anders blokkeert hij de knop
+                 eronder; het paneel is wat de aanraking opvangt. -->
+            <div id="mg-sticker" style="position:absolute;top:0;right:0;width:164px;height:164px;overflow:hidden;pointer-events:none;z-index:5">
+              <div id="mg-sticker-band" style="position:absolute;top:30px;right:-52px;width:230px;transform:rotate(45deg);transform-origin:center;background:#C8E06A;color:#0E1112;text-align:center;padding:9px 0;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;font-weight:500;box-shadow:0 8px 20px -10px rgba(14,17,18,0.5);transition:transform 0.6s cubic-bezier(0.2,0.8,0.2,1),opacity 0.45s ease">Probeer het hier zelf</div>
+            </div>
             <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid #E1DCCF;background:#EFEBE1">
               <div style="display:flex;align-items:center;gap:12px">
                 <div style="position:relative">
