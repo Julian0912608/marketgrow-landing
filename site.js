@@ -109,6 +109,95 @@
 
   /* ----------------------------------------------------- Noor-chat */
 
+  // Noor draait niet meer op een eigen functie in deze repo maar op het platform, net
+  // als bij elke klant. Daardoor komen gesprekken, leads en boekingen in het dashboard
+  // terecht, en geldt elke verbetering aan de persona ook hier.
+  //
+  // Aan de opmaak van het paneel verandert dit niets. Dit bestand praat alleen met een
+  // ander adres en kan twee antwoorden meer aan: de uitnodiging voor een kennismaking
+  // en het contactformulier.
+  var PLATFORM = "https://app.marketgrow.ai";
+  var TENANT = "demo";
+
+  // Het lopende gesprek. Staat op moduleniveau omdat de boekingsmelding hem ook nodig
+  // heeft, en die hangt aan de Cal-knoppen die buiten het chatpaneel staan.
+  var gesprekId = null;
+  var boekingGemeld = false;
+  var boekingLuisterAan = false;
+  // Wordt door chat() gevuld als het paneel op deze pagina staat. Op een sectorpagina
+  // blijft hij leeg en verloopt een boeking stil.
+  var bevestigInChat = null;
+
+  // Naam en e-mail uit een Cal.com-boeking halen. De vorm verschilt per versie van
+  // Cal.com, dus we kijken op meerdere plekken: de deelnemerslijst en het
+  // antwoordenobject, waarvan een veld een losse waarde of een object met .value kan
+  // zijn. Vinden we niets, dan melden we de boeking zonder naam. Dat is beter dan de
+  // melding laten vallen.
+  function leesBoekingContact(data) {
+    try {
+      var b = (data && data.booking) || data || {};
+      var att = (b.attendees && b.attendees[0]) || (data && data.attendees && data.attendees[0]) || {};
+      var resp = b.responses || (data && data.responses) || {};
+      var waarde = function (x) { return x && typeof x === "object" ? (x.value || "") : (x || ""); };
+      return {
+        naam: String(att.name || waarde(resp.name) || waarde(resp.fullName) || "").trim(),
+        email: String(att.email || waarde(resp.email) || "").trim()
+      };
+    } catch (e) {
+      return { naam: "", email: "" };
+    }
+  }
+
+  // Een geboekte kennismaking terugmelden aan het platform, zodat hij als afspraak en
+  // als lead in het dashboard verschijnt. Dit is het hele punt van de vorige stap: zolang
+  // Cal.com in een nieuw tabblad opende vuurde deze gebeurtenis in een pagina waar wij
+  // niet bij kunnen, en was een geboekte intake onmeetbaar.
+  //
+  // Werkt vanaf elke pagina. Staat er geen chatpaneel, dan gaat de melding mee zonder
+  // gespreksnummer; die kolom is niet verplicht.
+  function meldBoeking(data) {
+    if (boekingGemeld) return;
+    boekingGemeld = true;
+    var contact = leesBoekingContact(data);
+    var terugval = "Je kennismaking staat vast. Je ontvangt een bevestiging per e-mail.";
+    fetch(PLATFORM + "/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        tenant: TENANT,
+        action: "booked",
+        conversationId: gesprekId,
+        start: (data && data.date) || null,
+        naam: contact.naam,
+        email: contact.email
+      })
+    }).then(function (r) {
+      return r.json().then(function (j) { return j; });
+    }).then(function (j) {
+      if (bevestigInChat) bevestigInChat((j && j.reply) || terugval);
+    }).catch(function () {
+      if (bevestigInChat) bevestigInChat(terugval);
+    });
+  }
+
+  // Cal.com meldt een geslaagde boeking op de naamruimte die in de kop van elke pagina
+  // wordt aangemaakt. Daar haken we een keer op aan, ook op pagina's zonder chat.
+  function boekingsmelding() {
+    if (boekingLuisterAan) return;
+    try {
+      var ns = window.Cal && window.Cal.ns && window.Cal.ns.kennismaking;
+      if (typeof ns !== "function") return;
+      ns("on", {
+        action: "bookingSuccessful",
+        callback: function (e) { meldBoeking((e && e.detail && e.detail.data) || {}); }
+      });
+      boekingLuisterAan = true;
+    } catch (err) {
+      // Geen Cal op deze pagina, of een andere versie. Dan gewoon geen melding.
+    }
+  }
+
+
   var chatData = {
     welcome: "Hoi, ik ben Noor. Ik ben het gezicht van MarketGrow, zoals Iris dat is voor een juristenkantoor. Vraag mij gerust iets.",
     start: [
@@ -173,6 +262,7 @@
     var timers = [];
     var typeTimer = null;
     var geschiedenis = [];
+    var liveGestart = false;
 
     function wacht(ms, fn) { var t = setTimeout(fn, ms); timers.push(t); return t; }
     function scrol() { venster.scrollTop = venster.scrollHeight; }
@@ -293,20 +383,127 @@
       }
     }
 
+    var leadBlok = null;
+
+    function toonMelding(el, tekst) {
+      el.textContent = tekst;
+      el.style.display = tekst ? "block" : "none";
+    }
+
+    // Het contactformulier in de chat. Het platform beslist wanneer het verschijnt en
+    // levert de velden mee; wij tekenen ze in de opmaak van deze pagina. Dit bestond
+    // hier nog niet: de oude Noor kon alleen naar de agenda verwijzen.
+    function toonLeadFormulier(velden) {
+      if (leadBlok) return;
+      var lijstVelden = Array.isArray(velden) && velden.length ? velden : [
+        { key: "naam", label: "Naam", type: "text" },
+        { key: "email", label: "E-mail", type: "email" },
+        { key: "telefoon", label: "Telefoon", type: "tel" }
+      ];
+
+      leadBlok = document.createElement("div");
+      leadBlok.style.cssText = "margin-left:34px;background:#3F4A2E;color:#F6F4EE;padding:16px 18px;display:flex;flex-direction:column;gap:10px;animation:mgFadeUp 0.4s ease-out both";
+
+      var kop = document.createElement("div");
+      kop.style.cssText = "font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;font-weight:500;color:#C8E06A";
+      kop.textContent = "\u2192 Laat je gegevens achter";
+      leadBlok.appendChild(kop);
+
+      var invoeren = {};
+      lijstVelden.forEach(function (v) {
+        var inp = document.createElement("input");
+        inp.type = v.type || "text";
+        inp.placeholder = v.label || v.key;
+        inp.style.cssText = "background:#F6F4EE;border:none;color:#0E1112;padding:10px 12px;font-size:16px;font-family:'Inter Tight',system-ui,sans-serif;outline:none";
+        invoeren[v.key] = inp;
+        leadBlok.appendChild(inp);
+      });
+
+      var melding = document.createElement("div");
+      melding.style.cssText = "font-size:12.5px;line-height:1.5;color:#C8E06A;display:none";
+      leadBlok.appendChild(melding);
+
+      var knop = document.createElement("button");
+      knop.type = "button";
+      knop.textContent = "Versturen";
+      knop.style.cssText = "background:#C8E06A;color:#0E1112;border:none;text-align:center;padding:11px 16px;font-size:14px;font-weight:500;font-family:'Inter Tight',system-ui,sans-serif;cursor:pointer";
+      knop.addEventListener("click", function () { verstuurLead(lijstVelden, invoeren, melding, knop); });
+      leadBlok.appendChild(knop);
+
+      venster.insertBefore(leadBlok, typen);
+      scrol();
+    }
+
+    function verstuurLead(velden, invoeren, melding, knop) {
+      var lead = {};
+      velden.forEach(function (v) {
+        var w = (invoeren[v.key].value || "").trim();
+        if (w) lead[v.key] = w;
+      });
+
+      // Dezelfde eis als de server: een naam, plus een e-mailadres of een telefoonnummer.
+      // Hier ook controleren scheelt de bezoeker een rondje wachten op een foutmelding
+      // die je meteen kunt zien aankomen.
+      if (!lead.naam) { toonMelding(melding, "Vul je naam in."); return; }
+      if (!lead.email && !lead.telefoon) { toonMelding(melding, "Vul je e-mail of je telefoonnummer in."); return; }
+
+      toonMelding(melding, "");
+      knop.disabled = true;
+      knop.textContent = "Versturen...";
+
+      fetch(PLATFORM + "/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ tenant: TENANT, action: "lead", conversationId: gesprekId, lead: lead })
+      }).then(function (r) {
+        return r.json().then(function (j) { return { ok: r.ok, d: j }; });
+      }).then(function (res) {
+        if (!res.ok) {
+          knop.disabled = false;
+          knop.textContent = "Versturen";
+          toonMelding(melding, (res.d && res.d.error) || "Versturen lukte niet. Probeer het nog een keer.");
+          return;
+        }
+        leadBlok.remove();
+        leadBlok = null;
+        duwNoor((res.d && res.d.reply) || "Bedankt, je gegevens zijn doorgegeven. We nemen snel contact met je op.");
+      }).catch(function () {
+        knop.disabled = false;
+        knop.textContent = "Versturen";
+        toonMelding(melding, "Versturen lukte niet. Mail ons gerust op hello@marketgrow.ai.");
+      });
+    }
+
     function vraagNoor() {
       var berichten = geschiedenis.slice();
       while (berichten.length && berichten[0].role !== "user") berichten.shift();
       if (!berichten.length) { zetTypen(false); return; }
-      fetch("/api/chat", {
+      fetch(PLATFORM + "/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: berichten })
+        body: JSON.stringify({
+          tenant: TENANT,
+          messages: berichten,
+          conversationId: gesprekId,
+          bron: "landing",
+          bronDetail: String(document.title || "").slice(0, 160)
+        })
       }).then(function (r) {
         if (!r.ok) throw new Error("status " + r.status);
         return r.json();
       }).then(function (data) {
-        if (data && data.reply) duwNoor(String(data.reply).trim(), data.intakeReady);
-        else throw new Error("leeg antwoord");
+        if (!data || !data.reply) throw new Error("leeg antwoord");
+        if (data.conversationId) gesprekId = data.conversationId;
+        var tekst = String(data.reply).trim();
+        // Het platform beslist zelf of de agenda of het formulier verschijnt, in een
+        // aparte smalle aanroep. Dat verving de markering in de tekst, die vier
+        // proefruns lang vier verschillende uitkomsten gaf.
+        if (data.lead === true) {
+          duwNoor(tekst);
+          toonLeadFormulier(data.leadVelden);
+          return;
+        }
+        duwNoor(tekst, data.intake === true);
       }).catch(function () {
         duwNoor("Sorry, ik kan even niet antwoorden. Mail ons op hello@marketgrow.ai of plan een kennismaking, dan help ik je verder.");
       });
@@ -315,12 +512,24 @@
     function stuur(tekst) {
       if (bezig || !tekst) return;
       stopAuto();
+      // De demo hierboven is theater: die antwoorden komen uit dit bestand en niet van
+      // Noor. Ze mogen dus niet als gespreksgeschiedenis mee naar het platform, want
+      // dan staat er straks in het dashboard dat Noor iets gezegd heeft wat ze nooit
+      // heeft gezegd. Vanaf de eerste echte vraag beginnen we met een schone lei.
+      if (!liveGestart) { liveGestart = true; geschiedenis = []; }
       zetLive(true);
       bubbel(tekst, false);
       toonChips([]);
       zetTypen(true);
       vraagNoor();
     }
+
+    // De boekingsmelding buiten dit paneel mag de bevestiging hier tonen.
+    bevestigInChat = function (tekst) {
+      intake.style.display = "none";
+      if (leadBlok) { leadBlok.remove(); leadBlok = null; }
+      duwNoor(tekst);
+    };
 
     // Startsituatie
     bubbel(chatData.welcome, true);
@@ -365,6 +574,12 @@
         stopAuto();
         lijst.innerHTML = "";
         geschiedenis = [];
+        // Opnieuw beginnen betekent ook een nieuw gesprek op het platform, anders
+        // hangen de nieuwe berichten onder de vorige vraag in het dashboard.
+        liveGestart = false;
+        gesprekId = null;
+        boekingGemeld = false;
+        if (leadBlok) { leadBlok.remove(); leadBlok = null; }
         intake.style.display = "none";
         zetTypen(false);
         zetLive(false);
@@ -508,6 +723,8 @@
     chat();
     formulier();
     bouwblokken();
+    // Buiten chat(), want de Cal-knoppen staan ook op pagina's zonder chatpaneel.
+    boekingsmelding();
   }
 
   if (document.readyState === "loading") {
