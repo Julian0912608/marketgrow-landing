@@ -85,3 +85,29 @@ a { color: inherit; text-decoration: inherit; }
 .underline-offset-2 { text-underline-offset: 2px; }
 .hover\:text-ink:hover { color: #1A1B1A; }
 .hover\:underline:hover { text-decoration: underline; }
+
+/* De voettekst van de landingspagina, ook op deze tekstpagina's.
+ *
+ * Die voet stond hier anders: een smalle regel binnen dezelfde 760px als de tekst, met
+ * andere links erin. Twee voetteksten op een site is een van die verschillen die je pas
+ * ziet als je de pagina's naast elkaar legt, en dan zie je hem ook nooit meer niet.
+ *
+ * De voet zelf werkt vrijwel geheel op inline stijlen; alleen deze vijf klassen komen
+ * uit styles.css. Ze staan hier met dezelfde breekpunten, zodat hij op beide soorten
+ * pagina's precies hetzelfde meebuigt. */
+.mg-hv-7:hover { color:#3F4A2E; }
+
+@media (max-width: 1024px) {
+  .mg-wrap { padding-left: 24px !important; padding-right: 24px !important; }
+}
+
+@media (max-width: 760px) {
+  .mg-wrap { padding-left: 20px !important; padding-right: 20px !important; }
+  .mg-grid--foot { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .mg-pd-24 { padding: 40px 0 32px !important; }
+  .mg-gp-4 { gap: 22px !important; }
+}
+
+@media (max-width: 460px) {
+  .mg-grid--foot { grid-template-columns: minmax(0, 1fr) !important; }
+}
