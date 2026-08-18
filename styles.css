@@ -233,3 +233,15 @@ em.accent {
 /* Kaarten in de kennisbank zijn links, maar ze horen niet als tekstlink te lezen. */
 a[data-artikel], a[data-artikel] span { text-decoration: none; }
 a[data-artikel]:hover span:nth-of-type(2) { color: var(--olijf); }
+
+/* Rijen in de kennisbank. Ruimer, met een duidelijke scheiding en een titel die niet
+   tegen zijn label aan plakt. De laatste rij heeft geen streep eronder nodig; die zit al
+   in de omlijning van het blok. */
+a[data-artikel] {
+  padding: clamp(24px, 2.4vw, 34px) clamp(22px, 2.6vw, 34px);
+  transition: background-color .18s ease;
+}
+a[data-artikel]:last-child { border-bottom: none; }
+a[data-artikel]:hover { background: var(--zand); }
+a[data-artikel] .nr { color: var(--olijf); }
+a[data-artikel] .bij { color: var(--grijs); }

@@ -131,9 +131,13 @@
     var gesprekId = null;
     var bezig = false;
 
-    var WELKOM =
-      "Hoi, ik ben Noor. Vertel in je eigen woorden wat je doet en waar je klanten meestal " +
-      "mee komen, dan laat ik zien wat er op jouw site zou gebeuren.";
+    // Drie korte berichten in plaats van een lange lap. Ze komen na elkaar binnen, met
+    // wachtstipjes ertussen, precies zoals een echt gesprek verloopt.
+    var WELKOM = [
+      "Hoi, ik ben Noor.",
+      "Ik ben de AI-collega van MarketGrow en ik sta op deze site.",
+      "Vertel in je eigen woorden wat je doet, dan laat ik zien wat er op jouw site zou gebeuren.",
+    ];
 
     function bubbel(rol, tekst) {
       var rij = document.createElement("div");
@@ -157,8 +161,8 @@
       blok.style.cssText =
         "max-width:76%;padding:12px 15px;font-size:15px;line-height:1.55;" +
         (rol === "bezoeker"
-          ? "background:var(--olijf);color:var(--cream)"
-          : "background:var(--zand);color:var(--inkt);border:1px solid var(--lijn)");
+          ? "background:var(--olijf);color:#fff"
+          : "background:#fff;color:#111;border:1px solid var(--lijn)");
       rij.appendChild(blok);
       lijst.appendChild(rij);
       lijst.scrollTop = lijst.scrollHeight;
@@ -188,19 +192,28 @@
     function begroet() {
       if (begroetingGedaan) return;
       begroetingGedaan = true;
-      geschiedenis.push({ role: "assistant", content: WELKOM });
-      if (RUSTIG) { bubbel("bot", WELKOM); return; }
-      var blok = bubbel("bot", "");
-      blok.setAttribute("data-typt", "");
+      WELKOM.forEach(function (r) { geschiedenis.push({ role: "assistant", content: r }); });
+
+      if (RUSTIG) {
+        WELKOM.forEach(function (r) { bubbel("bot", r); });
+        return;
+      }
+
+      // Een voor een, met wachtstipjes ertussen. De vertraging hangt af van de lengte van
+      // het bericht: een korte regel leest sneller dan een lange.
       var i = 0;
-      var tik = function () {
+      var volgende = function () {
+        if (i >= WELKOM.length) return;
+        var wacht = puntjes();
+        var tekst = WELKOM[i];
         i += 1;
-        blok.textContent = WELKOM.slice(0, i);
-        lijst.scrollTop = lijst.scrollHeight;
-        if (i < WELKOM.length) window.setTimeout(tik, 22);
-        else blok.removeAttribute("data-typt");
+        window.setTimeout(function () {
+          if (wacht && wacht.parentNode) wacht.parentNode.removeChild(wacht);
+          bubbel("bot", tekst);
+          window.setTimeout(volgende, 420);
+        }, 620 + Math.min(1400, tekst.length * 12));
       };
-      tik();
+      window.setTimeout(volgende, 400);
     }
     bijInBeeld(paneel, begroet);
 
@@ -450,7 +463,7 @@
         el.style.display = "";
       };
       zichtbaar(jaarlabel, termijn === "jaar");
-      zichtbaar(jaarbalk, termijn === "maand");
+      zichtbaar(jaarbalk, termijn === "jaar");
       zichtbaar(nudge, termijn === "maand");
 
       var gekozen = blokken.filter(function (b) { return aan[b.getAttribute("data-blok")]; });
