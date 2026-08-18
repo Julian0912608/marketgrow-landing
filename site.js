@@ -604,6 +604,61 @@
     kies("alles");
   }
 
+  // 9 · De afsprakenknoppen van Cal.com.
+  //
+  // WAAROM DIT HIER STAAT. De knoppen dragen data-cal-link, maar zonder het insluitscript
+  // van Cal.com doen ze niets: je klikt en er gebeurt niets. Op de oude site stond dat
+  // script op elke pagina in de kop; in de handoff is het niet meegekomen.
+  //
+  // Het laadt pas als er ook echt een knop op de pagina staat, en pas als iemand hem voor
+  // het eerst nadert. Dat scheelt een extern script bij het openen van elke pagina, en
+  // deze pagina's moeten juist licht blijven.
+  function afspraken() {
+    var knoppen = $$("[data-cal-link]");
+    if (knoppen.length === 0) return;
+
+    var geladen = false;
+    function laad() {
+      if (geladen) return;
+      geladen = true;
+      (function (C, A, L) {
+        var p = function (a, ar) { a.q.push(ar); };
+        var d = C.document;
+        C.Cal = C.Cal || function () {
+          var cal = C.Cal; var ar = arguments;
+          if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; }
+          if (ar[0] === L) {
+            var api = function () { p(api, arguments); };
+            var namespace = ar[1];
+            api.q = api.q || [];
+            if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); }
+            else p(cal, ar);
+            return;
+          }
+          p(cal, ar);
+        };
+      })(window, "https://app.cal.com/embed/embed.js", "init");
+
+      window.Cal("init", "kennismaking", { origin: "https://cal.com" });
+      window.Cal.ns["kennismaking"]("ui", {
+        theme: "light",
+        cssVarsPerTheme: { light: { "cal-brand": "#3F4A2E" } },
+        hideEventTypeDetails: false,
+        layout: "month_view",
+      });
+    }
+
+    // Bij het naderen laden, zodat de eerste klik meteen werkt.
+    knoppen.forEach(function (k) {
+      k.addEventListener("mouseenter", laad, { once: true });
+      k.addEventListener("focus", laad, { once: true });
+      k.addEventListener("touchstart", laad, { once: true, passive: true });
+      k.addEventListener("click", laad);
+    });
+    // En anders zodra de eerste knop in beeld komt.
+    bijInBeeld(knoppen[0], laad, "200px");
+  }
+
   function start() {
     balk();
     opkomen();
@@ -613,6 +668,7 @@
     teller();
     vragen();
     rubrieken();
+    afspraken();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
