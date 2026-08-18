@@ -758,7 +758,7 @@
     // verandert is voor sommige mensen onleesbaar, en dit is geen versiering maar inhoud.
     if (RUSTIG) return;
 
-    el.style.transition = "opacity .28s ease";
+    el.style.transition = "opacity .16s ease";
     el.style.display = "inline-block";
 
     var wijzer = start;
@@ -770,7 +770,7 @@
       window.setTimeout(function () {
         el.textContent = VAKKEN[wijzer];
         el.style.opacity = "1";
-      }, 280);
+      }, 160);
     }
 
     // Alleen laten lopen zolang de kop in beeld is. Een tekst die onder de vouw staat te
@@ -778,13 +778,13 @@
     if ("IntersectionObserver" in window) {
       var waarnemer = new IntersectionObserver(function (regels) {
         regels.forEach(function (regel) {
-          if (regel.isIntersecting && !klok) klok = window.setInterval(volgende, 2600);
+          if (regel.isIntersecting && !klok) klok = window.setInterval(volgende, 1000);
           else if (!regel.isIntersecting && klok) { window.clearInterval(klok); klok = null; }
         });
       });
       waarnemer.observe(el);
     } else {
-      klok = window.setInterval(volgende, 2600);
+      klok = window.setInterval(volgende, 1000);
     }
   }
 
