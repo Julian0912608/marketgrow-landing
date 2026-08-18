@@ -820,6 +820,72 @@
     }
   }
 
+  // 12 · Het filmpje in het regie-blok.
+  //
+  // In de opmaak staan vier stappen met [data-film-stap] en een invoerveld met
+  // [data-film-invoer]. Ze stonden alle vier meteen in beeld, dus het was een plaatje in
+  // plaats van een gebeurtenis. Nu komen ze na elkaar op: melding, samenvatting, jouw
+  // opdracht, bevestiging. Precies het verhaal van het blok ernaast.
+  function film() {
+    var doos = $("[data-film]");
+    if (!doos) return;
+    var stappen = $$("[data-film-stap]", doos);
+    if (stappen.length === 0) return;
+    var invoer = $("[data-film-invoer]");
+
+    // Bij prefers-reduced-motion staat alles er gewoon, en dan is het een schermafdruk.
+    if (RUSTIG) return;
+
+    function verberg() {
+      stappen.forEach(function (s) {
+        s.style.opacity = "0";
+        s.style.transform = "translateY(6px)";
+        s.style.transition = "opacity .32s ease, transform .32s ease";
+      });
+      if (invoer) invoer.textContent = "";
+    }
+
+    function toon(i) {
+      var s = stappen[i];
+      if (!s) return;
+      s.style.opacity = "1";
+      s.style.transform = "none";
+    }
+
+    // De opdracht wordt getypt voordat hij als bericht verschijnt: dat maakt zichtbaar
+    // dat JIJ hem geeft en de AI-collega hem uitvoert.
+    function typ(tekst, klaar) {
+      if (!invoer) { klaar(); return; }
+      var i = 0;
+      var tik = function () {
+        i += 1;
+        invoer.textContent = tekst.slice(0, i);
+        if (i < tekst.length) window.setTimeout(tik, 34);
+        else window.setTimeout(function () { invoer.textContent = ""; klaar(); }, 420);
+      };
+      tik();
+    }
+
+    var klokken = [];
+    function speel() {
+      klokken.forEach(window.clearTimeout);
+      klokken = [];
+      verberg();
+      klokken.push(window.setTimeout(function () { toon(0); }, 500));
+      klokken.push(window.setTimeout(function () { toon(1); }, 1700));
+      klokken.push(window.setTimeout(function () {
+        var opdracht = (stappen[2] && stappen[2].textContent.trim()) || "";
+        typ(opdracht, function () { toon(2); });
+      }, 2900));
+      klokken.push(window.setTimeout(function () { toon(3); }, 6200));
+      // Even laten staan, dan opnieuw. Wie er later naar kijkt ziet het ook.
+      klokken.push(window.setTimeout(speel, 11000));
+    }
+
+    verberg();
+    bijInBeeld(doos, speel, "0px 0px -20% 0px");
+  }
+
   function start() {
     balk();
     opkomen();
@@ -832,6 +898,7 @@
     afspraken();
     leesbalk();
     vakwissel();
+    film();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
