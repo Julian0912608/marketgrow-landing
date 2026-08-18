@@ -324,6 +324,9 @@
     if (blokken.length === 0) return;
 
     var termijnKnoppen = $$("[data-termijn]");
+    var jaarlabel = $("[data-jaarlabel]");
+    var jaarbalk = $("[data-jaarbalk]");
+    var nudge = $("[data-nudge]");
     var samenvatting = $("[data-samenvatting]");
     var totaalEl = $("[data-totaal]");
     var totaalBij = $("[data-totaal-bij]");
@@ -360,6 +363,15 @@
       b.setAttribute("aria-pressed", actief ? "true" : "false");
       b.style.borderColor = actief ? "var(--olijf)" : "var(--lijn)";
       b.style.background = actief ? "#fff" : "var(--cream)";
+
+      // Het vinkje zat wel in de opmaak maar werd nergens omgezet: het vakje bleef staan
+      // zoals het stond, dus aanklikken leek niets te doen.
+      var vink = $("[data-vink]", b);
+      if (vink) {
+        vink.style.background = actief ? "var(--olijf)" : "transparent";
+        vink.style.borderColor = actief ? "var(--olijf)" : "var(--lijn-sterk)";
+        vink.style.color = actief ? "var(--cream)" : "transparent";
+      }
 
       var prijs = $("[data-prijs]", b);
       var bij = $("[data-prijs-bij]", b);
@@ -418,6 +430,13 @@
         k.style.color = actief ? "var(--cream)" : "var(--grijs)";
       });
 
+      // Wat bij welke stand hoort. Het kortingslabel en de balk met de twee gratis maanden
+      // gaan over een jaar vooruit; het zetje naar de jaarstand hoort juist alleen in de
+      // maandstand. Ze stonden alle drie altijd aan.
+      if (jaarlabel) jaarlabel.style.display = termijn === "jaar" ? "" : "none";
+      if (jaarbalk) jaarbalk.style.display = termijn === "jaar" ? "" : "none";
+      if (nudge) nudge.style.display = termijn === "maand" ? "" : "none";
+
       var gekozen = blokken.filter(function (b) { return aan[b.getAttribute("data-blok")]; });
       var maandTotaal = gekozen.reduce(function (a, b) { return a + maandVan(b); }, 0);
       var jaarTotaal = gekozen.reduce(function (a, b) { return a + jaarVan(b); }, 0);
@@ -468,6 +487,19 @@
         totaalBesparing.textContent = toon ? "Je bespaart " + euro(scheelt) + " per jaar" : "";
         totaalBesparing.style.display = toon ? "" : "none";
       }
+      // De knop "Start met deze opzet" neemt de keuze mee naar de aanmelding, zodat
+      // niemand daar opnieuw zit te vinken. Het platform leest ze uit de URL; kent het ze
+      // niet, dan blijft het gewoon het normale aanmeldscherm.
+      var startKnop = $("[data-start]");
+      if (startKnop) {
+        var keuze = gekozen.map(function (b) { return b.getAttribute("data-blok"); });
+        var basis = "https://app.marketgrow.ai/aanmelden";
+        startKnop.setAttribute(
+          "href",
+          keuze.length === 0 ? basis : basis + "?blokken=" + keuze.join(",") + "&termijn=" + termijn
+        );
+      }
+
       if (nudgeKop) {
         nudgeKop.textContent = scheelt > 0
           ? "Op deze opzet scheelt een jaar " + euro(scheelt) + "."
