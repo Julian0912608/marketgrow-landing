@@ -131,13 +131,9 @@
     var gesprekId = null;
     var bezig = false;
 
-    // Drie korte berichten in plaats van een lange lap. Ze komen na elkaar binnen, met
-    // wachtstipjes ertussen, precies zoals een echt gesprek verloopt.
-    var WELKOM = [
-      "Hoi, ik ben Noor.",
-      "Ik ben de AI-collega van MarketGrow en ik sta op deze site.",
-      "Vertel in je eigen woorden wat je doet, dan laat ik zien wat er op jouw site zou gebeuren.",
-    ];
+    var WELKOM =
+      "Hoi, ik ben Noor. Vertel in je eigen woorden wat je doet en waar je klanten meestal " +
+      "mee komen, dan laat ik zien wat er op jouw site zou gebeuren.";
 
     function bubbel(rol, tekst) {
       var rij = document.createElement("div");
@@ -192,29 +188,17 @@
     function begroet() {
       if (begroetingGedaan) return;
       begroetingGedaan = true;
-      WELKOM.forEach(function (r) { geschiedenis.push({ role: "assistant", content: r }); });
-
-      if (RUSTIG) {
-        WELKOM.forEach(function (r) { bubbel("bot", r); });
-        return;
-      }
-
-      // Een voor een, met wachtstipjes ertussen. De vertraging hangt af van de lengte van
-      // het bericht: een korte regel leest sneller dan een lange.
-      var i = 0;
-      var volgende = function () {
-        if (i >= WELKOM.length) return;
-        var wacht = puntjes();
-        var tekst = WELKOM[i];
-        i += 1;
-        window.setTimeout(function () {
-          if (wacht && wacht.parentNode) wacht.parentNode.removeChild(wacht);
-          bubbel("bot", tekst);
-          window.setTimeout(volgende, 420);
-        }, 620 + Math.min(1400, tekst.length * 12));
-      };
-      window.setTimeout(volgende, 400);
+      geschiedenis.push({ role: "assistant", content: WELKOM });
+      if (RUSTIG) { bubbel("bot", WELKOM); return; }
+      // Eerst even wachtstipjes, daarna de begroeting in een keer. Dit is een echt
+      // gesprek met een bezoeker, geen nagespeelde film.
+      var wacht = puntjes();
+      window.setTimeout(function () {
+        if (wacht && wacht.parentNode) wacht.parentNode.removeChild(wacht);
+        bubbel("bot", WELKOM);
+      }, 900);
     }
+
     bijInBeeld(paneel, begroet);
 
     // Vaste antwoorden voor als het eindpunt niet antwoordt. Nooit een lege bubbel en
@@ -865,14 +849,17 @@
     // Bij prefers-reduced-motion staat alles er gewoon, en dan is het een schermafdruk.
     if (RUSTIG) return;
 
-    // De stappen blijven staan en lichten om de beurt op, in plaats van dat ze verschijnen
-    // uit het niets. Zo is het scherm nooit half leeg en zie je meteen waar het naartoe
-    // gaat: het gesprek staat er, alleen nog niet gebeurd.
+    // De berichten komen een voor een tevoorschijn, zoals in een echt gesprek. Ze staan
+    // dus niet vooraf zwak in beeld: dan is het een plaatje en geen gebeurtenis.
+    //
+    // visibility en niet display: zo houdt het scherm zijn hoogte en springt de rest van
+    // de sectie niet op en neer terwijl de berichten binnenkomen.
     function verberg() {
       stappen.forEach(function (s) {
-        s.style.opacity = ".22";
-        s.style.transform = "none";
-        s.style.transition = "opacity .34s ease";
+        s.style.visibility = "hidden";
+        s.style.opacity = "0";
+        s.style.transform = "translateY(8px)";
+        s.style.transition = "opacity .3s ease, transform .3s ease";
       });
       if (invoer) invoer.textContent = "";
     }
@@ -880,7 +867,9 @@
     function toon(i) {
       var s = stappen[i];
       if (!s) return;
+      s.style.visibility = "visible";
       s.style.opacity = "1";
+      s.style.transform = "none";
     }
 
     // De opdracht wordt getypt voordat hij als bericht verschijnt: dat maakt zichtbaar
