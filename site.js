@@ -384,6 +384,29 @@
       }
     }
 
+    // Het totaal telt naar zijn nieuwe waarde in plaats van te springen. Kort gehouden:
+    // driehonderd milliseconde, want dit is een bedrag en geen animatie om naar te kijken.
+    var vorigBedrag = null;
+    function telNaar(el, doel) {
+      if (doel === null) { el.textContent = ""; vorigBedrag = null; return; }
+      if (RUSTIG || vorigBedrag === null) { el.textContent = euro(doel); vorigBedrag = doel; return; }
+      var van = vorigBedrag;
+      vorigBedrag = doel;
+      if (van === doel) { el.textContent = euro(doel); return; }
+      var start = null;
+      var duur = 300;
+      var stap = function (nu) {
+        if (!start) start = nu;
+        var p = Math.min(1, (nu - start) / duur);
+        var soepel = 1 - Math.pow(1 - p, 3);
+        var waarde = van + (doel - van) * soepel;
+        el.textContent = euro(Math.round(waarde * 100) / 100);
+        if (p < 1) window.requestAnimationFrame(stap);
+        else el.textContent = euro(doel);
+      };
+      window.requestAnimationFrame(stap);
+    }
+
     function teken() {
       blokken.forEach(tekenKaart);
 
@@ -426,11 +449,12 @@
 
       // Geen bedrag van nul tonen: dat leest als gratis in plaats van als niets gekozen.
       if (totaalEl) {
-        totaalEl.textContent = gekozen.length === 0
-          ? ""
+        var doelBedrag = gekozen.length === 0
+          ? null
           : termijn === "jaar"
-            ? euro(Math.round((jaarTotaal / 12) * 100) / 100)
-            : euro(maandTotaal);
+            ? Math.round((jaarTotaal / 12) * 100) / 100
+            : maandTotaal;
+        telNaar(totaalEl, doelBedrag);
       }
       if (totaalBij) {
         totaalBij.textContent = gekozen.length === 0
@@ -673,6 +697,35 @@
     bijInBeeld(knoppen[0], laad, "200px");
   }
 
+  // 10 · Leesvoortgang bij een artikel.
+  function leesbalk() {
+    var artikel = $("article");
+    if (!artikel) return;
+
+    var balk = document.createElement("div");
+    balk.className = "leesbalk";
+    balk.setAttribute("aria-hidden", "true");
+    document.body.appendChild(balk);
+
+    var bezig = false;
+    function meet() {
+      var vak = artikel.getBoundingClientRect();
+      var hoogte = vak.height - window.innerHeight;
+      // Past het artikel op een scherm, dan valt er niets te volgen.
+      if (hoogte <= 0) { balk.style.width = "0"; return; }
+      var gedaan = Math.min(1, Math.max(0, -vak.top / hoogte));
+      balk.style.width = (gedaan * 100).toFixed(1) + "%";
+    }
+
+    window.addEventListener("scroll", function () {
+      if (bezig) return;
+      bezig = true;
+      window.requestAnimationFrame(function () { meet(); bezig = false; });
+    }, { passive: true });
+    window.addEventListener("resize", meet);
+    meet();
+  }
+
   function start() {
     balk();
     opkomen();
@@ -683,6 +736,7 @@
     vragen();
     rubrieken();
     afspraken();
+    leesbalk();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);

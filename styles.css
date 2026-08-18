@@ -190,3 +190,42 @@ em.accent {
     30%           { opacity: .85; }
   }
 }
+
+/* Kaarten reageren op de muis. Klein gehouden: een lijn die aankleurt en twee pixels
+   omhoog. Groter maken, laten kantelen of een schaduw eronder leggen maakt een pagina
+   goedkoop, en dat is precies wat deze doelgroep afstraft. */
+.raster > a,
+.raster > div,
+.kaart-link {
+  transition: border-color .18s ease, transform .18s ease, background-color .18s ease;
+}
+.raster > a:hover,
+.kaart-link:hover {
+  border-color: var(--olijf);
+  transform: translateY(-2px);
+}
+.raster > a:focus-visible,
+.kaart-link:focus-visible {
+  border-color: var(--olijf);
+  outline: 2px solid var(--olijf);
+  outline-offset: 2px;
+}
+
+/* Voortgang bij een artikel: een dunne balk bovenaan die meeloopt met het lezen.
+   site.js zet hem alleen neer op een pagina met een artikel. */
+.leesbalk {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--olijf);
+  z-index: 60;
+  transition: width .08s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .raster > a:hover,
+  .kaart-link:hover { transform: none; }
+  .leesbalk { transition: none; }
+}
