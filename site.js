@@ -478,6 +478,7 @@
     var stippen = $$("[data-slide-stip]");
     var vorige = $("[data-slide-vorige]");
     var volgende = $("[data-slide-volgende]");
+    var teller = $("[data-slide-teller]");
     var nu = 0;
     var klok = null;
 
@@ -497,6 +498,11 @@
         s.style.width = n === nu ? "26px" : "7px";
         s.style.background = n === nu ? "var(--lime)" : "rgba(246,244,238,.35)";
       });
+      // De teller in de opmaak stond vast op 01 / 05 en liep niet mee.
+      if (teller) {
+        var tel = function (x) { return x < 10 ? "0" + x : String(x); };
+        teller.textContent = tel(nu + 1) + " / " + tel(beelden.length);
+      }
     }
 
     function stop() {
