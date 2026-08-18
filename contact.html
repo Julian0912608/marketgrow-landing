@@ -1,187 +1,165 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter+Tight:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="marketgrow-logo.png">
 <title>Contact · MarketGrow.ai</title>
-<meta name="description" content="Stuur ons een bericht of plan een kennismaking. We reageren binnen één werkdag.">
-<meta name="theme-color" content="#3F4A2E">
-<style>
-html, body { margin: 0; padding: 0; background: #F6F4EE; color: #0E1112; }
-body { font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","cv11"; }
-a { color: #3F4A2E; text-decoration: none; }
-a:hover { color: #0E1112; }
-.mg-arrow{display:inline-block;transition:transform .22s cubic-bezier(0.22,1,0.36,1)}
-a:hover .mg-arrow, button:hover .mg-arrow{transform:translateX(5px)}
-.mg-input{font-family:'Inter Tight',system-ui,sans-serif;font-size:15px;color:#0E1112;background:#FFFFFF;border:1px solid #E1DCCF;padding:13px 15px;outline:none;width:100%;box-sizing:border-box;transition:border-color .15s ease}
-.mg-input:focus{border-color:#3F4A2E}
-.mg-input::placeholder{color:#A09E94}
-</style>
-<script>
-(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "kennismaking", {origin:"https://cal.com"});
-Cal.ns["kennismaking"]("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#3F4A2E"}},"hideEventTypeDetails":false,"layout":"month_view"});
-</script>
-<link rel="stylesheet" href="styles.css">
-<script defer src="site.js"></script>
+<meta name="description" content="Plan een demo van dertig minuten, start zelf vanavond, of stel gewoon een vraag. We antwoorden binnen één werkdag.">
+<link rel="canonical" href="https://marketgrow.ai/contact">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/beeld/marketgrow-logo.png">
+<meta property="og:site_name" content="MarketGrow.ai">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Twintig minuten en je weet of het bij je past">
+<meta property="og:description" content="Plan een demo van dertig minuten, of begin vanavond zelf.">
+<meta property="og:url" content="https://marketgrow.ai/contact">
+<meta property="og:image" content="https://marketgrow.ai/beeld/og-home.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
-<div style="min-height:100vh;background:#F6F4EE;color:#0E1112">
+<!-- Gedeelde bovenbalk. Identiek op elke pagina.
+     Zet aria-current="page" op de link van de pagina waar je bent.
+     De schaduw komt van data-diep, dat JS zet zodra er gescrold is. -->
+<header class="balk">
+  <div class="balk__binnen">
+    <a class="merk" href="/">
+      <img src="/beeld/marketgrow-logo.png" alt="" width="32" height="32" style="border-radius:7px">
+      <span class="merk__naam">MarketGrow<span>.ai</span></span>
+    </a>
 
-  <div class="mg-pd-1" style="background:#3F4A2E;color:#F6F4EE;min-height:34px;display:flex;align-items:center;justify-content:center;padding:7px 24px">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:rgba(246,244,238,0.95)">We reageren binnen één werkdag</span>
+    <button type="button" data-menu-knop class="menu-knop" aria-expanded="false" aria-controls="hoofdmenu" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="balk__links" id="hoofdmenu" data-menu aria-label="Hoofdmenu">
+      <a href="/platform">Het platform</a>
+      <a href="/sectoren">Sectoren</a>
+      <a href="/prijzen">Prijzen</a>
+      <a href="/veiligheid">Veiligheid</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <div class="balk__acties">
+      <a href="https://app.marketgrow.ai" style="color:var(--grijs);padding:11px 4px;font-size:14.5px">Inloggen</a>
+      <span class="balk__scheiding"></span>
+      <a class="knop knop--lijn knop--klein" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0">Plan een demo · 30 min</a>
+      <a class="knop knop--vol knop--klein" href="https://app.marketgrow.ai/aanmelden"><span class="stip"></span>Start zelf</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="sectie" style="padding-bottom:clamp(24px,3vw,40px)">
+  <div class="binnen">
+    <div class="meet">
+      <p class="kicker">/ Contact</p>
+      <h1>Twintig minuten en je weet of het <em class="accent">bij je past.</em></h1>
+      <p style="font-size:17px;color:var(--grijs)">Geen presentatie. We zetten je eigen site ernaast en laten zien wat er gebeurt met de vragen die jij krijgt. Duurt dertig minuten, en daarna weet je genoeg om zelf te beslissen.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sectie komt-op" style="padding-top:0">
+  <div class="binnen" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(16px,2vw,24px);align-items:stretch">
+    <div style="border:1px solid var(--olijf);background:#fff;padding:clamp(26px,2.6vw,38px);display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span class="nr" style="letter-spacing:.16em;text-transform:uppercase">Een demo</span>
+        <span style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);background:var(--olijf);padding:4px 9px">30 minuten</span>
+      </div>
+      <h3 style="font-size:clamp(24px,2.2vw,32px)">Samen doorlopen.</h3>
+      <p style="color:var(--grijs);font-size:15.5px;flex:1">Kies zelf een moment in de agenda. Je krijgt een videolink; er hoeft niets voorbereid te worden.</p>
+      <a class="knop knop--vol" style="justify-content:center;font-size:15px;padding:14px 22px" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0"><span class="stip"></span>Plan een demo · 30 min</a>
+    </div>
+
+    <div style="border:1px solid var(--lijn);background:#fff;padding:clamp(26px,2.6vw,38px);display:flex;flex-direction:column;gap:14px">
+      <span class="nr" style="letter-spacing:.16em;text-transform:uppercase;color:var(--grijs)">Liever meteen beginnen</span>
+      <h3 style="font-size:clamp(24px,2.2vw,32px)">Vanavond zelf live.</h3>
+      <p style="color:var(--grijs);font-size:15.5px;flex:1">Aanmelden, bouwblokken kiezen, afrekenen en je documenten aanleveren. Een half uur later staat je AI-collega op je site.</p>
+      <a class="knop knop--lijn" style="justify-content:center;font-size:15px;padding:14px 22px" href="https://app.marketgrow.ai/aanmelden">Start zelf</a>
+    </div>
+
+    <div style="border:1px solid var(--lijn);background:var(--cream);padding:clamp(26px,2.6vw,38px);display:flex;flex-direction:column;gap:14px">
+      <span class="nr" style="letter-spacing:.16em;text-transform:uppercase;color:var(--grijs)">Of gewoon mailen</span>
+      <h3 style="font-size:clamp(24px,2.2vw,32px)">Een vraag stellen.</h3>
+      <p style="color:var(--grijs);font-size:15.5px;flex:1">Ook goed. We antwoorden binnen één werkdag, en Noor staat op deze site als je het meteen wil weten.</p>
+      <a href="mailto:hallo@marketgrow.ai" style="font-family:var(--mono);font-size:14px">hallo@marketgrow.ai</a>
+    </div>
   </div>
 
-  <nav data-screen-label="Navigatie" class="mg-nav" style="position:sticky;top:0;z-index:40;background:rgba(246,244,238,0.85);backdrop-filter:blur(10px);border-bottom:1px solid #E1DCCF">
-    <div class="mg-nav-balk mg-wrap mg-pd-2" style="max-width:1240px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
-      <a href="index.html" style="display:flex;align-items:center;gap:10px;color:#0E1112">
-        <img src="marketgrow-logo.png" alt="MarketGrow.ai logo" width="30" height="30" style="width:30px;height:30px;display:block;border-radius:6px">
-        <span style="display:flex;align-items:baseline;gap:1px">
-          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px">MarketGrow</span>
-          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#3F4A2E">.ai</span>
-        </span>
-      </a>
-      <button type="button" class="mg-nav-knop" aria-label="Menu" aria-expanded="false" aria-controls="mg-menu">
-        <span class="mg-nav-streep"></span>
-        <span class="mg-nav-streep"></span>
-        <span class="mg-nav-streep"></span>
-      </button>
-      <div id="mg-menu" class="mg-nav-menu mg-gp-1" style="display:flex;align-items:center;gap:30px;font-size:13.5px">
-          <a href="platform.html" class="mg-nav-link" style="color:#6A6D70">Het platform</a>
-          <a href="sectoren.html" class="mg-nav-link" style="color:#6A6D70">Sectoren</a>
-          <a href="bewijs.html" class="mg-nav-link" style="color:#6A6D70">Het bewijs</a>
-          <a href="prijzen.html" class="mg-nav-link" style="color:#6A6D70">Prijzen</a>
-          <a href="contact.html" class="mg-nav-link mg-nav-link--actief" style="color:#6A6D70">Contact</a>
-          <a role="button" tabindex="0" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" class="mg-nav-cta mg-hv-nav" style="background:#3F4A2E;color:#F6F4EE;font-size:13px;padding:10px 18px;display:inline-flex;align-items:center;gap:8px;cursor:pointer">Plan een kennismaking <span class="mg-arrow">&rarr;</span></a>
+  <div class="binnen" style="margin-top:clamp(24px,3vw,40px);border:1px solid var(--lijn);background:var(--zand);padding:clamp(22px,2.2vw,30px);display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span class="nr" style="letter-spacing:.14em;text-transform:uppercase;font-size:10.5px">Bedrijf</span>
+      <span style="font-size:15px">MarketGrow.ai</span>
+      <span style="font-size:15px;color:var(--grijs)">Handelend onder Juligo Ventures B.V.</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span class="nr" style="letter-spacing:.14em;text-transform:uppercase;font-size:10.5px">Vestiging</span>
+      <span style="font-size:15px">Breda, Nederland</span>
+      <span style="font-family:var(--mono);font-size:13px;color:var(--grijs)">KvK 95284966</span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <span class="nr" style="letter-spacing:.14em;text-transform:uppercase;font-size:10.5px">Gegevens</span>
+      <span style="font-size:15px;color:var(--grijs)">Alles binnen de EU · AVG · AI Act</span>
+      <a href="/veiligheid" style="font-size:15px">Lees hoe we dat doen →</a>
+    </div>
+  </div>
+</section>
+</main>
+<!-- Gedeeld slotblok en voettekst. Identiek op elke pagina. -->
+<section class="sectie sectie--olijf" id="beginnen">
+  <div class="binnen" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(24px,3vw,48px)">
+    <h2 style="font-size:clamp(32px,4.1vw,60px);line-height:1.02;max-width:34ch;flex:1 1 520px">
+      Vanavond opent er weer iemand je site. <em class="accent" style="white-space:nowrap">Wie doet er open?</em>
+    </h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <a class="knop" style="background:var(--cream);color:var(--inkt);font-weight:500" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0"><span class="stip" style="background:var(--olijf)"></span>Plan een demo · 30 min</a>
+      <a class="knop" style="border:1px solid rgba(246,244,238,.5);color:var(--cream)" href="/prijzen">Prijzen</a>
+    </div>
+  </div>
+</section>
+
+<footer class="voet">
+  <div class="binnen">
+    <div class="voet__kolommen">
+      <div class="voet__kolom">
+        <div class="voet__kop">Product</div>
+        <a href="/platform">Het platform</a>
+        <a href="/sectoren">Sectoren</a>
+        <a href="/prijzen">Prijzen</a>
+        <a href="/veiligheid">Veiligheid</a>
+      <a href="/contact">Contact</a>
+        <a href="/kennis">Kennisbank</a>
+      </div>
+      <div class="voet__kolom">
+        <div class="voet__kop">Sectoren</div>
+        <a href="/sectoren/juristen">Juristen en advocaten</a>
+        <a href="/sectoren/accountants">Accountants</a>
+        <a href="/sectoren/mediators">Mediators</a>
+        <a href="/sectoren/adviseurs">Bedrijfsadviseurs</a>
+        <a href="/sectoren" style="color:var(--grijs)">Alle sectoren</a>
+      </div>
+      <div class="voet__kolom">
+        <div class="voet__kop">Bedrijf</div>
+        <span>MarketGrow.ai</span>
+        <span style="color:var(--grijs)">Handelend onder Juligo Ventures B.V.</span>
+        <span style="color:var(--grijs)">Breda, Nederland</span>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--grijs)">KvK 95284966</span>
+      </div>
+      <div class="voet__kolom">
+        <div class="voet__kop">Juridisch</div>
+        <a href="/privacy">Privacyverklaring</a>
+        <a href="/voorwaarden">Voorwaarden</a>
       </div>
     </div>
-  </nav>
-
-  <!-- Contact -->
-  <section data-screen-label="Contact" style="position:relative;overflow:hidden">
-    <div class="mg-deco" style="position:absolute;top:-220px;right:-140px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.3), transparent 66%);filter:blur(90px);opacity:0.34;pointer-events:none"></div>
-    <div class="mg-wrap mg-pd-36" style="position:relative;max-width:1240px;margin:0 auto;padding:72px 32px 104px">
-      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:22px">/ Contact</div>
-      <div class="mg-grid mg-grid--pair mg-gp-6" style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:start">
-
-        <!-- Links · info -->
-        <div>
-          <h1 class="mg-fs-56" style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.03em;line-height:0.98;font-size:56px;margin:0 0 24px">Kom in <em style="font-style:italic;color:#3F4A2E">contact.</em></h1>
-          <p style="font-size:17px;line-height:1.65;color:rgba(14,17,18,0.82);max-width:420px;margin:0 0 40px">Een vraag, of benieuwd wat MarketGrow voor jouw kantoor kan doen? Stuur ons een bericht, dan reageren we binnen één werkdag.</p>
-
-          <div style="display:flex;flex-direction:column;gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
-            <div class="mg-pd-28" style="background:#F6F4EE;padding:22px 24px">
-              <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#6A6D70;margin-bottom:8px">E-mail</div>
-              <a class="mg-hv-7" href="mailto:hello@marketgrow.ai" style="font-family:'Instrument Serif',Georgia,serif;font-size:24px;color:#0E1112">hello@marketgrow.ai</a>
-            </div>
-            <div class="mg-pd-28" style="background:#F6F4EE;padding:22px 24px">
-              <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#6A6D70;margin-bottom:8px">Founders</div>
-              <div style="font-size:16px;color:#0E1112">Julian Goote · Onno Goote</div>
-            </div>
-          </div>
-
-          <div class="mg-pd-37" style="margin-top:24px;background:#3F4A2E;color:#F6F4EE;padding:26px 28px;position:relative;overflow:hidden">
-            <div class="mg-deco" style="position:absolute;top:-30px;right:-30px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.26), transparent 66%);filter:blur(20px);pointer-events:none"></div>
-            <div style="position:relative">
-              <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px;font-weight:500;color:#C8E06A;margin-bottom:10px">Liever direct?</div>
-              <div style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1.2;margin-bottom:16px">Plan een kennismaking van een half uur.</div>
-              <a class="mg-hv-9" role="button" tabindex="0" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#C8E06A;color:#0E1112;padding:12px 20px;font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:8px;cursor:pointer">Plan een kennismaking <span class="mg-arrow">→</span></a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Rechts · formulier -->
-        <div class="mg-pd-38" style="background:#FFFFFF;border:1px solid #E1DCCF;box-shadow:0 30px 80px -44px rgba(63,74,46,0.35);padding:44px 44px 40px">
-          <div id="mg-form">
-            <div>
-              <div class="mg-fs-30" style="font-family:'Instrument Serif',Georgia,serif;font-size:30px;line-height:1.1;margin-bottom:28px">Stuur ons een bericht</div>
-              <div style="display:flex;flex-direction:column;gap:20px">
-                <div class="mg-grid mg-grid--pair" style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-                  <div>
-                    <label style="display:block;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;font-weight:500;color:#6A6D70;margin-bottom:8px">Naam<span style="color:#C0392B"> *</span></label>
-                    <input class="mg-input" type="text" id="mg-naam" name="naam" placeholder="Je naam">
-                  </div>
-                  <div>
-                    <label style="display:block;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;font-weight:500;color:#6A6D70;margin-bottom:8px">E-mailadres<span style="color:#C0392B"> *</span></label>
-                    <input class="mg-input" type="email" id="mg-email" name="email" placeholder="jij@kantoor.nl">
-                  </div>
-                </div>
-                <div>
-                  <label style="display:block;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;font-weight:500;color:#6A6D70;margin-bottom:8px">Bedrijf<span style="color:#C0392B"> *</span></label>
-                  <input class="mg-input" type="text" id="mg-bedrijf" name="bedrijf" placeholder="Naam van je kantoor">
-                </div>
-                <div>
-                  <label style="display:block;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:10px;font-weight:500;color:#6A6D70;margin-bottom:8px">Bericht<span style="color:#C0392B"> *</span></label>
-                  <textarea class="mg-input" rows="5" id="mg-bericht" name="bericht" placeholder="Waar kunnen we je mee helpen?" style="resize:vertical;min-height:120px"></textarea>
-                </div>
-                <div id="mg-fout" style="font-size:14px;color:#8A2A2A;background:#F6ECEC;border:1px solid #E4C9C9;padding:12px 14px;display:none"></div>
-                <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:4px">
-                  <button class="mg-pd-39 mg-hv-10" type="button" id="mg-verstuur" style="background:#3F4A2E;color:#F6F4EE;border:none;font-family:'Inter Tight',system-ui,sans-serif;font-size:15px;font-weight:500;padding:15px 26px;display:inline-flex;align-items:center;gap:10px;cursor:pointer">Verstuur bericht <span class="mg-arrow">→</span></button>
-                  <span style="font-size:13px;color:#6A6D70">Of mail direct naar <a href="mailto:hello@marketgrow.ai" style="color:#3F4A2E;border-bottom:1px solid #C8E06A">hello@marketgrow.ai</a></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="mg-bedankt" style="display:none">
-            <div style="display:flex;flex-direction:column;gap:18px;padding:20px 0">
-              <div style="width:52px;height:52px;border-radius:50%;background:#C8E06A;display:flex;align-items:center;justify-content:center">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0E1112" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
-              <div class="mg-fs-32" style="font-family:'Instrument Serif',Georgia,serif;font-size:32px;line-height:1.1"><span id="mg-bedankt-naam">Bedankt</span>, je bericht is verstuurd.</div>
-              <p style="font-size:16px;line-height:1.6;color:#6A6D70;margin:0;max-width:460px">We hebben je bericht ontvangen en reageren binnen één werkdag op <span id="mg-bedankt-mail">je e-mailadres</span>. Liever meteen sparren? Plan gerust een kennismaking.</p>
-              <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:6px">
-                <a class="mg-hv-1" role="button" tabindex="0" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="background:#3F4A2E;color:#F6F4EE;padding:13px 22px;font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:10px;cursor:pointer">Plan een kennismaking <span class="mg-arrow">→</span></a>
-                <button class="mg-hv-4" type="button" id="mg-nieuw" style="background:none;border:1px solid #E1DCCF;color:#0E1112;font-family:'Inter Tight',system-ui,sans-serif;font-size:14px;padding:13px 22px;cursor:pointer">Nog een bericht sturen</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <div class="voet__regel">
+      <span>© 2026 MarketGrow.ai</span>
+      <span>Gegevens in de EU · AVG · AI Act</span>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- Footer -->
-  <footer class="mg-pd-24" data-screen-label="Footer" style="border-top:1px solid #E1DCCF;padding:56px 0 40px;background:#F6F4EE">
-    <div class="mg-wrap mg-pd-7" style="max-width:1240px;margin:0 auto;padding:0 32px">
-      <div class="mg-grid mg-grid--foot mg-gp-4" style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,2fr) minmax(0,3fr);gap:40px;margin-bottom:40px">
-        <div>
-          <div style="display:flex;align-items:baseline;gap:1px;margin-bottom:12px">
-            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px">MarketGrow</span>
-            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px;color:#3F4A2E">.ai</span>
-          </div>
-          <p style="color:#6A6D70;font-size:14.5px;line-height:1.6;max-width:320px;margin:0">Een afdeling met een gezicht.</p>
-        </div>
-        <div>
-          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Contact</div>
-          <a class="mg-hv-7" href="mailto:hello@marketgrow.ai" style="font-size:14px;color:#0E1112">hello@marketgrow.ai</a>
-        </div>
-        <div>
-          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Menu</div>
-          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
-            <a class="mg-hv-7" href="platform.html" style="color:#6A6D70">Het platform</a>
-            <a class="mg-hv-7" href="sectoren.html" style="color:#6A6D70">Sectoren</a>
-            <a class="mg-hv-7" href="prijzen.html" style="color:#6A6D70">Prijzen</a>
-          </div>
-        </div>
-        <div>
-          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Founders</div>
-          <div style="font-size:14px;color:#6A6D70;line-height:1.7">Julian Goote · Onno Goote</div>
-        </div>
-      </div>
-      <div style="border-top:1px solid #E1DCCF;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;font-size:12px;color:#6A6D70">
-        <div>© 2026 MarketGrow.ai · <a class="mg-hv-7" href="voorwaarden.html" style="color:#6A6D70">Algemene voorwaarden</a> · <a class="mg-hv-7" href="privacy.html" style="color:#6A6D70">Privacyverklaring</a></div>
-        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px">Binnenhalen · Kwalificeren · Binden</div>
-      </div>
-    </div>
-  </footer>
-
-</div>
-
+<script src="/site.js" defer></script>
 </body>
 </html>

@@ -1,241 +1,394 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter+Tight:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="marketgrow-logo.png">
 <title>Prijzen · MarketGrow.ai</title>
-<meta name="description" content="Vaste, transparante tarieven per bouwblok. Je start met de AI-Gespreksgids en breidt uit zodra je groeit. De eerste tien kantoren krijgen een oprichterstarief dat blijft.">
-<meta name="theme-color" content="#3F4A2E">
-<style>
-html, body { margin: 0; padding: 0; background: #F6F4EE; color: #0E1112; }
-body { font-family: 'Inter Tight', system-ui, sans-serif; -webkit-font-smoothing: antialiased; font-feature-settings: "ss01","cv11"; }
-a { color: #3F4A2E; text-decoration: none; }
-a:hover { color: #0E1112; }
-details > summary { list-style: none; cursor: pointer; }
-details > summary::-webkit-details-marker { display: none; }
-details[open] .mg-faq-plus { transform: rotate(45deg); }
-.mg-arrow{display:inline-block;transition:transform .22s cubic-bezier(0.22,1,0.36,1)}
-a:hover .mg-arrow{transform:translateX(5px)}
-.mg-card-link{transition:transform .2s ease,box-shadow .25s ease,background .18s ease}
-.mg-card-link:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.32)}
-.mg-spec{transition:background .15s ease,transform .2s ease,box-shadow .25s ease}
-.mg-spec:hover{transform:translateY(-3px);box-shadow:0 20px 44px -24px rgba(14,17,18,0.3)}
-</style>
-<script>
-(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-Cal("init", "kennismaking", {origin:"https://cal.com"});
-Cal.ns["kennismaking"]("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#3F4A2E"}},"hideEventTypeDetails":false,"layout":"month_view"});
-</script>
-<link rel="stylesheet" href="styles.css">
-<script defer src="site.js"></script>
+<meta name="description" content="Geen opstartkosten. Vanaf €75 per maand, of €63 per maand bij een jaar vooruit. Stel zelf samen welke bouwblokken je aanzet en zie meteen wat het wordt.">
+<link rel="canonical" href="https://marketgrow.ai/prijzen">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/beeld/marketgrow-logo.png">
+<meta property="og:site_name" content="MarketGrow.ai">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Begin klein. Groei mee.">
+<meta property="og:description" content="Geen opstartkosten, maandelijks opzegbaar. Bij een jaar vooruit betaal je tien maanden.">
+<meta property="og:url" content="https://marketgrow.ai/prijzen">
+<meta property="og:image" content="https://marketgrow.ai/beeld/og-prijzen.png">
+<meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wat kost het? +", "acceptedAnswer": {"@type": "Answer", "text": "Je begint met de AI-Gespreksgids voor 55 euro per maand, inclusief de app en zonder opstartkosten. Uitbreiden doe je per bouwblok, maandelijks opzegbaar. Kies je meteen voor een jaar, dan betaal je tien maanden en krijg je er dus twee gratis bij. Het AI-verbruik reken je apart af, met een harde grens. Bedragen exclusief BTW."}}, {"@type": "Question", "name": "Wat als hij iets verkeerds zegt tegen mijn klant? +", "acceptedAnswer": {"@type": "Answer", "text": "De antwoorden komen uit jouw kennisbank, niet van internet. Weet de collega iets niet, dan zegt hij dat en zet hij het gesprek naar jou door. Er gaat niets naar buiten dat jij niet kunt terugzien."}}, {"@type": "Question", "name": "Zie ik wat er besproken is? +", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Je leest het hele gesprek terug, niet alleen een samenvatting, met wat er is toegezegd en wat niet. In het dashboard en in je eigen app."}}, {"@type": "Question", "name": "Moet ik mijn website vervangen? +", "acceptedAnswer": {"@type": "Answer", "text": "Nee. Alles draait op je bestaande site. Eén regel code en je staat live, geen migratie of redesign."}}, {"@type": "Question", "name": "Hoe snel sta ik live? +", "acceptedAnswer": {"@type": "Answer", "text": "Vanavond zelf live, of binnen zeven werkdagen samen opgezet. Zelf starten duurt ongeveer een half uur: aanmelden, bouwblokken kiezen, afrekenen en je documenten aanleveren. Kies je de demo van 30 minuten, dan richten wij het daarna voor je in."}}, {"@type": "Question", "name": "Blijft mijn data van mij? +", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Opgeslagen in de EU en AVG-proof. Je gegevens blijven van jou en je kunt ze altijd exporteren."}}, {"@type": "Question", "name": "Voor wie is MarketGrow? +", "acceptedAnswer": {"@type": "Answer", "text": "Voor de zakelijke dienstverlening: juristen, accountants, mediators, adviseurs, coaches, hypotheek- en pensioenadviseurs, fysio- en zorgpraktijken, architecten."}}]}</script>
 </head>
 <body>
 
-<div style="min-height:100vh;background:#F6F4EE;color:#0E1112">
+<!-- Gedeelde bovenbalk. Identiek op elke pagina.
+     Zet aria-current="page" op de link van de pagina waar je bent.
+     De schaduw komt van data-diep, dat JS zet zodra er gescrold is. -->
+<header class="balk">
+  <div class="balk__binnen">
+    <a class="merk" href="/">
+      <img src="/beeld/marketgrow-logo.png" alt="" width="32" height="32" style="border-radius:7px">
+      <span class="merk__naam">MarketGrow<span>.ai</span></span>
+    </a>
 
-  <div class="mg-pd-1" style="background:#3F4A2E;color:#F6F4EE;min-height:34px;display:flex;align-items:center;justify-content:center;padding:7px 24px">
-    <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:0.06em;color:rgba(246,244,238,0.95)">Vaste tarieven · per maand opzegbaar · geen jaarcontract</span>
+    <button type="button" data-menu-knop class="menu-knop" aria-expanded="false" aria-controls="hoofdmenu" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="balk__links" id="hoofdmenu" data-menu aria-label="Hoofdmenu">
+      <a href="/platform">Het platform</a>
+      <a href="/sectoren">Sectoren</a>
+      <a href="/prijzen" aria-current="page">Prijzen</a>
+      <a href="/veiligheid">Veiligheid</a>
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <div class="balk__acties">
+      <a href="https://app.marketgrow.ai" style="color:var(--grijs);padding:11px 4px;font-size:14.5px">Inloggen</a>
+      <span class="balk__scheiding"></span>
+      <a class="knop knop--lijn knop--klein" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0">Plan een demo · 30 min</a>
+      <a class="knop knop--vol knop--klein" href="https://app.marketgrow.ai/aanmelden"><span class="stip"></span>Start zelf</a>
+    </div>
   </div>
+</header>
 
-  <nav data-screen-label="Navigatie" class="mg-nav" style="position:sticky;top:0;z-index:40;background:rgba(246,244,238,0.85);backdrop-filter:blur(10px);border-bottom:1px solid #E1DCCF">
-    <div class="mg-nav-balk mg-wrap mg-pd-2" style="max-width:1240px;margin:0 auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px">
-      <a href="index.html" style="display:flex;align-items:center;gap:10px;color:#0E1112">
-        <img src="marketgrow-logo.png" alt="MarketGrow.ai logo" width="30" height="30" style="width:30px;height:30px;display:block;border-radius:6px">
-        <span style="display:flex;align-items:baseline;gap:1px">
-          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px">MarketGrow</span>
-          <span style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;color:#3F4A2E">.ai</span>
+<main>
+<section class="sectie" style="padding-bottom:clamp(24px,3vw,40px)">
+  <div class="binnen">
+    <div class="meet">
+      <p class="kicker">/ Prijzen</p>
+      <h1>Begin klein. Groei mee.</h1>
+      <p style="font-size:17px;color:var(--grijs)">Geen opstartkosten, alleen een maandbedrag per bouwblok. Zet hieronder aan wat je nodig hebt, dan zie je direct wat het wordt. Kies je een jaar vooruit, dan betaal je tien maanden. Alle bedragen exclusief BTW.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Configurator en schakelaar · zie gedrag.md §2 en §3 -->
+<section class="sectie komt-op" style="padding-top:0">
+  <div class="binnen" style="display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,1fr);gap:clamp(20px,2.4vw,32px);align-items:start">
+
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px">
+        <p class="kicker" style="margin:0">Stel je afdeling samen</p>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;border:1px solid var(--lijn-sterk)">
+            <button type="button" data-termijn="maand" style="border:none;cursor:pointer;padding:10px 16px;background:transparent;color:var(--grijs);font-family:var(--sans);font-size:14px">Per maand</button>
+            <button type="button" data-termijn="jaar" aria-current="true" style="border:none;cursor:pointer;padding:10px 16px;background:var(--olijf);color:var(--cream);font-family:var(--sans);font-size:14px">Per jaar</button>
+          </div>
+          <span data-jaarlabel style="background:var(--lime);color:var(--inkt);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:6px 11px">2 maanden gratis</span>
+        </div>
+      </div>
+
+      <!-- In de maandstand: zetje naar de jaaroptie. Klik schakelt de hele pagina om. -->
+      <button type="button" data-nudge hidden style="text-align:left;font-family:var(--sans);cursor:pointer;border:1px solid var(--olijf);background:#fff;padding:clamp(18px,2vw,24px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px">
+        <span style="display:flex;flex-direction:column;gap:6px;min-width:0">
+          <span style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <span style="background:var(--lime);font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px">2 maanden gratis</span>
+            <span data-nudge-kop style="font-family:var(--serif);font-size:clamp(19px,1.7vw,24px);line-height:1.15">Op deze opzet scheelt een jaar €150.</span>
+          </span>
+          <span style="font-size:14.5px;color:var(--grijs)">Je betaalt tien maanden in plaats van twaalf. Opzeggen kan daarna gewoon per jaar.</span>
         </span>
-      </a>
-      <button type="button" class="mg-nav-knop" aria-label="Menu" aria-expanded="false" aria-controls="mg-menu">
-        <span class="mg-nav-streep"></span>
-        <span class="mg-nav-streep"></span>
-        <span class="mg-nav-streep"></span>
+        <span class="nr" style="letter-spacing:.12em;text-transform:uppercase;white-space:nowrap">Zet om naar per jaar →</span>
       </button>
-      <div id="mg-menu" class="mg-nav-menu mg-gp-1" style="display:flex;align-items:center;gap:30px;font-size:13.5px">
-          <a href="platform.html" class="mg-nav-link" style="color:#6A6D70">Het platform</a>
-          <a href="sectoren.html" class="mg-nav-link" style="color:#6A6D70">Sectoren</a>
-          <a href="bewijs.html" class="mg-nav-link" style="color:#6A6D70">Het bewijs</a>
-          <a href="prijzen.html" class="mg-nav-link mg-nav-link--actief" style="color:#6A6D70">Prijzen</a>
-          <a href="contact.html" class="mg-nav-link" style="color:#6A6D70">Contact</a>
-          <a role="button" tabindex="0" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" class="mg-nav-cta mg-hv-nav" style="background:#3F4A2E;color:#F6F4EE;font-size:13px;padding:10px 18px;display:inline-flex;align-items:center;gap:8px;cursor:pointer">Plan een kennismaking <span class="mg-arrow">&rarr;</span></a>
+
+      <!-- In de jaarstand: twaalf maanden, tien betaald. -->
+      <div data-jaarbalk style="border:1px solid var(--olijf);background:#fff;padding:clamp(18px,2vw,24px);display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;gap:5px">
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--olijf);border:1px solid var(--olijf)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--grijs)">J</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--olijf);border:1px solid var(--olijf)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--grijs)">F</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--olijf);border:1px solid var(--olijf)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--grijs)">M</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--olijf);border:1px solid var(--olijf)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--grijs)">A</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--olijf);border:1px solid var(--olijf)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--grijs)">M</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--olijf);border:1px solid var(--olijf)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--grijs)">J</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--olijf);border:1px solid var(--olijf)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--grijs)">J</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--olijf);border:1px solid var(--olijf)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--grijs)">A</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--olijf);border:1px solid var(--olijf)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--grijs)">S</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--olijf);border:1px solid var(--olijf)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--grijs)">O</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--lime);border:1px solid var(--lime)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--olijf)">gratis</span>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:6px;align-items:center">
+            <div style="width:100%;height:34px;background:var(--lime);border:1px solid var(--lime)"></div>
+            <span style="font-family:var(--mono);font-size:9px;color:var(--olijf)">gratis</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px">
+          <span style="font-size:15px">Je betaalt tien maanden en krijgt er twaalf.</span>
+          <span class="nr" style="letter-spacing:.1em;text-transform:uppercase">November en december erbij</span>
+        </div>
       </div>
+
+      <button type="button" data-blok="gespreksgids" data-maand="75" data-jaar="750" aria-pressed="true" style="text-align:left;font-family:var(--sans);cursor:pointer;border:1px solid var(--olijf);background:#fff;padding:clamp(20px,2vw,26px);display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:16px;align-items:start">
+        <span data-vink style="width:22px;height:22px;margin-top:3px;border:1px solid var(--olijf);background:var(--olijf);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:13px">✓</span>
+        <span style="display:flex;flex-direction:column;gap:10px;min-width:0">
+          <span style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+            <span style="font-family:var(--serif);font-size:clamp(21px,1.8vw,26px);line-height:1.1">AI-Gespreksgids</span>
+            <span class="nr" style="font-size:10px;letter-spacing:.12em;text-transform:uppercase">Inclusief app en meldingen</span>
+          </span>
+          <span style="color:var(--grijs);font-size:14.5px;line-height:1.6">Vangt vragen op je site op, kwalificeert en zet alleen de juiste intakes in je agenda. Het dashboard, je eigen app en de meldingen zitten erbij.</span>
+          <span style="display:flex;flex-direction:column;gap:7px;border-top:1px solid var(--lijn);padding-top:12px">
+            <span style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--grijs)">Wat je krijgt</span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">AI-collega op je eigen site, dag en nacht</span></span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Kwalificeert en boekt intakes in je agenda</span></span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Dashboard met leads, dossiers en gesprekken</span></span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">De iOS-app met meldingen</span></span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Kennisbank uit jouw eigen documenten</span></span>
+          </span>
+        </span>
+        <span style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;white-space:nowrap">
+          <span data-prijs style="font-family:var(--serif);font-size:clamp(22px,2vw,28px);line-height:1">€63 per maand</span>
+          <span data-prijs-bij style="font-family:var(--mono);font-size:11px;color:var(--grijs)">jaarlijks · €750 per jaar</span>
+          <span data-prijs-besparing style="font-family:var(--mono);font-size:11px;color:var(--olijf)">Je bespaart €150 per jaar</span>
+        </span>
+      </button>
+      <button type="button" data-blok="content" data-maand="50" data-jaar="500" aria-pressed="false" style="text-align:left;font-family:var(--sans);cursor:pointer;border:1px solid var(--lijn);background:var(--cream);padding:clamp(20px,2vw,26px);display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:16px;align-items:start">
+        <span data-vink style="width:22px;height:22px;margin-top:3px;border:1px solid var(--lijn-sterk);background:transparent;color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:13px"></span>
+        <span style="display:flex;flex-direction:column;gap:10px;min-width:0">
+          <span style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+            <span style="font-family:var(--serif);font-size:clamp(21px,1.8vw,26px);line-height:1.1">Content-Engine</span>
+            <span class="nr" style="font-size:10px;letter-spacing:.12em;text-transform:uppercase">Gevonden worden</span>
+          </span>
+          <span style="color:var(--grijs);font-size:14.5px;line-height:1.6">Blogs, posts en nieuwsbrieven in jouw stem, uit de vragen die klanten echt stellen. Jij keurt goed met één klik.</span>
+          <span style="display:flex;flex-direction:column;gap:7px;border-top:1px solid var(--lijn);padding-top:12px">
+            <span style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--grijs)">Wat je krijgt</span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Blogs, posts en nieuwsbrieven in jouw stem</span></span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Onderwerpen uit de vragen die klanten echt stellen</span></span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Jij keurt goed, publiceren is één klik</span></span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Voorstellen komen elke week klaar te staan</span></span>
+          </span>
+        </span>
+        <span style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;white-space:nowrap">
+          <span data-prijs style="font-family:var(--serif);font-size:clamp(22px,2vw,28px);line-height:1">€42 per maand</span>
+          <span data-prijs-bij style="font-family:var(--mono);font-size:11px;color:var(--grijs)">jaarlijks · €500 per jaar</span>
+          <span data-prijs-besparing style="font-family:var(--mono);font-size:11px;color:var(--olijf)">Je bespaart €100 per jaar</span>
+        </span>
+      </button>
+      <button type="button" data-blok="document" data-maand="50" data-jaar="500" aria-pressed="false" style="text-align:left;font-family:var(--sans);cursor:pointer;border:1px solid var(--lijn);background:var(--cream);padding:clamp(20px,2vw,26px);display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:16px;align-items:start">
+        <span data-vink style="width:22px;height:22px;margin-top:3px;border:1px solid var(--lijn-sterk);background:transparent;color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:13px"></span>
+        <span style="display:flex;flex-direction:column;gap:10px;min-width:0">
+          <span style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+            <span style="font-family:var(--serif);font-size:clamp(21px,1.8vw,26px);line-height:1.1">Document-Automatie</span>
+            <span class="nr" style="font-size:10px;letter-spacing:.12em;text-transform:uppercase">Vastleggen</span>
+          </span>
+          <span style="color:var(--grijs);font-size:14.5px;line-height:1.6">Intakeverslagen, offertes en contracten gevuld uit het dossier. Jij verstuurt, de klant tekent online.</span>
+          <span style="display:flex;flex-direction:column;gap:7px;border-top:1px solid var(--lijn);padding-top:12px">
+            <span style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--grijs)">Wat je krijgt</span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Intakeverslagen, offertes en contracten uit het dossier</span></span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Jouw eigen sjablonen en huisstijl</span></span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Online ondertekenen door de klant</span></span>
+            <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--olijf);font-size:13px">✓</span><span style="font-size:14.5px;line-height:1.55">Scheelt dertig tot zestig minuten per lead</span></span>
+          </span>
+        </span>
+        <span style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;white-space:nowrap">
+          <span data-prijs style="font-family:var(--serif);font-size:clamp(22px,2vw,28px);line-height:1">€42 per maand</span>
+          <span data-prijs-bij style="font-family:var(--mono);font-size:11px;color:var(--grijs)">jaarlijks · €500 per jaar</span>
+          <span data-prijs-besparing style="font-family:var(--mono);font-size:11px;color:var(--olijf)">Je bespaart €100 per jaar</span>
+        </span>
+      </button>
+
+      <p class="bij">Het dashboard zit bij elk actief bouwblok inbegrepen · het AI-verbruik reken je apart af, met een harde grens.</p>
     </div>
-  </nav>
 
-  <!-- Hero -->
-  <section data-screen-label="Prijzen · hero" style="position:relative;overflow:hidden;border-bottom:1px solid #E1DCCF">
-    <div class="mg-deco" style="position:absolute;top:-220px;right:-140px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.32), transparent 66%);filter:blur(90px);opacity:0.36;pointer-events:none"></div>
-    <div class="mg-wrap mg-pd-32" style="position:relative;max-width:1240px;margin:0 auto;padding:72px 32px 60px">
-      <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:22px">/ Prijzen</div>
-      <div class="mg-grid mg-grid--pair mg-gp-2" style="display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:end">
-        <h1 class="mg-fs-60" style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.03em;line-height:0.96;font-size:60px;margin:0">Begin klein. <em style="font-style:italic;color:#3F4A2E">Groei mee.</em></h1>
-        <p style="font-size:16.5px;line-height:1.64;color:rgba(14,17,18,0.82);margin:0">Vaste, transparante tarieven per bouwblok. Je start met de AI-Gespreksgids en breidt uit zodra je groeit. De eerste tien kantoren krijgen een oprichterstarief dat blijft. Alle bedragen excl. btw.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Prijskaarten -->
-  <section class="mg-pd-6" data-screen-label="Prijskaarten" style="padding:88px 0">
-    <div class="mg-wrap mg-pd-7" style="max-width:1240px;margin:0 auto;padding:0 32px">
-      <div class="mg-grid mg-grid--cards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
-        <div class="mg-pd-35" style="background:#3F4A2E;color:#F6F4EE;padding:32px 30px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden">
-          <div class="mg-deco" style="position:absolute;top:-30px;right:-30px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.3), transparent 66%);filter:blur(18px);pointer-events:none"></div>
-          <div style="position:relative;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;font-weight:500;color:#0E1112;background:#C8E06A;padding:4px 9px;align-self:flex-start">Nu live</div>
-          <div style="position:relative;font-family:'Instrument Serif',Georgia,serif;font-size:27px;line-height:1.05">AI-Gespreksgids</div>
-          <p style="position:relative;font-size:13.5px;color:rgba(246,244,238,0.72);line-height:1.55;margin:0;flex:1">De gespreksgids vangt websitevragen op, kwalificeert en zet alleen de juiste intakes in je agenda.</p>
-          <div style="position:relative">
-            <div class="mg-fs-34" style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1">€250</div>
-            <div style="font-size:12px;color:rgba(246,244,238,0.6)">setup, eenmalig · excl. btw</div>
-            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1;margin-top:10px;color:#C8E06A">€55<span style="font-size:12px;color:rgba(246,244,238,0.6)"> /mnd</span></div>
-          </div>
-        </div>
-        <div class="mg-pd-35" style="background:#F6F4EE;padding:32px 30px;display:flex;flex-direction:column;gap:12px">
-          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;font-weight:500;color:#6A6D70;border:1px solid #E1DCCF;padding:4px 9px;align-self:flex-start">Binnenhalen</div>
-          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:27px;line-height:1.05">Content-Engine</div>
-          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:0;flex:1">Blogs, posts en nieuwsbrieven in jouw stem, gepubliceerd op de dag die jij kiest.</p>
-          <div>
-            <div class="mg-fs-34" style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1">€125</div>
-            <div style="font-size:12px;color:#6A6D70">setup, eenmalig · excl. btw</div>
-            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1;margin-top:10px;color:#3F4A2E">€65<span style="font-size:12px;color:#6A6D70"> /mnd</span></div>
-          </div>
-        </div>
-        <div class="mg-pd-35" style="background:#F6F4EE;padding:32px 30px;display:flex;flex-direction:column;gap:12px">
-          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;font-weight:500;color:#6A6D70;border:1px solid #E1DCCF;padding:4px 9px;align-self:flex-start">Binden</div>
-          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:27px;line-height:1.05">Afstandsbediening</div>
-          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:0;flex:1">Een melding bij elke lead in je eigen app. Jij stuurt het team aan vanaf je telefoon.</p>
-          <div>
-            <div class="mg-fs-34" style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1">€50</div>
-            <div style="font-size:12px;color:#6A6D70">setup, eenmalig · excl. btw</div>
-            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1;margin-top:10px;color:#3F4A2E">€20<span style="font-size:12px;color:#6A6D70"> /mnd</span></div>
-          </div>
-        </div>
-        <div class="mg-pd-35" style="background:#F6F4EE;padding:32px 30px;display:flex;flex-direction:column;gap:12px">
-          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.14em;font-size:9.5px;font-weight:500;color:#6A6D70;border:1px solid #E1DCCF;padding:4px 9px;align-self:flex-start">Binden</div>
-          <div style="font-family:'Instrument Serif',Georgia,serif;font-size:27px;line-height:1.05">Document-Automatie</div>
-          <p style="font-size:13.5px;color:#6A6D70;line-height:1.55;margin:0;flex:1">Offertes en verslagen uit je eigen documenten. Je klant leest, accepteert en tekent online.</p>
-          <div>
-            <div class="mg-fs-34" style="font-family:'Instrument Serif',Georgia,serif;font-size:34px;line-height:1">€290</div>
-            <div style="font-size:12px;color:#6A6D70">setup, eenmalig · excl. btw</div>
-            <div style="font-family:'Instrument Serif',Georgia,serif;font-size:22px;line-height:1;margin-top:10px;color:#3F4A2E">€50<span style="font-size:12px;color:#6A6D70"> /mnd</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:12px 32px;font-size:13px;color:#6A6D70">
-        <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:6px;height:6px;background:#3F4A2E;flex-shrink:0"></span>Dashboard inbegrepen bij elk actief bouwblok</span>
-        <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:6px;height:6px;background:#3F4A2E;flex-shrink:0"></span>Per maand opzegbaar, geen jaarcontract</span>
-        <span style="display:inline-flex;align-items:center;gap:8px"><span style="width:6px;height:6px;background:#3F4A2E;flex-shrink:0"></span>Oprichterstarief blijft, ook als je uitbreidt</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI-verbruik -->
-  <section class="mg-pd-15" data-screen-label="AI-verbruik" style="background:#EFEBE1;border-top:1px solid #E1DCCF;border-bottom:1px solid #E1DCCF;padding:96px 0">
-    <div class="mg-wrap mg-grid mg-grid--pair mg-pd-7 mg-gp-3" style="max-width:1240px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:center">
+    <aside style="border:1px solid var(--olijf);background:var(--nacht);color:var(--cream);padding:clamp(24px,2.4vw,32px);display:flex;flex-direction:column;gap:20px;position:sticky;top:96px">
+      <p class="kicker" style="margin:0">Jouw samenstelling</p>
+      <div data-samenvatting style="display:flex;flex-direction:column;gap:10px;border-bottom:1px solid rgba(246,244,238,.2);padding-bottom:18px"></div>
       <div>
-        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Wat kost het AI-gebruik?</div>
-        <h2 class="mg-fs-40" style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:40px;margin:0 0 18px">Transparant, en <em style="font-style:italic;color:#3F4A2E">nooit</em> een verrassing.</h2>
-        <p style="font-size:16px;line-height:1.7;color:#6A6D70;margin:0">Naast het maandbedrag betaal je voor het daadwerkelijke AI-gebruik van de gesprekken. Dat verbruik zit gebundeld, staat transparant in je dashboard en heeft een harde grens, zodat je nooit voor een onverwachte rekening staat.</p>
+        <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,244,238,.55);margin-bottom:4px">Jouw bedrag per maand</div>
+        <div data-totaal style="font-family:var(--serif);font-size:clamp(34px,3.4vw,50px);line-height:1;color:var(--lime)">€63</div>
+        <div data-totaal-bij class="bij" style="color:rgba(246,244,238,.7);margin-top:8px">Jaarlijks gefactureerd · €750 per jaar</div>
+        <div data-totaal-besparing class="bij" style="color:var(--lime);margin-top:6px">Je bespaart €150 per jaar</div>
       </div>
-      <div class="mg-grid mg-grid--cards" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E1DCCF;border:1px solid #E1DCCF">
-        <div class="mg-pd-30" style="background:#F6F4EE;padding:30px 26px">
-          <div class="mg-fs-38" style="font-family:'Instrument Serif',Georgia,serif;font-size:38px;color:#3F4A2E;line-height:1;margin-bottom:12px">175</div>
-          <div style="font-size:14px;font-weight:500;margin-bottom:6px">gesprekken per maand</div>
-          <p style="font-size:13px;color:#6A6D70;line-height:1.55;margin:0">Inbegrepen bij de AI-Gespreksgids, ruim genoeg voor de meeste kantoren.</p>
+      <div style="display:flex;flex-direction:column;gap:7px;border-top:1px solid rgba(246,244,238,.2);padding-top:16px">
+        <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--lime);font-size:12px">✓</span><span style="font-size:14px;color:rgba(246,244,238,.8)">Geen opstartkosten, bij geen enkel blok</span></span>
+        <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--lime);font-size:12px">✓</span><span style="font-size:14px;color:rgba(246,244,238,.8)">Maandelijks opzegbaar</span></span>
+        <span style="display:flex;gap:10px;align-items:baseline"><span style="color:var(--lime);font-size:12px">✓</span><span style="font-size:14px;color:rgba(246,244,238,.8)">Geen jaarcontract, tenzij je daar zelf voor kiest</span></span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a class="knop" style="background:var(--cream);color:var(--inkt);font-weight:500;font-size:15.5px;padding:15px 20px;justify-content:center" href="https://app.marketgrow.ai/aanmelden"><span class="stip" style="background:var(--olijf)"></span>Start met deze opzet</a>
+        <a class="knop" style="border:1px solid rgba(246,244,238,.5);color:var(--cream);font-size:15px;padding:14px 20px;justify-content:center" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0">Of plan eerst een demo · 30 min</a>
+      </div>
+      <p class="bij" style="color:rgba(246,244,238,.6)">Alle bedragen exclusief BTW. Bij een jaar vooruit betaal je tien maanden, dus twee maanden gratis.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="sectie komt-op" style="padding-top:0">
+  <div class="binnen">
+    <h2 style="max-width:24ch;margin-bottom:24px">Wat kost het AI-gebruik? Transparant, en nooit een verrassing.</h2>
+    <div class="raster">
+      <div><span style="font-family:var(--serif);font-size:clamp(30px,3vw,40px);line-height:1;color:var(--olijf)">175</span><span class="nr" style="letter-spacing:.14em;text-transform:uppercase;color:var(--inkt)">gesprekken per maand</span><span style="font-size:14.5px;color:var(--grijs)">Inbegrepen bij de AI-Gespreksgids, ruim genoeg voor de meeste kantoren.</span></div>
+      <div><span style="font-family:var(--serif);font-size:clamp(30px,3vw,40px);line-height:1;color:var(--olijf)">€10</span><span class="nr" style="letter-spacing:.14em;text-transform:uppercase;color:var(--inkt)">per gesprek daarboven</span><span style="font-size:14.5px;color:var(--grijs)">Live te volgen in je dashboard, dus je ziet het aankomen.</span></div>
+      <div><span style="font-family:var(--serif);font-size:clamp(30px,3vw,40px);line-height:1;color:var(--olijf)">400</span><span class="nr" style="letter-spacing:.14em;text-transform:uppercase;color:var(--inkt)">harde grens</span><span style="font-size:14.5px;color:var(--grijs)">Boven de grens stopt het verbruik automatisch. Geen verrassing achteraf.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie komt-op" style="padding-top:0">
+  <div class="binnen">
+    <h2 style="max-width:20ch;margin-bottom:28px">Twee manieren om te beginnen.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(16px,2vw,24px)">
+      <div style="border:1px solid var(--olijf);background:#fff;padding:clamp(26px,2.6vw,38px);display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span class="nr" style="letter-spacing:.16em;text-transform:uppercase">Zelf starten</span>
+          <span style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--cream);background:var(--olijf);padding:4px 9px">Nu beschikbaar</span>
         </div>
-        <div class="mg-pd-30" style="background:#F6F4EE;padding:30px 26px">
-          <div class="mg-fs-38" style="font-family:'Instrument Serif',Georgia,serif;font-size:38px;color:#3F4A2E;line-height:1;margin-bottom:12px">+</div>
-          <div style="font-size:14px;font-weight:500;margin-bottom:6px">toeslag daarboven</div>
-          <p style="font-size:13px;color:#6A6D70;line-height:1.55;margin:0">&euro;10 per gesprek boven de bundel. Je ziet het live meelopen in je dashboard.</p>
+        <h3 style="font-size:clamp(24px,2.2vw,32px)">Vanavond zelf live.</h3>
+        <p style="color:var(--grijs);font-size:15.5px;flex:1">Zonder gesprek: je meldt je aan, kiest je bouwblokken, rekent af en levert je documenten aan. Een half uur later staat je AI-collega op je site.</p>
+        <a class="knop knop--vol" style="justify-content:center;font-size:15px;padding:14px 22px" href="https://app.marketgrow.ai/aanmelden"><span class="stip"></span>Start zelf</a>
+      </div>
+      <div style="border:1px solid var(--lijn);background:#fff;padding:clamp(26px,2.6vw,38px);display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+          <span class="nr" style="letter-spacing:.16em;text-transform:uppercase;color:var(--grijs)">Samen opzetten</span>
+          <span style="font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--olijf);border:1px solid var(--lijn-sterk);padding:4px 9px">30 minuten</span>
         </div>
-        <div class="mg-pd-30" style="background:#F6F4EE;padding:30px 26px">
-          <div class="mg-fs-38" style="font-family:'Instrument Serif',Georgia,serif;font-size:38px;color:#3F4A2E;line-height:1;margin-bottom:12px">400</div>
-          <div style="font-size:14px;font-weight:500;margin-bottom:6px">harde grens</div>
-          <p style="font-size:13px;color:#6A6D70;line-height:1.55;margin:0">Boven de grens stopt het verbruik automatisch. Geen verrassingen achteraf.</p>
-        </div>
+        <h3 style="font-size:clamp(24px,2.2vw,32px)">Dertig minuten, samen doorlopen.</h3>
+        <p style="color:var(--grijs);font-size:15.5px;flex:1">We zetten je eigen site ernaast en laten zien wat er gebeurt met de vragen die jij krijgt. Daarna richten wij het in, binnen zeven werkdagen.</p>
+        <a class="knop knop--lijn" style="justify-content:center;font-size:15px;padding:14px 22px" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0">Plan een demo · 30 min</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section class="mg-pd-15" id="faq" data-screen-label="FAQ · prijzen" style="padding:96px 0">
-    <div class="mg-pd-7" style="max-width:920px;margin:0 auto;padding:0 32px">
-      <div style="margin-bottom:44px">
-        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#6A6D70;margin-bottom:20px">/ Vragen over de prijs</div>
-        <h2 class="mg-fs-44" style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:0.98;font-size:44px;margin:0">Helder over wat je <em style="font-style:italic;color:#3F4A2E">betaalt.</em></h2>
+<section class="sectie komt-op" style="padding-top:0">
+  <div class="binnen">
+    <div style="max-width:920px">
+      <h2 style="margin-bottom:28px">De vragen die je nu <em class="accent">waarschijnlijk</em> hebt.</h2>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Wat kost het?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Je begint met de AI-Gespreksgids voor 55 euro per maand, inclusief de app en zonder opstartkosten. Uitbreiden doe je per bouwblok, maandelijks opzegbaar. Kies je meteen voor een jaar, dan betaal je tien maanden en krijg je er dus twee gratis bij. Het AI-verbruik reken je apart af, met een harde grens. Bedragen exclusief BTW.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Wat als hij iets verkeerds zegt tegen mijn klant?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">De antwoorden komen uit jouw kennisbank, niet van internet. Weet de collega iets niet, dan zegt hij dat en zet hij het gesprek naar jou door. Er gaat niets naar buiten dat jij niet kunt terugzien.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Zie ik wat er besproken is?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Ja. Je leest het hele gesprek terug, niet alleen een samenvatting, met wat er is toegezegd en wat niet. In het dashboard en in je eigen app.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Moet ik mijn website vervangen?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Nee. Alles draait op je bestaande site. Eén regel code en je staat live, geen migratie of redesign.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Hoe snel sta ik live?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Vanavond zelf live, of binnen zeven werkdagen samen opgezet. Zelf starten duurt ongeveer een half uur: aanmelden, bouwblokken kiezen, afrekenen en je documenten aanleveren. Kies je de demo van 30 minuten, dan richten wij het daarna voor je in.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Blijft mijn data van mij?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Ja. Opgeslagen in de EU en AVG-proof. Je gegevens blijven van jou en je kunt ze altijd exporteren.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Voor wie is MarketGrow?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Voor de zakelijke dienstverlening: juristen, accountants, mediators, adviseurs, coaches, hypotheek- en pensioenadviseurs, fysio- en zorgpraktijken, architecten.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+<!-- Gedeeld slotblok en voettekst. Identiek op elke pagina. -->
+<section class="sectie sectie--olijf" id="beginnen">
+  <div class="binnen" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(24px,3vw,48px)">
+    <h2 style="font-size:clamp(32px,4.1vw,60px);line-height:1.02;max-width:34ch;flex:1 1 520px">
+      Vanavond opent er weer iemand je site. <em class="accent" style="white-space:nowrap">Wie doet er open?</em>
+    </h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <a class="knop" style="background:var(--cream);color:var(--inkt);font-weight:500" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0"><span class="stip" style="background:var(--olijf)"></span>Plan een demo · 30 min</a>
+      <a class="knop" style="border:1px solid rgba(246,244,238,.5);color:var(--cream)" href="/prijzen">Prijzen</a>
+    </div>
+  </div>
+</section>
+
+<footer class="voet">
+  <div class="binnen">
+    <div class="voet__kolommen">
+      <div class="voet__kolom">
+        <div class="voet__kop">Product</div>
+        <a href="/platform">Het platform</a>
+        <a href="/sectoren">Sectoren</a>
+        <a href="/prijzen">Prijzen</a>
+        <a href="/veiligheid">Veiligheid</a>
+      <a href="/contact">Contact</a>
+        <a href="/kennis">Kennisbank</a>
       </div>
-      <div>
-        <details style="border-bottom:1px solid #E1DCCF">
-          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Zit ik ergens aan vast?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
-          <p class="mg-pd-21" style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Nee. Alles is per maand opzegbaar, geen jaarcontract op losse bouwblokken. Je start met één bouwblok en breidt uit wanneer je eraan toe bent.</p>
-        </details>
-        <details style="border-bottom:1px solid #E1DCCF">
-          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Wat is het oprichterstarief?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
-          <p class="mg-pd-21" style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">De eerste tien kantoren krijgen een preferentieel tarief dat blijft, ook als je later uitbreidt of als we onze prijzen herzien. Geen pilot-korting die straks verdwijnt.</p>
-        </details>
-        <details>
-          <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 0"><h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:22px;line-height:1.25;margin:0">Zijn de bedragen inclusief btw?</h3><span class="mg-faq-plus" style="font-size:22px;color:#6A6D70;line-height:1;margin-top:2px;flex-shrink:0;transition:transform 0.2s">+</span></summary>
-          <p class="mg-pd-21" style="padding:0 40px 24px 0;color:#6A6D70;line-height:1.65;font-size:15.5px;margin:0">Alle genoemde bedragen zijn exclusief btw. Dit zijn onze vroege-fase tarieven; we herzien ze pas zodra de klantwaarde bewezen is, maar het oprichterstarief blijft voor de eerste tien.</p>
-        </details>
+      <div class="voet__kolom">
+        <div class="voet__kop">Sectoren</div>
+        <a href="/sectoren/juristen">Juristen en advocaten</a>
+        <a href="/sectoren/accountants">Accountants</a>
+        <a href="/sectoren/mediators">Mediators</a>
+        <a href="/sectoren/adviseurs">Bedrijfsadviseurs</a>
+        <a href="/sectoren" style="color:var(--grijs)">Alle sectoren</a>
+      </div>
+      <div class="voet__kolom">
+        <div class="voet__kop">Bedrijf</div>
+        <span>MarketGrow.ai</span>
+        <span style="color:var(--grijs)">Handelend onder Juligo Ventures B.V.</span>
+        <span style="color:var(--grijs)">Breda, Nederland</span>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--grijs)">KvK 95284966</span>
+      </div>
+      <div class="voet__kolom">
+        <div class="voet__kop">Juridisch</div>
+        <a href="/privacy">Privacyverklaring</a>
+        <a href="/voorwaarden">Voorwaarden</a>
       </div>
     </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="mg-pd-15" id="kennismaking" data-screen-label="CTA" style="background:#EFEBE1;border-top:1px solid #E1DCCF;padding:96px 0;scroll-margin-top:70px">
-    <div class="mg-wrap mg-pd-7" style="max-width:1240px;margin:0 auto;padding:0 32px">
-      <div class="mg-pd-18 mg-gp-5" style="background:#3F4A2E;color:#F6F4EE;padding:64px 56px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:32px;position:relative;overflow:hidden">
-        <div class="mg-deco" style="position:absolute;top:-60px;right:-40px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle, rgba(200,224,106,0.24), transparent 66%);filter:blur(30px);pointer-events:none"></div>
-        <div style="position:relative;max-width:640px">
-          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:11px;font-weight:500;color:#C8E06A;margin-bottom:18px">/ Kom in contact</div>
-          <h2 class="mg-fs-44" style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;letter-spacing:-0.025em;line-height:1.0;font-size:44px;margin:0 0 14px">Benieuwd wat het voor jou wordt?</h2>
-          <p style="font-size:16px;line-height:1.65;color:rgba(246,244,238,0.76);margin:0">In een kennismaking van een half uur rekenen we samen door wat past bij jouw kantoor. Geen verplichtingen.</p>
-        </div>
-        <a class="mg-pd-31 mg-hv-9" role="button" tabindex="0" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" data-cal-config="{&quot;layout&quot;:&quot;month_view&quot;}" style="position:relative;background:#C8E06A;color:#0E1112;padding:16px 28px;font-size:15px;font-weight:500;display:inline-flex;align-items:center;gap:10px;cursor:pointer">Plan een kennismaking <span class="mg-arrow">→</span></a>
-      </div>
+    <div class="voet__regel">
+      <span>© 2026 MarketGrow.ai</span>
+      <span>Gegevens in de EU · AVG · AI Act</span>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- Footer -->
-  <footer class="mg-pd-24" data-screen-label="Footer" style="border-top:1px solid #E1DCCF;padding:56px 0 40px;background:#F6F4EE">
-    <div class="mg-wrap mg-pd-7" style="max-width:1240px;margin:0 auto;padding:0 32px">
-      <div class="mg-grid mg-grid--foot mg-gp-4" style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,2fr) minmax(0,2fr) minmax(0,3fr);gap:40px;margin-bottom:40px">
-        <div>
-          <div style="display:flex;align-items:baseline;gap:1px;margin-bottom:12px">
-            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px">MarketGrow</span>
-            <span style="font-family:'Instrument Serif',Georgia,serif;font-size:25px;color:#3F4A2E">.ai</span>
-          </div>
-          <p style="color:#6A6D70;font-size:14.5px;line-height:1.6;max-width:320px;margin:0">Een afdeling met een gezicht.</p>
-        </div>
-        <div>
-          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Contact</div>
-          <a class="mg-hv-7" href="mailto:hello@marketgrow.ai" style="font-size:14px;color:#0E1112">hello@marketgrow.ai</a>
-        </div>
-        <div>
-          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Menu</div>
-          <div style="display:flex;flex-direction:column;gap:8px;font-size:14px">
-            <a class="mg-hv-7" href="platform.html" style="color:#6A6D70">Het platform</a>
-            <a class="mg-hv-7" href="sectoren.html" style="color:#6A6D70">Sectoren</a>
-            <a class="mg-hv-7" href="bewijs.html" style="color:#6A6D70">Het bewijs</a>
-          </div>
-        </div>
-        <div>
-          <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10.5px;font-weight:500;color:#6A6D70;margin-bottom:16px">Founders</div>
-          <div style="font-size:14px;color:#6A6D70;line-height:1.7">Julian Goote · Onno Goote</div>
-        </div>
-      </div>
-      <div style="border-top:1px solid #E1DCCF;padding-top:20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;font-size:12px;color:#6A6D70">
-        <div>© 2026 MarketGrow.ai · <a class="mg-hv-7" href="voorwaarden.html" style="color:#6A6D70">Algemene voorwaarden</a> · <a class="mg-hv-7" href="privacy.html" style="color:#6A6D70">Privacyverklaring</a></div>
-        <div style="font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.16em;font-size:10px">Binnenhalen · Kwalificeren · Binden</div>
-      </div>
-    </div>
-  </footer>
-
-</div>
-
+<script src="/site.js" defer></script>
 </body>
 </html>

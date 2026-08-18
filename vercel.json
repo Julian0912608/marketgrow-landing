@@ -1,0 +1,28 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/sector-juristen.html", "destination": "/sectoren/juristen", "permanent": true },
+    { "source": "/sector-accountants.html", "destination": "/sectoren/accountants", "permanent": true },
+    { "source": "/sector-mediators.html", "destination": "/sectoren/mediators", "permanent": true },
+    { "source": "/sector-bedrijfsadviseurs.html", "destination": "/sectoren/adviseurs", "permanent": true },
+    { "source": "/sector-hypotheek.html", "destination": "/sectoren/hypotheek", "permanent": true },
+    { "source": "/sector-fysio.html", "destination": "/sectoren/zorg", "permanent": true },
+    { "source": "/sector-architecten.html", "destination": "/sectoren/architecten", "permanent": true },
+    { "source": "/sector-coaches.html", "destination": "/sectoren/coaches", "permanent": true },
+    { "source": "/sector-financieel-planners.html", "destination": "/sectoren/planners", "permanent": true },
+    { "source": "/bewijs.html", "destination": "/platform", "permanent": true },
+    { "source": "/bewijs", "destination": "/platform", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/fonts/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/beeld/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    }
+  ]
+}
