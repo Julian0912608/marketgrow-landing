@@ -1,0 +1,14 @@
+Hier horen zes woff2-bestanden, latin-subset:
+
+  instrument-serif-400.woff2
+  instrument-serif-400-italic.woff2
+  inter-tight-400.woff2
+  inter-tight-500.woff2
+  jetbrains-mono-400.woff2
+  jetbrains-mono-500.woff2
+
+De @font-face-regels staan al bovenaan styles.css en verwijzen naar /fonts/<naam>.woff2.
+Zodra deze zes bestanden hier staan, hoeft er niets meer te gebeuren.
+
+Ik kan de bestanden zelf niet meeleveren: het zijn licentiebestanden die je bij de bron
+ophaalt (Google Fonts of fontsource) en niet iets wat ik mag genereren.
