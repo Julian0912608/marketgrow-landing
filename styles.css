@@ -35,6 +35,13 @@ html, body { margin: 0; padding: 0; }
 body { background: var(--cream); color: var(--inkt); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
 * { text-wrap: pretty; }
 img { display: block; max-width: 100%; height: auto; }
+
+/* HET ATTRIBUUT hidden MOET WINNEN VAN DE REGEL HIERBOVEN.
+   Een browser verbergt een element met hidden via zijn eigen stijlblad, maar zodra er
+   ergens img { display: block } staat, wint die regel en staat het beeld er gewoon. Dat
+   liet de vijf app-schermen op de platformpagina onder elkaar zien in plaats van als
+   carrousel. Geldt voor elk element, niet alleen voor afbeeldingen. */
+[hidden] { display: none !important; }
 a { color: var(--olijf); text-decoration: none; }
 a:hover { color: var(--inkt); }
 :focus-visible { outline: 2px solid var(--olijf); outline-offset: 3px; }
