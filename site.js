@@ -439,9 +439,19 @@
       // maandstand. Ze stonden alle drie altijd aan.
       // Het label hoort bij de jaarstand. De balk met de twee gratis maanden en het zetje
       // horen juist bij de MAANDstand: die laten zien wat je zou schelen als je overstapt.
-      if (jaarlabel) jaarlabel.style.display = termijn === "jaar" ? "" : "none";
-      if (jaarbalk) jaarbalk.style.display = termijn === "maand" ? "" : "none";
-      if (nudge) nudge.style.display = termijn === "maand" ? "" : "none";
+      //
+      // MET HET ATTRIBUUT hidden EN NIET MET display. Op deze blokken staat hidden in de
+      // opmaak, en het stijlblad zet daar display:none !important op. Een inline display
+      // verliest daarvan, dus het zetje naar een jaar vooruit kon nooit tevoorschijn komen.
+      var zichtbaar = function (el, aan) {
+        if (!el) return;
+        if (aan) el.removeAttribute("hidden");
+        else el.setAttribute("hidden", "");
+        el.style.display = "";
+      };
+      zichtbaar(jaarlabel, termijn === "jaar");
+      zichtbaar(jaarbalk, termijn === "maand");
+      zichtbaar(nudge, termijn === "maand");
 
       var gekozen = blokken.filter(function (b) { return aan[b.getAttribute("data-blok")]; });
       var maandTotaal = gekozen.reduce(function (a, b) { return a + maandVan(b); }, 0);
