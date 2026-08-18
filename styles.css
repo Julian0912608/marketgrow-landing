@@ -141,14 +141,14 @@ em.accent {
 }
 
 /* ---------- mobiel menu ---------- */
-/* De knop is boven 720px onzichtbaar; daaronder vervangt hij de losse links. */
+/* De knop is boven 900px onzichtbaar; daaronder vervangt hij de losse links. */
 .menu-knop { display: none; width: 42px; height: 42px; border: 1px solid var(--lijn-sterk); background: transparent; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; }
 .menu-knop span { display: block; width: 18px; height: 1.5px; background: var(--inkt); transition: transform .2s ease, opacity .2s ease; }
 .menu-knop[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .menu-knop[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
 .menu-knop[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .menu-knop { display: flex; order: 2; }
   .balk__binnen { flex-wrap: wrap; }
   .balk__links { order: 4; width: 100%; flex-direction: column; align-items: stretch; gap: 0; border-top: 1px solid var(--lijn); margin-top: 4px; padding-top: 4px; }

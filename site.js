@@ -39,7 +39,7 @@
     waarnemer.observe(el);
   }
 
-  // 1 · Balk: schaduw bij scrollen, en het menu onder 720px.
+  // 1 · Balk: schaduw bij scrollen, en het menu onder 900px.
   function balk() {
     var balkEl = $("header.balk") || $("header");
     var knop = $("[data-menu-knop]");
@@ -57,7 +57,7 @@
     if (!knop || !menu) return;
 
     var open = false;
-    var breed = function () { return window.innerWidth > 720; };
+    var breed = function () { return window.innerWidth > 900; };
 
     var zet = function (nieuw) {
       open = nieuw;
@@ -66,7 +66,7 @@
       else menu.setAttribute("hidden", "");
     };
 
-    // Boven 720px is de knop met CSS verborgen en hoort de nav altijd zichtbaar te zijn.
+    // Boven 900px is de knop met CSS verborgen en hoort de nav altijd zichtbaar te zijn.
     // Zonder deze regel blijft het menu weg zodra iemand zijn venster breder maakt terwijl
     // het dicht stond, en dan is de hele navigatie onbereikbaar.
     var herzie = function () {
@@ -437,8 +437,10 @@
       // Wat bij welke stand hoort. Het kortingslabel en de balk met de twee gratis maanden
       // gaan over een jaar vooruit; het zetje naar de jaarstand hoort juist alleen in de
       // maandstand. Ze stonden alle drie altijd aan.
+      // Het label hoort bij de jaarstand. De balk met de twee gratis maanden en het zetje
+      // horen juist bij de MAANDstand: die laten zien wat je zou schelen als je overstapt.
       if (jaarlabel) jaarlabel.style.display = termijn === "jaar" ? "" : "none";
-      if (jaarbalk) jaarbalk.style.display = termijn === "jaar" ? "" : "none";
+      if (jaarbalk) jaarbalk.style.display = termijn === "maand" ? "" : "none";
       if (nudge) nudge.style.display = termijn === "maand" ? "" : "none";
 
       var gekozen = blokken.filter(function (b) { return aan[b.getAttribute("data-blok")]; });
@@ -484,7 +486,7 @@
           ? ""
           : termijn === "jaar"
             ? "Jaarlijks gefactureerd \u00b7 " + euro(jaarTotaal) + " per jaar"
-            : "Maandelijks gefactureerd \u00b7 opzegbaar per maand";
+            : "Maandelijks opzegbaar \u00b7 geen jaarcontract";
       }
       if (totaalBesparing) {
         var toon = gekozen.length > 0 && termijn === "jaar" && scheelt > 0;
@@ -606,7 +608,7 @@
         blok.removeAttribute("hidden");
         if (RUSTIG) { getal.textContent = doel.toLocaleString("nl-NL"); return; }
         bijInBeeld(blok, function () {
-          var duur = 1600;
+          var duur = 1000;
           var start = 0;
           var stap = function (nu) {
             if (!start) start = nu;
@@ -860,14 +862,14 @@
 
     // De opdracht wordt getypt voordat hij als bericht verschijnt: dat maakt zichtbaar
     // dat JIJ hem geeft en de AI-collega hem uitvoert.
-    function typ(tekst, klaar) {
-      if (!invoer) { klaar(); return; }
+    function typ(tekst) {
+      if (!invoer) return;
       var i = 0;
       var tik = function () {
         i += 1;
         invoer.textContent = tekst.slice(0, i);
         if (i < tekst.length) window.setTimeout(tik, 34);
-        else window.setTimeout(function () { invoer.textContent = ""; klaar(); }, 420);
+        else window.setTimeout(function () { invoer.textContent = ""; }, 1600);
       };
       tik();
     }
@@ -877,15 +879,18 @@
       klokken.forEach(window.clearTimeout);
       klokken = [];
       verberg();
-      klokken.push(window.setTimeout(function () { toon(0); }, 500));
-      klokken.push(window.setTimeout(function () { toon(1); }, 1700));
+      klokken.push(window.setTimeout(function () { toon(0); }, 700));
+      klokken.push(window.setTimeout(function () { toon(1); }, 1900));
+      // Vanaf 3,1 seconde wordt de opdracht letter voor letter getypt; op 5,1 staat hij
+      // als bericht en op 6,3 komt de bevestiging.
       klokken.push(window.setTimeout(function () {
         var opdracht = (stappen[2] && stappen[2].textContent.trim()) || "";
-        typ(opdracht, function () { toon(2); });
-      }, 2900));
-      klokken.push(window.setTimeout(function () { toon(3); }, 6200));
+        typ(opdracht);
+      }, 3100));
+      klokken.push(window.setTimeout(function () { toon(2); }, 5100));
+      klokken.push(window.setTimeout(function () { toon(3); }, 6300));
       // Even laten staan, dan opnieuw. Wie er later naar kijkt ziet het ook.
-      klokken.push(window.setTimeout(speel, 11000));
+      klokken.push(window.setTimeout(speel, 10800));
     }
 
     verberg();
