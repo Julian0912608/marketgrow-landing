@@ -229,3 +229,7 @@ em.accent {
   .kaart-link:hover { transform: none; }
   .leesbalk { transition: none; }
 }
+
+/* Kaarten in de kennisbank zijn links, maar ze horen niet als tekstlink te lezen. */
+a[data-artikel], a[data-artikel] span { text-decoration: none; }
+a[data-artikel]:hover span:nth-of-type(2) { color: var(--olijf); }
