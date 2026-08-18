@@ -106,7 +106,9 @@
   }
 
   // 3 · Chatpaneel.
-  var CHAT_EINDPUNT = "https://app.marketgrow.ai/api/widget/chat";
+  // Het echte eindpunt van het platform. In de ontwerpbeschrijving stond een andere
+  // route, maar die bestaat niet: het platform luistert op /api/chat.
+  var CHAT_EINDPUNT = "https://app.marketgrow.ai/api/chat";
   var CHAT_TENANT = "demo";
 
   function chat() {
@@ -120,6 +122,7 @@
     if (!lijst || !form || !invoer) return;
 
     var geschiedenis = [];
+    var gesprekId = null;
     var bezig = false;
 
     var WELKOM =
@@ -225,11 +228,27 @@
         bezig = false;
       };
 
+      // De route wil het gesprek vanaf een bezoekersbericht zien; onze begroeting staat
+      // vooraan en zou het gesprek met een assistentregel laten beginnen.
+      var berichten = geschiedenis.slice();
+      while (berichten.length && berichten[0].role !== "user") berichten.shift();
+      if (!berichten.length) { klaar(); return; }
+
       window
         .fetch(CHAT_EINDPUNT, {
           method: "POST",
           headers: { "content-type": "application/json" },
-          body: JSON.stringify({ tenant: CHAT_TENANT, persona: "noor", messages: geschiedenis }),
+          body: JSON.stringify({
+            tenant: CHAT_TENANT,
+            messages: berichten,
+            // HET GESPREK-ID MOET MEE, en dat is meer dan netjes zijn. Zonder dit veld
+            // begint het platform bij elk bericht een NIEUW gesprek: de AI-collega raakt
+            // de draad kwijt en de gesprekkenteller op deze pagina telt elk los bericht
+            // als een gesprek.
+            conversationId: gesprekId,
+            bron: "landing",
+            bronDetail: String(document.title || "").slice(0, 160),
+          }),
         })
         .then(function (r) {
           if (!r.ok) throw new Error("status " + r.status);
@@ -237,11 +256,14 @@
         })
         .then(function (d) {
           klaar();
-          var tekst = (d && (d.antwoord || d.reply || d.message)) || "";
+          var tekst = d && d.reply ? String(d.reply).trim() : "";
           if (!tekst) { zegVast(terugval(vraag), vraag); return; }
+          if (d.conversationId) gesprekId = d.conversationId;
           bubbel("bot", tekst);
           geschiedenis.push({ role: "assistant", content: tekst });
-          if (d && d.intakeReady) intakeBlok();
+          // Het platform beslist zelf wanneer een intake aan de orde is, en geeft de
+          // boekingslink erbij als die er is.
+          if (d.intake === true) intakeBlok(d.calLink);
         })
         .catch(function () {
           klaar();
@@ -249,8 +271,9 @@
         });
     }
 
-    function intakeBlok() {
+    function intakeBlok(calLink) {
       if ($("[data-chat-intake]", lijst)) return;
+      var link = calLink || "julian-goote-c4pgqu/intake-marketgrow.ai";
       var blok = document.createElement("div");
       blok.setAttribute("data-chat-intake", "");
       blok.style.cssText =
@@ -259,7 +282,7 @@
       blok.innerHTML =
         '<span style="font-size:14px;line-height:1.5">Zo te horen kan Noor je verder helpen in een gesprek.</span>' +
         '<a class="knop" style="background:var(--olijf);color:var(--cream);justify-content:center;padding:12px 18px;font-size:15px" ' +
-        'data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0">Plan een demo \u00b7 30 min</a>';
+        'data-cal-namespace="kennismaking" data-cal-link="' + link + '" role="button" tabindex="0">Plan een demo \u00b7 30 min</a>';
       lijst.appendChild(blok);
       lijst.scrollTop = lijst.scrollHeight;
     }
