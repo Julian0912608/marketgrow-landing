@@ -368,9 +368,13 @@
       // zoals het stond, dus aanklikken leek niets te doen.
       var vink = $("[data-vink]", b);
       if (vink) {
+        // Het teken zelf zetten en niet alleen de kleur. In de opmaak staat het vinkje
+        // alleen in de kaart die van zichzelf aan staat; de andere vakjes zijn leeg. Wie
+        // die aanzette kreeg een gekleurd vlak zonder vinkje erin.
+        vink.textContent = actief ? "\u2713" : "";
         vink.style.background = actief ? "var(--olijf)" : "transparent";
         vink.style.borderColor = actief ? "var(--olijf)" : "var(--lijn-sterk)";
-        vink.style.color = actief ? "var(--cream)" : "transparent";
+        vink.style.color = "var(--cream)";
       }
 
       var prijs = $("[data-prijs]", b);
