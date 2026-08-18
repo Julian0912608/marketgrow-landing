@@ -169,6 +169,14 @@
       var rij = bubbel("bot", "");
       rij.textContent = "";
       rij.setAttribute("data-puntjes", "");
+      // Krap houden: de stipjes horen in een klein bolletje te staan en niet in een
+      // brede lege bak, anders lijkt er een leeg antwoord binnengekomen.
+      rij.style.maxWidth = "none";
+      rij.style.display = "inline-flex";
+      rij.style.alignItems = "center";
+      rij.style.padding = "13px 14px";
+      rij.setAttribute("aria-label", "Noor is aan het typen");
+      rij.setAttribute("role", "status");
       rij.innerHTML = '<span class="punt"></span><span class="punt"></span><span class="punt"></span>';
       return rij.parentNode;
     }

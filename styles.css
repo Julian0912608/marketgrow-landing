@@ -17,8 +17,8 @@
   --sans: 'Inter Tight', system-ui, sans-serif;
   --mono: 'JetBrains Mono', monospace;
 
-  --breed: 1280px;                    /* max breedte van elke sectie */
-  --rand: clamp(20px, 3vw, 32px);     /* horizontale marge van de pagina */
+  --breed: 1200px;                    /* max breedte van elke sectie */
+  --rand: clamp(24px, 5vw, 72px);     /* horizontale marge van de pagina */
   --sectie: clamp(52px, 6vw, 96px);   /* verticale ruimte per sectie */
 }
 
@@ -151,4 +151,35 @@ em.accent {
   .balk__acties a:first-child, .balk__scheiding { display: none; } /* Inloggen staat dan in het menu */
   .knop { padding: 14px 20px; font-size: 15px; }
   .knop--klein { padding: 11px 16px; font-size: 14px; }
+}
+
+/* Wachtstipjes in het chatpaneel. Drie bolletjes die om de beurt opkomen, zodat een
+   bezoeker ziet dat er iets gebeurt in plaats van naar een stilstaand grijs blokje te
+   kijken. */
+.punt {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: var(--olijf);
+  opacity: .28;
+  animation: mg-denk 1.25s infinite ease-in-out;
+}
+.punt:nth-child(2) { animation-delay: .16s; }
+.punt:nth-child(3) { animation-delay: .32s; margin-right: 0; }
+
+@keyframes mg-denk {
+  0%, 70%, 100% { opacity: .28; transform: translateY(0); }
+  35%           { opacity: 1;   transform: translateY(-3px); }
+}
+
+/* Wie beweging heeft uitgezet krijgt geen deining, maar wel het verschil in helderheid,
+   zodat ook dan zichtbaar blijft dat er gewacht wordt. */
+@media (prefers-reduced-motion: reduce) {
+  .punt { animation: mg-denk-rustig 1.6s infinite steps(1, end); transform: none; }
+  @keyframes mg-denk-rustig {
+    0%, 60%, 100% { opacity: .28; }
+    30%           { opacity: .85; }
+  }
 }
