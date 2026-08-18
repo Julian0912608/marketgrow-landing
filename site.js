@@ -14,8 +14,14 @@
   var $ = function (sel, wortel) { return (wortel || document).querySelector(sel); };
   var $$ = function (sel, wortel) { return Array.prototype.slice.call((wortel || document).querySelectorAll(sel)); };
 
+  // Hele euro's zonder komma, halve met twee cijfers. Zo staat 62,50 er als 62,50 en
+  // 750 als 750, wat precies is wat er in de opmaak staat.
   var euro = function (bedrag) {
-    return "\u20AC" + bedrag.toLocaleString("nl-NL");
+    var heel = Math.abs(bedrag % 1) < 0.005;
+    return "\u20AC" + bedrag.toLocaleString("nl-NL", {
+      minimumFractionDigits: heel ? 0 : 2,
+      maximumFractionDigits: heel ? 0 : 2,
+    });
   };
 
   // Eenmalig uitvoeren zodra een element in beeld komt. Valt terug op meteen uitvoeren als
@@ -355,7 +361,7 @@
 
       if (prijs) {
         prijs.textContent = termijn === "jaar"
-          ? euro(Math.round(jaar / 12)) + " per maand"
+          ? euro(Math.round((jaar / 12) * 100) / 100) + " per maand"
           : euro(maand) + " per maand";
       }
       if (bij) {
@@ -413,11 +419,10 @@
       // Geen bedrag van nul tonen: dat leest als gratis in plaats van als niets gekozen.
       if (totaalEl) {
         totaalEl.textContent = gekozen.length === 0
-          ? "\u2014"
+          ? ""
           : termijn === "jaar"
-            ? euro(Math.round(jaarTotaal / 12))
+            ? euro(Math.round((jaarTotaal / 12) * 100) / 100)
             : euro(maandTotaal);
-        if (gekozen.length === 0) totaalEl.textContent = "";
       }
       if (totaalBij) {
         totaalBij.textContent = gekozen.length === 0
@@ -558,6 +563,47 @@
     });
   }
 
+  // 8 · Rubrieken in de kennisbank.
+  function rubrieken() {
+    var knoppen = $$("[data-rubriek]");
+    var kaarten = $$("[data-artikel]");
+    if (knoppen.length === 0 || kaarten.length === 0) return;
+
+    // De melding voor een lege rubriek staat er niet in de opmaak; we maken hem een keer
+    // aan en verbergen hem daarna. Een lege omlijning laat de bezoeker denken dat er iets
+    // stuk is.
+    var houder = kaarten[0].parentNode;
+    var leeg = document.createElement("p");
+    leeg.className = "bij";
+    leeg.setAttribute("data-rubriek-leeg", "");
+    leeg.textContent = "Nog geen stukken in deze rubriek.";
+    leeg.style.display = "none";
+    leeg.style.gridColumn = "1 / -1";
+    houder.appendChild(leeg);
+
+    function kies(rubriek) {
+      var zichtbaar = 0;
+      kaarten.forEach(function (k) {
+        var past = rubriek === "alles" || k.getAttribute("data-artikel") === rubriek;
+        k.style.display = past ? "" : "none";
+        if (past) zichtbaar += 1;
+      });
+      leeg.style.display = zichtbaar === 0 ? "" : "none";
+      knoppen.forEach(function (b) {
+        var actief = b.getAttribute("data-rubriek") === rubriek;
+        if (actief) b.setAttribute("aria-current", "true");
+        else b.removeAttribute("aria-current");
+        b.style.background = actief ? "var(--olijf)" : "transparent";
+        b.style.color = actief ? "var(--cream)" : "var(--grijs)";
+      });
+    }
+
+    knoppen.forEach(function (b) {
+      b.addEventListener("click", function () { kies(b.getAttribute("data-rubriek")); });
+    });
+    kies("alles");
+  }
+
   function start() {
     balk();
     opkomen();
@@ -566,6 +612,7 @@
     carrousel();
     teller();
     vragen();
+    rubrieken();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
