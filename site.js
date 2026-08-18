@@ -840,11 +840,14 @@
     // Bij prefers-reduced-motion staat alles er gewoon, en dan is het een schermafdruk.
     if (RUSTIG) return;
 
+    // De stappen blijven staan en lichten om de beurt op, in plaats van dat ze verschijnen
+    // uit het niets. Zo is het scherm nooit half leeg en zie je meteen waar het naartoe
+    // gaat: het gesprek staat er, alleen nog niet gebeurd.
     function verberg() {
       stappen.forEach(function (s) {
-        s.style.opacity = "0";
-        s.style.transform = "translateY(6px)";
-        s.style.transition = "opacity .32s ease, transform .32s ease";
+        s.style.opacity = ".22";
+        s.style.transform = "none";
+        s.style.transition = "opacity .34s ease";
       });
       if (invoer) invoer.textContent = "";
     }
@@ -853,7 +856,6 @@
       var s = stappen[i];
       if (!s) return;
       s.style.opacity = "1";
-      s.style.transform = "none";
     }
 
     // De opdracht wordt getypt voordat hij als bericht verschijnt: dat maakt zichtbaar
