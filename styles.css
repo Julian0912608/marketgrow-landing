@@ -1,4 +1,4 @@
-/* MarketGrow.ai — gedeelde stijlen
+/* MarketGrow.ai, gedeelde stijlen
    Kleuren, letters en maten uit het ontwerp. Eén bestand voor alle pagina's. */
 
 :root {
@@ -22,7 +22,7 @@
   --sectie: clamp(52px, 6vw, 96px);   /* verticale ruimte per sectie */
 }
 
-/* Letters — bestanden in /fonts, latin-subset */
+/* Letters, bestanden in /fonts, latin-subset */
 @font-face { font-family: 'Instrument Serif'; src: url('/fonts/instrument-serif-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Instrument Serif'; src: url('/fonts/instrument-serif-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
 @font-face { font-family: 'Inter Tight'; src: url('/fonts/inter-tight-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
@@ -68,7 +68,7 @@ p { line-height: 1.62; margin: 0; }
 .lead { font-size: clamp(16px, 1.15vw, 17.5px); color: rgba(14, 17, 18, .82); max-width: 52ch; }
 .bij { font-family: var(--mono); font-size: 11px; line-height: 1.65; color: var(--grijs); }
 
-/* het lime accent achter sleutelwoorden — dunne streep, niet een vol vlak */
+/* het lime accent achter sleutelwoorden: dunne streep, niet een vol vlak */
 em.accent {
   font-style: italic; color: var(--inkt);
   background: linear-gradient(to top, var(--lime) 0, var(--lime) 30%, transparent 30%);
@@ -125,7 +125,7 @@ em.accent {
 .scherm__stip { width: 9px; height: 9px; border-radius: 50%; background: #D8D2C2; }
 .scherm__naam { font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--grijs); margin-left: 8px; }
 
-/* leeg kader waar nog beeld ontbreekt — bewust zichtbaar laten */
+/* leeg kader waar nog beeld ontbreekt, bewust zichtbaar laten */
 .leeg { border: 1px dashed var(--lijn-sterk); background: repeating-linear-gradient(135deg, var(--zand), var(--zand) 8px, var(--cream) 8px, var(--cream) 16px); aspect-ratio: 5 / 4; display: flex; align-items: center; justify-content: center; padding: 20px; text-align: center; font-family: var(--mono); font-size: 10.5px; line-height: 1.7; letter-spacing: .06em; text-transform: uppercase; color: var(--grijs); }
 
 /* ---------- beweging ---------- */
@@ -241,3 +241,12 @@ a[data-artikel]:focus-visible { border-color: var(--olijf); outline: 2px solid v
   a[data-artikel]:hover { transform: none; }
 }
 
+
+/* Het nagespeelde telefoonscherm staat in een donkere sectie, dus alles daarbinnen erft
+   de cremekleur. Op de lichte bubbels van dat scherm is dat crème op wit, en dat was niet
+   te lezen. Hier zetten we de tekst weer donker.
+
+   Het bericht van jou is olijf met een eigen kleur in de opmaak; die inline regel wint
+   hiervan, dus die blijft crème. */
+[data-film-stap], [data-film-stap] div, [data-film-invoer] { color: #111; }
+[data-film-stap] .kicker, [data-film-stap] [style*="var(--olijf)"] { color: var(--olijf); }
