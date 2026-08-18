@@ -726,6 +726,68 @@
     meet();
   }
 
+  // 11 · Het vak in de kicker wisselt.
+  //
+  // De opmaak heeft een haak [data-vak] met "juristen en advocaten" erin. In het ontwerp
+  // wisselt dat woord door de vakken heen, zodat een bezoeker binnen een paar seconden
+  // ziet dat zijn eigen beroep erbij staat. Dat stond niet in gedrag.md beschreven.
+  var VAKKEN = [
+    "juristen en advocaten",
+    "accountants en belastingadviseurs",
+    "mediators",
+    "bedrijfsadviseurs en coaches",
+    "hypotheek- en pensioenadvies",
+    "fysiotherapie en mentale zorg",
+    "architecten en interieurontwerpers",
+    "coaches",
+    "financieel planners",
+  ];
+
+  function vakwissel() {
+    var el = $("[data-vak]");
+    if (!el) return;
+
+    // Begint bij het vak dat in de opmaak staat, zodat de eerste aanblik niet verspringt.
+    var start = 0;
+    var nu = (el.textContent || "").trim().toLowerCase();
+    for (var i = 0; i < VAKKEN.length; i += 1) {
+      if (VAKKEN[i] === nu) { start = i; break; }
+    }
+
+    // Bij prefers-reduced-motion blijft het staan zoals het staat. Tekst die vanzelf
+    // verandert is voor sommige mensen onleesbaar, en dit is geen versiering maar inhoud.
+    if (RUSTIG) return;
+
+    el.style.transition = "opacity .28s ease";
+    el.style.display = "inline-block";
+
+    var wijzer = start;
+    var klok = null;
+
+    function volgende() {
+      wijzer = (wijzer + 1) % VAKKEN.length;
+      el.style.opacity = "0";
+      window.setTimeout(function () {
+        el.textContent = VAKKEN[wijzer];
+        el.style.opacity = "1";
+      }, 280);
+    }
+
+    // Alleen laten lopen zolang de kop in beeld is. Een tekst die onder de vouw staat te
+    // wisselen kost stroom en levert niets op.
+    if ("IntersectionObserver" in window) {
+      var waarnemer = new IntersectionObserver(function (regels) {
+        regels.forEach(function (regel) {
+          if (regel.isIntersecting && !klok) klok = window.setInterval(volgende, 2600);
+          else if (!regel.isIntersecting && klok) { window.clearInterval(klok); klok = null; }
+        });
+      });
+      waarnemer.observe(el);
+    } else {
+      klok = window.setInterval(volgende, 2600);
+    }
+  }
+
   function start() {
     balk();
     opkomen();
@@ -737,6 +799,7 @@
     rubrieken();
     afspraken();
     leesbalk();
+    vakwissel();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
