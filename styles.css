@@ -280,3 +280,17 @@ a[data-artikel]:focus-visible { border-color: var(--olijf); outline: 2px solid v
     padding-top: 4px;
   }
 }
+
+
+/* Een knop erft de tekstkleur van zijn omgeving.
+
+   Safari op iOS geeft een knop zonder eigen kleur de systeemkleur, en dat is
+   blauw. Op de prijzenpagina stonden daardoor de titel van het bouwblok, de
+   regels onder "wat je krijgt" en het bedrag in het blauw op een telefoon,
+   terwijl ze op de desktop zwart waren. Hetzelfde gold voor de chips in het
+   chatpaneel, de menuknop en de schermkiezers.
+
+   Deze regel raakt alleen knoppen die geen kleur van zichzelf hebben. De klassen
+   .knop--vol en .knop--lijn winnen op specificiteit, een inline kleur wint
+   altijd, en dat geldt ook voor de kleuren die site.js zet. */
+button { color: inherit; }
