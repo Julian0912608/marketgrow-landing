@@ -250,3 +250,33 @@ a[data-artikel]:focus-visible { border-color: var(--olijf); outline: 2px solid v
    hiervan, dus die blijft crème. */
 [data-film-stap], [data-film-stap] div, [data-film-invoer] { color: #111; }
 [data-film-stap] .kicker, [data-film-stap] [style*="var(--olijf)"] { color: var(--olijf); }
+
+
+/* De prijzenpagina op smalle schermen.
+
+   Het raster van de configurator en het samenvattingspaneel stond in een inline
+   stijl, en een inline stijl kan geen breekpunt hebben. Op een telefoon bleven de
+   twee kolommen daardoor naast elkaar staan: de rechter eiste 280px op, de linker
+   werd platgeknepen, en het plakkende paneel schoof over de bouwblokken heen.
+
+   Nu staat de kolomverdeling hier, zodat 900px hem kan omzetten naar een kolom.
+   Dat is hetzelfde punt waarop het menu omklapt, dus de pagina kent een grens. */
+.prijs-raster { grid-template-columns: minmax(0, 1.55fr) minmax(280px, 1fr); }
+.prijs-samenvatting { position: sticky; top: 96px; }
+
+@media (max-width: 900px) {
+  .prijs-raster { grid-template-columns: minmax(0, 1fr); }
+  .prijs-samenvatting { position: static; top: auto; }
+
+  /* De bouwblokknoppen zetten hun prijs onder de tekst in plaats van ernaast. De
+     prijs staat op white-space:nowrap en is in serif gezet, dus als derde kolom
+     houdt hij ruim 150px bezet en blijft er voor de titel te weinig over. De
+     knoppen dragen hun raster in een inline stijl, vandaar important: dat geldt
+     alleen binnen dit breekpunt en raakt de brede weergave niet. */
+  [data-blok] { grid-template-columns: 26px minmax(0, 1fr) !important; }
+  [data-blok] > span:last-child {
+    grid-column: 2;
+    align-items: flex-start !important;
+    padding-top: 4px;
+  }
+}
