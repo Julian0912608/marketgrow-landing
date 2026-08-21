@@ -596,38 +596,61 @@
     }
   }
 
-  // 6 · Gesprekkenteller.
+  // 6 · Gesprekkenteller en reactietijd.
   var TELLER_EINDPUNT = "https://app.marketgrow.ai/api/public/gesprekken";
+
+  // Een blok met een getal dat oploopt. Twee keer hetzelfde gedrag, dus een keer geschreven:
+  // twee kopieen van deze telanimatie lopen uiteen zodra iemand er een aanpast.
+  function toonGetal(blok, getal, doel, opmaak) {
+    if (!(doel > 0)) return;
+    blok.removeAttribute("hidden");
+    if (RUSTIG) { getal.textContent = opmaak(doel); return; }
+    bijInBeeld(blok, function () {
+      var duur = 1000;
+      var start = 0;
+      var stap = function (nu) {
+        if (!start) start = nu;
+        var p = Math.min(1, (nu - start) / duur);
+        var soepel = 1 - Math.pow(1 - p, 3);
+        getal.textContent = opmaak(Math.round(doel * soepel));
+        if (p < 1) window.requestAnimationFrame(stap);
+      };
+      window.requestAnimationFrame(stap);
+    });
+  }
 
   function teller() {
     var blok = $("[data-teller]");
-    if (!blok) return;
-    var getal = $("[data-teller-getal]", blok);
-    if (!getal) return;
+    var snelBlok = $("[data-snelheid]");
+    if (!blok && !snelBlok) return;
 
     window
       .fetch(TELLER_EINDPUNT, { headers: { accept: "application/json" } })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (d) {
-        var doel = d && typeof d.gesprekken === "number" ? d.gesprekken : 0;
-        // Streng: geen getal betekent geen blok. Geen nul, geen terugvalgetal.
-        if (!(doel > 0)) return;
-        blok.removeAttribute("hidden");
-        if (RUSTIG) { getal.textContent = doel.toLocaleString("nl-NL"); return; }
-        bijInBeeld(blok, function () {
-          var duur = 1000;
-          var start = 0;
-          var stap = function (nu) {
-            if (!start) start = nu;
-            var p = Math.min(1, (nu - start) / duur);
-            var soepel = 1 - Math.pow(1 - p, 3);
-            getal.textContent = Math.round(doel * soepel).toLocaleString("nl-NL");
-            if (p < 1) window.requestAnimationFrame(stap);
-          };
-          window.requestAnimationFrame(stap);
-        });
+        if (!d) return;
+
+        // ELK BLOK STAAT OP ZICHZELF. Ontbreekt de reactietijd, dan hoort de teller er
+        // gewoon te staan; een leeg kader naast een gevuld kader is erger dan een kader
+        // minder. Vandaar twee losse controles en niet een gezamenlijke.
+        if (blok) {
+          var getal = $("[data-teller-getal]", blok);
+          if (getal && typeof d.gesprekken === "number") {
+            // Streng: geen getal betekent geen blok. Geen nul, geen terugvalgetal.
+            toonGetal(blok, getal, d.gesprekken, function (n) { return n.toLocaleString("nl-NL"); });
+          }
+        }
+
+        if (snelBlok) {
+          var snel = $("[data-snelheid-getal]", snelBlok);
+          // Boven de zestig seconden tonen we niets. Dat is geen snelheid meer maar een
+          // storing, en dan hoort er geen belofte op de site te staan die we niet waarmaken.
+          if (snel && typeof d.seconden === "number" && d.seconden > 0 && d.seconden <= 60) {
+            toonGetal(snelBlok, snel, d.seconden, function (n) { return String(n); });
+          }
+        }
       })
-      .catch(function () { /* stil: het blok blijft weg */ });
+      .catch(function () { /* stil: de blokken blijven weg */ });
   }
 
   // 7 · Uitklapbare vragen: er mag er een open staan tegelijk.

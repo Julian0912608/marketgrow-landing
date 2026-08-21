@@ -144,13 +144,32 @@
       </div>
     </div>
 
-    <!-- Teller · zie gedrag.md §5. Het hele blok blijft weg zonder cijfer. -->
-    <div data-teller hidden style="border:1px solid var(--olijf);padding:clamp(22px,2.2vw,28px);margin-top:16px;display:flex;flex-direction:column;gap:8px;min-height:120px;justify-content:center">
-      <span class="nr" style="letter-spacing:.14em;text-transform:uppercase;font-size:10.5px">Gesprekken gevoerd via MarketGrow</span>
-      <span style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
-        <span data-teller-getal style="font-family:var(--serif);font-size:clamp(34px,3.4vw,48px);line-height:1;font-variant-numeric:tabular-nums"></span>
-        <span style="font-size:15px">gesprekken bij ons en onze klanten</span>
-      </span>
+    <!-- Twee cijfers naast elkaar. Zie gedrag.md paragraaf 5: elk blok blijft weg zonder
+         eigen cijfer, en dat geldt hier per vak. Ontbreekt de reactietijd, dan staat de
+         teller er alleen; dat is beter dan een leeg kader naast een gevuld kader. -->
+    <div style="margin-top:16px;display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+      <div data-teller hidden style="border:1px solid var(--olijf);padding:clamp(22px,2.2vw,28px);display:flex;flex-direction:column;gap:8px;min-height:120px;justify-content:center">
+        <span class="nr" style="letter-spacing:.14em;text-transform:uppercase;font-size:10.5px">Gesprekken gevoerd via MarketGrow</span>
+        <span style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+          <span data-teller-getal style="font-family:var(--serif);font-size:clamp(34px,3.4vw,48px);line-height:1;font-variant-numeric:tabular-nums"></span>
+          <span style="font-size:15px">gesprekken bij ons en onze klanten</span>
+        </span>
+      </div>
+
+      <!-- DE REACTIETIJD. Reageren binnen vijf minuten verhoogt de kans op een klant fors,
+           en zeven procent van de bedrijven haalt dat. Een AI-collega haalt het altijd, ook
+           om kwart over tien 's avonds. Dat is het sterkste argument dat we hebben.
+
+           "Meestal" en niet "gemiddeld", want het is een mediaan: een gesprek waarin de
+           server even hikte trekt een gemiddelde omhoog, en dan staat er een getal dat je
+           niet kunt verdedigen als iemand ernaar vraagt. -->
+      <div data-snelheid hidden style="border:1px solid var(--olijf);padding:clamp(22px,2.2vw,28px);display:flex;flex-direction:column;gap:8px;min-height:120px;justify-content:center">
+        <span class="nr" style="letter-spacing:.14em;text-transform:uppercase;font-size:10.5px">Hoe snel je Gespreksgids antwoordt</span>
+        <span style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+          <span data-snelheid-getal style="font-family:var(--serif);font-size:clamp(34px,3.4vw,48px);line-height:1;font-variant-numeric:tabular-nums"></span>
+          <span style="font-size:15px">seconden, in jouw stem, ook 's avonds</span>
+        </span>
+      </div>
     </div>
 
     <p class="bij" style="margin-top:16px">Gegevens in de EU en per kantoor afgeschermd · AI Act-transparantie ingebouwd · verwerkersovereenkomst klaar.</p>
