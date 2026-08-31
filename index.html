@@ -35,6 +35,7 @@
     </button>
 
     <nav class="balk__links" id="hoofdmenu" data-menu aria-label="Hoofdmenu">
+      <a href="/nachtscan">Nachtscan</a>
       <a href="/platform">Het platform</a>
       <a href="/sectoren">Sectoren</a>
       <a href="/prijzen">Prijzen</a>
@@ -229,6 +230,129 @@
   </div>
 </section>
 
+
+<!-- DE NACHTSCAN, EN WAAROM HIJ HIER STAAT EN NIET ONDERAAN.
+     Dit is de enige plek op de site waar een bezoeker iets krijgt zonder eerst iets te geven.
+     Geen account, geen mailadres, geen gesprek. Voor een advocaat van zestig die even rondkijkt
+     is dat het verschil tussen wegklikken en blijven.
+     En het lost het bewijsprobleem op: wij hebben nog geen logowand, maar een meting van iemands
+     EIGEN site is sterker dan een logowand. -->
+<section class="sectie sectie--nacht komt-op" id="nachtscan">
+  <div class="binnen" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,3.6vw,56px);align-items:center">
+    <div>
+      <p class="kicker" style="color:var(--lime)">/ Gratis, zonder account</p>
+      <h2 style="font-size:clamp(30px,3.6vw,46px);line-height:1.08;max-width:20ch;margin-bottom:18px">
+        Doe eerst de <em class="accent">Nachtscan</em> van je eigen site.
+      </h2>
+      <p style="font-size:17px;line-height:1.6;opacity:.9;max-width:46ch;margin-bottom:12px">
+        Wij lezen je website zoals een klant dat doet en tellen hoeveel van de twintig vragen die
+        mensen in jouw vak stellen een antwoord krijgen. Je ziet de uitkomst binnen een minuut.
+      </p>
+      <p style="font-size:17px;line-height:1.6;opacity:.9;max-width:46ch;margin-bottom:24px">
+        Geen mailadres nodig om hem te lezen, en geen van de drie tips die je krijgt heeft ons
+        nodig. Wij denken dat een eerlijke meting meer zegt dan een folder.
+      </p>
+      <form id="scanvorm-home" style="display:flex;flex-wrap:wrap;gap:10px">
+        <label for="adres-home" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Je website</label>
+        <input id="adres-home" type="text" inputmode="url" autocomplete="url" required placeholder="kantoornaam.nl"
+               style="flex:1 1 240px;padding:13px 15px;border:1px solid rgba(246,244,238,.3);background:rgba(246,244,238,.06);color:var(--cream);font:inherit;font-size:16px">
+        <button class="knop" type="submit" style="background:var(--lime);color:var(--inkt);font-weight:500">Scan mijn site</button>
+      </form>
+    </div>
+
+    <div>
+      <div style="border:1px solid rgba(246,244,238,.22);padding:clamp(22px,2.6vw,30px)">
+        <p class="kicker" style="color:var(--lime);margin-bottom:12px">Een echte uitkomst</p>
+        <p style="font-size:clamp(22px,2.4vw,29px);line-height:1.22;margin:0 0 20px">
+          Van de 20 vragen die klanten in dit vak stellen, vond een bezoeker er
+          <span style="background:var(--lime);color:var(--inkt);padding:0 7px">6</span> beantwoord.
+        </p>
+        <div style="border-top:1px solid rgba(246,244,238,.22);padding-top:16px">
+          <p class="kicker" style="opacity:.75;margin-bottom:10px">Zonder antwoord op de site</p>
+          <p style="font-size:15.5px;line-height:1.75;margin:0;opacity:.85">
+            Wat kost een eerste gesprek?<br>
+            Hoe snel kan ik terecht?<br>
+            Kan ik ook buiten kantooruren terecht?<br>
+            Hoe snel krijg ik antwoord als ik iets vraag?
+          </p>
+        </div>
+      </div>
+      <p style="font-size:13px;opacity:.62;margin:12px 2px 0;line-height:1.5">
+        Uit een scan van een site die wij met toestemming hebben nagekeken.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- DE VERGELIJKING, EN NIET MET ANDERE CHATBOTS.
+     Daar zoekt niemand op. Het echte alternatief is wat er NU gebeurt als er om elf uur iemand
+     op de site staat, en dat is de vergelijking die de lezer zelf al maakt. -->
+<section class="sectie komt-op">
+  <div class="binnen">
+    <p class="kicker">/ Wat er nu gebeurt</p>
+    <h2 style="max-width:24ch;margin-bottom:10px">Er staat om elf uur iemand op je site. Wat gebeurt er?</h2>
+    <p class="lead" style="margin-bottom:30px;max-width:56ch">
+      Niet vergeleken met andere chatbots, want daar zoekt niemand op. Vergeleken met wat er
+      vanavond werkelijk gebeurt.
+    </p>
+
+    <div style="overflow-x:auto">
+      <table style="border-collapse:collapse;width:100%;min-width:560px;font-size:15.5px">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:0 16px 12px 0;border-bottom:1px solid var(--inkt);font-weight:400" class="kicker">Wat je nu hebt</th>
+            <th style="text-align:left;padding:0 16px 12px 0;border-bottom:1px solid var(--inkt);font-weight:400" class="kicker">Wat er dan gebeurt</th>
+            <th style="text-align:left;padding:0 0 12px 0;border-bottom:1px solid var(--inkt);font-weight:400" class="kicker">Met een AI-collega</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Een contactformulier</td>
+            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top;color:var(--grijs)">Het bericht ligt er morgenochtend. Wie haast heeft, heeft dan al iemand anders gebeld.</td>
+            <td style="padding:16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Antwoord binnen seconden, en de vraag staat uitgevraagd in je dossier.</td>
+          </tr>
+          <tr>
+            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Een telefoonnummer</td>
+            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top;color:var(--grijs)">Buiten kantooruren gaat hij over of hij staat uit. Terugbellen kost jou de volgende ochtend.</td>
+            <td style="padding:16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">De intake staat al in je agenda als je de telefoon aanzet.</td>
+          </tr>
+          <tr>
+            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Een antwoordservice</td>
+            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top;color:var(--grijs)">Zij nemen een naam en een nummer aan. Inhoudelijke vragen kunnen ze niet beantwoorden.</td>
+            <td style="padding:16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Antwoord uit jouw kennisbank, met jouw grenzen erin.</td>
+          </tr>
+          <tr>
+            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Een losse chatbot</td>
+            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top;color:var(--grijs)">Vangt de vraag op en stopt daar. Wat er daarna moet gebeuren doe jij nog steeds zelf.</td>
+            <td style="padding:16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Doorlopend tot een offerte met een handtekening eronder.</td>
+          </tr>
+          <tr>
+            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Niets</td>
+            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top;color:var(--grijs)">De bezoeker klikt door naar de volgende in de zoekresultaten. Jij weet niet dat hij er was.</td>
+            <td style="padding:16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Je leest morgenvroeg terug wie er was en waarover.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PRIJSTRANSPARANTIE, EN WAAROM DIE HIER STAAT.
+         Van de vier partijen in dit hoekje die wij hebben bekeken noemt er geen enkele een prijs.
+         Dat is precies de vraag waarvan onze eigen scan meet dat hij het vaakst onbeantwoord
+         blijft. Hem hier zetten is dus geen opschepperij maar het bewijs van het hele verhaal. -->
+    <div style="border:1px solid var(--lijn);background:var(--zand);padding:clamp(20px,2.4vw,28px);margin-top:34px;display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between">
+      <div style="flex:1 1 380px">
+        <p class="kicker" style="margin-bottom:8px">/ En wat het kost</p>
+        <p style="font-size:17px;line-height:1.6;margin:0;max-width:52ch">
+          Vanaf 75 euro per maand, inclusief de app, zonder opstartkosten en maandelijks opzegbaar.
+          Wij zetten die prijs op onze site omdat het de vraag is die bezoekers het vaakst stellen
+          en het minst vaak beantwoord vinden. Dat geldt voor ons net zo goed als voor jou.
+        </p>
+      </div>
+      <a class="knop knop--lijn" href="/prijzen">Bekijk de prijzen</a>
+    </div>
+  </div>
+</section>
+
 <!-- Verder lezen -->
 <section class="sectie komt-op">
   <div class="binnen">
@@ -280,6 +404,7 @@
     <div class="voet__kolommen">
       <div class="voet__kolom">
         <div class="voet__kop">Product</div>
+        <a href="/nachtscan">Nachtscan</a>
         <a href="/platform">Het platform</a>
         <a href="/sectoren">Sectoren</a>
         <a href="/prijzen">Prijzen</a>
@@ -316,5 +441,20 @@
 </footer>
 
 <script src="/site.js" defer></script>
+
+<script>
+/* Het adres doorgeven aan de scan, zodat niemand het twee keer hoeft te typen.
+   Het formulier POST niet: de scan staat op app.marketgrow.ai met de robotcontrole eraan vast. */
+(function () {
+  var v = document.getElementById("scanvorm-home");
+  if (!v) return;
+  v.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var a = document.getElementById("adres-home").value.trim();
+    if (!a) return;
+    window.location.href = "https://app.marketgrow.ai/scan?adres=" + encodeURIComponent(a);
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nachtscan · wat vindt een bezoeker &apos;s avonds op je site</title>
+<meta name="description" content="Gratis scan van je eigen website. Wij tellen hoeveel van de twintig vragen die klanten in jouw vak stellen een antwoord krijgen. Geen account, geen mailadres.">
+<link rel="canonical" href="https://marketgrow.ai/nachtscan">
+<link rel="stylesheet" href="/styles.css">
+<link rel="icon" href="/beeld/marketgrow-logo.png">
+<meta property="og:site_name" content="MarketGrow.ai">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Wat vindt een bezoeker om kwart voor elf op jouw site?">
+<meta property="og:description" content="Gratis scan van je eigen website. Twintig vragen die klanten in jouw vak stellen, geteld op je eigen site. Zonder account, zonder mailadres.">
+<meta property="og:url" content="https://marketgrow.ai/nachtscan">
+<meta property="og:image" content="https://marketgrow.ai/beeld/og-home.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Wat kost de Nachtscan?","acceptedAnswer":{"@type":"Answer","text":"Niets. Je hebt geen account nodig en we vragen geen mailadres om de uitkomst te zien. Pas als je het rapport als pdf wilt bewaren vragen we een adres, en dat is dan een keuze en geen drempel."}},
+{"@type":"Question","name":"Moet ik een mailadres achterlaten?","acceptedAnswer":{"@type":"Answer","text":"Niet om de uitkomst te zien. Het rapport staat op een eigen adres dat blijft werken. Alleen voor de pdf en voor het regionale onderzoek vragen we een mailadres."}},
+{"@type":"Question","name":"Hoe lang duurt de scan?","acceptedAnswer":{"@type":"Answer","text":"Ongeveer een minuut. We lezen hoogstens dertig pagina&apos;s en houden een totaalbudget van anderhalve minuut aan, zodat je niet naar een laadscherm zit te kijken."}},
+{"@type":"Question","name":"Wat leest de scan precies van mijn site?","acceptedAnswer":{"@type":"Answer","text":"Alleen wat publiek zichtbaar is, net als een bezoeker. Wat achter een inlog staat of pas na een klik verschijnt telt niet mee. We respecteren robots.txt en bewaren geen kopie van je pagina&apos;s, alleen een samenvatting in eigen woorden."}},
+{"@type":"Question","name":"Kan ik de site van iemand anders scannen?","acceptedAnswer":{"@type":"Answer","text":"De scan is bedoeld voor je eigen site. We houden een grens van een scan per domein per zeven dagen aan, zodat we voor niemand een last worden."}},
+{"@type":"Question","name":"Krijg ik een verkooppraatje in het rapport?","acceptedAnswer":{"@type":"Answer","text":"Nee. De drie acties in het rapport zijn dingen die je zelf op je eigen site kunt doen, zonder ons. Er staat geen enkele knop naar een abonnement in."}}]}</script>
+</head>
+<body>
+
+<!-- Gedeelde bovenbalk. Identiek op elke pagina.
+     Zet op de link van de pagina waar je bent.
+     De schaduw komt van data-diep, dat JS zet zodra er gescrold is. -->
+<header class="balk">
+  <div class="balk__binnen">
+    <a class="merk" href="/">
+      <img src="/beeld/marketgrow-logo.png" alt="" width="32" height="32" style="border-radius:7px">
+      <span class="merk__naam">MarketGrow<span>.ai</span></span>
+    </a>
+
+    <button type="button" data-menu-knop class="menu-knop" aria-expanded="false" aria-controls="hoofdmenu" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="balk__links" id="hoofdmenu" data-menu aria-label="Hoofdmenu">
+      <a href="/platform">Het platform</a>
+      <a href="/sectoren">Sectoren</a>
+      <a href="/prijzen">Prijzen</a>
+      <a href="/veiligheid">Veiligheid</a>
+    </nav>
+
+    <div class="balk__acties">
+      <a href="https://app.marketgrow.ai" style="color:var(--grijs);padding:11px 4px;font-size:14.5px">Inloggen</a>
+      <span class="balk__scheiding"></span>
+      <a class="knop knop--lijn knop--klein" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0">Plan een demo · 30 min</a>
+      <a class="knop knop--vol knop--klein" href="https://app.marketgrow.ai/aanmelden"><span class="stip"></span>Start zelf</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="sectie" style="padding-bottom:clamp(28px,3.4vw,44px)">
+  <div class="binnen" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:clamp(32px,4vw,56px);align-items:start">
+    <div>
+      <p class="kicker">/ Gratis, zonder account</p>
+      <h1 class="hero-kop">Wat vindt een bezoeker om kwart voor elf <em class="accent">op jouw site?</em></h1>
+      <p class="lead" style="margin-bottom:24px">
+        Wij kijken naar je website zoals een klant dat doet: alleen wat er publiek staat. Daarna
+        tellen we hoeveel van de twintig vragen die mensen in jouw vak stellen een antwoord
+        krijgen. Je ziet de uitkomst meteen, zonder mailadres.
+      </p>
+
+      <form id="scanvorm" style="border:1px solid var(--lijn);background:var(--zand);padding:clamp(18px,2.2vw,24px)">
+        <label class="kicker" for="adres" style="display:block;margin-bottom:8px">Je website</label>
+        <input id="adres" name="adres" type="text" inputmode="url" autocomplete="url" required
+               placeholder="kantoornaam.nl"
+               style="width:100%;padding:13px 14px;border:1px solid var(--lijn);background:var(--cream);font:inherit;font-size:16px;color:var(--inkt)">
+
+        <label class="kicker" for="vak" style="display:block;margin:18px 0 8px">Je vakgebied</label>
+        <select id="vak" name="vak"
+                style="width:100%;padding:13px 14px;border:1px solid var(--lijn);background:var(--cream);font:inherit;font-size:16px;color:var(--inkt)">
+          <option value="juristen">Juridische dienstverlening</option>
+          <option value="accountants">Accountancy en belastingen</option>
+          <option value="mediators">Mediation</option>
+          <option value="financieel-advies">Hypotheek- en financieel advies</option>
+          <option value="bedrijfsadvies">Bedrijfsadvies en consultancy</option>
+          <option value="verzuim">Verzuim en arbeidsongeschiktheid</option>
+          <option value="zorg">Fysio- en mentale zorg</option>
+          <option value="architecten">Architectuur en ontwerp</option>
+          <option value="coaches">Coaching en persoonlijke ontwikkeling</option>
+          <option value="recreatie">Recreatie en vrije tijd</option>
+          <option value="ecommerce">E-commerce en webshops</option>
+          <option value="online-marketing">Online marketing en klantenwerving</option>
+          <option value="overig">Iets anders · algemene zakelijke dienstverlening</option>
+        </select>
+
+        <button class="knop knop--vol" type="submit" style="width:100%;margin-top:20px;justify-content:center">
+          <span class="stip"></span>Scan mijn site
+        </button>
+        <p style="font-size:13.5px;color:var(--grijs);margin:12px 0 0;line-height:1.5">
+          Duurt ongeveer een minuut. Geen account, geen mailadres.
+        </p>
+      </form>
+    </div>
+
+    <div>
+      <div class="scherm">
+        <div class="scherm__balk">
+          <span class="scherm__stip"></span><span class="scherm__stip"></span><span class="scherm__stip"></span>
+          <span class="scherm__naam">Nachtscan · uitkomst</span>
+        </div>
+        <div style="padding:clamp(20px,2.6vw,30px)">
+          <p class="kicker" style="margin-bottom:10px">Voorbeeld</p>
+          <p style="font-size:clamp(21px,2.3vw,27px);line-height:1.25;margin:0 0 18px">
+            Van de 20 vragen die klanten in jouw vak stellen, vindt een bezoeker er
+            <span style="background:var(--lime);padding:0 6px">6</span> beantwoord op je site.
+          </p>
+          <div style="border-top:1px solid var(--lijn);padding-top:16px">
+            <p class="kicker" style="margin-bottom:10px">Zonder antwoord</p>
+            <p style="font-size:15px;color:var(--grijs);line-height:1.7;margin:0">
+              Wat kost een eerste gesprek?<br>
+              Hoe snel kan ik terecht?<br>
+              Kan ik ook buiten kantooruren terecht?<br>
+              Hoe snel krijg ik antwoord als ik iets vraag?
+            </p>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--grijs);margin:12px 2px 0;line-height:1.5">
+        Een echte uitkomst, van een site die wij met toestemming hebben gescand.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="sectie sectie--zand komt-op">
+  <div class="binnen">
+    <p class="kicker">/ Wat er gebeurt</p>
+    <h2 style="max-width:26ch;margin-bottom:28px">Vier stappen, en je hoeft nergens op te wachten.</h2>
+    <div class="raster" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+      <div><span class="nr">01</span><span style="font-size:16px;line-height:1.55">We lezen je site zoals een bezoeker: hoogstens dertig pagina&apos;s, alleen wat publiek staat.</span></div>
+      <div><span class="nr">02</span><span style="font-size:16px;line-height:1.55">We kijken hoe iemand je kan bereiken en of er ergens staat wanneer je terugbelt.</span></div>
+      <div><span class="nr">03</span><span style="font-size:16px;line-height:1.55">We houden er twintig vragen naast die klanten in jouw vak echt stellen.</span></div>
+      <div><span class="nr">04</span><span style="font-size:16px;line-height:1.55">Je krijgt de uitkomst met drie dingen die je er zelf aan kunt doen.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sectie komt-op">
+  <div class="binnen" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,3.5vw,56px)">
+    <div>
+      <p class="kicker">/ Wat je krijgt</p>
+      <h2 style="max-width:20ch;margin-bottom:18px">Een getal, een lijst en drie acties.</h2>
+      <p style="color:var(--grijs);font-size:16.5px;line-height:1.65">
+        Het getal zegt hoeveel vragen een bezoeker beantwoord vindt. De lijst zegt welke er
+        ontbreken, in de woorden waarin een klant ze stelt. De drie acties zijn dingen die je
+        vandaag zelf kunt doen op je eigen site.
+      </p>
+      <p style="color:var(--grijs);font-size:16.5px;line-height:1.65">
+        Wil je het bewaren, dan sturen we een pdf. Dat is geen afdruk van deze pagina maar een
+        werkblad: elke onbeantwoorde vraag met een regel eronder om het antwoord op te schrijven,
+        zodat je het aan je websitebouwer kunt geven.
+      </p>
+    </div>
+    <div>
+      <p class="kicker">/ Wat het niet is</p>
+      <h2 style="max-width:20ch;margin-bottom:18px">Geen rapportcijfer en geen verkooppraatje.</h2>
+      <p style="color:var(--grijs);font-size:16.5px;line-height:1.65">
+        Er staat geen score op en geen oordeel over je bedrijf. Een vraag is beantwoord of niet;
+        dat is alles wat wij kunnen zien.
+      </p>
+      <p style="color:var(--grijs);font-size:16.5px;line-height:1.65">
+        Geen van de drie acties heeft MarketGrow nodig. Er staat geen enkele knop naar een
+        abonnement in het rapport, en dat is met opzet: dit is een meting, geen folder.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="sectie sectie--zand komt-op">
+  <div class="binnen">
+    <div style="max-width:920px">
+      <h2 style="margin-bottom:28px">De vragen die je hierover <em class="accent">waarschijnlijk</em> hebt.</h2>
+            <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Wat kost de Nachtscan?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Niets. Je hebt geen account nodig en we vragen geen mailadres om de uitkomst te zien. Pas als je het rapport als pdf wilt bewaren vragen we een adres, en dat is dan een keuze en geen drempel.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Moet ik een mailadres achterlaten?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Niet om de uitkomst te zien. Het rapport staat op een eigen adres dat blijft werken, dus je kunt hem later terugvinden of doorsturen. Alleen voor de pdf en voor het regionale onderzoek vragen we een mailadres.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Hoe lang duurt de scan?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Ongeveer een minuut. We lezen hoogstens dertig pagina&apos;s en houden een totaalbudget van anderhalve minuut aan, zodat je niet naar een laadscherm zit te kijken. Sluit je het tabblad, dan blijft de link werken.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Wat leest de scan precies van mijn site?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Alleen wat publiek zichtbaar is, net als een bezoeker. Wat achter een inlog staat of pas na een klik verschijnt telt niet mee. We respecteren robots.txt en bewaren geen kopie van je pagina&apos;s, alleen een samenvatting in eigen woorden.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Kan ik de site van iemand anders scannen?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">De scan is bedoeld voor je eigen site. We houden een grens van een scan per domein per zeven dagen aan, zodat we voor niemand een last worden. Een tweede verzoek binnen die week geeft het bestaande rapport terug.</p>
+      </details>
+      <details style="border-bottom:1px solid var(--lijn)">
+        <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
+          <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Krijg ik een verkooppraatje in het rapport?</h3>
+          <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
+        </summary>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">Nee. De drie acties zijn dingen die je zelf op je eigen site kunt doen, zonder ons. Er staat geen enkele knop naar een abonnement in het rapport. Wij denken dat een eerlijke meting meer zegt dan een folder.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+<!-- Gedeeld slotblok en voettekst. Identiek op elke pagina. -->
+<section class="sectie sectie--olijf" id="beginnen">
+  <div class="binnen" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:clamp(24px,3vw,48px)">
+    <h2 style="font-size:clamp(32px,4.1vw,60px);line-height:1.02;max-width:34ch;flex:1 1 520px">
+      Vanavond opent er weer iemand je site. <em class="accent" style="white-space:nowrap">Wie doet er open?</em>
+    </h2>
+    <div style="display:flex;flex-wrap:wrap;gap:10px">
+      <a class="knop" style="background:var(--cream);color:var(--inkt);font-weight:500" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0"><span class="stip" style="background:var(--olijf)"></span>Plan een demo · 30 min</a>
+      <a class="knop" style="border:1px solid rgba(246,244,238,.5);color:var(--cream)" href="/prijzen">Prijzen</a>
+    </div>
+  </div>
+</section>
+
+<footer class="voet">
+  <div class="binnen">
+    <div class="voet__kolommen">
+      <div class="voet__kolom">
+        <div class="voet__kop">Product</div>
+        <a href="/platform">Het platform</a>
+        <a href="/sectoren">Sectoren</a>
+        <a href="/prijzen">Prijzen</a>
+        <a href="/veiligheid">Veiligheid</a>
+      <a href="/contact">Contact</a>
+        <a href="/kennis">Kennisbank</a>
+      </div>
+      <div class="voet__kolom">
+        <div class="voet__kop">Sectoren</div>
+        <a href="/sectoren/juristen">Juristen en advocaten</a>
+        <a href="/sectoren/accountants">Accountants</a>
+        <a href="/sectoren/mediators">Mediators</a>
+        <a href="/sectoren/adviseurs">Bedrijfsadviseurs</a>
+        <a href="/sectoren" style="color:var(--grijs)">Alle sectoren</a>
+      </div>
+      <div class="voet__kolom">
+        <div class="voet__kop">Bedrijf</div>
+        <span>MarketGrow.ai</span>
+        <span style="color:var(--grijs)">Handelend onder Juligo Ventures B.V.</span>
+        <span style="color:var(--grijs)">Breda, Nederland</span>
+        <span style="font-family:var(--mono);font-size:12px;color:var(--grijs)">KvK 95284966</span>
+      </div>
+      <div class="voet__kolom">
+        <div class="voet__kop">Juridisch</div>
+        <a href="/privacy">Privacyverklaring</a>
+        <a href="/voorwaarden">Voorwaarden</a>
+      </div>
+    </div>
+    <div class="voet__regel">
+      <span>© 2026 MarketGrow.ai</span>
+      <span>Gegevens in de EU · AVG · AI Act</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/site.js" defer></script>
+
+<script>
+/* De overdracht naar de scan.
+   Het formulier POST niet: de echte scan staat op app.marketgrow.ai, met de robotcontrole
+   eraan vast. Hier vullen we alleen het adres in en geven het door, zodat niemand het twee
+   keer hoeft te typen. */
+document.getElementById("scanvorm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  var adres = document.getElementById("adres").value.trim();
+  var vak = document.getElementById("vak").value;
+  if (!adres) return;
+  window.location.href =
+    "https://app.marketgrow.ai/scan?adres=" + encodeURIComponent(adres) + "&vak=" + encodeURIComponent(vak);
+});
+</script>
+</body>
+</html>
