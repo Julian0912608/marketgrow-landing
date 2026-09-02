@@ -1,36 +1,45 @@
-# MarketGrow.ai — website
+# MarketGrow.ai · website
 
-Statische marketingsite plus één serverless functie voor het contactformulier.
+Statische marketingsite op www.marketgrow.ai. Gewone HTML, geen bouwstap, geen serverless
+functies. Alles wat een server nodig heeft (de chat, de teller, de nachtscan, aanmelden)
+loopt via app.marketgrow.ai, de dashboardapp in de monorepo.
 
 ## Pagina's
-- `index.html` — home
-- `platform.html`, `sectoren.html`, `bewijs.html`, `prijzen.html`, `contact.html`
-- `sector-*.html` — de specialist per sector (juristen, accountants, mediators, bedrijfsadviseurs, fysio, hypotheek, architecten)
+
+| | |
+|---|---|
+| `index.html` | home, met de nachtscan direct onder de hero |
+| `nachtscan.html` | de gratis scan: alleen een adres, het vakgebied leest de app zelf af |
+| `platform.html`, `prijzen.html`, `veiligheid.html`, `contact.html` | |
+| `sectoren.html` en `sectoren/*.html` | negen sectorpagina's |
+| `kennis.html` en `kennis/*.html` | artikelen |
+| `privacy.html`, `voorwaarden.html` | juridisch · voorwaarden heeft een eigen `voorwaarden.css` |
 
 ## Belangrijke bestanden
-- `styles.css` · responsieve laag over de inline opmaak heen. Gegenereerd, niet met de hand bijwerken.
-- `site.js` · navigatie, scroll-animaties, de Noor-chat, het contactformulier en de bouwblok-schakelaars.
-- `api/contact.js` — serverless functie die het contactformulier via Resend verstuurt.
-- `marketgrow-logo.png`, `dashboard-mockup.png`, `og-image.png` — afbeeldingen.
 
-## Live zetten via GitHub + Vercel
-1. Push de inhoud van deze map naar een nieuwe GitHub-repository.
-2. Ga naar vercel.com → New Project → importeer de repo.
-3. Framework preset: **Other** (het is een statische site). Geen build command nodig.
-4. Voeg de environment variable toe: **RESEND_API_KEY** = je Resend API-sleutel.
-5. Verifieer het domein **marketgrow.ai** in Resend, zodat mail vanaf hello@marketgrow.ai verstuurd mag worden. (Nog niet geverifieerd? Zet tijdelijk `from` in api/contact.js op `onboarding@resend.dev`.)
-6. Deploy. De home staat op `/`, het formulier post naar `/api/contact`.
+- `styles.css` · alle opmaak die een breekpunt nodig heeft. Wordt met de hand bijgehouden;
+  elke regel die iets herstelt heeft een commentaar met waarom.
+- `site.js` · menu, scroll-animaties, de Noor-chat (`app.marketgrow.ai/api/chat`), de
+  gesprekkenteller (`api/public/gesprekken`; blijft verborgen zonder getal), de film op de
+  home, en de Cal.com-knoppen.
+- `fonts/` · zes woff2-bestanden, lokaal. Geen Google Fonts.
+- `beeld/` · schermafbeeldingen van dashboard en app, png plus webp.
+- `vercel.json` · cleanUrls, de omleidingen van de oude `sector-*.html`-adressen, en de
+  cachekoppen voor fonts en beeld.
+- `tools/` · eenmalige omzetscripts uit de tijd dat de site uit een ontwerp-runtime kwam.
+  Ze draaien niet meer mee en verwijzen naar bestanden die er niet meer zijn.
 
-## Let op
-- Fonts (Google Fonts) en de kennismakingsplanner (Cal.com) laden via CDN, dus een internetverbinding is vereist.
-- De pagina's zijn gewone statische HTML. Er is geen build-stap en geen runtime nodig.
+## Contact
 
-## Sitemap zichtbaar maken voor Google
-De sitemap staat op `sitemap.xml` (na deploy: https://www.marketgrow.ai/sitemap.xml) en `robots.txt` verwijst er al naar, dus Google vindt 'm automatisch bij het crawlen.
+Er is geen contactformulier. `contact.html` heeft een mailadres en de Cal.com-planner.
 
-Dien 'm daarnaast éénmalig handmatig in voor snellere indexering:
-1. Ga naar Google Search Console (search.google.com/search-console) en voeg het domein marketgrow.ai toe (en verifieer het via DNS).
-2. Open **Sitemaps** in het linkermenu.
-3. Voer `sitemap.xml` in en klik op Verzenden.
+## Live zetten
 
-De sitemap opnieuw genereren na nieuwe pagina's? Werk `sitemap.xml` bij met dezelfde structuur.
+Vercel deployt `main` automatisch naar www.marketgrow.ai. Bouwen gebeurt op `dev`;
+`git push origin dev:main` zet het live. Er is geen CI in deze repo, dus kijk voor het
+pushen zelf naar de pagina's, ook op een telefoon (320px is de smalste maat die telt).
+
+## Sitemap
+
+`sitemap.xml` staat in de root en `robots.txt` wijst ernaar. Nieuwe pagina? Zet hem er
+met de hand bij, in dezelfde vorm.
