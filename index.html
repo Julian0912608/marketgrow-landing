@@ -64,6 +64,9 @@
         <a class="knop knop--vol" href="https://app.marketgrow.ai/aanmelden"><span class="stip"></span>Start zelf</a>
         <a class="knop knop--lijn" data-cal-namespace="kennismaking" data-cal-link="julian-goote-c4pgqu/intake-marketgrow.ai" role="button" tabindex="0">Plan een demo · 30 min</a>
       </div>
+      <!-- De derde weg, zonder toezegging. Allebei de knoppen hierboven vragen iets; wie alleen
+           even rondkijkt moet meteen zien dat er ook iets gratis te doen is. -->
+      <p style="margin-top:20px;font-size:15px;line-height:1.6;color:var(--grijs);max-width:46ch">Eerst zien wat een bezoeker nu op je site vindt? <a href="#nachtscan" style="color:var(--inkt);text-decoration:underline;text-underline-offset:3px">Doe de gratis Nachtscan</a> · een minuut, geen account.</p>
     </div>
 
     <div style="position:relative;padding-bottom:38px">
@@ -80,6 +83,60 @@
     </div>
   </div>
   <p class="bij binnen" style="margin-top:18px;letter-spacing:.1em;text-transform:uppercase">Het dashboard en je eigen app</p>
+</section>
+
+<!-- DE NACHTSCAN, EN WAAROM HIJ DIRECT ONDER DE HERO STAAT.
+     Dit is de enige plek op de site waar een bezoeker iets krijgt zonder eerst iets te geven.
+     Geen account, geen mailadres, geen gesprek. Voor een advocaat van zestig die even rondkijkt
+     is dat het verschil tussen wegklikken en blijven.
+     En het lost het bewijsprobleem op: wij hebben nog geen logowand, maar een meting van iemands
+     EIGEN site is sterker dan een logowand.
+     Tot 2 september 2026 was dit de zesde sectie, onder de chat, de prijs en de regie. Je moest
+     dus vijf schermen scrollen voordat je zag dat er iets gratis te doen was; de twee knoppen in
+     de hero vragen allebei om een toezegging. Nu staat de scan als eerste na de hero, en de hero
+     wijst er in een regel naar. -->
+<section class="sectie sectie--nacht komt-op" id="nachtscan">
+  <div class="binnen" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(28px,3.6vw,56px);align-items:center">
+    <div>
+      <p class="kicker" style="color:var(--lime)">/ Gratis, zonder account</p>
+      <h2 style="font-size:clamp(30px,3.6vw,46px);line-height:1.08;max-width:20ch;margin-bottom:18px">
+        Doe eerst de <em class="accent">Nachtscan</em> van je eigen site.
+      </h2>
+      <p style="font-size:17px;line-height:1.6;opacity:.9;max-width:46ch;margin-bottom:12px">
+        Wij lezen je website zoals een klant dat doet en tellen hoeveel van de twintig vragen die
+        mensen in jouw vak stellen een antwoord krijgen. Je ziet de uitkomst binnen een minuut.
+      </p>
+      <p style="font-size:17px;line-height:1.6;opacity:.9;max-width:46ch;margin-bottom:24px">
+        Geen mailadres nodig om hem te lezen, en geen van de drie tips die je krijgt heeft ons
+        nodig. Wij denken dat een eerlijke meting meer zegt dan een folder.
+      </p>
+      <form id="scanvorm-home" style="display:flex;flex-wrap:wrap;gap:10px">
+        <label for="adres-home" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Je website</label>
+        <input id="adres-home" type="text" inputmode="url" autocomplete="url" required placeholder="kantoornaam.nl"
+               style="flex:1 1 240px;padding:13px 15px;border:1px solid rgba(246,244,238,.3);background:rgba(246,244,238,.06);color:var(--cream);font:inherit;font-size:16px">
+        <button class="knop" type="submit" style="background:var(--lime);color:var(--inkt);font-weight:500">Scan mijn site</button>
+      </form>
+    </div>
+
+    <div>
+      <div style="border:1px solid rgba(246,244,238,.22);padding:clamp(22px,2.6vw,30px)">
+        <p class="kicker" style="color:var(--lime);margin-bottom:12px">Voorbeeld</p>
+        <p style="font-size:clamp(22px,2.4vw,29px);line-height:1.22;margin:0 0 20px">
+          Van de 20 vragen die klanten in jouw vak stellen, vindt een bezoeker er
+          <span style="background:var(--lime);color:var(--inkt);padding:0 7px">6</span> beantwoord op je site.
+        </p>
+        <div style="border-top:1px solid rgba(246,244,238,.22);padding-top:16px">
+          <p class="kicker" style="opacity:.75;margin-bottom:10px">Zonder antwoord op de site</p>
+          <p style="font-size:15.5px;line-height:1.75;margin:0;opacity:.85">
+            Wat kost een eerste gesprek?<br>
+            Hoe snel kan ik terecht?<br>
+            Kan ik ook buiten kantooruren terecht?<br>
+            Hoe snel krijg ik antwoord als ik iets vraag?
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Chatpaneel · zie gedrag.md §1 -->
@@ -233,55 +290,6 @@
 </section>
 
 
-<!-- DE NACHTSCAN, EN WAAROM HIJ HIER STAAT EN NIET ONDERAAN.
-     Dit is de enige plek op de site waar een bezoeker iets krijgt zonder eerst iets te geven.
-     Geen account, geen mailadres, geen gesprek. Voor een advocaat van zestig die even rondkijkt
-     is dat het verschil tussen wegklikken en blijven.
-     En het lost het bewijsprobleem op: wij hebben nog geen logowand, maar een meting van iemands
-     EIGEN site is sterker dan een logowand. -->
-<section class="sectie sectie--nacht komt-op" id="nachtscan">
-  <div class="binnen" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:clamp(28px,3.6vw,56px);align-items:center">
-    <div>
-      <p class="kicker" style="color:var(--lime)">/ Gratis, zonder account</p>
-      <h2 style="font-size:clamp(30px,3.6vw,46px);line-height:1.08;max-width:20ch;margin-bottom:18px">
-        Doe eerst de <em class="accent">Nachtscan</em> van je eigen site.
-      </h2>
-      <p style="font-size:17px;line-height:1.6;opacity:.9;max-width:46ch;margin-bottom:12px">
-        Wij lezen je website zoals een klant dat doet en tellen hoeveel van de twintig vragen die
-        mensen in jouw vak stellen een antwoord krijgen. Je ziet de uitkomst binnen een minuut.
-      </p>
-      <p style="font-size:17px;line-height:1.6;opacity:.9;max-width:46ch;margin-bottom:24px">
-        Geen mailadres nodig om hem te lezen, en geen van de drie tips die je krijgt heeft ons
-        nodig. Wij denken dat een eerlijke meting meer zegt dan een folder.
-      </p>
-      <form id="scanvorm-home" style="display:flex;flex-wrap:wrap;gap:10px">
-        <label for="adres-home" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Je website</label>
-        <input id="adres-home" type="text" inputmode="url" autocomplete="url" required placeholder="kantoornaam.nl"
-               style="flex:1 1 240px;padding:13px 15px;border:1px solid rgba(246,244,238,.3);background:rgba(246,244,238,.06);color:var(--cream);font:inherit;font-size:16px">
-        <button class="knop" type="submit" style="background:var(--lime);color:var(--inkt);font-weight:500">Scan mijn site</button>
-      </form>
-    </div>
-
-    <div>
-      <div style="border:1px solid rgba(246,244,238,.22);padding:clamp(22px,2.6vw,30px)">
-        <p class="kicker" style="color:var(--lime);margin-bottom:12px">Voorbeeld</p>
-        <p style="font-size:clamp(22px,2.4vw,29px);line-height:1.22;margin:0 0 20px">
-          Van de 20 vragen die klanten in jouw vak stellen, vindt een bezoeker er
-          <span style="background:var(--lime);color:var(--inkt);padding:0 7px">6</span> beantwoord op je site.
-        </p>
-        <div style="border-top:1px solid rgba(246,244,238,.22);padding-top:16px">
-          <p class="kicker" style="opacity:.75;margin-bottom:10px">Zonder antwoord op de site</p>
-          <p style="font-size:15.5px;line-height:1.75;margin:0;opacity:.85">
-            Wat kost een eerste gesprek?<br>
-            Hoe snel kan ik terecht?<br>
-            Kan ik ook buiten kantooruren terecht?<br>
-            Hoe snel krijg ik antwoord als ik iets vraag?
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- DE VERGELIJKING, EN NIET MET ANDERE CHATBOTS.
      Daar zoekt niemand op. Het echte alternatief is wat er NU gebeurt als er om elf uur iemand

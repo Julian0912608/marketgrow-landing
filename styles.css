@@ -32,6 +32,8 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body { background: var(--cream); color: var(--inkt); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
 * { text-wrap: pretty; }
 img { display: block; max-width: 100%; height: auto; }
@@ -48,6 +50,9 @@ a:hover { color: var(--inkt); }
 
 /* ---------- ritme ---------- */
 .sectie { padding: var(--sectie) var(--rand); }
+/* Een sectie waar een link naartoe springt (#nachtscan, #beginnen) begint anders achter de
+   plakkende balk van 66px; de bovenrand en een deel van de ruimte erboven verdwijnen eronder. */
+.sectie[id] { scroll-margin-top: 66px; }
 .sectie--zand { background: var(--zand); border-top: 1px solid var(--lijn); border-bottom: 1px solid var(--lijn); }
 .sectie--nacht { background: var(--nacht); color: var(--cream); }
 .sectie--olijf { background: var(--olijf); color: var(--cream); }
