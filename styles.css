@@ -93,16 +93,36 @@ em.accent {
 /* ---------- kop- en voettekst ---------- */
 .balk { position: sticky; top: 0; z-index: 40; background: rgba(246, 244, 238, .88); backdrop-filter: blur(14px); border-bottom: 1px solid var(--lijn); transition: box-shadow .25s ease; }
 .balk[data-diep] { box-shadow: 0 14px 30px -22px rgba(14, 17, 18, .55); }
-.balk__binnen { max-width: var(--breed); margin: 0 auto; padding: 12px var(--rand); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+/* DE BOVENBALK STAAT OP EEN LIJN MET DE REST, EN OP EEN REGEL.
+   Hij had max-width 1200 INCLUSIEF zijn eigen marge, terwijl elke sectie 1200 binnen de marge
+   heeft. Daardoor begon het logo 72px rechts van de tekst eronder, en paste de inhoud van de
+   balk (1063px breed) niet in de 1056px die overbleef: op een gewoon scherm van 1440 brak hij
+   in twee regels. De marge staat nu buiten de 1200, precies als bij .sectie + .binnen, en de
+   balk mag niet meer breken; wat er niet past wordt hieronder per breedte kleiner of weg. */
+.balk__binnen { max-width: calc(var(--breed) + 2 * var(--rand)); margin: 0 auto; padding: 12px var(--rand); display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: nowrap; }
 .merk { display: flex; align-items: center; gap: 11px; color: var(--inkt); white-space: nowrap; }
 .merk__naam { font-family: var(--serif); font-size: 24px; letter-spacing: -.01em; }
 .merk__naam span { color: var(--olijf); }
-.balk__links { display: flex; align-items: center; gap: 6px; font-size: 14.5px; flex-wrap: wrap; }
+.balk__links { display: flex; align-items: center; gap: 6px; font-size: 14.5px; flex-wrap: nowrap; }
+/* Inloggen en de demo staan boven 900px al in de balk zelf; in het menu zijn ze er voor mobiel. */
+.balk__links .alleen-menu { display: none; }
 .balk__links a { color: var(--grijs); padding: 9px 14px; white-space: nowrap; transition: background .18s ease, color .18s ease; }
 .balk__links a:hover { background: #EAE5D8; color: var(--inkt); }
 .balk__links a[aria-current="page"] { color: var(--inkt); }
 .balk__acties { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; }
 .balk__scheiding { width: 1px; height: 22px; background: #DCD6C6; }
+
+/* Tussen 900 en 1200 is er minder dan 1200px; dan eerst de links dichter op elkaar, en onder
+   1050 gaat de demoknop uit de balk (de knop in de hero blijft). Nagerekend, niet geschat:
+   merk 161 + links 415 + acties 200 + tussenruimte 28 = 804, en op 901px is er 811. */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .balk__binnen { gap: 14px; }
+  .balk__links { gap: 2px; }
+  .balk__links a { padding: 9px 10px; }
+}
+@media (max-width: 1050px) and (min-width: 901px) {
+  .balk__acties .knop--lijn { display: none; }
+}
 
 .voet { border-top: 1px solid var(--lijn); padding: clamp(48px, 5vw, 72px) var(--rand) 32px; }
 .voet__kolommen { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; }
@@ -149,15 +169,34 @@ em.accent {
 .menu-knop[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 @media (max-width: 900px) {
-  .menu-knop { display: flex; order: 2; }
-  .balk__binnen { flex-wrap: wrap; }
+  /* Op een telefoon: merk links, Start zelf en de menuknop rechts. De demoknop en Inloggen
+     verhuizen naar het menu; met beide in de balk paste hij op 390px niet op een regel
+     (161 + 42 + 308 + tussenruimte, bij 342 beschikbaar). */
+  .menu-knop { display: flex; order: 3; }
+  .balk__binnen { flex-wrap: wrap; gap: 10px; }
   .balk__links { order: 4; width: 100%; flex-direction: column; align-items: stretch; gap: 0; border-top: 1px solid var(--lijn); margin-top: 4px; padding-top: 4px; }
   .balk__links[hidden] { display: none; }
   .balk__links a { padding: 14px 4px; border-bottom: 1px solid var(--lijn); font-size: 16px; }
-  .balk__acties { order: 3; gap: 8px; }
-  .balk__acties a:first-child, .balk__scheiding { display: none; } /* Inloggen staat dan in het menu */
+  .balk__links .alleen-menu { display: block; }
+  .balk__acties { order: 2; margin-left: auto; gap: 8px; }
+  .balk__acties a:first-child, .balk__scheiding, .balk__acties .knop--lijn { display: none; }
   .knop { padding: 14px 20px; font-size: 15px; }
   .knop--klein { padding: 11px 16px; font-size: 14px; }
+}
+
+/* Op 360px (de smalste gangbare telefoon) paste merk + Start zelf + menuknop net niet op een
+   regel: 161 + 113 + 42 + 20 = 336 bij 312 beschikbaar. Merknaam iets kleiner en minder
+   tussenruimte: 141 + 109 + 42 + 16 = 308. */
+@media (max-width: 400px) {
+  .merk__naam { font-size: 20px; }
+  .balk__binnen { gap: 8px; }
+  .knop--klein { padding: 11px 14px; }
+}
+/* De rijen op de veiligheidspagina (etiket links, tekst rechts) hielden op 320px 114px over
+   voor de tekst; een kop paste er niet in en de pagina schoof zijwaarts. Onder 400px staat
+   het etiket boven de tekst. De !important is nodig omdat de kolommen inline staan. */
+@media (max-width: 400px) {
+  .etiket-rij { grid-template-columns: minmax(0, 1fr) !important; gap: 8px !important; }
 }
 
 /* Wachtstipjes in het chatpaneel. Drie bolletjes die om de beurt opkomen, zodat een
