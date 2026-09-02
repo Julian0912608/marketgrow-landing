@@ -1,0 +1,4 @@
+# Het tijdelijke Chrome-profiel van tools/telefoon-meten.mjs. Wordt na afloop weggehaald,
+# maar niet als het script halverwege wordt afgebroken.
+.chrome-meting/
+.DS_Store

@@ -26,8 +26,13 @@ loopt via app.marketgrow.ai, de dashboardapp in de monorepo.
 - `beeld/` · schermafbeeldingen van dashboard en app, png plus webp.
 - `vercel.json` · cleanUrls, de omleidingen van de oude `sector-*.html`-adressen, en de
   cachekoppen voor fonts en beeld.
-- `tools/` · eenmalige omzetscripts uit de tijd dat de site uit een ontwerp-runtime kwam.
-  Ze draaien niet meer mee en verwijzen naar bestanden die er niet meer zijn.
+- `tools/telefoon-meten.mjs` · meet elke pagina op twaalf breedtes (320 tot 1280) door met de
+  Chrome die al op de Mac staat: zijwaartse overloop, elementen buiten beeld, de bovenbalk op
+  een regel, tekst die zich uit zijn vak drukt. `node tools/telefoon-meten.mjs`, en met
+  `BASIS=https://www.marketgrow.ai` ervoor dezelfde meting op de live site. Stopt met een fout
+  als er iets mis is EN als hij te weinig heeft gemeten.
+- De `.py`-bestanden in `tools/` zijn eenmalige omzetscripts uit de tijd dat de site uit een
+  ontwerp-runtime kwam. Ze draaien niet meer mee en verwijzen naar bestanden die er niet meer zijn.
 
 ## Contact
 
@@ -36,8 +41,9 @@ Er is geen contactformulier. `contact.html` heeft een mailadres en de Cal.com-pl
 ## Live zetten
 
 Vercel deployt `main` automatisch naar www.marketgrow.ai. Bouwen gebeurt op `dev`;
-`git push origin dev:main` zet het live. Er is geen CI in deze repo, dus kijk voor het
-pushen zelf naar de pagina's, ook op een telefoon (320px is de smalste maat die telt).
+`git push origin dev:main` zet het live. Er is geen CI in deze repo, dus draai voor het pushen
+`node tools/telefoon-meten.mjs` en kijk zelf naar wat je hebt veranderd, ook op een telefoon
+(320px is de smalste maat die telt).
 
 ## Sitemap
 
