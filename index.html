@@ -110,7 +110,7 @@
         Geen mailadres nodig om hem te lezen, en geen van de drie tips die je krijgt heeft ons
         nodig. Wij denken dat een eerlijke meting meer zegt dan een folder.
       </p>
-      <form id="scanvorm-home" style="display:flex;flex-wrap:wrap;gap:10px">
+      <form id="scanvorm-home" class="scanvorm" style="display:flex;flex-wrap:wrap;gap:10px">
         <label for="adres-home" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Je website</label>
         <input id="adres-home" type="text" inputmode="url" autocomplete="url" required placeholder="kantoornaam.nl"
                style="flex:1 1 240px;padding:13px 15px;border:1px solid rgba(246,244,238,.3);background:rgba(246,244,238,.06);color:var(--cream);font:inherit;font-size:16px">
@@ -172,7 +172,7 @@
         <button type="button" class="chip" style="background:#fff;border:1px solid var(--lijn);padding:9px 14px;font-size:13px;font-family:var(--sans);cursor:pointer">Hoe snel sta ik live?</button>
       </div>
       <form data-chat-form style="padding:12px 18px 18px;display:flex;gap:8px">
-        <input type="text" name="vraag" placeholder="Typ je vraag aan Noor" aria-label="Je vraag aan Noor" style="flex:1;background:var(--zand);border:1px solid var(--lijn);padding:13px 15px;font-size:16px;font-family:var(--sans)">
+        <input type="text" name="vraag" placeholder="Typ je vraag aan Noor" aria-label="Je vraag aan Noor" style="flex:1;min-width:0;background:var(--zand);border:1px solid var(--lijn);padding:13px 15px;font-size:16px;font-family:var(--sans)">
         <button type="submit" style="background:var(--olijf);color:var(--cream);border:none;padding:0 20px;font-size:15px;cursor:pointer;font-family:var(--sans)">Stuur</button>
       </form>
       <p data-chat-melding class="bij" style="padding:0 18px 18px;display:none"></p>
@@ -303,40 +303,42 @@
       vanavond werkelijk gebeurt.
     </p>
 
+    <!-- De opmaak van de tabel staat in styles.css onder .vergelijk, omdat een inline stijl
+         geen breekpunt kan hebben: op een telefoon wordt hij een lijst van vijf blokken. -->
     <div style="overflow-x:auto">
-      <table style="border-collapse:collapse;width:100%;min-width:560px;font-size:15.5px">
+      <table class="vergelijk">
         <thead>
           <tr>
-            <th style="text-align:left;padding:0 16px 12px 0;border-bottom:1px solid var(--inkt);font-weight:400" class="kicker">Wat je nu hebt</th>
-            <th style="text-align:left;padding:0 16px 12px 0;border-bottom:1px solid var(--inkt);font-weight:400" class="kicker">Wat er dan gebeurt</th>
-            <th style="text-align:left;padding:0 0 12px 0;border-bottom:1px solid var(--inkt);font-weight:400" class="kicker">Met een AI-collega</th>
+            <th class="kicker">Wat je nu hebt</th>
+            <th class="kicker">Wat er dan gebeurt</th>
+            <th class="kicker">Met een AI-collega</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Een contactformulier</td>
-            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top;color:var(--grijs)">Het bericht ligt er morgenochtend. Wie haast heeft, heeft dan al iemand anders gebeld.</td>
-            <td style="padding:16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Antwoord binnen seconden, en de vraag staat uitgevraagd in je dossier.</td>
+            <td>Een contactformulier</td>
+            <td>Het bericht ligt er morgenochtend. Wie haast heeft, heeft dan al iemand anders gebeld.</td>
+            <td>Antwoord binnen seconden, en de vraag staat uitgevraagd in je dossier.</td>
           </tr>
           <tr>
-            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Een telefoonnummer</td>
-            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top;color:var(--grijs)">Buiten kantooruren gaat hij over of hij staat uit. Terugbellen kost jou de volgende ochtend.</td>
-            <td style="padding:16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">De intake staat al in je agenda als je de telefoon aanzet.</td>
+            <td>Een telefoonnummer</td>
+            <td>Buiten kantooruren gaat hij over of hij staat uit. Terugbellen kost jou de volgende ochtend.</td>
+            <td>De intake staat al in je agenda als je de telefoon aanzet.</td>
           </tr>
           <tr>
-            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Een antwoordservice</td>
-            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top;color:var(--grijs)">Zij nemen een naam en een nummer aan. Inhoudelijke vragen kunnen ze niet beantwoorden.</td>
-            <td style="padding:16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Antwoord uit jouw kennisbank, met jouw grenzen erin.</td>
+            <td>Een antwoordservice</td>
+            <td>Zij nemen een naam en een nummer aan. Inhoudelijke vragen kunnen ze niet beantwoorden.</td>
+            <td>Antwoord uit jouw kennisbank, met jouw grenzen erin.</td>
           </tr>
           <tr>
-            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Een losse chatbot</td>
-            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top;color:var(--grijs)">Vangt de vraag op en stopt daar. Wat er daarna moet gebeuren doe jij nog steeds zelf.</td>
-            <td style="padding:16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Doorlopend tot een offerte met een handtekening eronder.</td>
+            <td>Een losse chatbot</td>
+            <td>Vangt de vraag op en stopt daar. Wat er daarna moet gebeuren doe jij nog steeds zelf.</td>
+            <td>Doorlopend tot een offerte met een handtekening eronder.</td>
           </tr>
           <tr>
-            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Niets</td>
-            <td style="padding:16px 16px 16px 0;border-bottom:1px solid var(--lijn);vertical-align:top;color:var(--grijs)">De bezoeker klikt door naar de volgende in de zoekresultaten. Jij weet niet dat hij er was.</td>
-            <td style="padding:16px 0;border-bottom:1px solid var(--lijn);vertical-align:top">Je leest morgenvroeg terug wie er was en waarover.</td>
+            <td>Niets</td>
+            <td>De bezoeker klikt door naar de volgende in de zoekresultaten. Jij weet niet dat hij er was.</td>
+            <td>Je leest morgenvroeg terug wie er was en waarover.</td>
           </tr>
         </tbody>
       </table>

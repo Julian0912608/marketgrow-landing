@@ -197,6 +197,49 @@ em.accent {
   .balk__binnen { gap: 8px; }
   .knop--klein { padding: 11px 14px; }
 }
+/* En op 320px (iPhone SE, en elke telefoon met vergrote weergave) brak de balk alsnog: de
+   menuknop viel op een tweede regel, onder het logo, en de balk werd 113px hoog. Nagemeten:
+   merk 141 + Start zelf 102 + knop 42 + tussenruimte 16 = 301 bij 272 beschikbaar. Merknaam
+   naar 18px, het bolletje uit de knop en minder tussenruimte: 129 + 79 + 42 + 12 = 262. */
+@media (max-width: 340px) {
+  .merk { gap: 9px; }
+  .merk__naam { font-size: 18px; }
+  .balk__binnen { gap: 6px; }
+  .balk__acties .knop--klein { padding: 11px 12px; }
+  .balk__acties .stip { display: none; }
+}
+/* Het scanformulier op de voorpagina: veld en knop naast elkaar zolang dat past. Zodra de knop
+   onder het veld valt (onder 480px) krijgt hij de hele regel, net als op de scanpagina zelf;
+   een losse knop van een derde regel breed onder een veld van de hele regel zag eruit als
+   iets dat niet af was. */
+@media (max-width: 480px) {
+  .scanvorm .knop { flex: 1 1 100%; justify-content: center; }
+}
+
+/* De vergelijking op de voorpagina (wat je nu hebt · wat er dan gebeurt · met een AI-collega).
+   Hij stond als tabel met een minimumbreedte van 560px in een vak dat zijwaarts kon schuiven.
+   Op een telefoon zag je daardoor alleen de eerste twee kolommen, en de derde, de kolom
+   waar het om gaat, stond buiten beeld zonder enig teken dat er iets te schuiven viel.
+   Onder 640px is het nu een lijst van vijf blokken: het ding dat je nu hebt als kop, en
+   daaronder de twee uitkomsten met hun eigen etiket. */
+.vergelijk { border-collapse: collapse; width: 100%; font-size: 15.5px; }
+.vergelijk th { text-align: left; padding: 0 16px 12px 0; border-bottom: 1px solid var(--inkt); font-weight: 400; }
+.vergelijk td { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--lijn); vertical-align: top; line-height: 1.5; }
+.vergelijk th:last-child, .vergelijk td:last-child { padding-right: 0; }
+.vergelijk td:nth-child(2) { color: var(--grijs); }
+@media (max-width: 640px) {
+  .vergelijk, .vergelijk tbody, .vergelijk tr, .vergelijk td { display: block; }
+  .vergelijk thead { display: none; }
+  .vergelijk { border-top: 1px solid var(--inkt); }
+  .vergelijk tr { padding: 20px 0; border-bottom: 1px solid var(--lijn); }
+  .vergelijk td { padding: 0; border: 0; }
+  .vergelijk td:first-child { font-family: var(--serif); font-size: 24px; letter-spacing: -.02em; line-height: 1.1; margin-bottom: 12px; }
+  .vergelijk td:nth-child(2) { margin-bottom: 12px; }
+  .vergelijk td:nth-child(2)::before, .vergelijk td:nth-child(3)::before { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--grijs); margin-bottom: 4px; }
+  .vergelijk td:nth-child(2)::before { content: "Wat er dan gebeurt"; }
+  .vergelijk td:nth-child(3)::before { content: "Met een AI-collega"; color: var(--olijf); }
+}
+
 /* De rijen op de veiligheidspagina (etiket links, tekst rechts) hielden op 320px 114px over
    voor de tekst; een kop paste er niet in en de pagina schoof zijwaarts. Onder 400px staat
    het etiket boven de tekst. De !important is nodig omdat de kolommen inline staan. */
