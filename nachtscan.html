@@ -21,7 +21,7 @@
 {"@type":"Question","name":"Moet ik een mailadres achterlaten?","acceptedAnswer":{"@type":"Answer","text":"Niet om de uitkomst te zien. Het rapport staat op een eigen adres dat blijft werken. Alleen voor het volledige rapport als pdf en voor het regionale onderzoek vragen we een mailadres."}},
 {"@type":"Question","name":"Hoe lang duurt de scan?","acceptedAnswer":{"@type":"Answer","text":"Ongeveer een minuut. We lezen hoogstens dertig pagina&apos;s en houden een totaalbudget van anderhalve minuut aan, zodat je niet naar een laadscherm zit te kijken."}},
 {"@type":"Question","name":"Wat leest de scan precies van mijn site?","acceptedAnswer":{"@type":"Answer","text":"Alleen wat publiek zichtbaar is, net als een bezoeker. Wat achter een inlog staat of pas na een klik verschijnt telt niet mee. We respecteren robots.txt en bewaren geen kopie van je pagina&apos;s, alleen een samenvatting in eigen woorden."}},
-{"@type":"Question","name":"Kan ik de site van iemand anders scannen?","acceptedAnswer":{"@type":"Answer","text":"De scan is bedoeld voor je eigen site. We houden een grens van een scan per domein en vakgebied per zeven dagen aan, zodat we voor niemand een last worden. Een tweede verzoek binnen die week geeft het bestaande rapport terug; een ander vakgebied kiezen mag wel, want dat zijn andere vragen."}},
+{"@type":"Question","name":"Kan ik de site van iemand anders scannen?","acceptedAnswer":{"@type":"Answer","text":"De scan is bedoeld voor je eigen site. We houden een grens van een scan per domein en vakgebied per zeven dagen aan, zodat we voor niemand een last worden. Een tweede verzoek binnen die week geeft het bestaande rapport terug. Klopt het vakgebied dat de scan heeft herkend niet, dan kun je op het rapport zelf een ander vakgebied kiezen en opnieuw scannen; dat zijn andere vragen."}},
 {"@type":"Question","name":"Krijg ik een verkooppraatje in het rapport?","acceptedAnswer":{"@type":"Answer","text":"Nee. De drie acties in het rapport zijn dingen die je zelf op je eigen site kunt doen, zonder ons. Er staat geen enkele knop naar een abonnement in."}}]}</script>
 </head>
 <body>
@@ -78,23 +78,13 @@
                placeholder="kantoornaam.nl"
                style="width:100%;padding:13px 14px;border:1px solid var(--lijn);background:var(--cream);font:inherit;font-size:16px;color:var(--inkt)">
 
-        <label class="kicker" for="vak" style="display:block;margin:18px 0 8px">Je vakgebied</label>
-        <select id="vak" name="vak"
-                style="width:100%;padding:13px 14px;border:1px solid var(--lijn);background:var(--cream);font:inherit;font-size:16px;color:var(--inkt)">
-          <option value="juristen">Juridische dienstverlening</option>
-          <option value="accountants">Accountancy en belastingen</option>
-          <option value="mediators">Mediation</option>
-          <option value="financieel-advies">Hypotheek- en financieel advies</option>
-          <option value="bedrijfsadvies">Bedrijfsadvies en consultancy</option>
-          <option value="verzuim">Verzuim en arbeidsongeschiktheid</option>
-          <option value="zorg">Fysio- en mentale zorg</option>
-          <option value="architecten">Architectuur en ontwerp</option>
-          <option value="coaches">Coaching en persoonlijke ontwikkeling</option>
-          <option value="recreatie">Recreatie en vrije tijd</option>
-          <option value="ecommerce">E-commerce en webshops</option>
-          <option value="online-marketing">Online marketing en klantenwerving</option>
-          <option value="overig">Iets anders · algemene zakelijke dienstverlening</option>
-        </select>
+        <!-- Het vakgebied leest de scan zelf van de site af (sinds 2 september). De keuzelijst
+             die hier stond is weg: wie liever zelf kiest, vindt die op de scanpagina achter een
+             link. Een lijst van dertien op de eerste pagina was de drempel die Julian weg wilde:
+             "dan hoeven mensen enkel hun website link toe te voegen." -->
+        <p style="font-size:13.5px;color:var(--grijs);margin:12px 0 0;line-height:1.5">
+          In welk vak je zit lezen we van je site af.
+        </p>
 
         <button class="knop knop--vol" type="submit" style="width:100%;margin-top:20px;justify-content:center">
           <span class="stip"></span>Scan mijn site
@@ -213,7 +203,7 @@
           <h3 style="font-size:clamp(18px,1.7vw,22px);line-height:1.25">Kan ik de site van iemand anders scannen?</h3>
           <span style="font-size:20px;color:var(--grijs);flex-shrink:0">+</span>
         </summary>
-        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">De scan is bedoeld voor je eigen site. We houden een grens van een scan per domein en vakgebied per zeven dagen aan, zodat we voor niemand een last worden. Een tweede verzoek binnen die week geeft het bestaande rapport terug; een ander vakgebied kiezen mag wel, want dat zijn andere vragen.</p>
+        <p style="padding:0 40px 22px 0;color:var(--grijs);font-size:15.5px">De scan is bedoeld voor je eigen site. We houden een grens van een scan per domein en vakgebied per zeven dagen aan, zodat we voor niemand een last worden. Een tweede verzoek binnen die week geeft het bestaande rapport terug. Klopt het vakgebied dat de scan heeft herkend niet, dan kun je op het rapport zelf een ander vakgebied kiezen en opnieuw scannen; dat zijn andere vragen.</p>
       </details>
       <details style="border-bottom:1px solid var(--lijn)">
         <summary style="display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:20px 0">
@@ -291,10 +281,8 @@
 document.getElementById("scanvorm").addEventListener("submit", function (e) {
   e.preventDefault();
   var adres = document.getElementById("adres").value.trim();
-  var vak = document.getElementById("vak").value;
   if (!adres) return;
-  window.location.href =
-    "https://app.marketgrow.ai/scan?adres=" + encodeURIComponent(adres) + "&vak=" + encodeURIComponent(vak);
+  window.location.href = "https://app.marketgrow.ai/scan?adres=" + encodeURIComponent(adres);
 });
 </script>
 </body>
