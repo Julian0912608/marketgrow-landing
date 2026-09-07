@@ -207,7 +207,7 @@
     function terugval(vraag) {
       var v = (vraag || "").toLowerCase();
       if (/kost|prijs|tarief|euro|bedrag/.test(v)) {
-        return "Je begint met de AI-Gespreksgids voor \u20AC75 per maand, inclusief de app en zonder opstartkosten. Kies je meteen een jaar, dan betaal je tien maanden.";
+        return "Je begint met de AI-collega voor \u20AC75 per maand, inclusief de app en zonder opstartkosten. Kies je meteen een jaar, dan betaal je tien maanden.";
       }
       if (/snel|live|wanneer|hoelang|duur/.test(v)) {
         return "Zelf starten kan meteen: aanmelden, aanleveren, en een half uur later staat het live. Liever samen, dan zijn we binnen zeven werkdagen klaar.";
@@ -240,7 +240,7 @@
       };
 
       // De route wil het gesprek vanaf een bezoekersbericht zien; onze begroeting staat
-      // vooraan en zou het gesprek met een assistentregel laten beginnen.
+      // vooraan en zou het gesprek met een regel van de AI-collega laten beginnen.
       var berichten = geschiedenis.slice();
       while (berichten.length && berichten[0].role !== "user") berichten.shift();
       if (!berichten.length) { klaar(); return; }
@@ -343,7 +343,7 @@
     // niet, dan valt hij terug op een nette naam uit een lijstje: nooit de sleutel zelf,
     // want "gespreksgids" in kleine letters in het overzicht leest als een fout.
     var NETTE_NAAM = {
-      gespreksgids: "AI-Gespreksgids",
+      gespreksgids: "AI-collega",
       content: "Content-Engine",
       document: "Document-Automatie",
     };

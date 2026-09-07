@@ -4,12 +4,33 @@
 // een ingebouwde WebSocket. Meer is er niet nodig om een pagina te meten: geen playwright, geen
 // puppeteer, geen download.
 import { spawn } from "node:child_process";
+import { rmSync } from "node:fs";
+import { join } from "node:path";
 import { setTimeout as wacht } from "node:timers/promises";
 
 const CHROME = process.env.CHROME || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const POORT = Number(process.env.CDP_POORT || 9333);
 
 export async function startChrome(profielMap) {
+  // EEN SLOT VAN EEN VORIGE RONDE ERUIT VOORDAT WE STARTEN.
+  //
+  // Chrome legt een SingletonLock in de profielmap en ruimt hem op bij een nette afsluiting.
+  // Wordt de meting afgebroken (ctrl-c, een fout halverwege), dan blijft dat slot liggen en
+  // weigert de volgende start met "Failed to create SingletonLock: File exists". De melding
+  // die je dan kreeg was "Chrome kwam niet op de debugpoort", en dat stuurt je de verkeerde
+  // kant op: je gaat de poort en de installatie nakijken terwijl er een bestandje in de weg
+  // ligt. Op 7 september 2026 kostte dat een kwartier.
+  //
+  // Weggooien mag zonder meer: het slot beschermt tegen twee Chromes op dezelfde profielmap,
+  // en die map is alleen van dit gereedschap.
+  for (const naam of ["SingletonLock", "SingletonCookie", "SingletonSocket"]) {
+    try {
+      rmSync(join(profielMap, naam), { force: true });
+    } catch {
+      // Kan hij niet weg, dan valt Chrome hieronder alsnog met zijn eigen melding.
+    }
+  }
+
   const p = spawn(CHROME, [
     "--headless=new",
     `--remote-debugging-port=${POORT}`,
