@@ -11,9 +11,7 @@
     { "source": "/sector-fysio.html", "destination": "/sectoren/zorg", "permanent": true },
     { "source": "/sector-architecten.html", "destination": "/sectoren/architecten", "permanent": true },
     { "source": "/sector-coaches.html", "destination": "/sectoren/coaches", "permanent": true },
-    { "source": "/sector-financieel-planners.html", "destination": "/sectoren/planners", "permanent": true },
-    { "source": "/bewijs.html", "destination": "/platform", "permanent": true },
-    { "source": "/bewijs", "destination": "/platform", "permanent": true }
+    { "source": "/sector-financieel-planners.html", "destination": "/sectoren/planners", "permanent": true }
   ],
   "headers": [
     {
