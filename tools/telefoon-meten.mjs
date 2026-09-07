@@ -33,7 +33,7 @@ import { startChrome, nieuwTabblad, verbind, draai } from "./browser.mjs";
 
 const WORTEL = new URL("..", import.meta.url).pathname;
 const PAGINAS = process.argv[2] ? process.argv[2].split(",") : [
-  "index.html", "nachtscan.html", "platform.html", "sectoren.html", "sectoren/juristen.html",
+  "index.html", "nachtscan.html", "platform.html", "bewijs.html", "sectoren.html", "sectoren/juristen.html",
   "sectoren/accountants.html", "prijzen.html", "veiligheid.html", "kennis.html",
   "kennis/ai-act-artikel-50.html", "contact.html", "privacy.html", "voorwaarden.html",
 ];
