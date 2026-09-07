@@ -42,8 +42,12 @@ Er is geen contactformulier. `contact.html` heeft een mailadres en de Cal.com-pl
 
 Vercel deployt `main` automatisch naar www.marketgrow.ai. Bouwen gebeurt op `dev`;
 `git push origin dev:main` zet het live. Er is geen CI in deze repo, dus draai voor het pushen
-`node tools/telefoon-meten.mjs` en kijk zelf naar wat je hebt veranderd, ook op een telefoon
-(320px is de smalste maat die telt).
+`node tools/bouw-nakijken.mjs` en `node tools/telefoon-meten.mjs`, en kijk zelf naar wat je hebt
+veranderd, ook op een telefoon (320px is de smalste maat die telt).
+
+De eerste kijkt of openen en sluiten in evenwicht zijn. De tweede meet twaalf breedtes. Ze
+vangen verschillende dingen: een pagina zonder `</main>` gaat door elke breedte heen zonder te
+klagen, want de browser repareert dat stil.
 
 ## Sitemap
 
