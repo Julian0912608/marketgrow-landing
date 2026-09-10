@@ -32,18 +32,18 @@
     .prose a { color: #3F4A2E; text-decoration: underline; text-underline-offset: 2px; }
     .prose ul { list-style: disc; padding-left: 1.25rem; }
     .prose li { margin-top: 0.35rem; }
-    /* Deze pagina heeft een genummerde lijst, want wat er na een verzoek gebeurt IS een volgorde. */
+    /* This page has a numbered list, because what happens after a request IS a sequence. */
     .prose ol { list-style: decimal; padding-left: 1.25rem; }
     .prose p + p { margin-top: 0.75rem; }
-    /* Deze twee staan niet in voorwaarden.css, want die pagina gebruikt alleen mb-*. */
+    /* These two are not in voorwaarden.css, because that page only uses mb-*. */
     .mt-3 { margin-top: 0.75rem; }
     .mt-8 { margin-top: 2rem; }
-    /* Tabellen. Staan niet in voorwaarden.css, want die pagina heeft er geen. */
+    /* Tables. Not in voorwaarden.css, because that page has none. */
     .tabel { width: 100%; border-collapse: collapse; margin-top: 0.75rem; font-size: 15px; }
     .tabel th { text-align: left; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.14em; font-size: 10.5px; font-weight: 500; color: #6F6E68; padding: 0 12px 8px 0; border-bottom: 1px solid #E6E1D2; }
     .tabel td { padding: 10px 12px 10px 0; border-bottom: 1px solid #E6E1D2; vertical-align: top; line-height: 1.5; }
     .tabel tr td:last-child, .tabel tr th:last-child { padding-right: 0; }
-    /* Op een telefoon wordt een tabel van drie kolommen onleesbaar smal. */
+    /* On a phone a table of three columns becomes unreadably narrow. */
     @media (max-width: 640px) {
       .tabel, .tabel tbody, .tabel tr, .tabel td { display: block; width: 100%; }
       .tabel thead { display: none; }
